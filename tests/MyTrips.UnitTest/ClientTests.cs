@@ -1,6 +1,8 @@
 ﻿using Bogus;
 using FluentAssertions;
 using Moq;
+using MyTrips.Domain.Entities;
+using MyTrips.Domain.Interfaces;
 
 namespace MyTrips.UnitTest;
 
@@ -26,24 +28,4 @@ public class ClientTests
         // Assert
         clients.Should().BeEquivalentTo(_fakeClients);
     }
-}
-
-public class ClientsService(IClientRepository clientRepository)
-{
-    public async Task<object> GetClientsAsync()
-    {
-        return await clientRepository.GetAsync();
-    }
-}
-
-public interface IClientRepository
-{
-    Task<IEnumerable<Client>> GetAsync();
-}
-
-public class Client
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string Email { get; set; }
 }
