@@ -543,3 +543,4 @@ FodyWeavers.xsd
 
 *.asta
 *.asta.lock
+appsettings.Development.json

@@ -21,7 +21,6 @@ This API stores and retrieves data about leisure trips, including flights, hosti
 - Framework: ASP.NET 8
 - Database: SQL Server
 - ORM: RepoDB
-- Migrations: Fluent Migrator
 - Logging: Serilog
 - Documentation: Swagger/OpenAPI
 - Mapping: AutoMapper
@@ -55,11 +54,11 @@ This API stores and retrieves data about leisure trips, including flights, hosti
 
 ### Clients Table
 
-|     | Field | Type         | Other Constraints |
-| --- | ----- | ------------ | ----------------- |
-| PK  | Id    | INT          | NOT NULL          |
-|     | Name  | NVARCHAR(50) | NOT NULL          |
-|     | Email | NVARCAHR(50) | NOT NULL, UNIQUE  |
+|     | Field | Type          | Other Constraints |
+| --- | ----- | ------------- | ----------------- |
+| PK  | Id    | INT           | NOT NULL          |
+|     | Name  | NVARCHAR(100) | NOT NULL          |
+|     | Email | NVARCAHR(100) | NOT NULL, UNIQUE  |
 
 ### Trips Table
 
@@ -75,28 +74,32 @@ This API stores and retrieves data about leisure trips, including flights, hosti
 
 ### Flights Table
 
-|     | Field     | Type     | Other Constraints |
-| --- | --------- | -------- | ----------------- |
-| PK  | Id        | INT      | NOT NULL          |
-|     | Number    | NVARCHAR | NOT NULL          |
-|     | Departure | DATETIME | NOT NULL          |
-|     | Arrival   | DATETIME | NOT NULL          |
+|     | Field             | Type          | Other Constraints |
+| --- | ----------------- | ------------- | ----------------- |
+| PK  | Id                | INT           | NOT NULL          |
+|     | FlightNumber      | NVARCHAR      | NOT NULL          |
+|     | DepartureAirport  | NVARCHAR(100) | NOT NULL          |
+|     | ArrivalAirport    | NVARCHAR(100) | NOT NULL          |
+|     | DepartureDateTime | DATETIME      | NOT NULL          |
+|     | ArrivalDateTime   | DATETIME      | NOT NULL          |
+|     | Price             | DECIMAL       | NOT NULL          |
 
 ### Hotels Table
 
-|     | Field         | Type         | Other Constraints |
-| --- | ------------- | ------------ | ----------------- |
-| PK  | Id            | INT          | NOT NULL          |
-|     | Name          | NVARCHAR(50) | NOT NULL          |
-|     | Rating        | INT          | NULL              |
-| FK  | DestinationId | INT          | NOT NULL          |
+|     | Field         | Type          | Other Constraints |
+| --- | ------------- | ------------- | ----------------- |
+| PK  | Id            | INT           | NOT NULL          |
+|     | Name          | NVARCHAR(100) | NOT NULL          |
+|     | Rating        | INT           | NULL              |
+| FK  | DestinationId | INT           | NOT NULL          |
+|     | Price         | DECIMAL       | NOT NULL          |
 
 ### Destinations Table
 
-|     | Field | Type         | Other Constraints |
-| --- | ----- | ------------ | ----------------- |
-| PK  | Id    | INT          | NOT NULL          |
-|     | Name  | NVARCAHR(50) | NOT NULL          |
+|     | Field | Type          | Other Constraints |
+| --- | ----- | ------------- | ----------------- |
+| PK  | Id    | INT           | NOT NULL          |
+|     | Name  | NVARCAHR(100) | NOT NULL          |
 
 ## Component Diagrams
 
@@ -107,6 +110,7 @@ This API stores and retrieves data about leisure trips, including flights, hosti
 ## Sequence Diagrams
 
 ### Clients
+
 ![Get Clients.png](diagrams/diagrams/Sequence%20Diagrams/Clients/Get%20Clients.png)
 
 ![Get Client by Id.png](diagrams/diagrams/Sequence%20Diagrams/Clients/Get%20Client%20by%20Id.png)
