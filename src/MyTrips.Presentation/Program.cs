@@ -1,45 +1,56 @@
-using MyTrips.Application.Interfaces;
-using MyTrips.Application.Services;
-using MyTrips.Domain.Entities;
-using MyTrips.Domain.Interfaces;
-using MyTrips.Infrastructure.Repositories;
-using RepoDb;
+using Microsoft.AspNetCore.HttpLogging;
+using MyTrips.CrossCutting;
+using Serilog;
 
-var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddCors(options =>
+try
 {
-    options.AddDefaultPolicy(policyBuilder =>
+    Log.Logger = new LoggerConfiguration()
+        .MinimumLevel.Debug()
+        //.MinimumLevel.Override("Microsoft.AspNetCore.Hosting", LogEventLevel.Warning)
+        //.MinimumLevel.Override("Microsoft.AspNetCore.Mvc", LogEventLevel.Warning)
+        //.MinimumLevel.Override("Microsoft.AspNetCore.Routing", LogEventLevel.Warning)
+        .WriteTo.Console()
+        .WriteTo.Debug()
+        .CreateLogger();
+
+    var builder = WebApplication.CreateBuilder(args);
+
+    builder.Services.AddControllers();
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
+
+    builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
+
+    builder.Services.AddInfrastructure(builder.Configuration);
+
+    builder.Services.AddHttpLogging(options => { options.LoggingFields = HttpLoggingFields.All; });
+    builder.Services.AddSerilog();
+
+    var app = builder.Build();
+
+    if (app.Environment.IsDevelopment())
     {
-        policyBuilder.AllowAnyOrigin().AllowAnyMethod()
-            .AllowAnyHeader();
-    });
-});
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
 
-builder.Services.AddScoped<IClientsRepository, ClientsRepository>();
-builder.Services.AddScoped<IClientsService, ClientsService>();
+    app.UseSerilogRequestLogging();
+    app.UseHttpsRedirection();
+    app.UseCors();
+    app.UseAuthorization();
+    app.MapControllers();
 
-GlobalConfiguration.Setup().UseSqlServer();
-FluentMapper.Entity<Client>().Table("Clients");
-
-var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
+    app.Run();
+}
+catch (Exception ex)
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    Log.Fatal(ex, "Application terminated unexpectedly.");
+}
+finally
+{
+    Log.CloseAndFlush();
 }
 
-app.UseHttpsRedirection();
-app.UseCors();
-app.UseAuthorization();
-app.MapControllers();
-
-app.Run();
 
 /// <summary>
 ///     Entrypoint

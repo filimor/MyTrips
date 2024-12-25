@@ -4,5 +4,6 @@ namespace MyTrips.Domain.Interfaces;
 
 public interface IClientsRepository
 {
+    string ConnectionString { get; }
     Task<IEnumerable<Client>> GetAsync();
 }

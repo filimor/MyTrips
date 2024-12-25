@@ -5,13 +5,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <NuGetAuditMode>all</NuGetAuditMode>
+    <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MyTrips.Application\MyTrips.Application.csproj" />
     <ProjectReference Include="..\MyTrips.Infrastructure\MyTrips.Infrastructure.csproj" />
   </ItemGroup>
 
