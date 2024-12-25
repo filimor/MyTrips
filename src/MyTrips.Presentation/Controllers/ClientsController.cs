@@ -7,7 +7,6 @@ namespace MyTrips.Presentation.Controllers;
 [ApiController]
 public class ClientsController(IClientsService clientsService) : ControllerBase
 {
-    // GET: api/<ClientsController>
     [HttpGet]
     public async Task<ActionResult> Get()
     {
