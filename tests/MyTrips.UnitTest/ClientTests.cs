@@ -26,14 +26,23 @@ public class ClientTests
     {
         CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
         CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+
+        _mapperMock.Setup(m => m.Map<IEnumerable<ClientDto>>(It.IsAny<IEnumerable<Client>>()))
+            .Returns((IEnumerable<Client> clients) => clients.Select(c => new ClientDto
+            {
+                Id = c.Id,
+                Name = c.Name,
+                Email = c.Email
+            }));
     }
 
-    // TODO: Change response to DTO
     [Fact]
     public async Task GivenNonEmptyClientsTable_WhenGetClients_ThenItShouldReturnResultObjectWithThatClients()
     {
         // Arrange
         _clientsRepositoryMock.Setup(r => r.GetAsync()).ReturnsAsync(_fakeClients);
+        var fakeClientDtos = _mapperMock.Object.Map<IEnumerable<ClientDto>>(_fakeClients);
+
         var testResult = Result.Ok(_fakeClients);
         var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
 
