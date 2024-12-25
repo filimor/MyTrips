@@ -89,6 +89,21 @@ public class ClientTests
     }
 
     [Fact]
+    public async Task
+        GivenNonExistentClient_WhenGetClientWithId_ThenItShouldReturnNofFoundResultObjectWithErrorDetails()
+    {
+        // Arrange
+        const int nonExistentId = 100;
+        var result = Result.Fail([$"Client with id '{nonExistentId}' not found."]);
+        _clientsRepositoryMock.Setup(r => r.GetAsync(nonExistentId)).ReturnsAsync((Client)null!);
+        var clientsService = new ClientsService(_clientsRepositoryMock.Object);
+        // Act
+        var clientResult = await clientsService.GetClientByIdAsync(nonExistentId);
+        // Assert
+        clientResult.Should().BeEquivalentTo(result);
+    }
+
+    [Fact]
     public async Task GivenGetWithIdRequest_WhenRepositoryThrowException_ThenItShouldReturnServerErrorResultObject()
     {
         // Arrange

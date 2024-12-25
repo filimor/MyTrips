@@ -24,7 +24,13 @@ public class ClientsService(IClientsRepository clientsRepository) : IClientsServ
             return Result.Fail(errors);
         }
 
-        return Result.Ok(await clientsRepository.GetAsync(id));
+        var client = await clientsRepository.GetAsync(id);
+
+        if (client is null)
+            // TODO: Must use standard error messages
+            return Result.Fail(new Error($"Client with id '{id}' not found."));
+
+        return Result.Ok();
     }
 }
 
