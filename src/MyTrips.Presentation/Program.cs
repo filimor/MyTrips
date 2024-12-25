@@ -1,9 +1,13 @@
+using System.Globalization;
 using Microsoft.AspNetCore.HttpLogging;
+using Microsoft.AspNetCore.Localization;
 using MyTrips.CrossCutting;
 using Serilog;
 
 try
 {
+    CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+
     Log.Logger = new LoggerConfiguration()
         .MinimumLevel.Debug()
         .WriteTo.Console()
@@ -23,6 +27,14 @@ try
     builder.Services.AddHttpLogging(options => { options.LoggingFields = HttpLoggingFields.All; });
     builder.Services.AddSerilog();
 
+    var defaultCulture = CultureInfo.InvariantCulture;
+    var localizationOptions = new RequestLocalizationOptions
+    {
+        DefaultRequestCulture = new RequestCulture(defaultCulture),
+        SupportedCultures = [defaultCulture],
+        SupportedUICultures = [defaultCulture]
+    };
+
     var app = builder.Build();
 
     if (app.Environment.IsDevelopment())
@@ -32,6 +44,7 @@ try
     }
 
     app.UseSerilogRequestLogging();
+    app.UseRequestLocalization(localizationOptions);
     app.UseHttpsRedirection();
     app.UseCors();
     app.UseAuthorization();
