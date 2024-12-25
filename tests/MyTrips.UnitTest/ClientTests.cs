@@ -1,6 +1,8 @@
 ﻿using Bogus;
 using FluentAssertions;
+using FluentResults;
 using Moq;
+using MyTrips.Application.Services;
 using MyTrips.Domain.Entities;
 using MyTrips.Domain.Interfaces;
 
@@ -18,14 +20,15 @@ public class ClientTests
     public async Task GivenNonEmptyClientsTable_WhenGetClients_ItShouldReturnResultObjectWithThatClients()
     {
         // Arrange
-        Mock<IClientRepository> clientsRepositoryMock = new();
+        Mock<IClientsRepository> clientsRepositoryMock = new();
         clientsRepositoryMock.Setup(x => x.GetAsync()).ReturnsAsync(_fakeClients);
+        var testResult = Result.Ok(_fakeClients);
         var clientsService = new ClientsService(clientsRepositoryMock.Object);
 
         // Act
-        var clients = await clientsService.GetClientsAsync();
+        var clientsResult = await clientsService.GetClientsAsync();
 
         // Assert
-        clients.Should().BeEquivalentTo(_fakeClients);
+        clientsResult.Should().BeEquivalentTo(testResult);
     }
 }

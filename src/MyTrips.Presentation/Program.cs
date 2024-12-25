@@ -19,3 +19,10 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+/// <summary>
+///     Entrypoint
+/// </summary>
+public partial class Program
+{
+}

@@ -1,11 +1,14 @@
-﻿using MyTrips.Domain.Interfaces;
+﻿using FluentResults;
+using MyTrips.Application.Interfaces;
+using MyTrips.Domain.Entities;
+using MyTrips.Domain.Interfaces;
 
-namespace MyTrips.UnitTest;
+namespace MyTrips.Application.Services;
 
-public class ClientsService(IClientRepository clientRepository)
+public class ClientsService(IClientsRepository clientsRepository) : IClientsService
 {
-    public async Task<object> GetClientsAsync()
+    public async Task<Result<IEnumerable<Client>>> GetClientsAsync()
     {
-        return await clientRepository.GetAsync();
+        return Result.Ok(await clientsRepository.GetAsync());
     }
 }
