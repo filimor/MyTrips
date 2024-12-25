@@ -2,7 +2,7 @@
 
 namespace MyTrips.Domain.Interfaces;
 
-public interface IClientRepository
+public interface IClientsRepository
 {
     Task<IEnumerable<Client>> GetAsync();
 }

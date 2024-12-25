@@ -29,10 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MyTrips.Application\MyTrips.Application.csproj" />
     <ProjectReference Include="..\MyTrips.CrossCutting\MyTrips.CrossCutting.csproj" />
   </ItemGroup>
