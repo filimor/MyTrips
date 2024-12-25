@@ -29,7 +29,7 @@ public class ClientTests : IDisposable
             .WithWebHostBuilder(builder =>
             {
                 builder.ConfigureServices(
-                    services => { });
+                    _ => { });
             });
         _client = _factory.CreateDefaultClient(new LoggingHandler { InnerHandler = new HttpClientHandler() });
     }
@@ -42,7 +42,7 @@ public class ClientTests : IDisposable
     }
 
     [Fact]
-    public async Task GivenClientsEndpoint_WhenRequestedGet_ItShouldReturnOkWithHeadersAndContent()
+    public async Task GivenClientsEndpoint_WhenRequestedGet_ThenItShouldReturnOkWithHeadersAndContent()
     {
         // Arrange
         var client = _factory.CreateClient();
@@ -59,4 +59,11 @@ public class ClientTests : IDisposable
         response.Content.Headers.ContentType?.ToString().Should().Be("application/json; charset=utf-8");
         returnedClients.Should().NotBeNull();
     }
+
+    //[Fact]
+    //public async Task
+    //    GivenClientsEndpoint_WhenRequestedGetWithValidAndExistingId_ThenItShouldReturnOkWithHeadersAndContent()
+    //{
+
+    //}
 }

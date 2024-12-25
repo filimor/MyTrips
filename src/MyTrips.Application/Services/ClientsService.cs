@@ -11,4 +11,9 @@ public class ClientsService(IClientsRepository clientsRepository) : IClientsServ
     {
         return Result.Ok(await clientsRepository.GetAsync());
     }
+
+    public Task<Result<Client>> GetClientByIdAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
 }
