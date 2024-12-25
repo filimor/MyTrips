@@ -16,4 +16,9 @@ public class ClientsRepository(IConfiguration configuration) : IClientsRepositor
         await using SqlConnection connection = new(ConnectionString);
         return connection.QueryAll<Client>();
     }
+
+    public Task<Client> GetAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -2,6 +2,7 @@
 using FluentAssertions;
 using FluentResults;
 using Moq;
+using MyTrips.Application.Dtos;
 using MyTrips.Application.Services;
 using MyTrips.Domain.Entities;
 using MyTrips.Domain.Interfaces;
@@ -17,8 +18,9 @@ public class ClientTests
         .RuleFor(c => c.Email, f => f.Internet.Email())
         .Generate(10);
 
+    // TODO: Change response to DTO
     [Fact]
-    public async Task GivenNonEmptyClientsTable_WhenGetClients_ItShouldReturnResultObjectWithThatClients()
+    public async Task GivenNonEmptyClientsTable_WhenGetClients_ThenItShouldReturnResultObjectWithThatClients()
     {
         // Arrange
         _clientsRepositoryMock.Setup(r => r.GetAsync()).ReturnsAsync(_fakeClients);
@@ -33,7 +35,7 @@ public class ClientTests
     }
 
     [Fact]
-    public async Task GivenGetRequest_WhenRepositoryThrowException_ItShouldReturnServerErrorResultObject()
+    public async Task GivenGetRequest_WhenRepositoryThrowException_ThenItShouldReturnServerErrorResultObject()
     {
         // Arrange
         _clientsRepositoryMock.Setup(r => r.GetAsync()).ThrowsAsync(new OutOfMemoryException());
@@ -42,6 +44,36 @@ public class ClientTests
         // Act
         var act = () => clientsService.GetClientsAsync();
 
+        // Assert
+        await act.Should().ThrowAsync<OutOfMemoryException>();
+    }
+
+    [Fact]
+    public async Task
+        GivenValidAndExistingId_WhenGetClientWithId_ThenItShouldReturnResultObjectWithTheClientDtoResult()
+    {
+        // Arrange
+        var testClient = new Client { Id = 1, Name = "John Doe", Email = "john.doe@example.com" };
+        var testClientDto = new ClientDto { Id = testClient.Id, Name = testClient.Name, Email = testClient.Email };
+        _clientsRepositoryMock.Setup(r => r.GetAsync(testClient.Id)).ReturnsAsync(testClient);
+        var clientsService = new ClientsService(_clientsRepositoryMock.Object);
+
+        // Act
+        var clientResult = await clientsService.GetClientByIdAsync(testClient.Id);
+
+        // Assert
+        clientResult.Should().BeEquivalentTo(Result.Ok(testClientDto));
+    }
+
+    [Fact]
+    public async Task GivenGetWithIdRequest_WhenRepositoryThrowException_ThenItShouldReturnServerErrorResultObject()
+    {
+        // Arrange
+        const int testClientId = 1;
+        _clientsRepositoryMock.Setup(r => r.GetAsync(testClientId)).ThrowsAsync(new OutOfMemoryException());
+        var clientsService = new ClientsService(_clientsRepositoryMock.Object);
+        // Act
+        var act = () => clientsService.GetClientByIdAsync(testClientId);
         // Assert
         await act.Should().ThrowAsync<OutOfMemoryException>();
     }
