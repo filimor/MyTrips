@@ -1,20 +1,22 @@
-﻿using FluentResults;
+﻿using AutoMapper;
+using FluentResults;
 using FluentValidation;
 using FluentValidation.Results;
+using MyTrips.Application.Dtos;
 using MyTrips.Application.Interfaces;
 using MyTrips.Domain.Entities;
 using MyTrips.Domain.Interfaces;
 
 namespace MyTrips.Application.Services;
 
-public class ClientsService(IClientsRepository clientsRepository) : IClientsService
+public class ClientsService(IMapper mapper, IClientsRepository clientsRepository) : IClientsService
 {
     public async Task<Result<IEnumerable<Client>>> GetClientsAsync()
     {
         return Result.Ok(await clientsRepository.GetAsync());
     }
 
-    public async Task<Result<Client>> GetClientByIdAsync(int id)
+    public async Task<Result<ClientDto>> GetClientByIdAsync(int id)
     {
         var validationResult = new ClientValidator().ValidateId(id);
 
@@ -30,7 +32,9 @@ public class ClientsService(IClientsRepository clientsRepository) : IClientsServ
             // TODO: Must use standard error messages
             return Result.Fail(new Error($"Client with id '{id}' not found."));
 
-        return Result.Ok();
+        var clientDto = mapper.Map<ClientDto>(client);
+
+        return Result.Ok(clientDto);
     }
 }
 

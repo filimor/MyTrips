@@ -13,4 +13,11 @@ public class ClientsController(IClientsService clientsService) : ControllerBase
         var result = await clientsService.GetClientsAsync();
         return Ok(result.Value);
     }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult> Get(int id)
+    {
+        var result = await clientsService.GetClientByIdAsync(id);
+        return Ok(result.Value);
+    }
 }

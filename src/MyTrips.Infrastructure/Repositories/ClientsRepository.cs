@@ -14,11 +14,13 @@ public class ClientsRepository(IConfiguration configuration) : IClientsRepositor
     public async Task<IEnumerable<Client>> GetAsync()
     {
         await using SqlConnection connection = new(ConnectionString);
-        return connection.QueryAll<Client>();
+        return await connection.QueryAllAsync<Client>();
     }
 
-    public Task<Client> GetAsync(int id)
+    public async Task<Client?> GetAsync(int id)
     {
-        throw new NotImplementedException();
+        await using SqlConnection connection = new(ConnectionString);
+        var clients = await connection.QueryAsync<Client>(e => e.Id == id);
+        return clients.FirstOrDefault();
     }
 }

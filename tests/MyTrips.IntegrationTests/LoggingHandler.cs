@@ -12,7 +12,8 @@ public class LoggingHandler : DelegatingHandler
         var response = await base.SendAsync(request, cancellationToken);
 
         Log.Information("Received response: {StatusCode}", response.StatusCode);
-        Log.Information("Response content: {ResponseContent}", response.Content);
+        Log.Information("Response content: {ResponseContent}",
+            await response.Content.ReadAsStreamAsync(cancellationToken));
 
         return response;
     }

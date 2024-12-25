@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
+using MyTrips.Application.Dtos;
 using MyTrips.Domain.Entities;
 using Newtonsoft.Json;
 using Serilog;
@@ -45,11 +46,10 @@ public class ClientTests : IDisposable
     public async Task GivenClientsEndpoint_WhenRequestedGet_ThenItShouldReturnOkWithHeadersAndContent()
     {
         // Arrange
-        var client = _factory.CreateClient();
         var request = new HttpRequestMessage(HttpMethod.Get, "http://localhost:5068/api/clients");
 
         // Act
-        var response = await client.SendAsync(request);
+        var response = await _client.SendAsync(request);
 
         // Assert
         var responseString = await response.Content.ReadAsStringAsync();
@@ -60,10 +60,22 @@ public class ClientTests : IDisposable
         returnedClients.Should().NotBeNull();
     }
 
-    //[Fact]
-    //public async Task
-    //    GivenClientsEndpoint_WhenRequestedGetWithValidAndExistingId_ThenItShouldReturnOkWithHeadersAndContent()
-    //{
+    [Fact]
+    public async Task
+        GivenClientsEndpoint_WhenRequestedGetWithValidAndExistingId_ThenItShouldReturnOkWithHeadersAndContent()
+    {
+        // Arrange
+        const int existingId = 1;
+        var request = new HttpRequestMessage(HttpMethod.Get, $"http://localhost:5068/api/clients/{existingId}");
 
-    //}
+        // Act
+        var response = await _client.SendAsync(request);
+
+        // Assert
+        var responseString = await response.Content.ReadAsStringAsync();
+        var returnedClient = JsonConvert.DeserializeObject<ClientDto>(responseString);
+        response.EnsureSuccessStatusCode();
+        response.Content.Headers.ContentType?.ToString().Should().Be("application/json; charset=utf-8");
+        returnedClient.Should().BeOfType<ClientDto>();
+    }
 }
