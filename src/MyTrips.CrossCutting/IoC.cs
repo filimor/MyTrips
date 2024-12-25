@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyTrips.Application.Interfaces;
+using MyTrips.Application.Mappings;
 using MyTrips.Application.Services;
 using MyTrips.Domain.Entities;
 using MyTrips.Domain.Interfaces;
@@ -16,6 +17,7 @@ public static class IoC
     {
         services.AddScoped<IClientsRepository>(_ => new ClientsRepository(configuration));
         services.AddScoped<IClientsService, ClientsService>();
+        services.AddAutoMapper(typeof(DtoToDomainMappingProfile));
         GlobalConfiguration.Setup().UseSqlServer();
         FluentMapper.Entity<Client>().Table("Clients");
 

@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using AutoMapper;
 using Bogus;
 using FluentAssertions;
 using FluentResults;
@@ -19,6 +20,8 @@ public class ClientTests
         .RuleFor(c => c.Email, f => f.Internet.Email())
         .Generate(10);
 
+    private readonly Mock<IMapper> _mapperMock = new();
+
     public ClientTests()
     {
         CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
@@ -32,7 +35,7 @@ public class ClientTests
         // Arrange
         _clientsRepositoryMock.Setup(r => r.GetAsync()).ReturnsAsync(_fakeClients);
         var testResult = Result.Ok(_fakeClients);
-        var clientsService = new ClientsService(_clientsRepositoryMock.Object);
+        var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
 
         // Act
         var clientsResult = await clientsService.GetClientsAsync();
@@ -46,7 +49,7 @@ public class ClientTests
     {
         // Arrange
         _clientsRepositoryMock.Setup(r => r.GetAsync()).ThrowsAsync(new OutOfMemoryException());
-        var clientsService = new ClientsService(_clientsRepositoryMock.Object);
+        var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
 
         // Act
         var act = () => clientsService.GetClientsAsync();
@@ -63,7 +66,7 @@ public class ClientTests
         var testClient = new Client { Id = 1, Name = "John Doe", Email = "john.doe@example.com" };
         var testClientDto = new ClientDto { Id = testClient.Id, Name = testClient.Name, Email = testClient.Email };
         _clientsRepositoryMock.Setup(r => r.GetAsync(testClient.Id)).ReturnsAsync(testClient);
-        var clientsService = new ClientsService(_clientsRepositoryMock.Object);
+        var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
 
         // Act
         var clientResult = await clientsService.GetClientByIdAsync(testClient.Id);
@@ -79,7 +82,7 @@ public class ClientTests
         const int invalidId = -1;
         const int minId = 1;
         var result = Result.Fail([$"'{nameof(Client.Id)}' must be greater than or equal to '{minId}'."]);
-        var clientsService = new ClientsService(_clientsRepositoryMock.Object);
+        var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
 
         // Act
         var clientResult = await clientsService.GetClientByIdAsync(invalidId);
@@ -96,7 +99,7 @@ public class ClientTests
         const int nonExistentId = 100;
         var result = Result.Fail([$"Client with id '{nonExistentId}' not found."]);
         _clientsRepositoryMock.Setup(r => r.GetAsync(nonExistentId)).ReturnsAsync((Client)null!);
-        var clientsService = new ClientsService(_clientsRepositoryMock.Object);
+        var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
         // Act
         var clientResult = await clientsService.GetClientByIdAsync(nonExistentId);
         // Assert
@@ -109,7 +112,7 @@ public class ClientTests
         // Arrange
         const int testClientId = 1;
         _clientsRepositoryMock.Setup(r => r.GetAsync(testClientId)).ThrowsAsync(new OutOfMemoryException());
-        var clientsService = new ClientsService(_clientsRepositoryMock.Object);
+        var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
         // Act
         var act = () => clientsService.GetClientByIdAsync(testClientId);
         // Assert
