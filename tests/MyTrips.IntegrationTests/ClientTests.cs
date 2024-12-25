@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc.Testing;
 using MyTrips.Domain.Entities;
 using Newtonsoft.Json;
+using Serilog;
+using Xunit.Abstractions;
 
 namespace MyTrips.IntegrationTests;
 
@@ -9,16 +11,27 @@ public class ClientTests : IDisposable
 {
     private readonly HttpClient _client;
     private readonly WebApplicationFactory<Program> _factory;
+    private readonly ILogger _output;
 
-    public ClientTests()
+    public ClientTests(ITestOutputHelper output)
     {
+        _output = new LoggerConfiguration()
+            .MinimumLevel.Debug()
+            .Enrich.WithExceptionData()
+            .WriteTo.Console()
+            .WriteTo.Debug()
+            //.WriteTo.File("logs/test-log.txt", rollingInterval: RollingInterval.Day)
+            .WriteTo.TestOutput(output)
+            .CreateLogger()
+            .ForContext<ClientTests>();
+
         _factory = new WebApplicationFactory<Program>()
             .WithWebHostBuilder(builder =>
             {
                 builder.ConfigureServices(
                     services => { });
             });
-        _client = _factory.CreateDefaultClient();
+        _client = _factory.CreateDefaultClient(new LoggingHandler { InnerHandler = new HttpClientHandler() });
     }
 
     public void Dispose()
@@ -31,6 +44,7 @@ public class ClientTests : IDisposable
     [Fact]
     public async Task GivenClientsEndpoint_WhenRequestedGet_ItShouldReturnOkWithHeadersAndContent()
     {
+        Log.Information("Teste 1");
         // Arrange
         var client = _factory.CreateClient();
         var request = new HttpRequestMessage(HttpMethod.Get, "http://localhost:5068/api/clients");
@@ -45,5 +59,6 @@ public class ClientTests : IDisposable
         response.EnsureSuccessStatusCode();
         response.Content.Headers.ContentType?.ToString().Should().Be("application/json; charset=utf-8");
         returnedClients.Should().NotBeNull();
+        Log.Information("Teste 2");
     }
 }
