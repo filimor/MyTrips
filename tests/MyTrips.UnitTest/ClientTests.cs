@@ -66,6 +66,21 @@ public class ClientTests
     }
 
     [Fact]
+    public async Task GivenInvalidId_WhenGetClientWithId_ThenItShouldReturnBadRequestResultObjectWithErrorDetails()
+    {
+        // Arrange
+        const int invalidId = -1;
+        var result = Result.Fail([$"Invalid id: {invalidId}"]);
+        var clientsService = new ClientsService(_clientsRepositoryMock.Object);
+
+        // Act
+        var clientResult = await clientsService.GetClientByIdAsync(invalidId);
+
+        // Assert
+        clientResult.Should().BeEquivalentTo(result);
+    }
+
+    [Fact]
     public async Task GivenGetWithIdRequest_WhenRepositoryThrowException_ThenItShouldReturnServerErrorResultObject()
     {
         // Arrange
