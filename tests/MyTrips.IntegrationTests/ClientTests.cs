@@ -44,7 +44,6 @@ public class ClientTests : IDisposable
     [Fact]
     public async Task GivenClientsEndpoint_WhenRequestedGet_ItShouldReturnOkWithHeadersAndContent()
     {
-        Log.Information("Teste 1");
         // Arrange
         var client = _factory.CreateClient();
         var request = new HttpRequestMessage(HttpMethod.Get, "http://localhost:5068/api/clients");
@@ -59,6 +58,5 @@ public class ClientTests : IDisposable
         response.EnsureSuccessStatusCode();
         response.Content.Headers.ContentType?.ToString().Should().Be("application/json; charset=utf-8");
         returnedClients.Should().NotBeNull();
-        Log.Information("Teste 2");
     }
 }
