@@ -1,4 +1,5 @@
-﻿using Bogus;
+﻿using System.Globalization;
+using Bogus;
 using FluentAssertions;
 using FluentResults;
 using Moq;
@@ -17,6 +18,12 @@ public class ClientTests
         .RuleFor(c => c.Name, f => f.Name.FullName())
         .RuleFor(c => c.Email, f => f.Internet.Email())
         .Generate(10);
+
+    public ClientTests()
+    {
+        CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+        CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+    }
 
     // TODO: Change response to DTO
     [Fact]
@@ -70,7 +77,8 @@ public class ClientTests
     {
         // Arrange
         const int invalidId = -1;
-        var result = Result.Fail([$"Invalid id: {invalidId}"]);
+        const int minId = 1;
+        var result = Result.Fail([$"'{nameof(Client.Id)}' must be greater than or equal to '{minId}'."]);
         var clientsService = new ClientsService(_clientsRepositoryMock.Object);
 
         // Act
