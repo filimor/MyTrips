@@ -1,8 +1,9 @@
-﻿using FluentAssertions;
+﻿using System.Net;
+using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using MyTrips.Application.Dtos;
 using MyTrips.Domain.Entities;
-using Newtonsoft.Json;
+using MyTrips.IntegrationTests.Extensions;
 using Serilog;
 using Xunit.Abstractions;
 
@@ -11,6 +12,7 @@ namespace MyTrips.IntegrationTests;
 public class ClientTests : IDisposable
 {
     private readonly HttpClient _client;
+    private readonly string _endpoint = "http://localhost:5068/api/clients";
     private readonly WebApplicationFactory<Program> _factory;
     private readonly ILogger _output;
 
@@ -43,17 +45,17 @@ public class ClientTests : IDisposable
     }
 
     [Fact]
-    public async Task GivenClientsEndpoint_WhenRequestedGet_ThenItShouldReturnOkWithHeadersAndContent()
+    [Trait("Category", "Integration")]
+    public async Task GivenClientsEndpoint_WhenRequestedGetClientWithoutId_ThenItShouldReturnOkWithHeadersAndContent()
     {
         // Arrange
-        var request = new HttpRequestMessage(HttpMethod.Get, "http://localhost:5068/api/clients");
+        var request = new HttpRequestMessage(HttpMethod.Get, _endpoint);
 
         // Act
         var response = await _client.SendAsync(request);
 
         // Assert
-        var responseString = await response.Content.ReadAsStringAsync();
-        var returnedClients = JsonConvert.DeserializeObject<IEnumerable<Client>>(responseString);
+        var returnedClients = await response.DeserializedContentAsync<IEnumerable<Client>>();
 
         response.EnsureSuccessStatusCode();
         response.Content.Headers.ContentType?.ToString().Should().Be("application/json; charset=utf-8");
@@ -61,21 +63,46 @@ public class ClientTests : IDisposable
     }
 
     [Fact]
+    [Trait("Category", "Integration")]
     public async Task
-        GivenClientsEndpoint_WhenRequestedGetWithValidAndExistingId_ThenItShouldReturnOkWithHeadersAndContent()
+        GivenExistingId_WhenRequestedGetClientWithId_ThenItShouldReturnOkWithHeadersAndContent()
     {
         // Arrange
         const int existingId = 1;
-        var request = new HttpRequestMessage(HttpMethod.Get, $"http://localhost:5068/api/clients/{existingId}");
+        var request = new HttpRequestMessage(HttpMethod.Get, $"{_endpoint}/{existingId}");
 
         // Act
         var response = await _client.SendAsync(request);
 
         // Assert
-        var responseString = await response.Content.ReadAsStringAsync();
-        var returnedClient = JsonConvert.DeserializeObject<ClientDto>(responseString);
+        var returnedClient = await response.DeserializedContentAsync<ClientDto>();
         response.EnsureSuccessStatusCode();
         response.Content.Headers.ContentType?.ToString().Should().Be("application/json; charset=utf-8");
         returnedClient.Should().BeOfType<ClientDto>();
+    }
+
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task GivenInvalidId_WhenRequestGetClientWithId_ThenItShouldReturnBadRequestWithHeadersAndContent()
+    {
+        // Arrange
+        const int invalidId = -1;
+        var request = new HttpRequestMessage(HttpMethod.Get, $"{_endpoint}/{invalidId}");
+
+        // Act
+        var response = await _client.SendAsync(request);
+
+        // Assert
+        var returnedError = await response.DeserializedContentAsync<object>();
+        response.Should().HaveStatusCode(HttpStatusCode.BadRequest);
+        response.Content.Headers.ContentType?.ToString().Should().Be("application/problem+json; charset=utf-8");
+        returnedError.Should().NotBeNull();
+    }
+
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task
+        GivenNonExistentClient_WhenRequestGetClientWithId_ThenItShouldReturnNotFoundWithHeadersAndContent()
+    {
     }
 }

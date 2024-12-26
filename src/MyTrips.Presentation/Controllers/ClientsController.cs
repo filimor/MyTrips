@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentResults;
+using Microsoft.AspNetCore.Mvc;
 using MyTrips.Application.Interfaces;
+using MyTrips.Presentation.Errors;
+using MyTrips.Presentation.Validators;
 
 namespace MyTrips.Presentation.Controllers;
 
@@ -17,7 +20,46 @@ public class ClientsController(IClientsService clientsService) : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult> Get(int id)
     {
-        var result = await clientsService.GetClientByIdAsync(id);
-        return Ok(result.Value);
+        var validationResult = InputValidator.ValidateId(id);
+
+        if (id < 1)
+        {
+            var errors = validationResult.Errors.Select(e => new Error(e.ErrorMessage));
+            var resultObject = Result.Fail(errors);
+            var errorDetails = new ErrorDetails
+            {
+                Status = StatusCodes.Status400BadRequest,
+                Title = "Bad Request",
+                Instance = HttpContext.Request.Path,
+                Detail = resultObject.Errors
+            };
+            var badRequestResult = new BadRequestObjectResult(errorDetails)
+            {
+                ContentTypes = { "application/problem+json; charset=utf-8" }
+            };
+            return badRequestResult;
+        }
+
+        var requestResult = await clientsService.GetClientByIdAsync(id);
+
+        if (requestResult.IsFailed)
+        {
+            var errorDetails = new ErrorDetails
+            {
+                Status = StatusCodes.Status404NotFound,
+                Title = "Not Found",
+                Instance = HttpContext.Request.Path,
+                Detail = requestResult.Errors
+            };
+
+            var notFoundResult = new NotFoundObjectResult(errorDetails)
+            {
+                ContentTypes = { "application/problem+json; charset=utf-8" }
+            };
+
+            return notFoundResult;
+        }
+
+        return Ok(requestResult.Value);
     }
 }

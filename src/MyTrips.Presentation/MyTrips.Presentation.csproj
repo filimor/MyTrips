@@ -13,7 +13,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <NuGetAuditMode>all</NuGetAuditMode>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <SignAssembly>False</SignAssembly>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
     <AnalysisLevel>latest-recommended</AnalysisLevel>
@@ -21,6 +21,7 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <Dockerfile>..\..\Dockerfile</Dockerfile>
       <DockerfileContext>..\..</DockerfileContext>
+      <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
