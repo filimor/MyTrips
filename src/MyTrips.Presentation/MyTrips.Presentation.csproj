@@ -28,6 +28,7 @@
     <PackageReference Include="FluentResults" Version="3.16.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Serilog" Version="4.2.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
     <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
@@ -38,6 +39,10 @@
   <ItemGroup>
     <ProjectReference Include="..\MyTrips.Application\MyTrips.Application.csproj" />
     <ProjectReference Include="..\MyTrips.CrossCutting\MyTrips.CrossCutting.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Validators\" />
   </ItemGroup>
 
 </Project>
