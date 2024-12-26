@@ -1,0 +1,19 @@
+#!/bin/sh
+exec 1>&2
+
+dotnet test --filter "Category==Unit"
+
+if [ $? -ne 0 ]; then
+    echo "Unit tests failed. Commit cancelled."
+    exit 1
+fi
+
+FILES=$(git diff --cached --name-only --diff-filter=ACM "*.cs")
+if [-n "$FILES"]
+then
+    dotnet format ./MyTrips.sln --include $FILES
+    jb cleanupcode ../MyTrips.sln
+    echo "$FILES" | xargs git add
+fi
+
+exit 0
