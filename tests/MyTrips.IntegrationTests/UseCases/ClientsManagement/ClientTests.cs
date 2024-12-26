@@ -76,10 +76,10 @@ public class ClientTests : IDisposable
         var response = await _client.SendAsync(request);
 
         // Assert
-        var returnedClient = await response.DeserializedContentAsync<ClientDto>();
+        var returnedClient = await response.DeserializedContentAsync<ResponseClientDto>();
         response.EnsureSuccessStatusCode();
         response.Content.Headers.ContentType?.ToString().Should().Be("application/json; charset=utf-8");
-        returnedClient.Should().BeOfType<ClientDto>();
+        returnedClient.Should().BeOfType<ResponseClientDto>();
     }
 
     [Fact]

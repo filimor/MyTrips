@@ -5,6 +5,7 @@ namespace MyTrips.Application.Interfaces;
 
 public interface IClientsService
 {
-    Task<Result<IEnumerable<ClientDto>>> GetClientsAsync();
-    Task<Result<ClientDto>> GetClientByIdAsync(int id);
+    Task<Result<IEnumerable<ResponseClientDto>>> GetClientsAsync();
+    Task<Result<ResponseClientDto>> GetClientByIdAsync(int id);
+    Task<Result<ResponseClientDto>> AddNewClientAsync(RequestClientDto dto);
 }

@@ -12,7 +12,7 @@ namespace MyTrips.Presentation.Controllers;
 public class ClientsController(IClientsService clientsService) : ControllerBase
 {
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<ClientDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IEnumerable<ResponseClientDto>), StatusCodes.Status200OK)]
     [ProducesDefaultResponseType]
     public async Task<ActionResult> Get()
     {
@@ -22,7 +22,7 @@ public class ClientsController(IClientsService clientsService) : ControllerBase
     }
 
     [HttpGet("{id:int}")]
-    [ProducesResponseType(typeof(ClientDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ResponseClientDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status404NotFound)]
     [ProducesDefaultResponseType]

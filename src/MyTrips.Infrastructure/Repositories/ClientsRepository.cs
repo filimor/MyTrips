@@ -23,4 +23,9 @@ public class ClientsRepository(IConfiguration configuration) : IClientsRepositor
         var clients = await connection.QueryAsync<Client>(e => e.Id == id);
         return clients.FirstOrDefault();
     }
+
+    public Task<int> AddAsync(Client client)
+    {
+        throw new NotImplementedException();
+    }
 }
