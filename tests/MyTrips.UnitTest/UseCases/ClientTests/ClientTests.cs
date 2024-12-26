@@ -14,7 +14,7 @@ using MyTrips.Domain.Interfaces;
 using MyTrips.Presentation.Controllers;
 using MyTrips.Presentation.Errors;
 
-namespace MyTrips.UnitTest;
+namespace MyTrips.UnitTest.UseCases.ClientTests;
 
 public class ClientTests
 {
@@ -50,7 +50,7 @@ public class ClientTests
 
     [Fact]
     [Trait("Category", "Unit")]
-    public async Task GivenNonEmptyClientsTable_WhenGetClients_ThenItShouldReturnResultObjectWithTheDtos()
+    public async Task GivenExistingClients_WhenGetClients_ThenItShouldReturnOkResultObjectWithTheDtos()
     {
         // Arrange
         _clientsRepositoryMock.Setup(r => r.GetAsync()).ReturnsAsync(_fakeClients);
@@ -75,7 +75,7 @@ public class ClientTests
         var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
 
         // Act
-        var act = () => clientsService.GetClientsAsync();
+        var act = async () => await clientsService.GetClientsAsync();
 
         // Assert
         await act.Should().ThrowAsync<OutOfMemoryException>();
@@ -84,7 +84,7 @@ public class ClientTests
     [Fact]
     [Trait("Category", "Unit")]
     public async Task
-        GivenExistingClient_WhenGetClientWithId_ThenItShouldReturnResultObjectWithTheClientDtoResult()
+        GivenExistingClient_WhenGetClientWithId_ThenItShouldReturnOkResultObjectWithTheClientDtoResult()
     {
         // Arrange
         var testClient = new Client { Id = 1, Name = "John Doe", Email = "john.doe@example.com" };
@@ -101,7 +101,8 @@ public class ClientTests
 
     [Fact]
     [Trait("Category", "Unit")]
-    public async Task GivenInvalidId_WhenGetClientWithId_ThenItShouldReturnBadRequestResultObjectWithErrorDetails()
+    public async Task
+        GivenInvalidId_WhenGetClientWithIdRequest_ThenItShouldReturnBadRequestResponseWithErrorDetails()
     {
         // Arrange
         const int invalidId = -1;
@@ -130,7 +131,7 @@ public class ClientTests
     [Fact]
     [Trait("Category", "Unit")]
     public async Task
-        GivenNonExistentClient_WhenGetClientWithId_ThenItShouldReturnNofFoundResultObjectWithErrorDetails()
+        GivenNonExistentClient_WhenTryGetClient_ThenItShouldReturnNotFoundResultObjectWithErrorDetails()
     {
         // Arrange
         const int nonExistentId = 100;
@@ -143,6 +144,7 @@ public class ClientTests
         response.Should().BeEquivalentTo(result);
     }
 
+    // TODO: Fix it
     [Fact]
     [Trait("Category", "Unit")]
     public async Task GivenGetWithIdRequest_WhenRepositoryThrowException_ThenItShouldReturnServerErrorResultObject()
@@ -152,7 +154,7 @@ public class ClientTests
         _clientsRepositoryMock.Setup(r => r.GetAsync(testClientId)).ThrowsAsync(new OutOfMemoryException());
         var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
         // Act
-        var act = () => clientsService.GetClientByIdAsync(testClientId);
+        var act = async () => await clientsService.GetClientByIdAsync(testClientId);
         // Assert
         await act.Should().ThrowAsync<OutOfMemoryException>();
     }
