@@ -3,11 +3,16 @@ using AutoMapper;
 using Bogus;
 using FluentAssertions;
 using FluentResults;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
 using MyTrips.Application.Dtos;
+using MyTrips.Application.Interfaces;
 using MyTrips.Application.Services;
 using MyTrips.Domain.Entities;
 using MyTrips.Domain.Interfaces;
+using MyTrips.Presentation.Controllers;
+using MyTrips.Presentation.Errors;
 
 namespace MyTrips.UnitTest;
 
@@ -37,6 +42,7 @@ public class ClientTests
     }
 
     [Fact]
+    [Trait("Category", "Unit")]
     public async Task GivenNonEmptyClientsTable_WhenGetClients_ThenItShouldReturnResultObjectWithThatClients()
     {
         // Arrange
@@ -54,6 +60,7 @@ public class ClientTests
     }
 
     [Fact]
+    [Trait("Category", "Unit")]
     public async Task GivenGetRequest_WhenRepositoryThrowException_ThenItShouldReturnServerErrorResultObject()
     {
         // Arrange
@@ -68,8 +75,9 @@ public class ClientTests
     }
 
     [Fact]
+    [Trait("Category", "Unit")]
     public async Task
-        GivenValidAndExistingId_WhenGetClientWithId_ThenItShouldReturnResultObjectWithTheClientDtoResult()
+        GivenExistingClient_WhenGetClientWithId_ThenItShouldReturnResultObjectWithTheClientDtoResult()
     {
         // Arrange
         var testClient = new Client { Id = 1, Name = "John Doe", Email = "john.doe@example.com" };
@@ -85,22 +93,35 @@ public class ClientTests
     }
 
     [Fact]
+    [Trait("Category", "Unit")]
     public async Task GivenInvalidId_WhenGetClientWithId_ThenItShouldReturnBadRequestResultObjectWithErrorDetails()
     {
         // Arrange
         const int invalidId = -1;
         const int minId = 1;
-        var result = Result.Fail([$"'{nameof(Client.Id)}' must be greater than or equal to '{minId}'."]);
-        var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
+        var clientServiceMock = new Mock<IClientsService>();
+        var httpContext = new DefaultHttpContext();
+        var controllerContext = new ControllerContext
+        {
+            HttpContext = httpContext
+        };
+        var controller = new ClientsController(clientServiceMock.Object)
+        {
+            ControllerContext = controllerContext
+        };
 
         // Act
-        var clientResult = await clientsService.GetClientByIdAsync(invalidId);
+        var result = await controller.Get(invalidId);
 
         // Assert
-        clientResult.Should().BeEquivalentTo(result);
+        result.Should().BeOfType<BadRequestObjectResult>()
+            .Which.Value.Should().BeOfType<ErrorDetails>()
+            .Which.Detail.Should().Contain(e =>
+                e.Message == $"'{nameof(Client.Id)}' must be greater than or equal to '{minId}'.");
     }
 
     [Fact]
+    [Trait("Category", "Unit")]
     public async Task
         GivenNonExistentClient_WhenGetClientWithId_ThenItShouldReturnNofFoundResultObjectWithErrorDetails()
     {
@@ -116,6 +137,7 @@ public class ClientTests
     }
 
     [Fact]
+    [Trait("Category", "Unit")]
     public async Task GivenGetWithIdRequest_WhenRepositoryThrowException_ThenItShouldReturnServerErrorResultObject()
     {
         // Arrange
