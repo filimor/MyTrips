@@ -8,6 +8,8 @@ public class DtoToDomainMappingProfile : Profile
 {
     public DtoToDomainMappingProfile()
     {
-        CreateMap<ClientDto, Client>().ReverseMap();
+        CreateMap<RequestClientDto, Client>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore());
+        CreateMap<Client, ResponseClientDto>();
     }
 }

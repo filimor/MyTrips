@@ -32,15 +32,15 @@ public class ClientTests
         CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
         CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
-        _mapperMock.Setup(m => m.Map<ClientDto>(It.IsAny<Client>()))
-            .Returns((Client client) => new ClientDto
+        _mapperMock.Setup(m => m.Map<ResponseClientDto>(It.IsAny<Client>()))
+            .Returns((Client client) => new ResponseClientDto
             {
                 Id = client.Id,
                 Name = client.Name,
                 Email = client.Email
             });
-        _mapperMock.Setup(m => m.Map<IEnumerable<ClientDto>>(It.IsAny<IEnumerable<Client>>()))
-            .Returns((IEnumerable<Client> clients) => clients.Select(c => new ClientDto
+        _mapperMock.Setup(m => m.Map<IEnumerable<ResponseClientDto>>(It.IsAny<IEnumerable<Client>>()))
+            .Returns((IEnumerable<Client> clients) => clients.Select(c => new ResponseClientDto
             {
                 Id = c.Id,
                 Name = c.Name,
@@ -54,8 +54,7 @@ public class ClientTests
     {
         // Arrange
         _clientsRepositoryMock.Setup(r => r.GetAsync()).ReturnsAsync(_fakeClients);
-        var fakeClientDtos = _mapperMock.Object.Map<IEnumerable<ClientDto>>(_fakeClients);
-
+        var fakeClientDtos = _mapperMock.Object.Map<IEnumerable<ResponseClientDto>>(_fakeClients);
         var testResult = Result.Ok(fakeClientDtos);
         var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
 
@@ -88,7 +87,8 @@ public class ClientTests
     {
         // Arrange
         var testClient = new Client { Id = 1, Name = "John Doe", Email = "john.doe@example.com" };
-        var testClientDto = new ClientDto { Id = testClient.Id, Name = testClient.Name, Email = testClient.Email };
+        var testClientDto = new ResponseClientDto
+            { Id = testClient.Id, Name = testClient.Name, Email = testClient.Email };
         _clientsRepositoryMock.Setup(r => r.GetAsync(testClient.Id)).ReturnsAsync(testClient);
         var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
 
