@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Localization;
 using MyTrips.CrossCutting;
 using MyTrips.Presentation.Filters;
+using MyTrips.Presentation.Middlewares;
 using Serilog;
 
 try
@@ -22,7 +23,7 @@ try
     builder.Services.AddSwaggerGen();
 
     builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
-
+    builder.Services.AddTransient<ExceptionHandlingMiddleware>();
     builder.Services.AddInfrastructure(builder.Configuration);
 
     builder.Services.AddHttpLogging(options => { options.LoggingFields = HttpLoggingFields.All; });
@@ -45,6 +46,7 @@ try
     }
 
     app.UseSerilogRequestLogging();
+    app.UseMiddleware<ExceptionHandlingMiddleware>();
     app.UseRequestLocalization(localizationOptions);
     app.UseHttpsRedirection();
     app.UseCors();

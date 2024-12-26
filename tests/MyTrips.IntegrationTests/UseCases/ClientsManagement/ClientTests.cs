@@ -4,18 +4,19 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using MyTrips.Application.Dtos;
 using MyTrips.Domain.Entities;
 using MyTrips.IntegrationTests.Extensions;
+using MyTrips.IntegrationTests.Handlers;
 using MyTrips.Presentation.Errors;
 using Serilog;
 using Xunit.Abstractions;
 
-namespace MyTrips.IntegrationTests;
+namespace MyTrips.IntegrationTests.UseCases.ClientsManagement;
 
 public class ClientTests : IDisposable
 {
-    private readonly HttpClient _client;
     private readonly string _endpoint = "http://localhost:5068/api/clients";
-    private readonly WebApplicationFactory<Program> _factory;
     private readonly ILogger _output;
+    private HttpClient _client;
+    private WebApplicationFactory<Program> _factory;
 
     public ClientTests(ITestOutputHelper output)
     {
@@ -24,18 +25,9 @@ public class ClientTests : IDisposable
             .Enrich.WithExceptionData()
             .WriteTo.Console()
             .WriteTo.Debug()
-            //.WriteTo.File("logs/test-log.txt", rollingInterval: RollingInterval.Day)
             .WriteTo.TestOutput(output)
             .CreateLogger()
             .ForContext<ClientTests>();
-
-        _factory = new WebApplicationFactory<Program>()
-            .WithWebHostBuilder(builder =>
-            {
-                builder.ConfigureServices(
-                    _ => { });
-            });
-        _client = _factory.CreateDefaultClient(new LoggingHandler { InnerHandler = new HttpClientHandler() });
     }
 
     public void Dispose()
@@ -45,11 +37,18 @@ public class ClientTests : IDisposable
         GC.SuppressFinalize(this);
     }
 
+    private void SetDefaultFactory()
+    {
+        _factory = new WebApplicationFactory<Program>();
+        _client = _factory.CreateDefaultClient(new LoggingHandler { InnerHandler = new HttpClientHandler() });
+    }
+
     [Fact]
     [Trait("Category", "Integration")]
     public async Task GivenClientsEndpoint_WhenRequestedGetClientWithoutId_ThenItShouldReturnOkWithHeadersAndContent()
     {
         // Arrange
+        SetDefaultFactory();
         var request = new HttpRequestMessage(HttpMethod.Get, _endpoint);
 
         // Act
@@ -69,6 +68,7 @@ public class ClientTests : IDisposable
         GivenExistingId_WhenRequestedGetClientWithId_ThenItShouldReturnOkWithHeadersAndContent()
     {
         // Arrange
+        SetDefaultFactory();
         const int existingId = 1;
         var request = new HttpRequestMessage(HttpMethod.Get, $"{_endpoint}/{existingId}");
 
@@ -87,6 +87,7 @@ public class ClientTests : IDisposable
     public async Task GivenInvalidId_WhenRequestGetClientWithId_ThenItShouldReturnBadRequestWithHeadersAndContent()
     {
         // Arrange
+        SetDefaultFactory();
         const int invalidId = -1;
         const int minId = 1;
         var request = new HttpRequestMessage(HttpMethod.Get, $"{_endpoint}/{invalidId}");
@@ -107,6 +108,7 @@ public class ClientTests : IDisposable
         GivenNonExistentClient_WhenRequestGetClientWithId_ThenItShouldReturnNotFoundWithHeadersAndContent()
     {
         // Arrange
+        SetDefaultFactory();
         const int nonExistentId = int.MaxValue;
         var request = new HttpRequestMessage(HttpMethod.Get, $"{_endpoint}/{nonExistentId}");
 

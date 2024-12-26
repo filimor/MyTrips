@@ -1,6 +1,6 @@
 ﻿using Serilog;
 
-namespace MyTrips.IntegrationTests;
+namespace MyTrips.IntegrationTests.Handlers;
 
 public class LoggingHandler : DelegatingHandler
 {
