@@ -109,8 +109,10 @@ public class ClientTests : IDisposable
         // Arrange
         const int nonExistentId = int.MaxValue;
         var request = new HttpRequestMessage(HttpMethod.Get, $"{_endpoint}/{nonExistentId}");
+
         // Act
         var response = await _client.SendAsync(request);
+
         // Assert
         var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
         response.Should().HaveStatusCode(HttpStatusCode.NotFound);

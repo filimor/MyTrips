@@ -5,18 +5,18 @@ namespace MyTrips.Presentation.Errors;
 
 public class ErrorDetails
 {
-    private static readonly JsonSerializerSettings JsonSettings = new()
+    protected static readonly JsonSerializerSettings JsonSettings = new()
     {
         ContractResolver = new CamelCasePropertyNamesContractResolver(),
         Formatting = Formatting.Indented,
         NullValueHandling = NullValueHandling.Ignore
     };
 
-    public string Type { get; set; }
-    public string Title { get; set; }
+    public string? Type { get; set; }
+    public string? Title { get; set; }
     public int Status { get; set; }
-    public string Detail { get; set; }
-    public string[] Errors { get; set; }
+    public string? Detail { get; set; }
+    public string[]? Errors { get; set; }
 
     public string Instance { get; set; } = "about:blank";
 

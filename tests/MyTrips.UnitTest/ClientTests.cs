@@ -122,7 +122,7 @@ public class ClientTests
 
         // Assert
         response.Should().BeOfType<BadRequestObjectResult>()
-            .Which.Value.Should().BeOfType<ErrorDetails>()
+            .Which.Value.Should().BeOfType<BadRequestErrorDetails>()
             .Which.Errors.Should().Contain(e =>
                 e == $"'{nameof(Client.Id)}' must be greater than or equal to '{minId}'.");
     }

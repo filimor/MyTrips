@@ -15,12 +15,32 @@ public static class IoC
     public static IServiceCollection AddInfrastructure(this IServiceCollection services,
         IConfiguration configuration)
     {
-        services.AddScoped<IClientsRepository>(_ => new ClientsRepository(configuration));
-        services.AddScoped<IClientsService, ClientsService>();
-        services.AddAutoMapper(typeof(DtoToDomainMappingProfile));
-        GlobalConfiguration.Setup().UseSqlServer();
-        FluentMapper.Entity<Client>().Table("Clients");
+        InjectRepositories(services, configuration);
+        InjectServices(services);
+        AddMapping(services);
+        UseRepoDb();
 
         return services;
+    }
+
+    private static void UseRepoDb()
+    {
+        GlobalConfiguration.Setup().UseSqlServer();
+        FluentMapper.Entity<Client>().Table("Clients");
+    }
+
+    private static void AddMapping(IServiceCollection services)
+    {
+        services.AddAutoMapper(typeof(DtoToDomainMappingProfile));
+    }
+
+    private static void InjectRepositories(IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddScoped<IClientsRepository>(_ => new ClientsRepository(configuration));
+    }
+
+    private static void InjectServices(IServiceCollection services)
+    {
+        services.AddScoped<IClientsService, ClientsService>();
     }
 }

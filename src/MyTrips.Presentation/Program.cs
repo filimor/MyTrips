@@ -2,6 +2,7 @@ using System.Globalization;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Localization;
 using MyTrips.CrossCutting;
+using MyTrips.Presentation.Filters;
 using Serilog;
 
 try
@@ -10,13 +11,13 @@ try
 
     Log.Logger = new LoggerConfiguration()
         .MinimumLevel.Debug()
-        .WriteTo.Console()
-        .WriteTo.Debug()
+        .WriteTo.Console(formatProvider: CultureInfo.InvariantCulture)
+        .WriteTo.Debug(formatProvider: CultureInfo.InvariantCulture)
         .CreateLogger();
 
     var builder = WebApplication.CreateBuilder(args);
 
-    builder.Services.AddControllers();
+    builder.Services.AddControllers(options => { options.Filters.Add(new ProblemHeaderFilter()); });
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
