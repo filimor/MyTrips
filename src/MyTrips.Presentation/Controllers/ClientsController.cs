@@ -31,7 +31,8 @@ public class ClientsController(IClientsService clientsService) : ControllerBase
                 Status = StatusCodes.Status400BadRequest,
                 Title = "Bad Request",
                 Instance = HttpContext.Request.Path,
-                Detail = resultObject.Errors
+                Detail = "The input data is incorrect.",
+                Errors = resultObject.Errors.Select(e => e.Message).ToArray()
             };
             var badRequestResult = new BadRequestObjectResult(errorDetails)
             {
@@ -49,7 +50,8 @@ public class ClientsController(IClientsService clientsService) : ControllerBase
                 Status = StatusCodes.Status404NotFound,
                 Title = "Not Found",
                 Instance = HttpContext.Request.Path,
-                Detail = requestResult.Errors
+                Detail = "",
+                Errors = requestResult.Errors.Select(e => e.Message).ToArray()
             };
 
             var notFoundResult = new NotFoundObjectResult(errorDetails)

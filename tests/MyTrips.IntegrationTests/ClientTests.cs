@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using MyTrips.Application.Dtos;
 using MyTrips.Domain.Entities;
 using MyTrips.IntegrationTests.Extensions;
+using MyTrips.Presentation.Errors;
 using Serilog;
 using Xunit.Abstractions;
 
@@ -87,16 +88,17 @@ public class ClientTests : IDisposable
     {
         // Arrange
         const int invalidId = -1;
+        const int minId = 1;
         var request = new HttpRequestMessage(HttpMethod.Get, $"{_endpoint}/{invalidId}");
 
         // Act
         var response = await _client.SendAsync(request);
 
         // Assert
-        var returnedError = await response.DeserializedContentAsync<object>();
+        var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
         response.Should().HaveStatusCode(HttpStatusCode.BadRequest);
         response.Content.Headers.ContentType?.ToString().Should().Be("application/problem+json; charset=utf-8");
-        returnedError.Should().NotBeNull();
+        errorDetails!.Errors.Should().Contain($"'{nameof(Client.Id)}' must be greater than or equal to '{minId}'.");
     }
 
     [Fact]
@@ -104,5 +106,15 @@ public class ClientTests : IDisposable
     public async Task
         GivenNonExistentClient_WhenRequestGetClientWithId_ThenItShouldReturnNotFoundWithHeadersAndContent()
     {
+        // Arrange
+        const int nonExistentId = int.MaxValue;
+        var request = new HttpRequestMessage(HttpMethod.Get, $"{_endpoint}/{nonExistentId}");
+        // Act
+        var response = await _client.SendAsync(request);
+        // Assert
+        var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
+        response.Should().HaveStatusCode(HttpStatusCode.NotFound);
+        response.Content.Headers.ContentType?.ToString().Should().Be("application/problem+json; charset=utf-8");
+        errorDetails!.Errors.Should().Contain($"Client with id '{nonExistentId}' not found.");
     }
 }

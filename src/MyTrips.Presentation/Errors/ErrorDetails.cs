@@ -1,26 +1,27 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
-using FluentResults;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace MyTrips.Presentation.Errors;
 
 public class ErrorDetails
 {
-    private static readonly JsonSerializerOptions JsonOptions = new()
+    private static readonly JsonSerializerSettings JsonSettings = new()
     {
-        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-        WriteIndented = true,
-        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        ContractResolver = new CamelCasePropertyNamesContractResolver(),
+        Formatting = Formatting.Indented,
+        NullValueHandling = NullValueHandling.Ignore
     };
 
-    public string Type { get; set; } = null!;
-    public string Title { get; set; } = null!;
+    public string Type { get; set; }
+    public string Title { get; set; }
     public int Status { get; set; }
-    public IEnumerable<IError> Detail { get; set; } = null!;
+    public string Detail { get; set; }
+    public string[] Errors { get; set; }
+
     public string Instance { get; set; } = "about:blank";
 
     public override string ToString()
     {
-        return JsonSerializer.Serialize(this, JsonOptions);
+        return JsonConvert.SerializeObject(this, JsonSettings);
     }
 }

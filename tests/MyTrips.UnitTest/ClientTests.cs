@@ -32,6 +32,13 @@ public class ClientTests
         CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
         CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
+        _mapperMock.Setup(m => m.Map<ClientDto>(It.IsAny<Client>()))
+            .Returns((Client client) => new ClientDto
+            {
+                Id = client.Id,
+                Name = client.Name,
+                Email = client.Email
+            });
         _mapperMock.Setup(m => m.Map<IEnumerable<ClientDto>>(It.IsAny<IEnumerable<Client>>()))
             .Returns((IEnumerable<Client> clients) => clients.Select(c => new ClientDto
             {
@@ -43,13 +50,13 @@ public class ClientTests
 
     [Fact]
     [Trait("Category", "Unit")]
-    public async Task GivenNonEmptyClientsTable_WhenGetClients_ThenItShouldReturnResultObjectWithThatClients()
+    public async Task GivenNonEmptyClientsTable_WhenGetClients_ThenItShouldReturnResultObjectWithTheDtos()
     {
         // Arrange
         _clientsRepositoryMock.Setup(r => r.GetAsync()).ReturnsAsync(_fakeClients);
         var fakeClientDtos = _mapperMock.Object.Map<IEnumerable<ClientDto>>(_fakeClients);
 
-        var testResult = Result.Ok(_fakeClients);
+        var testResult = Result.Ok(fakeClientDtos);
         var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
 
         // Act
@@ -61,7 +68,7 @@ public class ClientTests
 
     [Fact]
     [Trait("Category", "Unit")]
-    public async Task GivenGetRequest_WhenRepositoryThrowException_ThenItShouldReturnServerErrorResultObject()
+    public async Task GivenGetRequest_WhenRepositoryThrowException_ThenItShouldThrowTheException()
     {
         // Arrange
         _clientsRepositoryMock.Setup(r => r.GetAsync()).ThrowsAsync(new OutOfMemoryException());
@@ -111,13 +118,13 @@ public class ClientTests
         };
 
         // Act
-        var result = await controller.Get(invalidId);
+        var response = await controller.Get(invalidId);
 
         // Assert
-        result.Should().BeOfType<BadRequestObjectResult>()
+        response.Should().BeOfType<BadRequestObjectResult>()
             .Which.Value.Should().BeOfType<ErrorDetails>()
-            .Which.Detail.Should().Contain(e =>
-                e.Message == $"'{nameof(Client.Id)}' must be greater than or equal to '{minId}'.");
+            .Which.Errors.Should().Contain(e =>
+                e == $"'{nameof(Client.Id)}' must be greater than or equal to '{minId}'.");
     }
 
     [Fact]
@@ -131,9 +138,9 @@ public class ClientTests
         _clientsRepositoryMock.Setup(r => r.GetAsync(nonExistentId)).ReturnsAsync((Client)null!);
         var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
         // Act
-        var clientResult = await clientsService.GetClientByIdAsync(nonExistentId);
+        var response = await clientsService.GetClientByIdAsync(nonExistentId);
         // Assert
-        clientResult.Should().BeEquivalentTo(result);
+        response.Should().BeEquivalentTo(result);
     }
 
     [Fact]
