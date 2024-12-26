@@ -1,0 +1,29 @@
+#!/bin/sh
+exec 1>&2
+
+FILES=$(git diff --cached --name-only --diff-filter=ACM -- "src/*.cs")
+    if [ -n "$FILES" ]
+    then
+    jb inspectcode ./MyTrips.sln -o=InspectCodeReport.xml
+
+    dotnet build "./MyTrips.sln"
+
+    if [ $? -ne 0 ]; then
+        echo "Dotnet build failed."
+        exit 1
+    fi
+
+    dotnet test "./MyTrips.sln"
+
+    if [ $? -ne 0 ]; then
+        echo "Dotnet tests failed."
+        exit 1
+    fi
+
+    dotnet dotcover cover-dotnet "./MyTrips.sln" --output=AppCoverageReport.html -- test --no-build
+    
+    if [ $? -ne 0 ]; then
+        echo "Dotcover coverage failed."
+        exit 1
+    fi
+fi

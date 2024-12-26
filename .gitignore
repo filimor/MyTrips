@@ -544,3 +544,5 @@ FodyWeavers.xsd
 *.asta
 *.asta.lock
 appsettings.Development.json
+InspectCodeReport.xml
+AppCoverageReport.html
