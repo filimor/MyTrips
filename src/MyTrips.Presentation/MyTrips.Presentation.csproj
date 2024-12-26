@@ -20,8 +20,9 @@
     <UserSecretsId>90fb65e0-3d51-4705-9561-4f6db94599c8</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <Dockerfile>..\..\Dockerfile</Dockerfile>
-      <DockerfileContext>..\..</DockerfileContext>
-      <DocumentationFile></DocumentationFile>
+    <DockerfileContext>..\..</DockerfileContext>
+    <DocumentationFile></DocumentationFile>
+    <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
   </PropertyGroup>
 
   <ItemGroup>
