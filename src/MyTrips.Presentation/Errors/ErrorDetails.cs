@@ -3,6 +3,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace MyTrips.Presentation.Errors;
 
+// TODO: Replace it with the Microsoft class
 public class ErrorDetails
 {
     protected static readonly JsonSerializerSettings JsonSettings = new()

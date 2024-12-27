@@ -5,6 +5,7 @@ using FluentResults;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using MyTrips.Application.Errors;
 using MyTrips.Application.Interfaces;
 using MyTrips.Application.Services;
 using MyTrips.Application.Validators;
@@ -109,7 +110,7 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
                 mockClientList.Where(predicate.Compile()));
         var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
         var testResult =
-            Result.Fail(new Error(
+            Result.Fail(new ConflictError(
                 $"{nameof(Client)} with the {nameof(Client.Email)} '{existingClient.Email}' already exists."));
 
         // Act
@@ -125,7 +126,8 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
     {
         const int nonExistentId = 100;
         fixture.UpdateClientDtoStub.Id = nonExistentId;
-        var result = Result.Fail([$"{nameof(Client)} with {nameof(Client.Id)} '{nonExistentId}' not found."]);
+        var result =
+            Result.Fail(new NotFoundError($"{nameof(Client)} with {nameof(Client.Id)} '{nonExistentId}' not found."));
         fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(nonExistentId)).ReturnsAsync((Client)null!);
         var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
 
@@ -181,7 +183,7 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
                 mockClientList.Where(predicate.Compile()));
         var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
         var testResult =
-            Result.Fail(new Error(
+            Result.Fail(new ConflictError(
                 $"{nameof(Client)} with the {nameof(Client.Email)} '{existingClient.Email}' already exists."));
 
         // Act

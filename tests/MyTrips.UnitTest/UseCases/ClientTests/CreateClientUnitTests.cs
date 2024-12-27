@@ -5,6 +5,7 @@ using FluentResults;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using MyTrips.Application.Errors;
 using MyTrips.Application.Interfaces;
 using MyTrips.Application.Services;
 using MyTrips.Application.Validators;
@@ -122,7 +123,7 @@ public class CreateClientUnitTests(ClientsManagementFixture fixture)
                 mockClientList.Where(predicate.Compile()));
         var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
         var testResult =
-            Result.Fail(new Error(
+            Result.Fail(new ConflictError(
                 $"{nameof(Client)} with the {nameof(Client.Email)} '{existingClient.Email}' already exists."));
 
         // Act

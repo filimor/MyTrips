@@ -115,6 +115,8 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
                 var errorDetails = new ConflictErrorDetails(HttpContext, requestResult.ToResult());
                 return new ConflictObjectResult(errorDetails);
             }
+
+            return StatusCode(StatusCodes.Status500InternalServerError);
         }
 
         return Ok(requestResult.Value);

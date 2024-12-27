@@ -23,7 +23,7 @@ public class ClientsService(IMapper mapper, IClientsRepository clientsRepository
         var client = await clientsRepository.GetAsync(id);
 
         if (client is null)
-            return Result.Fail($"{nameof(Client)} with {nameof(Client.Id)} '{id}' not found.");
+            return Result.Fail(new NotFoundError($"{nameof(Client)} with {nameof(Client.Id)} '{id}' not found."));
 
         var clientDto = mapper.Map<ResponseClientDto>(client);
 
@@ -35,8 +35,8 @@ public class ClientsService(IMapper mapper, IClientsRepository clientsRepository
         var existingClients = await clientsRepository.FindAsync(c => c.Email == createClientDto.Email);
 
         if (existingClients.Any())
-            return Result.Fail(
-                $"{nameof(Client)} with the {nameof(Client.Email)} '{createClientDto.Email}' already exists.");
+            return Result.Fail(new ConflictError(
+                $"{nameof(Client)} with the {nameof(Client.Email)} '{createClientDto.Email}' already exists."));
 
         var client = mapper.Map<Client>(createClientDto);
 

@@ -1,4 +1,5 @@
-        // Arrange
+// Arrange
+
 using FluentAssertions;
 using FluentResults;
 using FluentValidation;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using MyTrips.Application.Dtos;
+using MyTrips.Application.Errors;
 using MyTrips.Application.Interfaces;
 using MyTrips.Application.Services;
 using MyTrips.Domain.Entities;
@@ -107,7 +109,8 @@ public class GetClientUnitTests(ClientsManagementFixture fixture)
     {
         // Arrange
         const int nonExistentId = 100;
-        var result = Result.Fail([$"{nameof(Client)} with {nameof(Client.Id)} '{nonExistentId}' not found."]);
+        var result =
+            Result.Fail(new NotFoundError($"{nameof(Client)} with {nameof(Client.Id)} '{nonExistentId}' not found."));
         fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(nonExistentId)).ReturnsAsync((Client)null!);
         var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
 
