@@ -19,12 +19,12 @@ namespace MyTrips.UnitTest.UseCases.ClientTests;
 
 public class GetClientUnitTests
 {
-    private readonly Mock<IClientsRepository> _clientsRepositoryMock = new();
-
-    private readonly IEnumerable<Client> _fakeClients = new Faker<Client>()
+    private readonly IEnumerable<Client> _clientsCollectionStub = new Faker<Client>()
         .RuleFor(c => c.Name, f => f.Name.FullName())
         .RuleFor(c => c.Email, f => f.Internet.Email())
         .Generate(10);
+
+    private readonly Mock<IClientsRepository> _clientsRepositoryMock = new();
 
     private readonly Mock<IMapper> _mapperMock = new();
 
@@ -54,8 +54,8 @@ public class GetClientUnitTests
     public async Task GivenExistingClients_WhenGetClients_ThenItShouldReturnOkResultObjectWithTheDtos()
     {
         // Arrange
-        _clientsRepositoryMock.Setup(r => r.GetAsync()).ReturnsAsync(_fakeClients);
-        var fakeClientDtos = _mapperMock.Object.Map<IEnumerable<ResponseClientDto>>(_fakeClients);
+        _clientsRepositoryMock.Setup(r => r.GetAsync()).ReturnsAsync(_clientsCollectionStub);
+        var fakeClientDtos = _mapperMock.Object.Map<IEnumerable<ResponseClientDto>>(_clientsCollectionStub);
         var testResult = Result.Ok(fakeClientDtos);
         var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
 

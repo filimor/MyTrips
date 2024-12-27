@@ -21,31 +21,31 @@ namespace MyTrips.UnitTest.UseCases.ClientTests;
 
 public class CreateClientUnitTests
 {
-    private readonly Client _client;
     private readonly Mock<IClientsRepository> _clientsRepositoryMock = new();
+    private readonly Client _clientStub;
     private readonly Mock<IMapper> _mapperMock = new();
-    private readonly RequestClientDto _requestClientDto;
-    private readonly ResponseClientDto _responseResponseClientDto;
+    private readonly RequestClientDto _requestClientDtoStub;
+    private readonly ResponseClientDto _responseResponseClientDtoStub;
 
     public CreateClientUnitTests()
     {
         CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
         CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
-        _client = new Faker<Client>()
+        _clientStub = new Faker<Client>()
             .RuleFor(c => c.Name, f => f.Name.FullName())
             .RuleFor(c => c.Email, f => f.Internet.Email());
 
-        _responseResponseClientDto = new ResponseClientDto
+        _responseResponseClientDtoStub = new ResponseClientDto
         {
-            Name = _client.Name,
-            Email = _client.Email
+            Name = _clientStub.Name,
+            Email = _clientStub.Email
         };
 
-        _requestClientDto = new RequestClientDto
+        _requestClientDtoStub = new RequestClientDto
         {
-            Name = _client.Name,
-            Email = _client.Email
+            Name = _clientStub.Name,
+            Email = _clientStub.Email
         };
 
         _mapperMock.Setup(m => m.Map<Client>(It.IsAny<RequestClientDto>()))
@@ -66,12 +66,12 @@ public class CreateClientUnitTests
     public async Task GivenValidClient_WhenCreateClient_ThenItShouldReturnOkResultObjectWithTheDto()
     {
         // Arrange
-        _clientsRepositoryMock.Setup(r => r.GetAsync(_client.Id)).ReturnsAsync(_client);
+        _clientsRepositoryMock.Setup(r => r.GetAsync(_clientStub.Id)).ReturnsAsync(_clientStub);
         var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
-        var testResult = Result.Ok(_responseResponseClientDto);
+        var testResult = Result.Ok(_responseResponseClientDtoStub);
 
         // Act
-        var clientResult = await clientsService.AddNewClientAsync(_requestClientDto);
+        var clientResult = await clientsService.AddNewClientAsync(_requestClientDtoStub);
 
         // Assert
         clientResult.Should().BeEquivalentTo(testResult);
@@ -83,7 +83,7 @@ public class CreateClientUnitTests
     public async Task GivenInvalidName_WhenCreateClient_ThenItShouldReturnFailResultObjectWithTheErrors(string name)
     {
         // Arrange
-        _requestClientDto.Name = name;
+        _requestClientDtoStub.Name = name;
         var clientServiceMock = new Mock<IClientsService>();
 
         var httpContext = new DefaultHttpContext();
@@ -97,7 +97,7 @@ public class CreateClientUnitTests
         };
 
         // Act
-        var response = await controller.Post(_requestClientDto);
+        var response = await controller.Post(_requestClientDtoStub);
 
         // Assert
         response.Should().BeOfType<BadRequestObjectResult>()
@@ -111,7 +111,7 @@ public class CreateClientUnitTests
     public async Task GivenInvalidEmail_WhenCreateClient_ThenItShouldReturnFailResultObjectWithTheErrors(string email)
     {
         // Arrange
-        _requestClientDto.Email = email;
+        _requestClientDtoStub.Email = email;
         var clientServiceMock = new Mock<IClientsService>();
 
         var httpContext = new DefaultHttpContext();
@@ -125,7 +125,7 @@ public class CreateClientUnitTests
         };
 
         // Act
-        var response = await controller.Post(_requestClientDto);
+        var response = await controller.Post(_requestClientDtoStub);
 
         // Assert
         response.Should().BeOfType<BadRequestObjectResult>()
@@ -141,7 +141,7 @@ public class CreateClientUnitTests
         var existingClient = new Faker<Client>()
             .RuleFor(c => c.Id, f => f.Random.Int())
             .RuleFor(c => c.Name, f => f.Name.FullName())
-            .RuleFor(c => c.Email, f => _client.Email)
+            .RuleFor(c => c.Email, f => _clientStub.Email)
             .Generate();
         var mockClientList = new List<Client> { existingClient };
         _clientsRepositoryMock.Setup(r => r.FindAsync(It.IsAny<Expression<Func<Client, bool>>>()))
@@ -153,7 +153,7 @@ public class CreateClientUnitTests
                 $"{nameof(Client)} with the {nameof(Client.Email)} '{existingClient.Email}' already exists."));
 
         // Act
-        var clientResult = await clientsService.AddNewClientAsync(_requestClientDto);
+        var clientResult = await clientsService.AddNewClientAsync(_requestClientDtoStub);
 
         // Assert
         clientResult.Should().BeEquivalentTo(testResult);
@@ -167,7 +167,7 @@ public class CreateClientUnitTests
         var existingClient = new Faker<Client>()
             .RuleFor(c => c.Id, f => f.Random.Int())
             .RuleFor(c => c.Name, f => f.Name.FullName())
-            .RuleFor(c => c.Email, f => _client.Email)
+            .RuleFor(c => c.Email, f => _clientStub.Email)
             .Generate();
         var mockClientList = new List<Client> { existingClient };
         _clientsRepositoryMock.Setup(r => r.FindAsync(It.IsAny<Expression<Func<Client, bool>>>()))
@@ -176,7 +176,7 @@ public class CreateClientUnitTests
         var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
 
         // Act
-        await clientsService.AddNewClientAsync(_requestClientDto);
+        await clientsService.AddNewClientAsync(_requestClientDtoStub);
 
         // Assert
         _clientsRepositoryMock.Verify(r => r.AddAsync(It.IsAny<Client>()), Times.Never);
@@ -190,7 +190,7 @@ public class CreateClientUnitTests
         _clientsRepositoryMock.Setup(r => r.AddAsync(It.IsAny<Client>())).ThrowsAsync(new OutOfMemoryException());
         var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
         // Act
-        var act = async () => await clientsService.AddNewClientAsync(_requestClientDto);
+        var act = async () => await clientsService.AddNewClientAsync(_requestClientDtoStub);
         // Assert
         await act.Should().ThrowAsync<OutOfMemoryException>();
     }
