@@ -70,11 +70,11 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
 
         var requestResult = await clientsService.AddNewClientAsync(requestClientDto);
 
-        //if (requestResult.IsFailed)
-        //{
-        //    var errorDetails = new ConflictErrorDetails(HttpContext, requestResult.ToResult());
-        //    return new ConflictObjectResult(errorDetails);
-        //}
+        if (requestResult.IsFailed)
+        {
+            var errorDetails = new ConflictErrorDetails(HttpContext, requestResult.ToResult());
+            return new ConflictObjectResult(errorDetails);
+        }
 
         return CreatedAtAction(nameof(Get), new { id = requestResult.Value.Id }, requestResult.Value);
     }
