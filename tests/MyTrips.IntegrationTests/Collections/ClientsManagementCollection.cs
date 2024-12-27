@@ -2,7 +2,7 @@
 
 namespace MyTrips.IntegrationTests.Collections;
 
-[CollectionDefinition("ClientsManagement")]
+[CollectionDefinition("ClientsManagementIntegration")]
 public class ClientsManagementCollection : ICollectionFixture<ClientsManagementFixture>
 {
 }

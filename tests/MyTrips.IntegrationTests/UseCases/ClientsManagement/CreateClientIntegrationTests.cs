@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 namespace MyTrips.IntegrationTests.UseCases.ClientsManagement;
 
-[Collection("ClientsManagement")]
+[Collection("ClientsManagementIntegration")]
 public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
 {
     [Fact]
@@ -124,7 +124,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
     [Trait("Category", "Integration")]
     [ClassData(typeof(InvalidStringClassData))]
     public async Task
-        GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotBePersisted(string name)
+        GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt(string name)
     {
         // Arrange
         fixture.RequestClientDtoStub.Name = name;
@@ -149,7 +149,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
     [Trait("Category", "Integration")]
     [ClassData(typeof(InvalidEmailClassData))]
     public async Task
-        GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotBePersisted(string email)
+        GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt(string email)
     {
         // Arrange
         fixture.RequestClientDtoStub.Email = email;
@@ -173,7 +173,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
     [Fact]
     [Trait("Category", "Integration")]
     public async Task
-        GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotBePersistedAgain()
+        GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain()
     {
         // Arrange
         var json = JsonConvert.SerializeObject(fixture.RequestClientDtoStub);
