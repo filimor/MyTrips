@@ -138,11 +138,21 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
         response.Should().BeEquivalentTo(result);
     }
 
-    //[Fact]
-    //[Trait("Category", "Unit")]
-    //public async Task GivenUpdateRequest_WhenRepositoryThrowException_ThenItShouldThrowTheException()
-    //{
-    //}
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task GivenUpdateRequest_WhenRepositoryThrowException_ThenItShouldThrowTheException()
+    {
+        // Arrange
+        fixture.ClientsRepositoryMock.Setup(r => r.UpdateAsync(It.IsAny<Client>()))
+            .ThrowsAsync(new OutOfMemoryException());
+        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+
+        // Act
+        var act = async () => await clientsService.UpdateClientAsync(fixture.UpdateClientDtoStub);
+
+        // Assert
+        await act.Should().ThrowAsync<OutOfMemoryException>();
+    }
 
     //[Fact]
     //[Trait("Category", "Unit")]

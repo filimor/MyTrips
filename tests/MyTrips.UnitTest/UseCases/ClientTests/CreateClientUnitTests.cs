@@ -163,8 +163,10 @@ public class CreateClientUnitTests(ClientsManagementFixture fixture)
         fixture.ClientsRepositoryMock.Setup(r => r.AddAsync(It.IsAny<Client>()))
             .ThrowsAsync(new OutOfMemoryException());
         var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+
         // Act
         var act = async () => await clientsService.AddNewClientAsync(fixture.CreateClientDtoStub);
+
         // Assert
         await act.Should().ThrowAsync<OutOfMemoryException>();
     }
