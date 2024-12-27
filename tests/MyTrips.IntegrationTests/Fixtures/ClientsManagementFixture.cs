@@ -9,9 +9,9 @@ namespace MyTrips.IntegrationTests.Fixtures;
 public sealed class ClientsManagementFixture : IDisposable
 {
     public Client ClientStub;
+    public CreateClientDto CreateClientDtoStub;
     public string Endpoint = "https://localhost:5068/api/clients";
     public WebApplicationFactory<Program> Factory = new();
-    public RequestClientDto RequestClientDtoStub;
     public ResponseClientDto ResponseClientDtoStub;
 
     public ClientsManagementFixture()
@@ -26,7 +26,7 @@ public sealed class ClientsManagementFixture : IDisposable
             Email = ClientStub.Email
         };
 
-        RequestClientDtoStub = new RequestClientDto
+        CreateClientDtoStub = new CreateClientDto
         {
             Name = ClientStub.Name,
             Email = ClientStub.Email

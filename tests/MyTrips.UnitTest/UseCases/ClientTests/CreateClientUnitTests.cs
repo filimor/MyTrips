@@ -25,10 +25,10 @@ public class CreateClientUnitTests(ClientsManagementFixture fixture)
     {
         // Arrange
         var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
-        var testResult = Result.Ok(fixture.ResponseResponseClientDtoStub);
+        var testResult = Result.Ok(fixture.ResponseClientDtoStub);
 
         // Act
-        var clientResult = await clientsService.AddNewClientAsync(fixture.RequestClientDtoStub);
+        var clientResult = await clientsService.AddNewClientAsync(fixture.CreateClientDtoStub);
 
         // Assert
         clientResult.Should().BeEquivalentTo(testResult);
@@ -40,10 +40,9 @@ public class CreateClientUnitTests(ClientsManagementFixture fixture)
     {
         // Arrange
         var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
-        var testResult = Result.Ok(fixture.ResponseResponseClientDtoStub);
 
         // Act
-        var clientResult = await clientsService.AddNewClientAsync(fixture.RequestClientDtoStub);
+        await clientsService.AddNewClientAsync(fixture.CreateClientDtoStub);
 
         // Assert
         fixture.ClientsRepositoryMock.Verify(r => r.AddAsync(It.IsAny<Client>()), Times.Once);
@@ -56,7 +55,7 @@ public class CreateClientUnitTests(ClientsManagementFixture fixture)
         string name)
     {
         // Arrange
-        fixture.RequestClientDtoStub.Name = name;
+        fixture.CreateClientDtoStub.Name = name;
         var clientServiceMock = new Mock<IClientsService>();
 
         var httpContext = new DefaultHttpContext();
@@ -70,7 +69,7 @@ public class CreateClientUnitTests(ClientsManagementFixture fixture)
         };
 
         // Act
-        var response = await controller.Post(fixture.RequestClientDtoStub);
+        var response = await controller.Post(fixture.CreateClientDtoStub);
 
         // Assert
         response.Should().BeOfType<BadRequestObjectResult>()
@@ -85,7 +84,7 @@ public class CreateClientUnitTests(ClientsManagementFixture fixture)
         string email)
     {
         // Arrange
-        fixture.RequestClientDtoStub.Email = email;
+        fixture.CreateClientDtoStub.Email = email;
         var clientServiceMock = new Mock<IClientsService>();
 
         var httpContext = new DefaultHttpContext();
@@ -99,7 +98,7 @@ public class CreateClientUnitTests(ClientsManagementFixture fixture)
         };
 
         // Act
-        var response = await controller.Post(fixture.RequestClientDtoStub);
+        var response = await controller.Post(fixture.CreateClientDtoStub);
 
         // Assert
         response.Should().BeOfType<BadRequestObjectResult>()
@@ -127,7 +126,7 @@ public class CreateClientUnitTests(ClientsManagementFixture fixture)
                 $"{nameof(Client)} with the {nameof(Client.Email)} '{existingClient.Email}' already exists."));
 
         // Act
-        var clientResult = await clientsService.AddNewClientAsync(fixture.RequestClientDtoStub);
+        var clientResult = await clientsService.AddNewClientAsync(fixture.CreateClientDtoStub);
 
         // Assert
         clientResult.Should().BeEquivalentTo(testResult);
@@ -150,7 +149,7 @@ public class CreateClientUnitTests(ClientsManagementFixture fixture)
         var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
 
         // Act
-        await clientsService.AddNewClientAsync(fixture.RequestClientDtoStub);
+        await clientsService.AddNewClientAsync(fixture.CreateClientDtoStub);
 
         // Assert
         fixture.ClientsRepositoryMock.Verify(r => r.AddAsync(It.IsAny<Client>()), Times.Never);
@@ -165,7 +164,7 @@ public class CreateClientUnitTests(ClientsManagementFixture fixture)
             .ThrowsAsync(new OutOfMemoryException());
         var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
         // Act
-        var act = async () => await clientsService.AddNewClientAsync(fixture.RequestClientDtoStub);
+        var act = async () => await clientsService.AddNewClientAsync(fixture.CreateClientDtoStub);
         // Assert
         await act.Should().ThrowAsync<OutOfMemoryException>();
     }

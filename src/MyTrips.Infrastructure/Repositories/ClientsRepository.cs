@@ -37,6 +37,11 @@ public class ClientsRepository(IConfiguration configuration) : IClientsRepositor
         return id;
     }
 
+    public Task<Client?> UpdateAsync(Client client)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<IEnumerable<Client>> FindAsync(Expression<Func<Client, bool>> predicate)
     {
         await using SqlConnection connection = new(ConnectionString);

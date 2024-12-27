@@ -14,8 +14,8 @@ public sealed class ClientsManagementFixture
     public readonly Mock<IMapper> MapperMock = new();
     public IEnumerable<Client> ClientsCollectionStub = null!;
     public Client ClientStub = null!;
-    public RequestClientDto RequestClientDtoStub = null!;
-    public ResponseClientDto ResponseResponseClientDtoStub = null!;
+    public CreateClientDto CreateClientDtoStub = null!;
+    public ResponseClientDto ResponseClientDtoStub = null!;
 
     public ClientsManagementFixture()
     {
@@ -23,6 +23,9 @@ public sealed class ClientsManagementFixture
         InstantiateStubs();
         SetupMocks();
     }
+
+    public UpdateClientDto UpdateClientDtoStub { get; set; } = null!;
+
 
     private static void SetCulture()
     {
@@ -35,6 +38,7 @@ public sealed class ClientsManagementFixture
         var faker = new Faker<Client>();
 
         ClientStub = faker
+            .RuleFor(c => c.Id, f => 1)
             .RuleFor(c => c.Name, f => f.Name.FullName())
             .RuleFor(c => c.Email, f => f.Internet.Email());
 
@@ -43,13 +47,21 @@ public sealed class ClientsManagementFixture
             .RuleFor(c => c.Email, f => f.Internet.Email())
             .Generate(10);
 
-        ResponseResponseClientDtoStub = new ResponseClientDto
+        ResponseClientDtoStub = new ResponseClientDto
         {
+            Id = ClientStub.Id,
             Name = ClientStub.Name,
             Email = ClientStub.Email
         };
 
-        RequestClientDtoStub = new RequestClientDto
+        UpdateClientDtoStub = new UpdateClientDto
+        {
+            Id = ClientStub.Id,
+            Name = ClientStub.Name,
+            Email = ClientStub.Email
+        };
+
+        CreateClientDtoStub = new CreateClientDto
         {
             Name = ClientStub.Name,
             Email = ClientStub.Email
@@ -74,9 +86,14 @@ public sealed class ClientsManagementFixture
                 Email = c.Email
             }));
 
-        MapperMock.Setup(m => m.Map<Client>(It.IsAny<RequestClientDto>()))
+        MapperMock.Setup(m => m.Map<Client>(It.IsAny<CreateClientDto>()))
             .Returns(
-                (RequestClientDto requestClientDto) => new Client(requestClientDto.Name, requestClientDto.Email));
+                (CreateClientDto requestClientDto) => new Client(requestClientDto.Name, requestClientDto.Email));
+
+        MapperMock.Setup(m => m.Map<Client>(It.IsAny<UpdateClientDto>()))
+            .Returns(
+                (UpdateClientDto updateClientDto) =>
+                    new Client(updateClientDto.Id, updateClientDto.Name, updateClientDto.Email));
 
         MapperMock.Setup(m => m.Map<ResponseClientDto>(It.IsAny<Client>()))
             .Returns((Client client) => new ResponseClientDto
@@ -87,5 +104,6 @@ public sealed class ClientsManagementFixture
             });
 
         ClientsRepositoryMock.Setup(r => r.GetAsync(ClientStub.Id)).ReturnsAsync(ClientStub);
+        ClientsRepositoryMock.Setup(r => r.AddAsync(It.IsAny<Client>())).ReturnsAsync(ClientStub.Id);
     }
 }
