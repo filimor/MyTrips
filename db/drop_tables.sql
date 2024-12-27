@@ -1,0 +1,10 @@
+DROP TABLE Trips;
+GO
+DROP TABLE Hotels;
+GO
+DROP TABLE Destinations;
+GO
+DROP TABLE Flights;
+GO
+DROP TABLE Clients;
+GO
