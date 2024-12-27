@@ -17,7 +17,7 @@ using MyTrips.Presentation.Errors;
 
 namespace MyTrips.UnitTest.UseCases.ClientTests;
 
-public class GetClientTests
+public class GetClientUnitTests
 {
     private readonly Mock<IClientsRepository> _clientsRepositoryMock = new();
 
@@ -28,7 +28,7 @@ public class GetClientTests
 
     private readonly Mock<IMapper> _mapperMock = new();
 
-    public GetClientTests()
+    public GetClientUnitTests()
     {
         CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
         CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;

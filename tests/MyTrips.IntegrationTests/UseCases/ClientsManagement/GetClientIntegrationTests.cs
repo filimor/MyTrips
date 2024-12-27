@@ -1,58 +1,25 @@
 ﻿using System.Net;
 using FluentAssertions;
-using Microsoft.AspNetCore.Mvc.Testing;
 using MyTrips.Application.Dtos;
 using MyTrips.Domain.Entities;
 using MyTrips.IntegrationTests.Extensions;
-using MyTrips.IntegrationTests.Handlers;
+using MyTrips.IntegrationTests.Fixtures;
 using MyTrips.Presentation.Errors;
-using Serilog;
-using Xunit.Abstractions;
 
 namespace MyTrips.IntegrationTests.UseCases.ClientsManagement;
 
-public class ClientTests : IDisposable
+[Collection("ClientsManagement")]
+public class GetClientIntegrationTests(ClientsManagementFixture fixture)
 {
-    private readonly string _endpoint = "http://localhost:5068/api/clients";
-    private readonly ILogger _output;
-    private HttpClient _client;
-    private WebApplicationFactory<Program> _factory;
-
-    public ClientTests(ITestOutputHelper output)
-    {
-        _output = new LoggerConfiguration()
-            .MinimumLevel.Debug()
-            .Enrich.WithExceptionData()
-            .WriteTo.Console()
-            .WriteTo.Debug()
-            .WriteTo.TestOutput(output)
-            .CreateLogger()
-            .ForContext<ClientTests>();
-    }
-
-    public void Dispose()
-    {
-        _client.Dispose();
-        _factory.Dispose();
-        GC.SuppressFinalize(this);
-    }
-
-    private void SetDefaultFactory()
-    {
-        _factory = new WebApplicationFactory<Program>();
-        _client = _factory.CreateDefaultClient(new LoggingHandler { InnerHandler = new HttpClientHandler() });
-    }
-
     [Fact]
     [Trait("Category", "Integration")]
     public async Task GivenClientsEndpoint_WhenRequestedGetClientWithoutId_ThenItShouldReturnOkWithHeadersAndContent()
     {
         // Arrange
-        SetDefaultFactory();
-        var request = new HttpRequestMessage(HttpMethod.Get, _endpoint);
+        var request = new HttpRequestMessage(HttpMethod.Get, fixture.Endpoint);
 
         // Act
-        var response = await _client.SendAsync(request);
+        var response = await fixture.Client.SendAsync(request);
 
         // Assert
         var returnedClients = await response.DeserializedContentAsync<IEnumerable<Client>>();
@@ -68,12 +35,11 @@ public class ClientTests : IDisposable
         GivenExistingId_WhenRequestedGetClientWithId_ThenItShouldReturnOkWithHeadersAndContent()
     {
         // Arrange
-        SetDefaultFactory();
         const int existingId = 1;
-        var request = new HttpRequestMessage(HttpMethod.Get, $"{_endpoint}/{existingId}");
+        var request = new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{existingId}");
 
         // Act
-        var response = await _client.SendAsync(request);
+        var response = await fixture.Client.SendAsync(request);
 
         // Assert
         var returnedClient = await response.DeserializedContentAsync<ResponseClientDto>();
@@ -87,13 +53,12 @@ public class ClientTests : IDisposable
     public async Task GivenInvalidId_WhenRequestGetClientWithId_ThenItShouldReturnBadRequestWithHeadersAndContent()
     {
         // Arrange
-        SetDefaultFactory();
         const int invalidId = -1;
         const int minId = 1;
-        var request = new HttpRequestMessage(HttpMethod.Get, $"{_endpoint}/{invalidId}");
+        var request = new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{invalidId}");
 
         // Act
-        var response = await _client.SendAsync(request);
+        var response = await fixture.Client.SendAsync(request);
 
         // Assert
         var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
@@ -108,12 +73,11 @@ public class ClientTests : IDisposable
         GivenNonExistentClient_WhenRequestGetClientWithId_ThenItShouldReturnNotFoundWithHeadersAndContent()
     {
         // Arrange
-        SetDefaultFactory();
         const int nonExistentId = int.MaxValue;
-        var request = new HttpRequestMessage(HttpMethod.Get, $"{_endpoint}/{nonExistentId}");
+        var request = new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{nonExistentId}");
 
         // Act
-        var response = await _client.SendAsync(request);
+        var response = await fixture.Client.SendAsync(request);
 
         // Assert
         var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
