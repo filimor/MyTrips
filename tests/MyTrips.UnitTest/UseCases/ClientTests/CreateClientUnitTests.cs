@@ -19,7 +19,7 @@ using MyTrips.UnitTest.ClassData;
 
 namespace MyTrips.UnitTest.UseCases.ClientTests;
 
-public class CreateClientTests
+public class CreateClientUnitTests
 {
     private readonly Client _client;
     private readonly Mock<IClientsRepository> _clientsRepositoryMock = new();
@@ -27,7 +27,7 @@ public class CreateClientTests
     private readonly RequestClientDto _requestClientDto;
     private readonly ResponseClientDto _responseResponseClientDto;
 
-    public CreateClientTests()
+    public CreateClientUnitTests()
     {
         CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
         CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
