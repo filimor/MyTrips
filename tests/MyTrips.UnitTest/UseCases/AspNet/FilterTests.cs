@@ -15,7 +15,7 @@ public class FilterTests
     [InlineData(StatusCodes.Status400BadRequest)]
     [InlineData(StatusCodes.Status500InternalServerError)]
     [Trait("Category", "Unit")]
-    public async Task GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader(
+    public void GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader(
         int statusCode)
     {
         // Arrange
@@ -28,7 +28,7 @@ public class FilterTests
                 RouteData = new RouteData(),
                 ActionDescriptor = new ControllerActionDescriptor()
             },
-            new List<IFilterMetadata>(),
+            [],
             new Mock<Controller>().Object
         )
         {
@@ -48,7 +48,7 @@ public class FilterTests
     [InlineData(StatusCodes.Status200OK)]
     [InlineData(StatusCodes.Status300MultipleChoices)]
     [Trait("Category", "Unit")]
-    public async Task GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader(
+    public void GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader(
         int statusCode)
     {
         // Arrange
@@ -61,7 +61,7 @@ public class FilterTests
                 RouteData = new RouteData(),
                 ActionDescriptor = new ControllerActionDescriptor()
             },
-            new List<IFilterMetadata>(),
+            [],
             new Mock<Controller>().Object
         )
         {

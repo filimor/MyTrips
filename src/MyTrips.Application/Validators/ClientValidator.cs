@@ -17,7 +17,7 @@ public class ClientValidator : AbstractValidator<Client>
             .Must(BeAValidEmail).WithMessage("Invalid Email address.");
     }
 
-    private bool BeAValidEmail(string email)
+    private static bool BeAValidEmail(string email)
     {
         try
         {

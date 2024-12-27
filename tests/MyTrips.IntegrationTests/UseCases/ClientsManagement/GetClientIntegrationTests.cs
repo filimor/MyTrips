@@ -19,13 +19,13 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
         var request = new HttpRequestMessage(HttpMethod.Get, fixture.Endpoint);
 
         // Act
-        var response = await fixture.Client.SendAsync(request);
+        var response = await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
         var returnedClients = await response.DeserializedContentAsync<IEnumerable<Client>>();
 
         response.EnsureSuccessStatusCode();
-        response.Content.Headers.ContentType?.ToString().Should().Be("application/json; charset=utf-8");
+        response.Should().HaveJsonContentType();
         returnedClients.Should().NotBeNull();
     }
 
@@ -39,12 +39,12 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
         var request = new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{existingId}");
 
         // Act
-        var response = await fixture.Client.SendAsync(request);
+        var response = await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
         var returnedClient = await response.DeserializedContentAsync<ResponseClientDto>();
         response.EnsureSuccessStatusCode();
-        response.Content.Headers.ContentType?.ToString().Should().Be("application/json; charset=utf-8");
+        response.Should().HaveJsonContentType();
         returnedClient.Should().BeOfType<ResponseClientDto>();
     }
 
@@ -58,12 +58,12 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
         var request = new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{invalidId}");
 
         // Act
-        var response = await fixture.Client.SendAsync(request);
+        var response = await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
         var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
         response.Should().HaveStatusCode(HttpStatusCode.BadRequest);
-        response.Content.Headers.ContentType?.ToString().Should().Be("application/problem+json; charset=utf-8");
+        response.Should().HaveProblemContentType();
         errorDetails!.Errors.Should().Contain($"'{nameof(Client.Id)}' must be greater than or equal to '{minId}'.");
     }
 
@@ -77,12 +77,12 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
         var request = new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{nonExistentId}");
 
         // Act
-        var response = await fixture.Client.SendAsync(request);
+        var response = await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
         var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
         response.Should().HaveStatusCode(HttpStatusCode.NotFound);
-        response.Content.Headers.ContentType?.ToString().Should().Be("application/problem+json; charset=utf-8");
+        response.Should().HaveProblemContentType();
         errorDetails!.Errors.Should()
             .Contain($"{nameof(Client)} with {nameof(Client.Id)} '{nonExistentId}' not found.");
     }
