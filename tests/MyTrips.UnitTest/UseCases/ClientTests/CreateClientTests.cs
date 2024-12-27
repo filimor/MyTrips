@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Linq.Expressions;
 using AutoMapper;
 using Bogus;
 using FluentAssertions;
@@ -132,12 +133,52 @@ public class CreateClientTests
             .Which.Errors.Should().ContainMatch($"*{nameof(Client.Email)}*");
     }
 
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task GivenExistingEmail_WhenCreateClient_ThenItShouldReturnFailResultObjectWithTheErrors()
+    {
+        // Arrange
+        var existingClient = new Faker<Client>()
+            .RuleFor(c => c.Id, f => f.Random.Int())
+            .RuleFor(c => c.Name, f => f.Name.FullName())
+            .RuleFor(c => c.Email, f => _client.Email)
+            .Generate();
+        var mockClientList = new List<Client> { existingClient };
+        _clientsRepositoryMock.Setup(r => r.FindAsync(It.IsAny<Expression<Func<Client, bool>>>()))
+            .ReturnsAsync((Expression<Func<Client, bool>> predicate) =>
+                mockClientList.Where(predicate.Compile()));
+        var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
+        var testResult =
+            Result.Fail(new Error(
+                $"{nameof(Client)} with the {nameof(Client.Email)} '{existingClient.Email}' already exists."));
+
+        // Act
+        var clientResult = await clientsService.AddNewClientAsync(_requestClientDto);
+
+        // Assert
+        clientResult.Should().BeEquivalentTo(testResult);
+    }
+
     //[Fact]
     //[Trait("Category", "Unit")]
-    //public async Task GivenExistingEmail_WhenCreateClient_ThenItShouldReturnFailResultObjectWithTheErrors()
+    //public async Task GivenExistingEmail_WhenCreateClient_ThenItShouldReturnNotCreateIt()
     //{
-    //}
+    //    // Arrange
+    //    var existingClient = new Faker<Client>()
+    //        .RuleFor(c => c.Id, f => f.Random.Int())
+    //        .RuleFor(c => c.Name, f => f.Name.FullName())
+    //        .RuleFor(c => c.Email, f => f.Internet.Email())
+    //        .Generate();
+    //    _clientsRepositoryMock.Setup(r => r.FindAsync(c => c.Email == existingClient.Email))
+    //        .ReturnsAsync([existingClient]);
+    //    var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
 
+    //    // Act
+    //    await clientsService.AddNewClientAsync(_requestClientDto);
+
+    //    // Assert
+    //    _clientsRepositoryMock.Verify(r => r.AddAsync(It.IsAny<Client>()), Times.Never);
+    //}
     //[Fact]
     //[Trait("Category", "Unit")]
     //public async Task GivenCreateRequest_WhenRepositoryThrowException_ThenItShouldThrowTheException()

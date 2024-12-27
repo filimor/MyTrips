@@ -22,7 +22,7 @@ public class ClientsService(IMapper mapper, IClientsRepository clientsRepository
         var client = await clientsRepository.GetAsync(id);
 
         if (client is null)
-            return Result.Fail(new Error($"Client with id '{id}' not found."));
+            return Result.Fail($"{nameof(Client)} with {nameof(Client.Id)} '{id}' not found.");
 
         var clientDto = mapper.Map<ResponseClientDto>(client);
 
@@ -31,6 +31,12 @@ public class ClientsService(IMapper mapper, IClientsRepository clientsRepository
 
     public async Task<Result<ResponseClientDto>> AddNewClientAsync(RequestClientDto requestClientDto)
     {
+        var existingClients = await clientsRepository.FindAsync(c => c.Email == requestClientDto.Email);
+
+        if (existingClients.Any())
+            return Result.Fail(
+                $"{nameof(Client)} with the {nameof(Client.Email)} '{requestClientDto.Email}' already exists.");
+
         var client = mapper.Map<Client>(requestClientDto);
 
         var clientId = await clientsRepository.AddAsync(client);

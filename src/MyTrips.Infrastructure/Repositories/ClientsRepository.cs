@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using System.Linq.Expressions;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using MyTrips.Domain.Entities;
 using MyTrips.Domain.Interfaces;
@@ -25,6 +26,11 @@ public class ClientsRepository(IConfiguration configuration) : IClientsRepositor
     }
 
     public Task<int> AddAsync(Client client)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<IEnumerable<Client>> FindAsync(Expression<Func<Client, bool>> predicate)
     {
         throw new NotImplementedException();
     }
