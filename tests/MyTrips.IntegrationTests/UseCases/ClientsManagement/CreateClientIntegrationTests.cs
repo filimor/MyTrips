@@ -119,4 +119,77 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         errorDetails!.Errors.Should()
             .Contain($"Client with the Email '{fixture.RequestClientDtoStub.Email}' already exists.");
     }
+
+    [Theory]
+    [Trait("Category", "Integration")]
+    [ClassData(typeof(InvalidStringClassData))]
+    public async Task
+        GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotBePersisted(string name)
+    {
+        // Arrange
+        fixture.RequestClientDtoStub.Name = name;
+        var json = JsonConvert.SerializeObject(fixture.RequestClientDtoStub);
+        StringContent data = new(json, Encoding.UTF8, "application/json");
+        var request = new HttpRequestMessage(HttpMethod.Post, fixture.Endpoint)
+        {
+            Content = data
+        };
+
+        // Act
+        await fixture.DefaultHttpClient.SendAsync(request);
+
+        // Assert
+        var getRequest = new HttpRequestMessage(HttpMethod.Get, fixture.Endpoint);
+        var responseAllClients = await fixture.DefaultHttpClient.SendAsync(getRequest);
+        var clients = await responseAllClients.DeserializedContentAsync<IEnumerable<ResponseClientDto>>();
+        clients.Should().NotContain(c => c.Name == fixture.RequestClientDtoStub.Name);
+    }
+
+    [Theory]
+    [Trait("Category", "Integration")]
+    [ClassData(typeof(InvalidEmailClassData))]
+    public async Task
+        GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotBePersisted(string email)
+    {
+        // Arrange
+        fixture.RequestClientDtoStub.Email = email;
+        var json = JsonConvert.SerializeObject(fixture.RequestClientDtoStub);
+        StringContent data = new(json, Encoding.UTF8, "application/json");
+        var request = new HttpRequestMessage(HttpMethod.Post, fixture.Endpoint)
+        {
+            Content = data
+        };
+
+        // Act
+        await fixture.DefaultHttpClient.SendAsync(request);
+
+        // Assert
+        var getRequest = new HttpRequestMessage(HttpMethod.Get, fixture.Endpoint);
+        var responseAllClients = await fixture.DefaultHttpClient.SendAsync(getRequest);
+        var clients = await responseAllClients.DeserializedContentAsync<IEnumerable<ResponseClientDto>>();
+        clients.Should().NotContain(c => c.Email == fixture.RequestClientDtoStub.Email);
+    }
+
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task
+        GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotBePersistedAgain()
+    {
+        // Arrange
+        var json = JsonConvert.SerializeObject(fixture.RequestClientDtoStub);
+        StringContent data = new(json, Encoding.UTF8, "application/json");
+        var request = new HttpRequestMessage(HttpMethod.Post, fixture.Endpoint)
+        {
+            Content = data
+        };
+
+        // Act
+        await fixture.DefaultHttpClient.SendAsync(request);
+
+        // Assert
+        var getRequest = new HttpRequestMessage(HttpMethod.Get, fixture.Endpoint);
+        var responseAllClients = await fixture.DefaultHttpClient.SendAsync(getRequest);
+        var clients = await responseAllClients.DeserializedContentAsync<IEnumerable<ResponseClientDto>>();
+        clients.Should().ContainSingle(c => c.Email == fixture.RequestClientDtoStub.Email);
+    }
 }
