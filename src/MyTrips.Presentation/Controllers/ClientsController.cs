@@ -54,9 +54,9 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status409Conflict)]
     [ProducesDefaultResponseType]
-    public async Task<ActionResult> Post(RequestClientDto requestClientDto)
+    public async Task<ActionResult> Post(CreateClientDto createClientDto)
     {
-        var client = new Client(requestClientDto.Name, requestClientDto.Email);
+        var client = new Client(createClientDto.Name, createClientDto.Email);
 
         var validationResult = await validator.ValidateAsync(client);
 
@@ -68,7 +68,7 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
             return new BadRequestObjectResult(errorDetails);
         }
 
-        var requestResult = await clientsService.AddNewClientAsync(requestClientDto);
+        var requestResult = await clientsService.AddNewClientAsync(createClientDto);
 
         if (requestResult.IsFailed)
         {

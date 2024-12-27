@@ -29,15 +29,15 @@ public class ClientsService(IMapper mapper, IClientsRepository clientsRepository
         return Result.Ok(clientDto);
     }
 
-    public async Task<Result<ResponseClientDto>> AddNewClientAsync(RequestClientDto requestClientDto)
+    public async Task<Result<ResponseClientDto>> AddNewClientAsync(CreateClientDto createClientDto)
     {
-        var existingClients = await clientsRepository.FindAsync(c => c.Email == requestClientDto.Email);
+        var existingClients = await clientsRepository.FindAsync(c => c.Email == createClientDto.Email);
 
         if (existingClients.Any())
             return Result.Fail(
-                $"{nameof(Client)} with the {nameof(Client.Email)} '{requestClientDto.Email}' already exists.");
+                $"{nameof(Client)} with the {nameof(Client.Email)} '{createClientDto.Email}' already exists.");
 
-        var client = mapper.Map<Client>(requestClientDto);
+        var client = mapper.Map<Client>(createClientDto);
 
         var clientId = await clientsRepository.AddAsync(client);
 
@@ -46,5 +46,16 @@ public class ClientsService(IMapper mapper, IClientsRepository clientsRepository
         var clientDto = mapper.Map<ResponseClientDto>(client);
 
         return Result.Ok(clientDto);
+    }
+
+    public async Task<Result<ResponseClientDto>> UpdateClientAsync(UpdateClientDto updateClientDto)
+    {
+        var requestClient = mapper.Map<Client>(updateClientDto);
+
+        var responseClient = await clientsRepository.UpdateAsync(requestClient);
+
+        var responseClientDto = mapper.Map<ResponseClientDto>(responseClient);
+
+        return Result.Ok(responseClientDto);
     }
 }
