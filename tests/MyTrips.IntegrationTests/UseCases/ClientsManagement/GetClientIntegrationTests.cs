@@ -8,7 +8,7 @@ using MyTrips.Presentation.Errors;
 
 namespace MyTrips.IntegrationTests.UseCases.ClientsManagement;
 
-[Collection("ClientsManagement")]
+[Collection("ClientsManagementIntegration")]
 public class GetClientIntegrationTests(ClientsManagementFixture fixture)
 {
     [Fact]
