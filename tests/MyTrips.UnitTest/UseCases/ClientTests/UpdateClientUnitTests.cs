@@ -63,13 +63,34 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
             .Which.Errors.Should().ContainMatch($"*{nameof(Client.Name)}*");
     }
 
-    //[Theory]
-    //[Trait("Category", "Unit")]
-    //[ClassData(typeof(InvalidEmailClassData))]
-    //public async Task GivenAnExistingClient_WhenUpdateWithInvalidEmail_ThenItShouldReturnFailResultObjectWithTheErrors(
-    //    string email)
-    //{
-    //}
+    [Theory]
+    [Trait("Category", "Unit")]
+    [ClassData(typeof(InvalidEmailClassData))]
+    public async Task GivenAnExistingClient_WhenUpdateWithInvalidEmail_ThenItShouldReturnFailResultObjectWithTheErrors(
+        string email)
+    {
+        // Arrange
+        fixture.UpdateClientDtoStub.Email = email;
+        var clientServiceMock = new Mock<IClientsService>();
+
+        var httpContext = new DefaultHttpContext();
+        var controllerContext = new ControllerContext
+        {
+            HttpContext = httpContext
+        };
+        var controller = new ClientsController(clientServiceMock.Object, new ClientValidator())
+        {
+            ControllerContext = controllerContext
+        };
+
+        // Act
+        var response = await controller.Put(fixture.UpdateClientDtoStub);
+
+        // Assert
+        response.Should().BeOfType<BadRequestObjectResult>()
+            .Which.Value.Should().BeOfType<BadRequestErrorDetails>()
+            .Which.Errors.Should().ContainMatch($"*{nameof(Client.Email)}*");
+    }
 
     //[Fact]
     //[Trait("Category", "Unit")]
