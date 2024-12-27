@@ -546,3 +546,4 @@ FodyWeavers.xsd
 appsettings.Development.json
 InspectCodeReport.xml
 AppCoverageReport.html
+appsettings.json
