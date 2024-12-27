@@ -118,10 +118,29 @@ public class UpdateClientIntegrationTests(ClientsManagementFixture fixture)
             .Contain($"Client with the Email '{fixture.UpdateClientDtoStub.Email}' already exists.");
     }
 
-    //[Fact]
-    //[Trait("Category", "Integration")]
-    //public async Task
-    //    GivenNonExistingClient_WhenRequestedUpdateClient_ThenItShouldReturnNotFoundWithHeadersAndContent()
-    //{
-    //}
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task
+        GivenNonExistingClient_WhenRequestedUpdateClient_ThenItShouldReturnNotFoundWithHeadersAndContent()
+    {
+        // Arrange
+        const int nonExistentId = int.MaxValue;
+        fixture.UpdateClientDtoStub.Id = nonExistentId;
+        var json = JsonConvert.SerializeObject(fixture.UpdateClientDtoStub);
+        StringContent data = new(json, Encoding.UTF8, "application/json");
+        var request = new HttpRequestMessage(HttpMethod.Put, fixture.Endpoint)
+        {
+            Content = data
+        };
+
+        // Act
+        var response = await fixture.DefaultHttpClient.SendAsync(request);
+
+        // Assert
+        var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
+        response.Should().HaveStatusCode(HttpStatusCode.NotFound);
+        response.Should().HaveProblemContentType();
+        errorDetails!.Errors.Should()
+            .Contain($"{nameof(Client)} with {nameof(Client.Id)} '{nonExistentId}' not found.");
+    }
 }

@@ -1,6 +1,7 @@
 using AutoMapper;
 using FluentResults;
 using MyTrips.Application.Dtos;
+using MyTrips.Application.Errors;
 using MyTrips.Application.Interfaces;
 using MyTrips.Domain.Entities;
 using MyTrips.Domain.Interfaces;
@@ -54,12 +55,14 @@ public class ClientsService(IMapper mapper, IClientsRepository clientsRepository
 
         if (existingClients.Any())
             return Result.Fail(
-                $"{nameof(Client)} with the {nameof(Client.Email)} '{updateClientDto.Email}' already exists.");
+                new ConflictError(
+                    $"{nameof(Client)} with the {nameof(Client.Email)} '{updateClientDto.Email}' already exists."));
 
         var client = await clientsRepository.GetAsync(updateClientDto.Id);
 
         if (client is null)
-            return Result.Fail($"{nameof(Client)} with {nameof(Client.Id)} '{updateClientDto.Id}' not found.");
+            return Result.Fail(
+                new NotFoundError($"{nameof(Client)} with {nameof(Client.Id)} '{updateClientDto.Id}' not found."));
 
 
         var requestClient = mapper.Map<Client>(updateClientDto);

@@ -2,6 +2,7 @@ using FluentResults;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using MyTrips.Application.Dtos;
+using MyTrips.Application.Errors;
 using MyTrips.Application.Interfaces;
 using MyTrips.Domain.Entities;
 using MyTrips.Presentation.Errors;
@@ -103,8 +104,17 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
 
         if (requestResult.IsFailed)
         {
-            var errorDetails = new ConflictErrorDetails(HttpContext, requestResult.ToResult());
-            return new ConflictObjectResult(errorDetails);
+            if (requestResult.Errors.Any(e => e is NotFoundError))
+            {
+                var errorDetails = new NotFoundErrorDetails(HttpContext, requestResult.ToResult());
+                return new NotFoundObjectResult(errorDetails);
+            }
+
+            if (requestResult.Errors.Any(e => e is ConflictError))
+            {
+                var errorDetails = new ConflictErrorDetails(HttpContext, requestResult.ToResult());
+                return new ConflictObjectResult(errorDetails);
+            }
         }
 
         return Ok(requestResult.Value);
