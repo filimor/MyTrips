@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Linq.Expressions;
+using Bogus;
+using FluentAssertions;
 using FluentResults;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -92,18 +94,49 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
             .Which.Errors.Should().ContainMatch($"*{nameof(Client.Email)}*");
     }
 
-    //[Fact]
-    //[Trait("Category", "Unit")]
-    //public async Task
-    //    GivenAnExistingClient_WhenUpdateWithEmailOfOtherClient_ThenItShouldReturnFailResultObjectWithTheErrors()
-    //{
-    //}
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task
+        GivenAnExistingClient_WhenUpdateWithEmailOfOtherClient_ThenItShouldReturnFailResultObjectWithTheErrors()
+    {
+        // Arrange
+        var existingClient = new Faker<Client>()
+            .RuleFor(c => c.Id, f => f.Random.Int())
+            .RuleFor(c => c.Name, f => f.Name.FullName())
+            .RuleFor(c => c.Email, f => fixture.ClientStub.Email)
+            .Generate();
+        var mockClientList = new List<Client> { existingClient };
+        fixture.ClientsRepositoryMock.Setup(r => r.FindAsync(It.IsAny<Expression<Func<Client, bool>>>()))
+            .ReturnsAsync((Expression<Func<Client, bool>> predicate) =>
+                mockClientList.Where(predicate.Compile()));
+        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+        var testResult =
+            Result.Fail(new Error(
+                $"{nameof(Client)} with the {nameof(Client.Email)} '{existingClient.Email}' already exists."));
 
-    //[Fact]
-    //[Trait("Category", "Unit")]
-    //public async Task GivenNonExistingClient_WhenTryToUpdateIt_ThenItShouldReturnFailObjectResultWithErrors()
-    //{
-    //}
+        // Act
+        var clientResult = await clientsService.UpdateClientAsync(fixture.UpdateClientDtoStub);
+
+        // Assert
+        clientResult.Should().BeEquivalentTo(testResult);
+    }
+
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task GivenNonExistingClient_WhenTryToUpdateIt_ThenItShouldReturnFailObjectResultWithErrors()
+    {
+        const int nonExistentId = 100;
+        fixture.UpdateClientDtoStub.Id = nonExistentId;
+        var result = Result.Fail([$"{nameof(Client)} with {nameof(Client.Id)} '{nonExistentId}' not found."]);
+        fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(nonExistentId)).ReturnsAsync((Client)null!);
+        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+
+        // Act
+        var response = await clientsService.UpdateClientAsync(fixture.UpdateClientDtoStub);
+
+        // Assert
+        response.Should().BeEquivalentTo(result);
+    }
 
     //[Fact]
     //[Trait("Category", "Unit")]

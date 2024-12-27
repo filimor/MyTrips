@@ -50,6 +50,12 @@ public class ClientsService(IMapper mapper, IClientsRepository clientsRepository
 
     public async Task<Result<ResponseClientDto>> UpdateClientAsync(UpdateClientDto updateClientDto)
     {
+        var existingClients = await clientsRepository.FindAsync(c => c.Email == updateClientDto.Email);
+
+        if (existingClients.Any())
+            return Result.Fail(
+                $"{nameof(Client)} with the {nameof(Client.Email)} '{updateClientDto.Email}' already exists.");
+
         var requestClient = mapper.Map<Client>(updateClientDto);
 
         var responseClient = await clientsRepository.UpdateAsync(requestClient);

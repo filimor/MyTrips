@@ -109,8 +109,10 @@ public class GetClientUnitTests(ClientsManagementFixture fixture)
         var result = Result.Fail([$"{nameof(Client)} with {nameof(Client.Id)} '{nonExistentId}' not found."]);
         fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(nonExistentId)).ReturnsAsync((Client)null!);
         var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+
         // Act
         var response = await clientsService.GetClientByIdAsync(nonExistentId);
+
         // Assert
         response.Should().BeEquivalentTo(result);
     }
@@ -123,8 +125,10 @@ public class GetClientUnitTests(ClientsManagementFixture fixture)
         const int testClientId = 1;
         fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(testClientId)).ThrowsAsync(new OutOfMemoryException());
         var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+
         // Act
         var act = async () => await clientsService.GetClientByIdAsync(testClientId);
+
         // Assert
         await act.Should().ThrowAsync<OutOfMemoryException>();
     }
