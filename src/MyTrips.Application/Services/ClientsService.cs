@@ -64,7 +64,6 @@ public class ClientsService(IMapper mapper, IClientsRepository clientsRepository
 
         var requestClient = mapper.Map<Client>(updateClientDto);
 
-
         var responseClient = await clientsRepository.UpdateAsync(requestClient);
 
         var responseClientDto = mapper.Map<ResponseClientDto>(responseClient);
