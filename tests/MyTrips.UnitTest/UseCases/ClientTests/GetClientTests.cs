@@ -3,6 +3,7 @@ using AutoMapper;
 using Bogus;
 using FluentAssertions;
 using FluentResults;
+using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -16,7 +17,7 @@ using MyTrips.Presentation.Errors;
 
 namespace MyTrips.UnitTest.UseCases.ClientTests;
 
-public class ClientTests
+public class GetClientTests
 {
     private readonly Mock<IClientsRepository> _clientsRepositoryMock = new();
 
@@ -27,7 +28,7 @@ public class ClientTests
 
     private readonly Mock<IMapper> _mapperMock = new();
 
-    public ClientTests()
+    public GetClientTests()
     {
         CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
         CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
@@ -86,7 +87,7 @@ public class ClientTests
         GivenExistingClient_WhenGetClientWithId_ThenItShouldReturnOkResultObjectWithTheClientDtoResult()
     {
         // Arrange
-        var testClient = new Client { Id = 1, Name = "John Doe", Email = "john.doe@example.com" };
+        var testClient = new Client(1, "John Doe", "john.doe@example.com");
         var testClientDto = new ResponseClientDto
             { Id = testClient.Id, Name = testClient.Name, Email = testClient.Email };
         _clientsRepositoryMock.Setup(r => r.GetAsync(testClient.Id)).ReturnsAsync(testClient);
@@ -108,12 +109,13 @@ public class ClientTests
         const int invalidId = -1;
         const int minId = 1;
         var clientServiceMock = new Mock<IClientsService>();
+        var validatorMock = new Mock<IValidator<Client>>();
         var httpContext = new DefaultHttpContext();
         var controllerContext = new ControllerContext
         {
             HttpContext = httpContext
         };
-        var controller = new ClientsController(clientServiceMock.Object)
+        var controller = new ClientsController(clientServiceMock.Object, validatorMock.Object)
         {
             ControllerContext = controllerContext
         };
