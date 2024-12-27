@@ -109,7 +109,6 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         };
 
         // Act
-
         var response = await fixture.DefaultHttpClient.SendAsync(requestWithSameEmail);
 
         // Assert

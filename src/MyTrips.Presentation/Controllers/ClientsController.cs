@@ -101,11 +101,11 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
 
         var requestResult = await clientsService.UpdateClientAsync(updateClientDto);
 
-        //if (requestResult.IsFailed)
-        //{
-        //    var errorDetails = new ConflictErrorDetails(HttpContext, requestResult.ToResult());
-        //    return new ConflictObjectResult(errorDetails);
-        //}
+        if (requestResult.IsFailed)
+        {
+            var errorDetails = new ConflictErrorDetails(HttpContext, requestResult.ToResult());
+            return new ConflictObjectResult(errorDetails);
+        }
 
         return Ok(requestResult.Value);
     }
