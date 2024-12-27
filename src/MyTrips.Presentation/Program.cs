@@ -1,6 +1,8 @@
 using System.Globalization;
+using FluentValidation;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Localization;
+using MyTrips.Application.Validators;
 using MyTrips.CrossCutting;
 using MyTrips.Presentation.Filters;
 using MyTrips.Presentation.Middlewares;
@@ -25,6 +27,8 @@ try
     builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
     builder.Services.AddTransient<ExceptionHandlingMiddleware>();
     builder.Services.AddInfrastructure(builder.Configuration);
+
+    builder.Services.AddValidatorsFromAssemblyContaining<ClientValidator>();
 
     builder.Services.AddHttpLogging(options => { options.LoggingFields = HttpLoggingFields.All; });
     builder.Services.AddSerilog();

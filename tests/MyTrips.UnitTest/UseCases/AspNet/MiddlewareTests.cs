@@ -6,12 +6,12 @@ using MyTrips.Presentation.Middlewares;
 
 namespace MyTrips.UnitTest.UseCases.AspNet;
 
-public class ExceptionHandlingMiddlewareTests
+public class MiddlewareTests
 {
     private readonly Mock<IHostEnvironment> _environmentMock;
     private readonly ExceptionHandlingMiddleware _middleware;
 
-    public ExceptionHandlingMiddlewareTests()
+    public MiddlewareTests()
     {
         _environmentMock = new Mock<IHostEnvironment>();
         _middleware = new ExceptionHandlingMiddleware(_environmentMock.Object);

@@ -1,7 +1,9 @@
 ﻿using FluentResults;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using MyTrips.Application.Dtos;
 using MyTrips.Application.Interfaces;
+using MyTrips.Domain.Entities;
 using MyTrips.Presentation.Errors;
 using MyTrips.Presentation.Validators;
 
@@ -9,7 +11,7 @@ namespace MyTrips.Presentation.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ClientsController(IClientsService clientsService) : ControllerBase
+public class ClientsController(IClientsService clientsService, IValidator<Client> validator) : ControllerBase
 {
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<ResponseClientDto>), StatusCodes.Status200OK)]
@@ -45,6 +47,36 @@ public class ClientsController(IClientsService clientsService) : ControllerBase
         }
 
         return Ok(requestResult.Value);
+    }
+
+    [HttpPost]
+    [ProducesResponseType(typeof(ResponseClientDto), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status409Conflict)]
+    [ProducesDefaultResponseType]
+    public async Task<ActionResult> Post(RequestClientDto requestClientDto)
+    {
+        var client = new Client(requestClientDto.Name, requestClientDto.Email);
+
+        var validationResult = await validator.ValidateAsync(client);
+
+        if (!validationResult.IsValid)
+        {
+            var errors = validationResult.Errors.Select(e => new Error(e.ErrorMessage));
+            var resultObject = Result.Fail(errors);
+            var errorDetails = new BadRequestErrorDetails(HttpContext, resultObject);
+            return new BadRequestObjectResult(errorDetails);
+        }
+
+        var requestResult = await clientsService.AddNewClientAsync(requestClientDto);
+
+        //if (requestResult.IsFailed)
+        //{
+        //    var errorDetails = new ConflictErrorDetails(HttpContext, requestResult.ToResult());
+        //    return new ConflictObjectResult(errorDetails);
+        //}
+
+        return CreatedAtAction(nameof(Get), new { id = requestResult.Value.Id }, requestResult.Value);
     }
 
     private static Result ValidateInputId(int id)
