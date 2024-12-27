@@ -166,26 +166,30 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
         fixture.ClientsRepositoryMock.Verify(r => r.UpdateAsync(It.IsAny<Client>()), Times.Once);
     }
 
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task GivenAnExistingClient_WhenTryToUpdateItWithEmailOfOtherClient_ThenItShouldNotPersistIt()
+    {
+        var existingClient = new Faker<Client>()
+            .RuleFor(c => c.Id, f => f.Random.Int())
+            .RuleFor(c => c.Name, f => f.Name.FullName())
+            .RuleFor(c => c.Email, f => fixture.ClientStub.Email)
+            .Generate();
+        var mockClientList = new List<Client> { existingClient };
+        fixture.ClientsRepositoryMock.Setup(r => r.FindAsync(It.IsAny<Expression<Func<Client, bool>>>()))
+            .ReturnsAsync((Expression<Func<Client, bool>> predicate) =>
+                mockClientList.Where(predicate.Compile()));
+        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+        var testResult =
+            Result.Fail(new Error(
+                $"{nameof(Client)} with the {nameof(Client.Email)} '{existingClient.Email}' already exists."));
 
-    //[Theory]
-    //[ClassData(typeof(InvalidStringClassData))]
-    //[Trait("Category", "Unit")]
-    //public async Task GivenAnExistingClient_WhenTryToUpdateItWithInvalidName_ThenItShouldNotPersistIt(string name)
-    //{
-    //}
+        // Act
+        var clientResult = await clientsService.UpdateClientAsync(fixture.UpdateClientDtoStub);
 
-    //[Theory]
-    //[ClassData(typeof(InvalidEmailClassData))]
-    //[Trait("Category", "Unit")]
-    //public async Task GivenAnExistingClient_WhenTryToUpdateItWithInvalidEmail_ThenItShouldNotPersistIt(string email)
-    //{
-    //}
-
-    //[Fact]
-    //[Trait("Category", "Unit")]
-    //public async Task GivenAnExistingClient_WhenTryToUpdateItWithEmailOfOtherClient_ThenItShouldNotPersistIt()
-    //{
-    //}
+        // Assert
+        clientResult.Should().BeEquivalentTo(testResult);
+    }
 
     //[Fact]
     //[Trait("Category", "Unit")]
