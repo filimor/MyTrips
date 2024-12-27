@@ -2,6 +2,7 @@
 using FluentResults;
 using Moq;
 using MyTrips.Application.Services;
+using MyTrips.Domain.Entities;
 using MyTrips.UnitTest.Fixtures;
 
 namespace MyTrips.UnitTest.UseCases.ClientTests;
@@ -14,7 +15,8 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
     public async Task GivenAnExistingClient_WhenUpdateWithValidData_ThenItShouldReturnOkResultObjectWithUpdatedDto()
     {
         // Arrange
-        fixture.ClientsRepositoryMock.Setup(r => r.UpdateAsync(fixture.ClientStub)).ReturnsAsync(fixture.ClientStub);
+        fixture.ClientsRepositoryMock.Setup(r => r.UpdateAsync(It.IsAny<Client>()))
+            .ReturnsAsync((Client client) => client);
         var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
         var testResult = Result.Ok(fixture.ResponseClientDtoStub);
 
