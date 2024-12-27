@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using FluentResults;
 using MyTrips.Application.Dtos;
 using MyTrips.Application.Interfaces;

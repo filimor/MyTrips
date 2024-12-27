@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+        // Arrange
+using FluentAssertions;
 using FluentResults;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;

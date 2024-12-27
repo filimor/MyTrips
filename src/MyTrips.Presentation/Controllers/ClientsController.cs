@@ -1,4 +1,5 @@
-﻿using FluentResults;
+
+using FluentResults;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using MyTrips.Application.Dtos;
