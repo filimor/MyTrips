@@ -77,10 +77,27 @@ public class CreateClientUnitTests
         clientResult.Should().BeEquivalentTo(testResult);
     }
 
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task GivenValidClient_WhenCreateClient_ThenItShouldBePersisted()
+    {
+        // Arrange
+        _clientsRepositoryMock.Setup(r => r.GetAsync(_clientStub.Id)).ReturnsAsync(_clientStub);
+        var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
+        var testResult = Result.Ok(_responseResponseClientDtoStub);
+
+        // Act
+        var clientResult = await clientsService.AddNewClientAsync(_requestClientDtoStub);
+
+        // Assert
+        _clientsRepositoryMock.Verify(r => r.AddAsync(It.IsAny<Client>()), Times.Once);
+    }
+
     [Theory]
     [ClassData(typeof(InvalidStringClassData))]
     [Trait("Category", "Unit")]
-    public async Task GivenInvalidName_WhenCreateClient_ThenItShouldReturnFailResultObjectWithTheErrors(string name)
+    public async Task GivenInvalidName_WhenTryToCreateClient_ThenItShouldReturnFailResultObjectWithTheErrors(
+        string name)
     {
         // Arrange
         _requestClientDtoStub.Name = name;
@@ -108,7 +125,8 @@ public class CreateClientUnitTests
     [Theory]
     [ClassData(typeof(InvalidEmailClassData))]
     [Trait("Category", "Unit")]
-    public async Task GivenInvalidEmail_WhenCreateClient_ThenItShouldReturnFailResultObjectWithTheErrors(string email)
+    public async Task GivenInvalidEmail_WhenTryToCreateClient_ThenItShouldReturnFailResultObjectWithTheErrors(
+        string email)
     {
         // Arrange
         _requestClientDtoStub.Email = email;
@@ -135,7 +153,7 @@ public class CreateClientUnitTests
 
     [Fact]
     [Trait("Category", "Unit")]
-    public async Task GivenExistingEmail_WhenCreateClient_ThenItShouldReturnFailResultObjectWithTheErrors()
+    public async Task GivenExistingEmail_WhenTryToCreateClient_ThenItShouldReturnFailResultObjectWithTheErrors()
     {
         // Arrange
         var existingClient = new Faker<Client>()
@@ -161,7 +179,7 @@ public class CreateClientUnitTests
 
     [Fact]
     [Trait("Category", "Unit")]
-    public async Task GivenExistingEmail_WhenCreateClient_ThenItShouldReturnNotCreateIt()
+    public async Task GivenExistingEmail_WhenTryToCreateClient_ThenItShouldReturnNotPersistIt()
     {
         // Arrange
         var existingClient = new Faker<Client>()
