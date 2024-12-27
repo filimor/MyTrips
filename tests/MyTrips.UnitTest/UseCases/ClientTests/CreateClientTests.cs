@@ -159,26 +159,28 @@ public class CreateClientTests
         clientResult.Should().BeEquivalentTo(testResult);
     }
 
-    //[Fact]
-    //[Trait("Category", "Unit")]
-    //public async Task GivenExistingEmail_WhenCreateClient_ThenItShouldReturnNotCreateIt()
-    //{
-    //    // Arrange
-    //    var existingClient = new Faker<Client>()
-    //        .RuleFor(c => c.Id, f => f.Random.Int())
-    //        .RuleFor(c => c.Name, f => f.Name.FullName())
-    //        .RuleFor(c => c.Email, f => f.Internet.Email())
-    //        .Generate();
-    //    _clientsRepositoryMock.Setup(r => r.FindAsync(c => c.Email == existingClient.Email))
-    //        .ReturnsAsync([existingClient]);
-    //    var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task GivenExistingEmail_WhenCreateClient_ThenItShouldReturnNotCreateIt()
+    {
+        // Arrange
+        var existingClient = new Faker<Client>()
+            .RuleFor(c => c.Id, f => f.Random.Int())
+            .RuleFor(c => c.Name, f => f.Name.FullName())
+            .RuleFor(c => c.Email, f => _client.Email)
+            .Generate();
+        var mockClientList = new List<Client> { existingClient };
+        _clientsRepositoryMock.Setup(r => r.FindAsync(It.IsAny<Expression<Func<Client, bool>>>()))
+            .ReturnsAsync((Expression<Func<Client, bool>> predicate) =>
+                mockClientList.Where(predicate.Compile()));
+        var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
 
-    //    // Act
-    //    await clientsService.AddNewClientAsync(_requestClientDto);
+        // Act
+        await clientsService.AddNewClientAsync(_requestClientDto);
 
-    //    // Assert
-    //    _clientsRepositoryMock.Verify(r => r.AddAsync(It.IsAny<Client>()), Times.Never);
-    //}
+        // Assert
+        _clientsRepositoryMock.Verify(r => r.AddAsync(It.IsAny<Client>()), Times.Never);
+    }
     //[Fact]
     //[Trait("Category", "Unit")]
     //public async Task GivenCreateRequest_WhenRepositoryThrowException_ThenItShouldThrowTheException()
