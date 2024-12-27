@@ -24,8 +24,6 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
     public async Task GivenAnExistingClient_WhenUpdateWithValidData_ThenItShouldReturnOkResultObjectWithUpdatedDto()
     {
         // Arrange
-        fixture.ClientsRepositoryMock.Setup(r => r.UpdateAsync(It.IsAny<Client>()))
-            .ReturnsAsync((Client client) => client);
         var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
         var testResult = Result.Ok(fixture.ResponseClientDtoStub);
 
@@ -154,11 +152,19 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
         await act.Should().ThrowAsync<OutOfMemoryException>();
     }
 
-    //[Fact]
-    //[Trait("Category", "Unit")]
-    //public async Task GivenAnExistingClient_WhenUpdateWithValidData_ThenItShouldNotPersistIt()
-    //{
-    //}
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task GivenAnExistingClient_WhenUpdateWithValidData_ThenItShouldPersistIt()
+    {
+        // Arrange
+        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+
+        // Act
+        await clientsService.UpdateClientAsync(fixture.UpdateClientDtoStub);
+
+        // Assert
+        fixture.ClientsRepositoryMock.Verify(r => r.UpdateAsync(It.IsAny<Client>()), Times.Once);
+    }
 
 
     //[Theory]
