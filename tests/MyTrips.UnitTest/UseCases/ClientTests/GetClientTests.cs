@@ -137,7 +137,7 @@ public class GetClientTests
     {
         // Arrange
         const int nonExistentId = 100;
-        var result = Result.Fail([$"Client with id '{nonExistentId}' not found."]);
+        var result = Result.Fail([$"{nameof(Client)} with {nameof(Client.Id)} '{nonExistentId}' not found."]);
         _clientsRepositoryMock.Setup(r => r.GetAsync(nonExistentId)).ReturnsAsync((Client)null!);
         var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
         // Act
@@ -146,10 +146,9 @@ public class GetClientTests
         response.Should().BeEquivalentTo(result);
     }
 
-    // TODO: Fix it
     [Fact]
     [Trait("Category", "Unit")]
-    public async Task GivenGetWithIdRequest_WhenRepositoryThrowException_ThenItShouldReturnServerErrorResultObject()
+    public async Task GivenCreateRequest_WhenRepositoryThrowException_ThenItShouldThrowTheException()
     {
         // Arrange
         const int testClientId = 1;

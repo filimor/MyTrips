@@ -181,9 +181,17 @@ public class CreateClientTests
         // Assert
         _clientsRepositoryMock.Verify(r => r.AddAsync(It.IsAny<Client>()), Times.Never);
     }
-    //[Fact]
-    //[Trait("Category", "Unit")]
-    //public async Task GivenCreateRequest_WhenRepositoryThrowException_ThenItShouldThrowTheException()
-    //{
-    //}
+
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task GivenCreateRequest_WhenRepositoryThrowException_ThenItShouldThrowTheException()
+    {
+        // Arrange
+        _clientsRepositoryMock.Setup(r => r.AddAsync(It.IsAny<Client>())).ThrowsAsync(new OutOfMemoryException());
+        var clientsService = new ClientsService(_mapperMock.Object, _clientsRepositoryMock.Object);
+        // Act
+        var act = async () => await clientsService.AddNewClientAsync(_requestClientDto);
+        // Assert
+        await act.Should().ThrowAsync<OutOfMemoryException>();
+    }
 }
