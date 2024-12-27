@@ -31,7 +31,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
 
         // Assert
         var returnedClient = await response.DeserializedContentAsync<ResponseClientDto>();
-        response.EnsureSuccessStatusCode();
+        response.Should().HaveStatusCode(HttpStatusCode.Created);
         response.Should().HaveJsonContentType();
         returnedClient.Should().BeEquivalentTo(fixture.ResponseClientDtoStub, options => options.Excluding(c => c.Id));
         returnedClient!.Id.Should().BeGreaterThan(0);

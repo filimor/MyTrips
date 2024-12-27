@@ -16,6 +16,7 @@ public sealed class ClientsManagementFixture
     public Client ClientStub = null!;
     public CreateClientDto CreateClientDtoStub = null!;
     public ResponseClientDto ResponseClientDtoStub = null!;
+    public UpdateClientDto UpdateClientDtoStub = null!;
 
     public ClientsManagementFixture()
     {
@@ -24,9 +25,7 @@ public sealed class ClientsManagementFixture
         SetupMocks();
     }
 
-    public UpdateClientDto UpdateClientDtoStub { get; set; } = null!;
-
-
+    // TODO: Check whether this method is still necessary
     private static void SetCulture()
     {
         CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;

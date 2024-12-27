@@ -1,4 +1,3 @@
-
 using FluentResults;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
@@ -100,7 +99,15 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
             return new BadRequestObjectResult(errorDetails);
         }
 
-        return NoContent();
+        var requestResult = await clientsService.UpdateClientAsync(updateClientDto);
+
+        //if (requestResult.IsFailed)
+        //{
+        //    var errorDetails = new ConflictErrorDetails(HttpContext, requestResult.ToResult());
+        //    return new ConflictObjectResult(errorDetails);
+        //}
+
+        return Ok(requestResult.Value);
     }
 
     private static Result ValidateInputId(int id)
