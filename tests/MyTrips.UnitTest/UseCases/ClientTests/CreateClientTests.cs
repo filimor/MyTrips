@@ -104,11 +104,33 @@ public class CreateClientTests
             .Which.Errors.Should().ContainMatch($"*{nameof(Client.Name)}*");
     }
 
-    //[Fact]
-    //[Trait("Category", "Unit")]
-    //public async Task GivenInvalidEmail_WhenCreateClient_ThenItShouldReturnFailResultObjectWithTheErrors()
-    //{
-    //}
+    [Theory]
+    [ClassData(typeof(InvalidEmailClassData))]
+    [Trait("Category", "Unit")]
+    public async Task GivenInvalidEmail_WhenCreateClient_ThenItShouldReturnFailResultObjectWithTheErrors(string email)
+    {
+        // Arrange
+        _requestClientDto.Email = email;
+        var clientServiceMock = new Mock<IClientsService>();
+
+        var httpContext = new DefaultHttpContext();
+        var controllerContext = new ControllerContext
+        {
+            HttpContext = httpContext
+        };
+        var controller = new ClientsController(clientServiceMock.Object, new ClientValidator())
+        {
+            ControllerContext = controllerContext
+        };
+
+        // Act
+        var response = await controller.Post(_requestClientDto);
+
+        // Assert
+        response.Should().BeOfType<BadRequestObjectResult>()
+            .Which.Value.Should().BeOfType<BadRequestErrorDetails>()
+            .Which.Errors.Should().ContainMatch($"*{nameof(Client.Email)}*");
+    }
 
     //[Fact]
     //[Trait("Category", "Unit")]
