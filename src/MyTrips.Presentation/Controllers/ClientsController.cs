@@ -14,8 +14,8 @@ namespace MyTrips.Presentation.Controllers;
 public class ClientsController(IClientsService clientsService, IValidator<Client> validator) : ControllerBase
 {
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<ResponseClientDto>), StatusCodes.Status200OK)]
-    [ProducesDefaultResponseType]
+    [ProducesResponseType<IEnumerable<ResponseClientDto>>(StatusCodes.Status200OK)]
+    [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult> Get()
     {
         var result = await clientsService.GetClientsAsync();
@@ -24,11 +24,11 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     }
 
     [HttpGet("{id:int}")]
-    [ProducesResponseType(typeof(ResponseClientDto), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status404NotFound)]
-    [ProducesDefaultResponseType]
-    public async Task<ActionResult> Get(int id)
+    [ProducesResponseType<ResponseClientDto>(StatusCodes.Status200OK)]
+    [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType<ErrorDetails>(StatusCodes.Status404NotFound)]
+    [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
+    public async Task<ActionResult> Get([FromRoute] int id)
     {
         var validationResult = ValidateInputId(id);
 
@@ -50,11 +50,11 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     }
 
     [HttpPost]
-    [ProducesResponseType(typeof(ResponseClientDto), StatusCodes.Status201Created)]
-    [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status409Conflict)]
-    [ProducesDefaultResponseType]
-    public async Task<ActionResult> Post(CreateClientDto createClientDto)
+    [ProducesResponseType<ResponseClientDto>(StatusCodes.Status201Created)]
+    [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType<ErrorDetails>(StatusCodes.Status409Conflict)]
+    [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
+    public async Task<ActionResult> Post([FromBody] CreateClientDto createClientDto)
     {
         var client = new Client(createClientDto.Name, createClientDto.Email);
 
@@ -77,6 +77,29 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
         }
 
         return CreatedAtAction(nameof(Get), new { id = requestResult.Value.Id }, requestResult.Value);
+    }
+
+    [HttpPut]
+    [ProducesResponseType<ResponseClientDto>(StatusCodes.Status200OK)]
+    [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType<ErrorDetails>(StatusCodes.Status404NotFound)]
+    [ProducesResponseType<ErrorDetails>(StatusCodes.Status409Conflict)]
+    [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
+    public async Task<ActionResult> Put([FromBody] UpdateClientDto updateClientDto)
+    {
+        var client = new Client(updateClientDto.Id, updateClientDto.Name, updateClientDto.Email);
+
+        var validationResult = await validator.ValidateAsync(client);
+
+        if (!validationResult.IsValid)
+        {
+            var errors = validationResult.Errors.Select(e => new Error(e.ErrorMessage));
+            var resultObject = Result.Fail(errors);
+            var errorDetails = new BadRequestErrorDetails(HttpContext, resultObject);
+            return new BadRequestObjectResult(errorDetails);
+        }
+
+        return NoContent();
     }
 
     private static Result ValidateInputId(int id)

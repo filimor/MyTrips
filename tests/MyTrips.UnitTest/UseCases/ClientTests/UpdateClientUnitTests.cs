@@ -1,8 +1,15 @@
 ﻿using FluentAssertions;
 using FluentResults;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
+using MyTrips.Application.Interfaces;
 using MyTrips.Application.Services;
+using MyTrips.Application.Validators;
 using MyTrips.Domain.Entities;
+using MyTrips.Presentation.Controllers;
+using MyTrips.Presentation.Errors;
+using MyTrips.UnitTest.ClassData;
 using MyTrips.UnitTest.Fixtures;
 
 namespace MyTrips.UnitTest.UseCases.ClientTests;
@@ -27,65 +34,92 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
         clientResult.Should().BeEquivalentTo(testResult);
     }
 
-    [Fact]
+    [Theory]
     [Trait("Category", "Unit")]
-    public async Task GivenAnExistingClient_WhenUpdateWithInvalidName_ThenItShouldReturnFailResultObjectWithTheErrors()
+    [ClassData(typeof(InvalidStringClassData))]
+    public async Task GivenAnExistingClient_WhenUpdateWithInvalidName_ThenItShouldReturnFailResultObjectWithTheErrors(
+        string name)
     {
+        // Arrange
+        fixture.UpdateClientDtoStub.Name = name;
+        var clientServiceMock = new Mock<IClientsService>();
+
+        var httpContext = new DefaultHttpContext();
+        var controllerContext = new ControllerContext
+        {
+            HttpContext = httpContext
+        };
+        var controller = new ClientsController(clientServiceMock.Object, new ClientValidator())
+        {
+            ControllerContext = controllerContext
+        };
+
+        // Act
+        var response = await controller.Put(fixture.UpdateClientDtoStub);
+
+        // Assert
+        response.Should().BeOfType<BadRequestObjectResult>()
+            .Which.Value.Should().BeOfType<BadRequestErrorDetails>()
+            .Which.Errors.Should().ContainMatch($"*{nameof(Client.Name)}*");
     }
 
-    [Fact]
-    [Trait("Category", "Unit")]
-    public async Task GivenAnExistingClient_WhenUpdateWithInvalidEmail_ThenItShouldReturnFailResultObjectWithTheErrors()
-    {
-    }
+    //[Theory]
+    //[Trait("Category", "Unit")]
+    //[ClassData(typeof(InvalidEmailClassData))]
+    //public async Task GivenAnExistingClient_WhenUpdateWithInvalidEmail_ThenItShouldReturnFailResultObjectWithTheErrors(
+    //    string email)
+    //{
+    //}
 
-    [Fact]
-    [Trait("Category", "Unit")]
-    public async Task
-        GivenAnExistingClient_WhenUpdateWithEmailOfOtherClient_ThenItShouldReturnFailResultObjectWithTheErrors()
-    {
-    }
+    //[Fact]
+    //[Trait("Category", "Unit")]
+    //public async Task
+    //    GivenAnExistingClient_WhenUpdateWithEmailOfOtherClient_ThenItShouldReturnFailResultObjectWithTheErrors()
+    //{
+    //}
 
-    [Fact]
-    [Trait("Category", "Unit")]
-    public async Task GivenNonExistingClient_WhenTryToUpdateIt_ThenItShouldReturnFailObjectResultWithErrors()
-    {
-    }
+    //[Fact]
+    //[Trait("Category", "Unit")]
+    //public async Task GivenNonExistingClient_WhenTryToUpdateIt_ThenItShouldReturnFailObjectResultWithErrors()
+    //{
+    //}
 
-    [Fact]
-    [Trait("Category", "Unit")]
-    public async Task GivenUpdateRequest_WhenRepositoryThrowException_ThenItShouldThrowTheException()
-    {
-    }
+    //[Fact]
+    //[Trait("Category", "Unit")]
+    //public async Task GivenUpdateRequest_WhenRepositoryThrowException_ThenItShouldThrowTheException()
+    //{
+    //}
 
-    [Fact]
-    [Trait("Category", "Unit")]
-    public async Task GivenAnExistingClient_WhenUpdateWithValidData_ThenItShouldNotPersistIt()
-    {
-    }
+    //[Fact]
+    //[Trait("Category", "Unit")]
+    //public async Task GivenAnExistingClient_WhenUpdateWithValidData_ThenItShouldNotPersistIt()
+    //{
+    //}
 
 
-    [Fact]
-    [Trait("Category", "Unit")]
-    public async Task GivenAnExistingClient_WhenTryToUpdateItWithInvalidName_ThenItShouldNotPersistIt()
-    {
-    }
+    //[Theory]
+    //[ClassData(typeof(InvalidStringClassData))]
+    //[Trait("Category", "Unit")]
+    //public async Task GivenAnExistingClient_WhenTryToUpdateItWithInvalidName_ThenItShouldNotPersistIt(string name)
+    //{
+    //}
 
-    [Fact]
-    [Trait("Category", "Unit")]
-    public async Task GivenAnExistingClient_WhenTryToUpdateItWithInvalidEmail_ThenItShouldNotPersistIt()
-    {
-    }
+    //[Theory]
+    //[ClassData(typeof(InvalidEmailClassData))]
+    //[Trait("Category", "Unit")]
+    //public async Task GivenAnExistingClient_WhenTryToUpdateItWithInvalidEmail_ThenItShouldNotPersistIt(string email)
+    //{
+    //}
 
-    [Fact]
-    [Trait("Category", "Unit")]
-    public async Task GivenAnExistingClient_WhenTryToUpdateItWithEmailOfOtherClient_ThenItShouldNotPersistIt()
-    {
-    }
+    //[Fact]
+    //[Trait("Category", "Unit")]
+    //public async Task GivenAnExistingClient_WhenTryToUpdateItWithEmailOfOtherClient_ThenItShouldNotPersistIt()
+    //{
+    //}
 
-    [Fact]
-    [Trait("Category", "Unit")]
-    public async Task GivenNonExistingClient_WhenTryToUpdateIt_ThenItShouldNotPersistIt()
-    {
-    }
+    //[Fact]
+    //[Trait("Category", "Unit")]
+    //public async Task GivenNonExistingClient_WhenTryToUpdateIt_ThenItShouldNotPersistIt()
+    //{
+    //}
 }
