@@ -63,14 +63,31 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Name)}*");
     }
 
-    //[Theory]
-    //[Trait("Category", "Integration")]
-    //[ClassData(typeof(InvalidEmailClassData))]
-    //public async Task
-    //    GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(
-    //        string email)
-    //{
-    //}
+    [Theory]
+    [Trait("Category", "Integration")]
+    [ClassData(typeof(InvalidEmailClassData))]
+    public async Task
+        GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(
+            string email)
+    {
+        // Arrange
+        fixture.RequestClientDtoStub.Email = email;
+        var json = JsonConvert.SerializeObject(fixture.RequestClientDtoStub);
+        StringContent data = new(json, Encoding.UTF8, "application/json");
+        var request = new HttpRequestMessage(HttpMethod.Post, fixture.Endpoint)
+        {
+            Content = data
+        };
+
+        // Act
+        var response = await fixture.DefaultHttpClient.SendAsync(request);
+
+        // Assert
+        var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
+        response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        response.Should().HaveProblemContentType();
+        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Email)}*");
+    }
 
     //[Fact]
     //[Trait("Category", "Integration")]
