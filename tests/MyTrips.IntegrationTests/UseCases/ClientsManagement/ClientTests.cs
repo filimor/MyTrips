@@ -119,6 +119,7 @@ public class ClientTests : IDisposable
         var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
         response.Should().HaveStatusCode(HttpStatusCode.NotFound);
         response.Content.Headers.ContentType?.ToString().Should().Be("application/problem+json; charset=utf-8");
-        errorDetails!.Errors.Should().Contain($"Client with id '{nonExistentId}' not found.");
+        errorDetails!.Errors.Should()
+            .Contain($"{nameof(Client)} with {nameof(Client.Id)} '{nonExistentId}' not found.");
     }
 }
