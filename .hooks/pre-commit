@@ -1,6 +1,8 @@
 #!/bin/sh
 exec 1>&2
 
+echo "Pre-commit hook started."
+
 dotnet test --filter "Category==Unit"
 
 if [ $? -ne 0 ]; then
@@ -15,5 +17,7 @@ then
     jb cleanupcode ../MyTrips.sln
     echo "$FILES" | xargs git add
 fi
+
+echo "Pre-commit hook started finished."
 
 exit 0

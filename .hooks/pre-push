@@ -1,6 +1,8 @@
 #!/bin/sh
 exec 1>&2
 
+echo "Pre-push hook started."
+
 FILES=$(git diff --cached --name-only --diff-filter=ACM -- "src/*.cs")
     if [ -n "$FILES" ]
     then
@@ -26,4 +28,9 @@ FILES=$(git diff --cached --name-only --diff-filter=ACM -- "src/*.cs")
         echo "Dotcover coverage failed."
         exit 1
     fi
+    
 fi
+
+echo "Pre-push hook started finished."
+
+exit 0

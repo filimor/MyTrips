@@ -15,23 +15,32 @@ public class ClientsRepository(IConfiguration configuration) : IClientsRepositor
     public async Task<IEnumerable<Client>> GetAsync()
     {
         await using SqlConnection connection = new(ConnectionString);
+
         return await connection.QueryAllAsync<Client>();
     }
 
     public async Task<Client?> GetAsync(int id)
     {
         await using SqlConnection connection = new(ConnectionString);
+
         var clients = await connection.QueryAsync<Client>(e => e.Id == id);
+
         return clients.FirstOrDefault();
     }
 
-    public Task<int> AddAsync(Client client)
+    public async Task<int> AddAsync(Client client)
     {
-        throw new NotImplementedException();
+        await using SqlConnection connection = new(ConnectionString);
+
+        var id = await connection.InsertAsync<Client, int>(client);
+
+        return id;
     }
 
-    public Task<IEnumerable<Client>> FindAsync(Expression<Func<Client, bool>> predicate)
+    public async Task<IEnumerable<Client>> FindAsync(Expression<Func<Client, bool>> predicate)
     {
-        throw new NotImplementedException();
+        await using SqlConnection connection = new(ConnectionString);
+
+        return await connection.QueryAsync(predicate);
     }
 }
