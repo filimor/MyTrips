@@ -89,10 +89,34 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Email)}*");
     }
 
-    //[Fact]
-    //[Trait("Category", "Integration")]
-    //public async Task
-    //    GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent()
-    //{
-    //}
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task
+        GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent()
+    {
+        // Arrange
+        var json = JsonConvert.SerializeObject(fixture.RequestClientDtoStub);
+        StringContent data = new(json, Encoding.UTF8, "application/json");
+        var request = new HttpRequestMessage(HttpMethod.Post, fixture.Endpoint)
+        {
+            Content = data
+        };
+        await fixture.DefaultHttpClient.SendAsync(request);
+
+        var requestWithSameEmail = new HttpRequestMessage(HttpMethod.Post, fixture.Endpoint)
+        {
+            Content = data
+        };
+
+        // Act
+
+        var response = await fixture.DefaultHttpClient.SendAsync(requestWithSameEmail);
+
+        // Assert
+        var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
+        response.StatusCode.Should().Be(HttpStatusCode.Conflict);
+        response.Should().HaveProblemContentType();
+        errorDetails!.Errors.Should()
+            .Contain($"Client with the Email '{fixture.RequestClientDtoStub.Email}' already exists.");
+    }
 }
