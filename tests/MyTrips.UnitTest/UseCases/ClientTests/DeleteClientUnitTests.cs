@@ -92,7 +92,17 @@ public class DeleteClientUnitTests(ClientsManagementFixture fixture)
 
     [Fact]
     [Trait("Category", "Unit")]
-    public async Task GivenNonExistingClient_WhenDeleteClient_ThenItShouldNotPersistAnyData()
+    public async Task GivenDeleteRequest_WhenRepositoryThrowException_ThenItShouldThrowTheException()
     {
+        // Arrange
+        const int testClientId = 1;
+        fixture.ClientsRepositoryMock.Setup(r => r.DeleteAsync(testClientId)).ThrowsAsync(new OutOfMemoryException());
+        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+
+        // Act
+        var act = async () => await clientsService.RemoveClientAsync(testClientId);
+
+        // Assert
+        await act.Should().ThrowAsync<OutOfMemoryException>();
     }
 }
