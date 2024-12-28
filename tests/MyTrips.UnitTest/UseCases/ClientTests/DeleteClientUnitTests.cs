@@ -80,6 +80,14 @@ public class DeleteClientUnitTests(ClientsManagementFixture fixture)
     [Trait("Category", "Unit")]
     public async Task GivenExistingClient_WhenDeleteClient_ThenItShouldPersistChanges()
     {
+        // Arrange
+        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+
+        // Act
+        await clientsService.RemoveClientAsync(fixture.ClientStub.Id);
+
+        // Assert
+        fixture.ClientsRepositoryMock.Verify(r => r.DeleteAsync(fixture.ClientStub.Id), Times.Once);
     }
 
     [Fact]
