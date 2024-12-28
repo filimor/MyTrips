@@ -224,11 +224,13 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     /// <response code="204">If the client was successful deleted</response>
     /// <response code="400">If the id is less than 1</response>
     /// <response code="404">If the client with the specified id is not found</response>
+    /// <response code="409">If the client is referenced by another entity</response>
     /// <response code="500">If an error occurs while processing the request</response>
     [HttpDelete("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status404NotFound)]
+    [ProducesResponseType<ErrorDetails>(StatusCodes.Status409Conflict)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
     [Produces("application/json")]
     public async Task<ActionResult> Delete([FromRoute] int id)
@@ -248,6 +250,12 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
             {
                 var errorDetails = new NotFoundErrorDetails(HttpContext, requestResult);
                 return new NotFoundObjectResult(errorDetails);
+            }
+
+            if (requestResult.Errors.Any(e => e is ConflictError))
+            {
+                var errorDetails = new ConflictErrorDetails(HttpContext, requestResult);
+                return new ConflictObjectResult(errorDetails);
             }
 
             return StatusCode(StatusCodes.Status500InternalServerError);
