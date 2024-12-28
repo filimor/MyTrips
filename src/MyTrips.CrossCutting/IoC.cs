@@ -42,5 +42,6 @@ public static class IoC
     private static void InjectServices(IServiceCollection services)
     {
         services.AddScoped<IClientsService, ClientsService>();
+        services.AddScoped<IAuthService, AuthService>();
     }
 }

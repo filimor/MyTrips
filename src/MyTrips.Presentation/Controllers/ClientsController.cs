@@ -1,5 +1,6 @@
 using FluentResults;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyTrips.Application.Dtos;
 using MyTrips.Application.Errors;
@@ -12,6 +13,7 @@ namespace MyTrips.Presentation.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class ClientsController(IClientsService clientsService, IValidator<Client> validator) : ControllerBase
 {
     /// <summary>Get all clients</summary>
@@ -47,12 +49,14 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     /// <returns>A client with the specified id</returns>
     /// <response code="200">Returns the client with the specified id</response>
     /// <response code="400">If the id is less than 1</response>
+    /// <response code="401">If the user is not authenticated</response>
     /// <response code="404">If the client with the specified id is not found</response>
     /// <response code="500">If an error occurs while processing the request</response>
     [HttpGet("{id:int}")]
     [ProducesResponseType<ResponseClientDto>(StatusCodes.Status200OK)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult> Get([FromRoute] int id)
     {
@@ -98,11 +102,13 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     /// <returns>The newly created client</returns>
     /// <response code="201">Returns the newly created client</response>
     /// <response code="400">If any of the attributes are invalid</response>
+    /// <response code="401">If the user is not authenticated</response>
     /// <response code="409">If a client with the same email already exist</response>
     /// <response code="500">If an error occurs while processing the request</response>
     [HttpPost]
     [ProducesResponseType<ResponseClientDto>(StatusCodes.Status201Created)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status409Conflict)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
     [Consumes("application/json")]
@@ -153,12 +159,14 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     /// <returns>The updated client</returns>
     /// <response code="200">Returns the updated client</response>
     /// <response code="400">If the id is less than 1 or any of the others attributes are invalid</response>
+    /// <response code="401">If the user is not authenticated</response>
     /// <response code="404">If the client with the specified id is not found</response>
     /// <response code="409">If a client with the same id already exist</response>
     /// <response code="500">If an error occurs while processing the request</response>
     [HttpPut]
     [ProducesResponseType<ResponseClientDto>(StatusCodes.Status200OK)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status404NotFound)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status409Conflict)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
@@ -219,12 +227,14 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     /// <returns>No content</returns>
     /// <response code="204">If the client was successful deleted</response>
     /// <response code="400">If the id is less than 1</response>
+    /// <response code="401">If the user is not authenticated</response>
     /// <response code="404">If the client with the specified id is not found</response>
     /// <response code="409">If the client is referenced by another entity</response>
     /// <response code="500">If an error occurs while processing the request</response>
     [HttpDelete("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status404NotFound)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status409Conflict)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
