@@ -43,8 +43,13 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
 
         if (requestResult.IsFailed)
         {
-            var errorDetails = new NotFoundErrorDetails(HttpContext, requestResult.ToResult());
-            return new NotFoundObjectResult(errorDetails);
+            if (requestResult.Errors.Any(e => e is NotFoundError))
+            {
+                var errorDetails = new NotFoundErrorDetails(HttpContext, requestResult.ToResult());
+                return new NotFoundObjectResult(errorDetails);
+            }
+
+            return StatusCode(StatusCodes.Status500InternalServerError);
         }
 
         return Ok(requestResult.Value);
@@ -73,8 +78,13 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
 
         if (requestResult.IsFailed)
         {
-            var errorDetails = new ConflictErrorDetails(HttpContext, requestResult.ToResult());
-            return new ConflictObjectResult(errorDetails);
+            if (requestResult.Errors.Any(e => e is ConflictError))
+            {
+                var errorDetails = new ConflictErrorDetails(HttpContext, requestResult.ToResult());
+                return new ConflictObjectResult(errorDetails);
+            }
+
+            return StatusCode(StatusCodes.Status500InternalServerError);
         }
 
         return CreatedAtAction(nameof(Get), new { id = requestResult.Value.Id }, requestResult.Value);
@@ -144,16 +154,18 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
             return new BadRequestObjectResult(errorDetails);
         }
 
-        //var requestResult = await clientsService.RemoveClientAsync(id);
-        //if (requestResult.IsFailed)
-        //{
-        //    if (requestResult.Errors.Any(e => e is NotFoundError))
-        //    {
-        //        var errorDetails = new NotFoundErrorDetails(HttpContext, requestResult);
-        //        return new NotFoundObjectResult(errorDetails);
-        //    }
-        //    return StatusCode(StatusCodes.Status500InternalServerError);
-        //}
+        var requestResult = await clientsService.RemoveClientAsync(id);
+
+        if (requestResult.IsFailed)
+        {
+            if (requestResult.Errors.Any(e => e is NotFoundError))
+            {
+                var errorDetails = new NotFoundErrorDetails(HttpContext, requestResult);
+                return new NotFoundObjectResult(errorDetails);
+            }
+
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
 
         return NoContent();
     }

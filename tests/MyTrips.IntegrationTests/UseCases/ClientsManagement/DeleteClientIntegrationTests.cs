@@ -60,6 +60,19 @@ public class DeleteClientIntegrationTests(ClientsManagementFixture fixture)
     public async Task
         GivenNonExistentClient_WhenRequestDeleteClient_ThenItShouldReturnNotFoundWithErrorsAndProblemHeader()
     {
+        // Arrange
+        var nonExistentId = int.MaxValue;
+        var request = new HttpRequestMessage(HttpMethod.Delete, $"{fixture.Endpoint}/{nonExistentId}");
+
+        // Act
+        var response = await fixture.DefaultHttpClient.SendAsync(request);
+
+        // Assert
+        var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
+        response.Should().HaveStatusCode(HttpStatusCode.NotFound);
+        response.Should().HaveProblemContentType();
+        errorDetails!.Errors.Should()
+            .Contain($"{nameof(Client)} with {nameof(Client.Id)} '{nonExistentId}' not found.");
     }
 
     [Fact]

@@ -53,8 +53,12 @@ public class ClientsRepository(IConfiguration configuration) : IClientsRepositor
         return await connection.QueryAsync(predicate);
     }
 
-    public Task<bool> DeleteAsync(int id)
+    public async Task<bool> DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        await using SqlConnection connection = new(ConnectionString);
+
+        var deletedRows = await connection.DeleteAsync<Client>(id);
+
+        return deletedRows > 0;
     }
 }
