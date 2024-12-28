@@ -128,7 +128,9 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
         fixture.UpdateClientDtoStub.Id = nonExistentId;
         var result =
             Result.Fail(new NotFoundError($"{nameof(Client)} with {nameof(Client.Id)} '{nonExistentId}' not found."));
-        fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(nonExistentId)).ReturnsAsync((Client)null!);
+        fixture.ClientsRepositoryMock.Setup(r => r.UpdateAsync(It.IsAny<Client>()))
+            .ReturnsAsync((Client)null!);
+
         var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
 
         // Act
@@ -191,22 +193,5 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
 
         // Assert
         clientResult.Should().BeEquivalentTo(testResult);
-    }
-
-    [Fact]
-    [Trait("Category", "Unit")]
-    public async Task GivenNonExistingClient_WhenTryToUpdateIt_ThenItShouldNotPersistIt()
-    {
-        // Arrange
-        const int nonExistentId = 100;
-        fixture.UpdateClientDtoStub.Id = nonExistentId;
-        fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(nonExistentId)).ReturnsAsync((Client)null!);
-        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
-
-        // Act
-        await clientsService.UpdateClientAsync(fixture.UpdateClientDtoStub);
-
-        // Assert
-        fixture.ClientsRepositoryMock.Verify(r => r.UpdateAsync(It.IsAny<Client>()), Times.Never);
     }
 }

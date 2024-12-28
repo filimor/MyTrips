@@ -106,5 +106,6 @@ public sealed class ClientsManagementFixture
         ClientsRepositoryMock.Setup(r => r.AddAsync(It.IsAny<Client>())).ReturnsAsync(ClientStub.Id);
         ClientsRepositoryMock.Setup(r => r.UpdateAsync(It.IsAny<Client>()))
             .ReturnsAsync((Client client) => client);
+        ClientsRepositoryMock.Setup(r => r.DeleteAsync(ClientStub.Id)).ReturnsAsync(true);
     }
 }
