@@ -18,18 +18,20 @@ using MyTrips.UnitTest.Fixtures;
 namespace MyTrips.UnitTest.UseCases.ClientTests;
 
 [Collection("ClientsManagementUnit")]
-public class GetClientUnitTests(ClientsManagementFixture fixture)
+public class GetClientUnitTests
 {
+    private readonly ClientsManagementFixture _fixture = new();
+
     [Fact]
     [Trait("Category", "Unit")]
     public async Task GivenExistingClients_WhenGetClients_ThenItShouldReturnOkResultObjectWithTheDtos()
     {
         // Arrange
-        fixture.ClientsRepositoryMock.Setup(r => r.GetAsync()).ReturnsAsync(fixture.ClientsCollectionStub);
+        _fixture.ClientsRepositoryMock.Setup(r => r.GetAsync()).ReturnsAsync(_fixture.ClientsCollectionStub);
         var fakeClientDtos =
-            fixture.MapperMock.Object.Map<IEnumerable<ResponseClientDto>>(fixture.ClientsCollectionStub);
+            _fixture.MapperMock.Object.Map<IEnumerable<ResponseClientDto>>(_fixture.ClientsCollectionStub);
         var testResult = Result.Ok(fakeClientDtos);
-        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
 
         // Act
         var clientsResult = await clientsService.GetClientsAsync();
@@ -43,8 +45,8 @@ public class GetClientUnitTests(ClientsManagementFixture fixture)
     public async Task GivenGetRequest_WhenRepositoryThrowException_ThenItShouldThrowTheException()
     {
         // Arrange
-        fixture.ClientsRepositoryMock.Setup(r => r.GetAsync()).ThrowsAsync(new OutOfMemoryException());
-        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+        _fixture.ClientsRepositoryMock.Setup(r => r.GetAsync()).ThrowsAsync(new OutOfMemoryException());
+        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
 
         // Act
         var act = async () => await clientsService.GetClientsAsync();
@@ -62,8 +64,8 @@ public class GetClientUnitTests(ClientsManagementFixture fixture)
         var testClient = new Client(1, "John Doe", "john.doe@example.com");
         var testClientDto = new ResponseClientDto
             { Id = testClient.Id, Name = testClient.Name, Email = testClient.Email };
-        fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(testClient.Id)).ReturnsAsync(testClient);
-        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+        _fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(testClient.Id)).ReturnsAsync(testClient);
+        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
 
         // Act
         var clientResult = await clientsService.GetClientByIdAsync(testClient.Id);
@@ -111,8 +113,8 @@ public class GetClientUnitTests(ClientsManagementFixture fixture)
         const int nonExistentId = 100;
         var result =
             Result.Fail(new NotFoundError($"{nameof(Client)} with {nameof(Client.Id)} '{nonExistentId}' not found."));
-        fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(nonExistentId)).ReturnsAsync((Client)null!);
-        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+        _fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(nonExistentId)).ReturnsAsync((Client)null!);
+        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
 
         // Act
         var response = await clientsService.GetClientByIdAsync(nonExistentId);
@@ -127,8 +129,8 @@ public class GetClientUnitTests(ClientsManagementFixture fixture)
     {
         // Arrange
         const int testClientId = 1;
-        fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(testClientId)).ThrowsAsync(new OutOfMemoryException());
-        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+        _fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(testClientId)).ThrowsAsync(new OutOfMemoryException());
+        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
 
         // Act
         var act = async () => await clientsService.GetClientByIdAsync(testClientId);

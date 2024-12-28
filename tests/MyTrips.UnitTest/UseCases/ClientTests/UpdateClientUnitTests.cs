@@ -18,18 +18,20 @@ using MyTrips.UnitTest.Fixtures;
 namespace MyTrips.UnitTest.UseCases.ClientTests;
 
 [Collection("ClientsManagementUnit")]
-public class UpdateClientUnitTests(ClientsManagementFixture fixture)
+public class UpdateClientUnitTests
 {
+    private readonly ClientsManagementFixture _fixture = new();
+
     [Fact]
     [Trait("Category", "Unit")]
     public async Task GivenAnExistingClient_WhenUpdateWithValidData_ThenItShouldReturnOkResultObjectWithUpdatedDto()
     {
         // Arrange
-        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
-        var testResult = Result.Ok(fixture.ResponseClientDtoStub);
+        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
+        var testResult = Result.Ok(_fixture.ResponseClientDtoStub);
 
         // Act
-        var clientResult = await clientsService.UpdateClientAsync(fixture.UpdateClientDtoStub);
+        var clientResult = await clientsService.UpdateClientAsync(_fixture.UpdateClientDtoStub);
 
         // Assert
         clientResult.Should().BeEquivalentTo(testResult);
@@ -42,7 +44,7 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
         string name)
     {
         // Arrange
-        fixture.UpdateClientDtoStub.Name = name;
+        _fixture.UpdateClientDtoStub.Name = name;
         var clientServiceMock = new Mock<IClientsService>();
 
         var httpContext = new DefaultHttpContext();
@@ -56,7 +58,7 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
         };
 
         // Act
-        var response = await controller.Put(fixture.UpdateClientDtoStub);
+        var response = await controller.Put(_fixture.UpdateClientDtoStub);
 
         // Assert
         response.Should().BeOfType<BadRequestObjectResult>()
@@ -71,7 +73,7 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
         string email)
     {
         // Arrange
-        fixture.UpdateClientDtoStub.Email = email;
+        _fixture.UpdateClientDtoStub.Email = email;
         var clientServiceMock = new Mock<IClientsService>();
 
         var httpContext = new DefaultHttpContext();
@@ -85,7 +87,7 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
         };
 
         // Act
-        var response = await controller.Put(fixture.UpdateClientDtoStub);
+        var response = await controller.Put(_fixture.UpdateClientDtoStub);
 
         // Assert
         response.Should().BeOfType<BadRequestObjectResult>()
@@ -102,19 +104,19 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
         var existingClient = new Faker<Client>()
             .RuleFor(c => c.Id, f => f.Random.Int())
             .RuleFor(c => c.Name, f => f.Name.FullName())
-            .RuleFor(c => c.Email, f => fixture.ClientStub.Email)
+            .RuleFor(c => c.Email, f => _fixture.ClientStub.Email)
             .Generate();
         var mockClientList = new List<Client> { existingClient };
-        fixture.ClientsRepositoryMock.Setup(r => r.FindAsync(It.IsAny<Expression<Func<Client, bool>>>()))
+        _fixture.ClientsRepositoryMock.Setup(r => r.FindAsync(It.IsAny<Expression<Func<Client, bool>>>()))
             .ReturnsAsync((Expression<Func<Client, bool>> predicate) =>
                 mockClientList.Where(predicate.Compile()));
-        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
         var testResult =
             Result.Fail(new ConflictError(
                 $"{nameof(Client)} with the {nameof(Client.Email)} '{existingClient.Email}' already exists."));
 
         // Act
-        var clientResult = await clientsService.UpdateClientAsync(fixture.UpdateClientDtoStub);
+        var clientResult = await clientsService.UpdateClientAsync(_fixture.UpdateClientDtoStub);
 
         // Assert
         clientResult.Should().BeEquivalentTo(testResult);
@@ -125,16 +127,16 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
     public async Task GivenNonExistingClient_WhenTryToUpdateIt_ThenItShouldReturnFailObjectResultWithErrors()
     {
         const int nonExistentId = 100;
-        fixture.UpdateClientDtoStub.Id = nonExistentId;
+        _fixture.UpdateClientDtoStub.Id = nonExistentId;
         var result =
             Result.Fail(new NotFoundError($"{nameof(Client)} with {nameof(Client.Id)} '{nonExistentId}' not found."));
-        fixture.ClientsRepositoryMock.Setup(r => r.UpdateAsync(It.IsAny<Client>()))
+        _fixture.ClientsRepositoryMock.Setup(r => r.UpdateAsync(It.IsAny<Client>()))
             .ReturnsAsync((Client)null!);
 
-        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
 
         // Act
-        var response = await clientsService.UpdateClientAsync(fixture.UpdateClientDtoStub);
+        var response = await clientsService.UpdateClientAsync(_fixture.UpdateClientDtoStub);
 
         // Assert
         response.Should().BeEquivalentTo(result);
@@ -145,12 +147,12 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
     public async Task GivenUpdateRequest_WhenRepositoryThrowException_ThenItShouldThrowTheException()
     {
         // Arrange
-        fixture.ClientsRepositoryMock.Setup(r => r.UpdateAsync(It.IsAny<Client>()))
+        _fixture.ClientsRepositoryMock.Setup(r => r.UpdateAsync(It.IsAny<Client>()))
             .ThrowsAsync(new OutOfMemoryException());
-        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
 
         // Act
-        var act = async () => await clientsService.UpdateClientAsync(fixture.UpdateClientDtoStub);
+        var act = async () => await clientsService.UpdateClientAsync(_fixture.UpdateClientDtoStub);
 
         // Assert
         await act.Should().ThrowAsync<OutOfMemoryException>();
@@ -161,13 +163,13 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
     public async Task GivenAnExistingClient_WhenUpdateWithValidData_ThenItShouldPersistIt()
     {
         // Arrange
-        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
 
         // Act
-        await clientsService.UpdateClientAsync(fixture.UpdateClientDtoStub);
+        await clientsService.UpdateClientAsync(_fixture.UpdateClientDtoStub);
 
         // Assert
-        fixture.ClientsRepositoryMock.Verify(r => r.UpdateAsync(It.IsAny<Client>()), Times.Once);
+        _fixture.ClientsRepositoryMock.Verify(r => r.UpdateAsync(It.IsAny<Client>()), Times.Once);
     }
 
     [Fact]
@@ -177,19 +179,19 @@ public class UpdateClientUnitTests(ClientsManagementFixture fixture)
         var existingClient = new Faker<Client>()
             .RuleFor(c => c.Id, f => f.Random.Int())
             .RuleFor(c => c.Name, f => f.Name.FullName())
-            .RuleFor(c => c.Email, f => fixture.ClientStub.Email)
+            .RuleFor(c => c.Email, f => _fixture.ClientStub.Email)
             .Generate();
         var mockClientList = new List<Client> { existingClient };
-        fixture.ClientsRepositoryMock.Setup(r => r.FindAsync(It.IsAny<Expression<Func<Client, bool>>>()))
+        _fixture.ClientsRepositoryMock.Setup(r => r.FindAsync(It.IsAny<Expression<Func<Client, bool>>>()))
             .ReturnsAsync((Expression<Func<Client, bool>> predicate) =>
                 mockClientList.Where(predicate.Compile()));
-        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
         var testResult =
             Result.Fail(new ConflictError(
                 $"{nameof(Client)} with the {nameof(Client.Email)} '{existingClient.Email}' already exists."));
 
         // Act
-        var clientResult = await clientsService.UpdateClientAsync(fixture.UpdateClientDtoStub);
+        var clientResult = await clientsService.UpdateClientAsync(_fixture.UpdateClientDtoStub);
 
         // Assert
         clientResult.Should().BeEquivalentTo(testResult);

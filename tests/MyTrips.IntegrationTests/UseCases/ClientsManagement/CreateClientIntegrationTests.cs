@@ -12,13 +12,14 @@ using Newtonsoft.Json;
 namespace MyTrips.IntegrationTests.UseCases.ClientsManagement;
 
 [Collection("ClientsManagementIntegration")]
-public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
+public class CreateClientIntegrationTests
 {
     [Fact]
     [Trait("Category", "Integration")]
     public async Task GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent()
     {
         // Arrange
+        using var fixture = new ClientsManagementFixture();
         var json = JsonConvert.SerializeObject(fixture.CreateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
         var request = new HttpRequestMessage(HttpMethod.Post, fixture.Endpoint)
@@ -45,6 +46,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
             string name)
     {
         // Arrange
+        using var fixture = new ClientsManagementFixture();
         fixture.CreateClientDtoStub.Name = name;
         var json = JsonConvert.SerializeObject(fixture.CreateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
@@ -71,6 +73,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
             string email)
     {
         // Arrange
+        using var fixture = new ClientsManagementFixture();
         fixture.CreateClientDtoStub.Email = email;
         var json = JsonConvert.SerializeObject(fixture.CreateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
@@ -95,6 +98,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent()
     {
         // Arrange
+        using var fixture = new ClientsManagementFixture();
         var json = JsonConvert.SerializeObject(fixture.CreateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
         var request = new HttpRequestMessage(HttpMethod.Post, fixture.Endpoint)
@@ -126,6 +130,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt(string name)
     {
         // Arrange
+        using var fixture = new ClientsManagementFixture();
         fixture.CreateClientDtoStub.Name = name;
         var json = JsonConvert.SerializeObject(fixture.CreateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
@@ -151,6 +156,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt(string email)
     {
         // Arrange
+        using var fixture = new ClientsManagementFixture();
         fixture.CreateClientDtoStub.Email = email;
         var json = JsonConvert.SerializeObject(fixture.CreateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
@@ -175,6 +181,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain()
     {
         // Arrange
+        using var fixture = new ClientsManagementFixture();
         var json = JsonConvert.SerializeObject(fixture.CreateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
         var request = new HttpRequestMessage(HttpMethod.Post, fixture.Endpoint)

@@ -15,17 +15,19 @@ using MyTrips.UnitTest.Fixtures;
 namespace MyTrips.UnitTest.UseCases.ClientTests;
 
 [Collection("ClientsManagementUnit")]
-public class DeleteClientUnitTests(ClientsManagementFixture fixture)
+public class DeleteClientUnitTests
 {
+    private readonly ClientsManagementFixture _fixture = new();
+
     [Fact]
     [Trait("Category", "Unit")]
     public async Task GivenExistingClient_WhenDeleteClient_ThenItShouldReturnOkResult()
     {
         // Arrange
-        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
 
         // Act
-        var requestResult = await clientsService.RemoveClientAsync(fixture.ClientStub.Id);
+        var requestResult = await clientsService.RemoveClientAsync(_fixture.ClientStub.Id);
 
         // Assert
         requestResult.Should().BeEquivalentTo(Result.Ok());
@@ -65,15 +67,15 @@ public class DeleteClientUnitTests(ClientsManagementFixture fixture)
     public async Task GivenNonExistingClient_WhenDeleteClient_ThenItShouldReturnFailResultWithNotFoundError()
     {
         // Arrange
-        fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(fixture.ClientStub.Id)).ReturnsAsync((Client)null!);
-        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+        _fixture.ClientsRepositoryMock.Setup(r => r.DeleteAsync(_fixture.ClientStub.Id)).ReturnsAsync(false);
+        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
 
         // Act
-        var requestResult = await clientsService.RemoveClientAsync(fixture.ClientStub.Id);
+        var requestResult = await clientsService.RemoveClientAsync(_fixture.ClientStub.Id);
 
         // Assert
         requestResult.Should().BeEquivalentTo(Result.Fail(new NotFoundError(
-            $"{nameof(Client)} with {nameof(Client.Id)} '{fixture.ClientStub.Id}' not found.")));
+            $"{nameof(Client)} with {nameof(Client.Id)} '{_fixture.ClientStub.Id}' not found.")));
     }
 
     [Fact]
@@ -81,13 +83,13 @@ public class DeleteClientUnitTests(ClientsManagementFixture fixture)
     public async Task GivenExistingClient_WhenDeleteClient_ThenItShouldPersistChanges()
     {
         // Arrange
-        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
 
         // Act
-        await clientsService.RemoveClientAsync(fixture.ClientStub.Id);
+        await clientsService.RemoveClientAsync(_fixture.ClientStub.Id);
 
         // Assert
-        fixture.ClientsRepositoryMock.Verify(r => r.DeleteAsync(fixture.ClientStub.Id), Times.Once);
+        _fixture.ClientsRepositoryMock.Verify(r => r.DeleteAsync(_fixture.ClientStub.Id), Times.Once);
     }
 
     [Fact]
@@ -96,8 +98,8 @@ public class DeleteClientUnitTests(ClientsManagementFixture fixture)
     {
         // Arrange
         const int testClientId = 1;
-        fixture.ClientsRepositoryMock.Setup(r => r.DeleteAsync(testClientId)).ThrowsAsync(new OutOfMemoryException());
-        var clientsService = new ClientsService(fixture.MapperMock.Object, fixture.ClientsRepositoryMock.Object);
+        _fixture.ClientsRepositoryMock.Setup(r => r.DeleteAsync(testClientId)).ThrowsAsync(new OutOfMemoryException());
+        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
 
         // Act
         var act = async () => await clientsService.RemoveClientAsync(testClientId);

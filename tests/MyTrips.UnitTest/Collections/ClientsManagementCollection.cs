@@ -1,8 +1,6 @@
-﻿using MyTrips.UnitTest.Fixtures;
-
-namespace MyTrips.UnitTest.Collections;
+﻿namespace MyTrips.UnitTest.Collections;
 
 [CollectionDefinition("ClientsManagementUnit")]
-public class ClientsManagementCollection : ICollectionFixture<ClientsManagementFixture>
+public class ClientsManagementCollection
 {
 }

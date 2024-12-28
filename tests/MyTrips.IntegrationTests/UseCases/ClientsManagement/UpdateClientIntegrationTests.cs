@@ -12,13 +12,14 @@ using Newtonsoft.Json;
 namespace MyTrips.IntegrationTests.UseCases.ClientsManagement;
 
 [Collection("ClientsManagementIntegration")]
-public class UpdateClientIntegrationTests(ClientsManagementFixture fixture)
+public class UpdateClientIntegrationTests
 {
     [Fact]
     [Trait("Category", "Integration")]
     public async Task GivenValidClientDto_WhenRequestedUpdateClient_ThenItShouldReturnSuccessWithHeadersAndContent()
     {
         // Arrange
+        using var fixture = new ClientsManagementFixture();
         var json = JsonConvert.SerializeObject(fixture.UpdateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
         var request = new HttpRequestMessage(HttpMethod.Put, fixture.Endpoint)
@@ -42,6 +43,7 @@ public class UpdateClientIntegrationTests(ClientsManagementFixture fixture)
         GivenClientDtoWithInvalidId_WhenRequestedUpdateClient_ThenItShouldReturnBadRequestWithHeadersAndContent()
     {
         // Arrange
+        using var fixture = new ClientsManagementFixture();
         fixture.UpdateClientDtoStub.Id = -1;
         var json = JsonConvert.SerializeObject(fixture.UpdateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
@@ -68,6 +70,7 @@ public class UpdateClientIntegrationTests(ClientsManagementFixture fixture)
             string name)
     {
         // Arrange
+        using var fixture = new ClientsManagementFixture();
         fixture.UpdateClientDtoStub.Name = name;
         var json = JsonConvert.SerializeObject(fixture.UpdateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
@@ -94,6 +97,7 @@ public class UpdateClientIntegrationTests(ClientsManagementFixture fixture)
             string email)
     {
         // Arrange
+        using var fixture = new ClientsManagementFixture();
         fixture.UpdateClientDtoStub.Email = email;
         var json = JsonConvert.SerializeObject(fixture.UpdateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
@@ -118,6 +122,7 @@ public class UpdateClientIntegrationTests(ClientsManagementFixture fixture)
         GivenClientDtoWithExistingEmail_WhenRequestedUpdateClient_ThenItShouldReturnConflictWithHeadersAndContent()
     {
         // Arrange
+        using var fixture = new ClientsManagementFixture();
         var json = JsonConvert.SerializeObject(fixture.UpdateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
         var request = new HttpRequestMessage(HttpMethod.Put, fixture.Endpoint)
@@ -148,6 +153,7 @@ public class UpdateClientIntegrationTests(ClientsManagementFixture fixture)
         GivenNonExistingClient_WhenRequestedUpdateClient_ThenItShouldReturnNotFoundWithHeadersAndContent()
     {
         // Arrange
+        using var fixture = new ClientsManagementFixture();
         const int nonExistentId = int.MaxValue;
         fixture.UpdateClientDtoStub.Id = nonExistentId;
         var json = JsonConvert.SerializeObject(fixture.UpdateClientDtoStub);
