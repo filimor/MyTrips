@@ -73,9 +73,14 @@ public class ClientsService(IMapper mapper, IClientsRepository clientsRepository
 
     public async Task<Result> RemoveClientAsync(int id)
     {
-        if (!await clientsRepository.DeleteAsync(id))
-            return Result.Fail(new NotFoundError($"{nameof(Client)} with {nameof(Client.Id)} '{id}' not found."));
+        var result = await clientsRepository.DeleteAsync(id);
 
-        return Result.Ok();
+        return result switch
+        {
+            0 => Result.Fail(new NotFoundError($"{nameof(Client)} with {nameof(Client.Id)} '{id}' not found.")),
+            -1 => Result.Fail(new ConflictError(
+                $"The {nameof(Client)} with {nameof(Client.Id)} '{id}' is referenced by another entity.")),
+            _ => Result.Ok()
+        };
     }
 }

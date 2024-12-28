@@ -73,6 +73,9 @@ try
         opt.SchemaFilter<SwaggerSchemaFilter>();
     });
 
+    //builder.Services.AddAuthorization();
+    //builder.Services.AddAuthentication("Bearer").AddJwtBearer();
+
     builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
     builder.Services.AddTransient<ExceptionHandlingMiddleware>();
     builder.Services.AddInfrastructure(builder.Configuration);

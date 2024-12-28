@@ -67,7 +67,7 @@ public class DeleteClientUnitTests
     public async Task GivenNonExistingClient_WhenDeleteClient_ThenItShouldReturnFailResultWithNotFoundError()
     {
         // Arrange
-        _fixture.ClientsRepositoryMock.Setup(r => r.DeleteAsync(_fixture.ClientStub.Id)).ReturnsAsync(false);
+        _fixture.ClientsRepositoryMock.Setup(r => r.DeleteAsync(_fixture.ClientStub.Id)).ReturnsAsync(0);
         var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
 
         // Act
@@ -106,5 +106,22 @@ public class DeleteClientUnitTests
 
         // Assert
         await act.Should().ThrowAsync<OutOfMemoryException>();
+    }
+
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task
+        GivenClientWithIdReferencedByForeignKey_WhenDeleteClient_ThenItShouldReturnFailResultWithConflictError()
+    {
+        // Arrange
+        _fixture.ClientsRepositoryMock.Setup(r => r.DeleteAsync(_fixture.ClientStub.Id)).ReturnsAsync(-1);
+        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
+
+        // Act
+        var requestResult = await clientsService.RemoveClientAsync(_fixture.ClientStub.Id);
+
+        // Assert
+        requestResult.Should().BeEquivalentTo(Result.Fail(new ConflictError(
+            $"The {nameof(Client)} with {nameof(Client.Id)} '{_fixture.ClientStub.Id}' is referenced by another entity.")));
     }
 }

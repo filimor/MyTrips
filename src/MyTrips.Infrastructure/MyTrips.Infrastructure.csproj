@@ -24,4 +24,8 @@
     <ProjectReference Include="..\MyTrips.Domain\MyTrips.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+
 </Project>
