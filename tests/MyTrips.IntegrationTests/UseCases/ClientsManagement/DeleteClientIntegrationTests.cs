@@ -79,5 +79,23 @@ public class DeleteClientIntegrationTests(ClientsManagementFixture fixture)
     [Trait("Category", "Integration")]
     public async Task GivenAnExistingClient_WhenRequestDeleteClient_ThenItShouldDeleteClientFromDatabase()
     {
+        var json = JsonConvert.SerializeObject(fixture.CreateClientDtoStub);
+        StringContent data = new(json, Encoding.UTF8, "application/json");
+        var createRequest = new HttpRequestMessage(HttpMethod.Post, fixture.Endpoint)
+        {
+            Content = data
+        };
+        var createResponse = await fixture.DefaultHttpClient.SendAsync(createRequest);
+        var returnedClient = await createResponse.DeserializedContentAsync<ResponseClientDto>();
+
+        var request = new HttpRequestMessage(HttpMethod.Delete, $"{fixture.Endpoint}/{returnedClient!.Id}");
+
+        // Act
+        await fixture.DefaultHttpClient.SendAsync(request);
+
+        // Assert
+        var getRequest = new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{returnedClient!.Id}");
+        var getResponse = await fixture.DefaultHttpClient.SendAsync(getRequest);
+        getResponse.StatusCode.Should().Be(HttpStatusCode.NotFound);
     }
 }
