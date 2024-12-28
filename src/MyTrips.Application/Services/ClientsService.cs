@@ -76,7 +76,8 @@ public class ClientsService(IMapper mapper, IClientsRepository clientsRepository
 
     public async Task<Result> RemoveClientAsync(int id)
     {
-        await clientsRepository.DeleteAsync(id);
+        if (!await clientsRepository.DeleteAsync(id))
+            return Result.Fail(new NotFoundError($"{nameof(Client)} with {nameof(Client.Id)} '{id}' not found."));
 
         return Result.Ok();
     }
