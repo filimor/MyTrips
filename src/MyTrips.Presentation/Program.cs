@@ -70,6 +70,8 @@ try
             }
         });
 
+        opt.OperationFilter<MediaTypeOperationFilter>();
+
         opt.SchemaFilter<SwaggerSchemaFilter>();
     });
 
@@ -95,20 +97,21 @@ try
 
     var app = builder.Build();
 
+    app.UseSerilogRequestLogging();
+
+    app.UseMiddleware<ExceptionHandlingMiddleware>();
+
     if (app.Environment.IsDevelopment())
     {
         app.UseSwagger();
         app.UseSwaggerUI();
     }
 
-    app.UseSerilogRequestLogging();
-    app.UseMiddleware<ExceptionHandlingMiddleware>();
     app.UseRequestLocalization(localizationOptions);
     app.UseHttpsRedirection();
     app.UseCors();
     app.UseAuthorization();
     app.MapControllers();
-
     app.Run();
 }
 catch (Exception ex)

@@ -45,7 +45,6 @@ public class DeleteClientIntegrationTests(ClientsManagementFixture fixture)
     public async Task GivenInvalidId_WhenRequestDeleteClient_ThenItShouldReturnBadRequestWithErrorsAndProblemHeader()
     {
         // Arrange
-
         var request = new HttpRequestMessage(HttpMethod.Delete, $"{fixture.Endpoint}/0");
 
         // Act

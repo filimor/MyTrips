@@ -28,7 +28,6 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     [HttpGet]
     [ProducesResponseType<IEnumerable<ResponseClientDto>>(StatusCodes.Status200OK)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
-    [Produces("application/json")]
     public async Task<ActionResult> Get()
     {
         var result = await clientsService.GetClientsAsync();
@@ -55,7 +54,6 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status404NotFound)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
-    [Produces("application/json")]
     public async Task<ActionResult> Get([FromRoute] int id)
     {
         var validationResult = ValidateInputId(id);
@@ -107,7 +105,6 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status409Conflict)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
-    [Produces("application/json")]
     [Consumes("application/json")]
     public async Task<ActionResult> Post([FromBody] CreateClientDto createClientDto)
     {
@@ -165,7 +162,6 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status404NotFound)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status409Conflict)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
-    [Produces("application/json")]
     [Consumes("application/json")]
     public async Task<ActionResult> Put([FromBody] UpdateClientDto updateClientDto)
     {
@@ -232,7 +228,6 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status404NotFound)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status409Conflict)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
-    [Produces("application/json")]
     public async Task<ActionResult> Delete([FromRoute] int id)
     {
         var validationResult = ValidateInputId(id);
