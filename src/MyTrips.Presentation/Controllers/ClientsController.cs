@@ -127,7 +127,7 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status404NotFound)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult> Delete([FromBody] int id)
+    public async Task<ActionResult> Delete([FromRoute] int id)
     {
         var validationResult = ValidateInputId(id);
         if (validationResult.IsFailed)
@@ -146,8 +146,8 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
         //    }
         //    return StatusCode(StatusCodes.Status500InternalServerError);
         //}
-        //return NoContent();
-        return Ok();
+
+        return NoContent();
     }
 
     private static Result ValidateInputId(int id)
