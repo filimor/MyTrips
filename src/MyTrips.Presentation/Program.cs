@@ -95,6 +95,14 @@ try
         SupportedUICultures = [defaultCulture]
     };
 
+    builder.Services.AddCors(options =>
+        options.AddDefaultPolicy(policy =>
+        {
+            policy.AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin();
+        }));
+
     var app = builder.Build();
 
     app.UseSerilogRequestLogging();
@@ -110,6 +118,7 @@ try
     app.UseRequestLocalization(localizationOptions);
     app.UseHttpsRedirection();
     app.UseCors();
+    app.UseRateLimiter();
     app.UseAuthorization();
     app.MapControllers();
     app.Run();

@@ -1,6 +1,7 @@
 using FluentResults;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using MyTrips.Application.Dtos;
 using MyTrips.Application.Errors;
@@ -13,6 +14,7 @@ namespace MyTrips.Presentation.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[EnableCors]
 [Authorize]
 public class ClientsController(IClientsService clientsService, IValidator<Client> validator) : ControllerBase
 {
