@@ -122,6 +122,34 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
         return Ok(requestResult.Value);
     }
 
+    [HttpDelete("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType<ErrorDetails>(StatusCodes.Status404NotFound)]
+    [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
+    public async Task<ActionResult> Delete([FromBody] int id)
+    {
+        var validationResult = ValidateInputId(id);
+        if (validationResult.IsFailed)
+        {
+            var errorDetails = new BadRequestErrorDetails(HttpContext, validationResult);
+            return new BadRequestObjectResult(errorDetails);
+        }
+
+        //var requestResult = await clientsService.RemoveClientAsync(id);
+        //if (requestResult.IsFailed)
+        //{
+        //    if (requestResult.Errors.Any(e => e is NotFoundError))
+        //    {
+        //        var errorDetails = new NotFoundErrorDetails(HttpContext, requestResult);
+        //        return new NotFoundObjectResult(errorDetails);
+        //    }
+        //    return StatusCode(StatusCodes.Status500InternalServerError);
+        //}
+        //return NoContent();
+        return Ok();
+    }
+
     private static Result ValidateInputId(int id)
     {
         var validationResult = InputValidator.ValidateId(id);
