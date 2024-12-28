@@ -88,6 +88,14 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult> Put([FromBody] UpdateClientDto updateClientDto)
     {
+        var idValidationResult = ValidateInputId(updateClientDto.Id);
+
+        if (idValidationResult.IsFailed)
+        {
+            var errorDetails = new BadRequestErrorDetails(HttpContext, idValidationResult);
+            return new BadRequestObjectResult(errorDetails);
+        }
+
         var client = new Client(updateClientDto.Id, updateClientDto.Name, updateClientDto.Email);
 
         var validationResult = await validator.ValidateAsync(client);

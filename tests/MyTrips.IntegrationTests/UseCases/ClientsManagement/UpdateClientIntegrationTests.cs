@@ -36,6 +36,30 @@ public class UpdateClientIntegrationTests(ClientsManagementFixture fixture)
         returnedClient.Should().BeEquivalentTo(fixture.ResponseClientDtoStub);
     }
 
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task
+        GivenClientDtoWithInvalidId_WhenRequestedUpdateClient_ThenItShouldReturnBadRequestWithHeadersAndContent()
+    {
+        // Arrange
+        fixture.UpdateClientDtoStub.Id = -1;
+        var json = JsonConvert.SerializeObject(fixture.UpdateClientDtoStub);
+        StringContent data = new(json, Encoding.UTF8, "application/json");
+        var request = new HttpRequestMessage(HttpMethod.Put, fixture.Endpoint)
+        {
+            Content = data
+        };
+
+        // Act
+        var response = await fixture.DefaultHttpClient.SendAsync(request);
+
+        // Assert
+        var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
+        response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        response.Should().HaveProblemContentType();
+        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Id)}*");
+    }
+
     [Theory]
     [Trait("Category", "Integration")]
     [ClassData(typeof(InvalidStringClassData))]
