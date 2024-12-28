@@ -14,9 +14,13 @@ namespace MyTrips.Presentation.Controllers;
 [ApiController]
 public class ClientsController(IClientsService clientsService, IValidator<Client> validator) : ControllerBase
 {
+    /// <summary>Get all clients</summary>
+    /// <returns>A list of all clients</returns>
     [HttpGet]
     [ProducesResponseType<IEnumerable<ResponseClientDto>>(StatusCodes.Status200OK)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
+    [ApiExplorerSettings(GroupName = "Clients")]
+    [Produces("application/json")]
     public async Task<ActionResult> Get()
     {
         var result = await clientsService.GetClientsAsync();
@@ -24,11 +28,16 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
         return Ok(result.Value);
     }
 
+    /// <summary>Get a client by id</summary>
+    /// <param name="id"> The id of the client to get</param>
+    /// <returns>A client with the specified id</returns>
     [HttpGet("{id:int}")]
     [ProducesResponseType<ResponseClientDto>(StatusCodes.Status200OK)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status404NotFound)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
+    [ApiExplorerSettings(GroupName = "Clients")]
+    [Produces("application/json")]
     public async Task<ActionResult> Get([FromRoute] int id)
     {
         var validationResult = ValidateInputId(id);
@@ -55,11 +64,17 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
         return Ok(requestResult.Value);
     }
 
+    /// <summary>Create a new client</summary>
+    /// <param name="createClientDto">The data to create a new client</param>
+    /// <returns>The newly created client</returns>
     [HttpPost]
     [ProducesResponseType<ResponseClientDto>(StatusCodes.Status201Created)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status409Conflict)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
+    [ApiExplorerSettings(GroupName = "Clients")]
+    [Consumes("application/json")]
+    [Produces("application/json")]
     public async Task<ActionResult> Post([FromBody] CreateClientDto createClientDto)
     {
         var client = new Client(createClientDto.Name, createClientDto.Email);
@@ -90,12 +105,19 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
         return CreatedAtAction(nameof(Get), new { id = requestResult.Value.Id }, requestResult.Value);
     }
 
+
+    /// <summary>Update a client</summary>
+    /// <param name="updateClientDto">The data to update a client</param>
+    /// <returns>The updated client</returns>
     [HttpPut]
     [ProducesResponseType<ResponseClientDto>(StatusCodes.Status200OK)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status404NotFound)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status409Conflict)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
+    [ApiExplorerSettings(GroupName = "Clients")]
+    [Consumes("application/json")]
+    [Produces("application/json")]
     public async Task<ActionResult> Put([FromBody] UpdateClientDto updateClientDto)
     {
         var idValidationResult = ValidateInputId(updateClientDto.Id);
@@ -140,11 +162,15 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
         return Ok(requestResult.Value);
     }
 
+    /// <summary>Delete a client</summary>
+    /// <param name="id">The id of the client to delete</param>
+    /// <returns>No content</returns>
     [HttpDelete("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status404NotFound)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
+    [ApiExplorerSettings(GroupName = "Clients")]
     public async Task<ActionResult> Delete([FromRoute] int id)
     {
         var validationResult = ValidateInputId(id);

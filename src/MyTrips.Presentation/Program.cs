@@ -2,6 +2,7 @@ using System.Globalization;
 using FluentValidation;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.OpenApi.Models;
 using MyTrips.Application.Validators;
 using MyTrips.CrossCutting;
 using MyTrips.Presentation.Filters;
@@ -22,7 +23,54 @@ try
 
     builder.Services.AddControllers(options => { options.Filters.Add(new ProblemHeaderFilter()); });
     builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
+    builder.Services.AddSwaggerGen(opt =>
+    {
+        opt.SwaggerDoc("default",
+            new OpenApiInfo
+            {
+                Title = "MyTrips API",
+                Contact = new OpenApiContact
+                {
+                    Email = "filimor@posteo.net", Name = "Filipe Moreira",
+                    Url = new Uri("https://mytrips.azurewebsites.net/")
+                },
+                Description = "MyTrips is an web service to manage data about trips and clients.", Version = "v0.1",
+                License = new OpenApiLicense
+                {
+                    Name = "MIT",
+                    Url = new Uri("https://opensource.org/licenses/MIT")
+                }
+            });
+
+        //var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        //var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+        //opt.IncludeXmlComments(xmlPath);
+
+        opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+            Name = "Authorization",
+            In = ParameterLocation.Header,
+            Description = "Copy 'Bearer ' + token",
+            Type = SecuritySchemeType.ApiKey
+        });
+
+        opt.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+            {
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                },
+                Array.Empty<string>()
+            }
+        });
+
+        opt.SchemaFilter<SwaggerSchemaFilter>();
+    });
 
     builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
     builder.Services.AddTransient<ExceptionHandlingMiddleware>();

@@ -21,7 +21,7 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <Dockerfile>..\..\Dockerfile</Dockerfile>
     <DockerfileContext>..\..</DockerfileContext>
-    <DocumentationFile></DocumentationFile>
+    <DocumentationFile>G:\repos\api-ploomes\src\MyTrips.Presentation\MyTrips.Presentation.xml</DocumentationFile>
     <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
   </PropertyGroup>
 

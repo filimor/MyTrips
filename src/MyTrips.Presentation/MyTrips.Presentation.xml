@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyTrips.Presentation</name>
+    </assembly>
+    <members>
+        <member name="M:MyTrips.Presentation.Controllers.ClientsController.Get">
+            <summary>Get all clients</summary>
+            <returns>A list of all clients</returns>
+        </member>
+        <member name="M:MyTrips.Presentation.Controllers.ClientsController.Get(System.Int32)">
+            <summary>Get a client by id</summary>
+            <param name="id"> The id of the client to get</param>
+            <returns>A client with the specified id</returns>
+        </member>
+        <member name="M:MyTrips.Presentation.Controllers.ClientsController.Post(MyTrips.Application.Dtos.CreateClientDto)">
+            <summary>Create a new client</summary>
+            <param name="createClientDto">The data to create a new client</param>
+            <returns>The newly created client</returns>
+        </member>
+        <member name="M:MyTrips.Presentation.Controllers.ClientsController.Put(MyTrips.Application.Dtos.UpdateClientDto)">
+            <summary>Update a client</summary>
+            <param name="updateClientDto">The data to update a client</param>
+            <returns>The updated client</returns>
+        </member>
+        <member name="M:MyTrips.Presentation.Controllers.ClientsController.Delete(System.Int32)">
+            <summary>Delete a client</summary>
+            <param name="id">The id of the client to delete</param>
+            <returns>No content</returns>
+        </member>
+        <member name="T:Program">
+            <summary>
+                Entrypoint
+            </summary>
+        </member>
+    </members>
+</doc>
