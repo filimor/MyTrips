@@ -10,4 +10,5 @@ public interface IClientsRepository
     Task<int> AddAsync(Client client);
     Task<Client?> UpdateAsync(Client client);
     Task<IEnumerable<Client>> FindAsync(Expression<Func<Client, bool>> predicate);
+    Task<bool> DeleteAsync(int id);
 }

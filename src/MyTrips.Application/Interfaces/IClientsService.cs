@@ -9,4 +9,5 @@ public interface IClientsService
     Task<Result<ResponseClientDto>> GetClientByIdAsync(int id);
     Task<Result<ResponseClientDto>> AddNewClientAsync(CreateClientDto dto);
     Task<Result<ResponseClientDto>> UpdateClientAsync(UpdateClientDto updateClientDto);
+    Task<Result> RemoveClientAsync(int id);
 }

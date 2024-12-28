@@ -52,4 +52,9 @@ public class ClientsRepository(IConfiguration configuration) : IClientsRepositor
 
         return await connection.QueryAsync(predicate);
     }
+
+    public Task<bool> DeleteAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
 }

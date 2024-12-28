@@ -73,4 +73,11 @@ public class ClientsService(IMapper mapper, IClientsRepository clientsRepository
 
         return Result.Ok(responseClientDto);
     }
+
+    public async Task<Result> RemoveClientAsync(int id)
+    {
+        await clientsRepository.DeleteAsync(id);
+
+        return Result.Ok();
+    }
 }
