@@ -6,27 +6,92 @@
     <members>
         <member name="M:MyTrips.Presentation.Controllers.ClientsController.Get">
             <summary>Get all clients</summary>
+            <remarks>
+            <b>Sample request:</b>
+            <br />
+            <pre>
+            GET /api/clients/
+            </pre>
+            </remarks>
             <returns>A list of all clients</returns>
+            <response code="200">Returns a list of all clients</response>
+            <response code="500">If an error occurs while processing the request</response>
         </member>
         <member name="M:MyTrips.Presentation.Controllers.ClientsController.Get(System.Int32)">
             <summary>Get a client by id</summary>
+            <remarks>
+            <b>Sample request:</b>
+            <br />
+            <pre>
+            GET /api/clients/1
+            </pre>
+            </remarks>
             <param name="id"> The id of the client to get</param>
             <returns>A client with the specified id</returns>
+            <response code="200">Returns the client with the specified id</response>
+            <response code="400">If the id is less than 1</response>
+            <response code="404">If the client with the specified id is not found</response>
+            <response code="500">If an error occurs while processing the request</response>
         </member>
         <member name="M:MyTrips.Presentation.Controllers.ClientsController.Post(MyTrips.Application.Dtos.CreateClientDto)">
             <summary>Create a new client</summary>
+            <remarks>
+            <b>Sample request:</b>
+            <br />
+            <pre>
+            <b>NOTE:</b> The e-mail must be unique.
+            <br />
+            POST /api/clients
+            {
+              "name": "John Doe",
+              "email": "john.doe@example.com"
+            }
+            </pre>
+            </remarks>
             <param name="createClientDto">The data to create a new client</param>
             <returns>The newly created client</returns>
+            <response code="201">Returns the newly created client</response>
+            <response code="400">If any of the attributes are invalid</response>
+            <response code="409">If a client with the same email already exist</response>
+            <response code="500">If an error occurs while processing the request</response>
         </member>
         <member name="M:MyTrips.Presentation.Controllers.ClientsController.Put(MyTrips.Application.Dtos.UpdateClientDto)">
             <summary>Update a client</summary>
+            <remarks>
+            <b>Sample request:</b>
+            <br />
+            <pre>
+            PUT /api/clients
+            {
+              "id": 1,
+              "name": "Jane Doe",
+              "email": "jane.doe@example.com"
+            }
+            </pre>
+            </remarks>
             <param name="updateClientDto">The data to update a client</param>
             <returns>The updated client</returns>
+            <response code="200">Returns the updated client</response>
+            <response code="400">If the id is less than 1 or any of the others attributes are invalid</response>
+            <response code="404">If the client with the specified id is not found</response>
+            <response code="409">If a client with the same id already exist</response>
+            <response code="500">If an error occurs while processing the request</response>
         </member>
         <member name="M:MyTrips.Presentation.Controllers.ClientsController.Delete(System.Int32)">
             <summary>Delete a client</summary>
+            <remarks>
+            <b>Sample request:</b>
+            <br />
+            <pre>
+            DELETE /api/clients/1
+            </pre>
+            </remarks>
             <param name="id">The id of the client to delete</param>
             <returns>No content</returns>
+            <response code="204">If the client was successful deleted</response>
+            <response code="400">If the id is less than 1</response>
+            <response code="404">If the client with the specified id is not found</response>
+            <response code="500">If an error occurs while processing the request</response>
         </member>
         <member name="T:Program">
             <summary>

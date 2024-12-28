@@ -9,14 +9,14 @@ using MyTrips.Presentation.Errors;
 namespace MyTrips.IntegrationTests.UseCases.ClientsManagement;
 
 [Collection("ClientsManagementIntegration")]
-public class GetClientIntegrationTests
+public class GetClientIntegrationTests(ClientsManagementFixture fixture)
 {
     [Fact]
     [Trait("Category", "Integration")]
     public async Task GivenClientsEndpoint_WhenRequestedGetClientWithoutId_ThenItShouldReturnOkWithHeadersAndContent()
     {
         // Arrange
-        using var fixture = new ClientsManagementFixture();
+
         var request = new HttpRequestMessage(HttpMethod.Get, fixture.Endpoint);
 
         // Act
@@ -36,7 +36,7 @@ public class GetClientIntegrationTests
         GivenExistingId_WhenRequestedGetClientWithId_ThenItShouldReturnOkWithHeadersAndContent()
     {
         // Arrange
-        using var fixture = new ClientsManagementFixture();
+
         const int existingId = 1;
         var request = new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{existingId}");
 
@@ -55,7 +55,7 @@ public class GetClientIntegrationTests
     public async Task GivenInvalidId_WhenRequestGetClientWithId_ThenItShouldReturnBadRequestWithHeadersAndContent()
     {
         // Arrange
-        using var fixture = new ClientsManagementFixture();
+
         const int invalidId = -1;
         const int minId = 1;
         var request = new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{invalidId}");
@@ -76,7 +76,7 @@ public class GetClientIntegrationTests
         GivenNonExistentClient_WhenRequestGetClientWithId_ThenItShouldReturnNotFoundWithHeadersAndContent()
     {
         // Arrange
-        using var fixture = new ClientsManagementFixture();
+
         const int nonExistentId = int.MaxValue;
         var request = new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{nonExistentId}");
 

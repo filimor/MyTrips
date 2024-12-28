@@ -1,0 +1,6 @@
+services:
+  mytrips.presentation:
+    image: ${DOCKER_REGISTRY-}mytripspresentation
+    build:
+      context: .
+      dockerfile: src/MyTrips.Presentation/Dockerfile

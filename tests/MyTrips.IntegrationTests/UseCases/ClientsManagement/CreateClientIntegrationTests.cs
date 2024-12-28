@@ -12,14 +12,13 @@ using Newtonsoft.Json;
 namespace MyTrips.IntegrationTests.UseCases.ClientsManagement;
 
 [Collection("ClientsManagementIntegration")]
-public class CreateClientIntegrationTests
+public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
 {
     [Fact]
     [Trait("Category", "Integration")]
     public async Task GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent()
     {
         // Arrange
-        using var fixture = new ClientsManagementFixture();
         var json = JsonConvert.SerializeObject(fixture.CreateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
         var request = new HttpRequestMessage(HttpMethod.Post, fixture.Endpoint)
@@ -46,7 +45,6 @@ public class CreateClientIntegrationTests
             string name)
     {
         // Arrange
-        using var fixture = new ClientsManagementFixture();
         fixture.CreateClientDtoStub.Name = name;
         var json = JsonConvert.SerializeObject(fixture.CreateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
@@ -73,7 +71,6 @@ public class CreateClientIntegrationTests
             string email)
     {
         // Arrange
-        using var fixture = new ClientsManagementFixture();
         fixture.CreateClientDtoStub.Email = email;
         var json = JsonConvert.SerializeObject(fixture.CreateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
@@ -98,7 +95,6 @@ public class CreateClientIntegrationTests
         GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent()
     {
         // Arrange
-        using var fixture = new ClientsManagementFixture();
         var json = JsonConvert.SerializeObject(fixture.CreateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
         var request = new HttpRequestMessage(HttpMethod.Post, fixture.Endpoint)
@@ -130,7 +126,6 @@ public class CreateClientIntegrationTests
         GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt(string name)
     {
         // Arrange
-        using var fixture = new ClientsManagementFixture();
         fixture.CreateClientDtoStub.Name = name;
         var json = JsonConvert.SerializeObject(fixture.CreateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
@@ -156,7 +151,6 @@ public class CreateClientIntegrationTests
         GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt(string email)
     {
         // Arrange
-        using var fixture = new ClientsManagementFixture();
         fixture.CreateClientDtoStub.Email = email;
         var json = JsonConvert.SerializeObject(fixture.CreateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
@@ -181,7 +175,6 @@ public class CreateClientIntegrationTests
         GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain()
     {
         // Arrange
-        using var fixture = new ClientsManagementFixture();
         var json = JsonConvert.SerializeObject(fixture.CreateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
         var request = new HttpRequestMessage(HttpMethod.Post, fixture.Endpoint)

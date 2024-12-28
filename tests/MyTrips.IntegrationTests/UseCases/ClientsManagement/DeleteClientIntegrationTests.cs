@@ -11,14 +11,14 @@ using Newtonsoft.Json;
 namespace MyTrips.IntegrationTests.UseCases.ClientsManagement;
 
 [Collection("ClientsManagementIntegration")]
-public class DeleteClientIntegrationTests
+public class DeleteClientIntegrationTests(ClientsManagementFixture fixture)
 {
     [Fact]
     [Trait("Category", "Integration")]
     public async Task GivenAnExistingClient_WhenRequestDeleteClient_ThenItShouldReturnNoContent()
     {
         // Arrange
-        using var fixture = new ClientsManagementFixture();
+
         var json = JsonConvert.SerializeObject(fixture.CreateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
         var createRequest = new HttpRequestMessage(HttpMethod.Post, fixture.Endpoint)
@@ -45,7 +45,7 @@ public class DeleteClientIntegrationTests
     public async Task GivenInvalidId_WhenRequestDeleteClient_ThenItShouldReturnBadRequestWithErrorsAndProblemHeader()
     {
         // Arrange
-        using var fixture = new ClientsManagementFixture();
+
         var request = new HttpRequestMessage(HttpMethod.Delete, $"{fixture.Endpoint}/0");
 
         // Act
@@ -64,7 +64,7 @@ public class DeleteClientIntegrationTests
         GivenNonExistentClient_WhenRequestDeleteClient_ThenItShouldReturnNotFoundWithErrorsAndProblemHeader()
     {
         // Arrange
-        using var fixture = new ClientsManagementFixture();
+
         var nonExistentId = int.MaxValue;
         var request = new HttpRequestMessage(HttpMethod.Delete, $"{fixture.Endpoint}/{nonExistentId}");
 
@@ -84,7 +84,7 @@ public class DeleteClientIntegrationTests
     public async Task GivenAnExistingClient_WhenRequestDeleteClient_ThenItShouldDeleteClientFromDatabase()
     {
         // Arrange
-        using var fixture = new ClientsManagementFixture();
+
         var json = JsonConvert.SerializeObject(fixture.CreateClientDtoStub);
         StringContent data = new(json, Encoding.UTF8, "application/json");
         var createRequest = new HttpRequestMessage(HttpMethod.Post, fixture.Endpoint)
