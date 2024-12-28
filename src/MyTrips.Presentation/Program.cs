@@ -1,8 +1,10 @@
 using System.Globalization;
 using System.Reflection;
+using System.Threading.RateLimiting;
 using FluentValidation;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.OpenApi.Models;
 using MyTrips.Application.Validators;
 using MyTrips.CrossCutting;
@@ -102,6 +104,18 @@ try
                 .AllowAnyMethod()
                 .AllowAnyOrigin();
         }));
+
+    builder.Services.AddRateLimiter(options =>
+    {
+        options.AddFixedWindowLimiter("default", limiterOptions =>
+        {
+            limiterOptions.PermitLimit = 30;
+            limiterOptions.Window = TimeSpan.FromSeconds(30);
+            limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+            limiterOptions.QueueLimit = 5;
+        });
+        options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+    });
 
     var app = builder.Build();
 

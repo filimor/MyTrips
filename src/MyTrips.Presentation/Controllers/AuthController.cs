@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using MyTrips.Application.Dtos;
 using MyTrips.Application.Interfaces;
 using MyTrips.Domain.Entities;
@@ -10,6 +11,7 @@ namespace MyTrips.Presentation.Controllers;
 
 [Route("api/[controller]")]
 [EnableCors]
+[EnableRateLimiting("default")]
 [ApiController]
 public class AuthController(IAuthService authService) : ControllerBase
 {
