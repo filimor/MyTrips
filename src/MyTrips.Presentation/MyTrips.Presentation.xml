@@ -4,6 +4,31 @@
         <name>MyTrips.Presentation</name>
     </assembly>
     <members>
+        <member name="M:MyTrips.Presentation.Controllers.AuthController.Login(MyTrips.Domain.Entities.LoginInfo)">
+            <summary>
+            Login
+            </summary>
+            <remarks>
+            <b>Sample request:</b>
+            <br />
+            <pre>
+            POST /Login
+            {
+              "username": "admin",
+              "password": "admin"
+            }
+            </pre>
+            </remarks>
+            <param name="loginInfo">
+            The login information
+            </param>
+            <returns>
+            The token
+            </returns>
+            <response code="200">Returns the token</response>
+            <response code="401">If the credentials are invalid</response>
+            <response code="500">If there was an internal server error</response>
+        </member>
         <member name="M:MyTrips.Presentation.Controllers.ClientsController.Get">
             <summary>Get all clients</summary>
             <remarks>
@@ -32,6 +57,7 @@
             <response code="400">If the id is less than 1</response>
             <response code="401">If the user is not authenticated</response>
             <response code="404">If the client with the specified id is not found</response>
+            <response code="429">If the user has sent too many requests in a short period</response>
             <response code="500">If an error occurs while processing the request</response>
         </member>
         <member name="M:MyTrips.Presentation.Controllers.ClientsController.Post(MyTrips.Application.Dtos.CreateClientDto)">
@@ -55,6 +81,7 @@
             <response code="400">If any of the attributes are invalid</response>
             <response code="401">If the user is not authenticated</response>
             <response code="409">If a client with the same email already exist</response>
+            <response code="429">If the user has sent too many requests in a short period</response>
             <response code="500">If an error occurs while processing the request</response>
         </member>
         <member name="M:MyTrips.Presentation.Controllers.ClientsController.Put(MyTrips.Application.Dtos.UpdateClientDto)">
@@ -78,6 +105,7 @@
             <response code="401">If the user is not authenticated</response>
             <response code="404">If the client with the specified id is not found</response>
             <response code="409">If a client with the same id already exist</response>
+            <response code="429">If the user has sent too many requests in a short period</response>
             <response code="500">If an error occurs while processing the request</response>
         </member>
         <member name="M:MyTrips.Presentation.Controllers.ClientsController.Delete(System.Int32)">
@@ -96,6 +124,7 @@
             <response code="401">If the user is not authenticated</response>
             <response code="404">If the client with the specified id is not found</response>
             <response code="409">If the client is referenced by another entity</response>
+            <response code="429">If the user has sent too many requests in a short period</response>
             <response code="500">If an error occurs while processing the request</response>
         </member>
         <member name="T:Program">
