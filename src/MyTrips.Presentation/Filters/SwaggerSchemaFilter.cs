@@ -1,4 +1,4 @@
-﻿using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models;
 using MyTrips.Application.Dtos;
 using MyTrips.Presentation.Errors;
 using Swashbuckle.AspNetCore.SwaggerGen;
