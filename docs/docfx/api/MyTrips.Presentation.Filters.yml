@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Presentation.Filters
+  commentId: N:MyTrips.Presentation.Filters
+  id: MyTrips.Presentation.Filters
+  children:
+  - MyTrips.Presentation.Filters.MediaTypeOperationFilter
+  - MyTrips.Presentation.Filters.ProblemHeaderFilter
+  - MyTrips.Presentation.Filters.SwaggerSchemaFilter
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.Presentation.Filters
+  nameWithType: MyTrips.Presentation.Filters
+  fullName: MyTrips.Presentation.Filters
+  type: Namespace
+  assemblies:
+  - MyTrips.Presentation
+references:
+- uid: MyTrips.Presentation.Filters.MediaTypeOperationFilter
+  commentId: T:MyTrips.Presentation.Filters.MediaTypeOperationFilter
+  href: MyTrips.Presentation.Filters.MediaTypeOperationFilter.html
+  name: MediaTypeOperationFilter
+  nameWithType: MediaTypeOperationFilter
+  fullName: MyTrips.Presentation.Filters.MediaTypeOperationFilter
+- uid: MyTrips.Presentation.Filters.ProblemHeaderFilter
+  commentId: T:MyTrips.Presentation.Filters.ProblemHeaderFilter
+  href: MyTrips.Presentation.Filters.ProblemHeaderFilter.html
+  name: ProblemHeaderFilter
+  nameWithType: ProblemHeaderFilter
+  fullName: MyTrips.Presentation.Filters.ProblemHeaderFilter
+- uid: MyTrips.Presentation.Filters.SwaggerSchemaFilter
+  commentId: T:MyTrips.Presentation.Filters.SwaggerSchemaFilter
+  href: MyTrips.Presentation.Filters.SwaggerSchemaFilter.html
+  name: SwaggerSchemaFilter
+  nameWithType: SwaggerSchemaFilter
+  fullName: MyTrips.Presentation.Filters.SwaggerSchemaFilter

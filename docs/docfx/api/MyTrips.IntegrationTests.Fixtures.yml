@@ -1,0 +1,54 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.IntegrationTests.Fixtures
+  commentId: N:MyTrips.IntegrationTests.Fixtures
+  id: MyTrips.IntegrationTests.Fixtures
+  children:
+  - MyTrips.IntegrationTests.Fixtures.ClientsManagementFixture
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.IntegrationTests.Fixtures
+  nameWithType: MyTrips.IntegrationTests.Fixtures
+  fullName: MyTrips.IntegrationTests.Fixtures
+  type: Namespace
+  assemblies:
+  - MyTrips.IntegrationTests
+references:
+- uid: MyTrips.IntegrationTests.Fixtures.ClientsManagementFixture
+  commentId: T:MyTrips.IntegrationTests.Fixtures.ClientsManagementFixture
+  parent: MyTrips.IntegrationTests.Fixtures
+  href: MyTrips.IntegrationTests.Fixtures.ClientsManagementFixture.html
+  name: ClientsManagementFixture
+  nameWithType: ClientsManagementFixture
+  fullName: MyTrips.IntegrationTests.Fixtures.ClientsManagementFixture
+- uid: MyTrips.IntegrationTests.Fixtures
+  commentId: N:MyTrips.IntegrationTests.Fixtures
+  href: MyTrips.html
+  name: MyTrips.IntegrationTests.Fixtures
+  nameWithType: MyTrips.IntegrationTests.Fixtures
+  fullName: MyTrips.IntegrationTests.Fixtures
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.IntegrationTests
+    name: IntegrationTests
+    href: MyTrips.IntegrationTests.html
+  - name: .
+  - uid: MyTrips.IntegrationTests.Fixtures
+    name: Fixtures
+    href: MyTrips.IntegrationTests.Fixtures.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.IntegrationTests
+    name: IntegrationTests
+    href: MyTrips.IntegrationTests.html
+  - name: .
+  - uid: MyTrips.IntegrationTests.Fixtures
+    name: Fixtures
+    href: MyTrips.IntegrationTests.Fixtures.html

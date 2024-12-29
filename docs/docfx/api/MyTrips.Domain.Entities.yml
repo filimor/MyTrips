@@ -1,0 +1,62 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Domain.Entities
+  commentId: N:MyTrips.Domain.Entities
+  id: MyTrips.Domain.Entities
+  children:
+  - MyTrips.Domain.Entities.Client
+  - MyTrips.Domain.Entities.LoginInfo
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.Domain.Entities
+  nameWithType: MyTrips.Domain.Entities
+  fullName: MyTrips.Domain.Entities
+  type: Namespace
+  assemblies:
+  - MyTrips.Domain
+references:
+- uid: MyTrips.Domain.Entities.Client
+  commentId: T:MyTrips.Domain.Entities.Client
+  parent: MyTrips.Domain.Entities
+  href: MyTrips.Domain.Entities.Client.html
+  name: Client
+  nameWithType: Client
+  fullName: MyTrips.Domain.Entities.Client
+- uid: MyTrips.Domain.Entities.LoginInfo
+  commentId: T:MyTrips.Domain.Entities.LoginInfo
+  parent: MyTrips.Domain.Entities
+  href: MyTrips.Domain.Entities.LoginInfo.html
+  name: LoginInfo
+  nameWithType: LoginInfo
+  fullName: MyTrips.Domain.Entities.LoginInfo
+- uid: MyTrips.Domain.Entities
+  commentId: N:MyTrips.Domain.Entities
+  href: MyTrips.html
+  name: MyTrips.Domain.Entities
+  nameWithType: MyTrips.Domain.Entities
+  fullName: MyTrips.Domain.Entities
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Domain
+    name: Domain
+    href: MyTrips.Domain.html
+  - name: .
+  - uid: MyTrips.Domain.Entities
+    name: Entities
+    href: MyTrips.Domain.Entities.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Domain
+    name: Domain
+    href: MyTrips.Domain.html
+  - name: .
+  - uid: MyTrips.Domain.Entities
+    name: Entities
+    href: MyTrips.Domain.Entities.html

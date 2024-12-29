@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.UnitTest.UseCases.AspNet
+  commentId: N:MyTrips.UnitTest.UseCases.AspNet
+  id: MyTrips.UnitTest.UseCases.AspNet
+  children:
+  - MyTrips.UnitTest.UseCases.AspNet.FilterTests
+  - MyTrips.UnitTest.UseCases.AspNet.MiddlewareTests
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.UnitTest.UseCases.AspNet
+  nameWithType: MyTrips.UnitTest.UseCases.AspNet
+  fullName: MyTrips.UnitTest.UseCases.AspNet
+  type: Namespace
+  assemblies:
+  - MyTrips.UnitTest
+references:
+- uid: MyTrips.UnitTest.UseCases.AspNet.FilterTests
+  commentId: T:MyTrips.UnitTest.UseCases.AspNet.FilterTests
+  href: MyTrips.UnitTest.UseCases.AspNet.FilterTests.html
+  name: FilterTests
+  nameWithType: FilterTests
+  fullName: MyTrips.UnitTest.UseCases.AspNet.FilterTests
+- uid: MyTrips.UnitTest.UseCases.AspNet.MiddlewareTests
+  commentId: T:MyTrips.UnitTest.UseCases.AspNet.MiddlewareTests
+  href: MyTrips.UnitTest.UseCases.AspNet.MiddlewareTests.html
+  name: MiddlewareTests
+  nameWithType: MiddlewareTests
+  fullName: MyTrips.UnitTest.UseCases.AspNet.MiddlewareTests

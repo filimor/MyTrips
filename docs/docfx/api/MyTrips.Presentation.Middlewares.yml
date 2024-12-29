@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Presentation.Middlewares
+  commentId: N:MyTrips.Presentation.Middlewares
+  id: MyTrips.Presentation.Middlewares
+  children:
+  - MyTrips.Presentation.Middlewares.ExceptionHandlingMiddleware
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.Presentation.Middlewares
+  nameWithType: MyTrips.Presentation.Middlewares
+  fullName: MyTrips.Presentation.Middlewares
+  type: Namespace
+  assemblies:
+  - MyTrips.Presentation
+references:
+- uid: MyTrips.Presentation.Middlewares.ExceptionHandlingMiddleware
+  commentId: T:MyTrips.Presentation.Middlewares.ExceptionHandlingMiddleware
+  href: MyTrips.Presentation.Middlewares.ExceptionHandlingMiddleware.html
+  name: ExceptionHandlingMiddleware
+  nameWithType: ExceptionHandlingMiddleware
+  fullName: MyTrips.Presentation.Middlewares.ExceptionHandlingMiddleware

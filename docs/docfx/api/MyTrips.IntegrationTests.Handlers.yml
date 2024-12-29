@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.IntegrationTests.Handlers
+  commentId: N:MyTrips.IntegrationTests.Handlers
+  id: MyTrips.IntegrationTests.Handlers
+  children:
+  - MyTrips.IntegrationTests.Handlers.LoggingHandler
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.IntegrationTests.Handlers
+  nameWithType: MyTrips.IntegrationTests.Handlers
+  fullName: MyTrips.IntegrationTests.Handlers
+  type: Namespace
+  assemblies:
+  - MyTrips.IntegrationTests
+references:
+- uid: MyTrips.IntegrationTests.Handlers.LoggingHandler
+  commentId: T:MyTrips.IntegrationTests.Handlers.LoggingHandler
+  href: MyTrips.IntegrationTests.Handlers.LoggingHandler.html
+  name: LoggingHandler
+  nameWithType: LoggingHandler
+  fullName: MyTrips.IntegrationTests.Handlers.LoggingHandler

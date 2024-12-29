@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Application.Validators
+  commentId: N:MyTrips.Application.Validators
+  id: MyTrips.Application.Validators
+  children:
+  - MyTrips.Application.Validators.ClientValidator
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.Application.Validators
+  nameWithType: MyTrips.Application.Validators
+  fullName: MyTrips.Application.Validators
+  type: Namespace
+  assemblies:
+  - MyTrips.Application
+references:
+- uid: MyTrips.Application.Validators.ClientValidator
+  commentId: T:MyTrips.Application.Validators.ClientValidator
+  href: MyTrips.Application.Validators.ClientValidator.html
+  name: ClientValidator
+  nameWithType: ClientValidator
+  fullName: MyTrips.Application.Validators.ClientValidator

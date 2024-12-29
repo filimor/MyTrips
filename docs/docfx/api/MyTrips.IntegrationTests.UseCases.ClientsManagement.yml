@@ -1,0 +1,44 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  commentId: N:MyTrips.IntegrationTests.UseCases.ClientsManagement
+  id: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  children:
+  - MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests
+  - MyTrips.IntegrationTests.UseCases.ClientsManagement.DeleteClientIntegrationTests
+  - MyTrips.IntegrationTests.UseCases.ClientsManagement.GetClientIntegrationTests
+  - MyTrips.IntegrationTests.UseCases.ClientsManagement.UpdateClientIntegrationTests
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  nameWithType: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  type: Namespace
+  assemblies:
+  - MyTrips.IntegrationTests
+references:
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests
+  commentId: T:MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests
+  href: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.html
+  name: CreateClientIntegrationTests
+  nameWithType: CreateClientIntegrationTests
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.DeleteClientIntegrationTests
+  commentId: T:MyTrips.IntegrationTests.UseCases.ClientsManagement.DeleteClientIntegrationTests
+  href: MyTrips.IntegrationTests.UseCases.ClientsManagement.DeleteClientIntegrationTests.html
+  name: DeleteClientIntegrationTests
+  nameWithType: DeleteClientIntegrationTests
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.DeleteClientIntegrationTests
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.GetClientIntegrationTests
+  commentId: T:MyTrips.IntegrationTests.UseCases.ClientsManagement.GetClientIntegrationTests
+  href: MyTrips.IntegrationTests.UseCases.ClientsManagement.GetClientIntegrationTests.html
+  name: GetClientIntegrationTests
+  nameWithType: GetClientIntegrationTests
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.GetClientIntegrationTests
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.UpdateClientIntegrationTests
+  commentId: T:MyTrips.IntegrationTests.UseCases.ClientsManagement.UpdateClientIntegrationTests
+  href: MyTrips.IntegrationTests.UseCases.ClientsManagement.UpdateClientIntegrationTests.html
+  name: UpdateClientIntegrationTests
+  nameWithType: UpdateClientIntegrationTests
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.UpdateClientIntegrationTests

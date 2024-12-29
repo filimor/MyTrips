@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.CrossCutting
+  commentId: N:MyTrips.CrossCutting
+  id: MyTrips.CrossCutting
+  children:
+  - MyTrips.CrossCutting.IoC
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.CrossCutting
+  nameWithType: MyTrips.CrossCutting
+  fullName: MyTrips.CrossCutting
+  type: Namespace
+  assemblies:
+  - MyTrips.CrossCutting
+references:
+- uid: MyTrips.CrossCutting.IoC
+  commentId: T:MyTrips.CrossCutting.IoC
+  href: MyTrips.CrossCutting.IoC.html
+  name: IoC
+  nameWithType: IoC
+  fullName: MyTrips.CrossCutting.IoC

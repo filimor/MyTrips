@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Presentation.Validators
+  commentId: N:MyTrips.Presentation.Validators
+  id: MyTrips.Presentation.Validators
+  children:
+  - MyTrips.Presentation.Validators.InputValidator
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.Presentation.Validators
+  nameWithType: MyTrips.Presentation.Validators
+  fullName: MyTrips.Presentation.Validators
+  type: Namespace
+  assemblies:
+  - MyTrips.Presentation
+references:
+- uid: MyTrips.Presentation.Validators.InputValidator
+  commentId: T:MyTrips.Presentation.Validators.InputValidator
+  href: MyTrips.Presentation.Validators.InputValidator.html
+  name: InputValidator
+  nameWithType: InputValidator
+  fullName: MyTrips.Presentation.Validators.InputValidator

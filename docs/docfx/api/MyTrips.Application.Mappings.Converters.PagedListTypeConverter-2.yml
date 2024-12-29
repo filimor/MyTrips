@@ -1,0 +1,675 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Application.Mappings.Converters.PagedListTypeConverter`2
+  commentId: T:MyTrips.Application.Mappings.Converters.PagedListTypeConverter`2
+  id: PagedListTypeConverter`2
+  parent: MyTrips.Application.Mappings.Converters
+  children:
+  - MyTrips.Application.Mappings.Converters.PagedListTypeConverter`2.Convert(MyTrips.Domain.ValueObjects.PagedList{`0},MyTrips.Domain.ValueObjects.PagedList{`1},AutoMapper.ResolutionContext)
+  langs:
+  - csharp
+  - vb
+  name: PagedListTypeConverter<TSource, TDestination>
+  nameWithType: PagedListTypeConverter<TSource, TDestination>
+  fullName: MyTrips.Application.Mappings.Converters.PagedListTypeConverter<TSource, TDestination>
+  type: Class
+  source:
+    remote:
+      path: src/MyTrips.Application/Mappings/Converters/PagedListTypeConverter.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: PagedListTypeConverter
+    path: ../../src/MyTrips.Application/Mappings/Converters/PagedListTypeConverter.cs
+    startLine: 5
+  assemblies:
+  - MyTrips.Application
+  namespace: MyTrips.Application.Mappings.Converters
+  syntax:
+    content: 'public class PagedListTypeConverter<TSource, TDestination> : ITypeConverter<PagedList<TSource>, PagedList<TDestination>>'
+    typeParameters:
+    - id: TSource
+    - id: TDestination
+    content.vb: Public Class PagedListTypeConverter(Of TSource, TDestination) Implements ITypeConverter(Of PagedList(Of TSource), PagedList(Of TDestination))
+  inheritance:
+  - System.Object
+  implements:
+  - AutoMapper.ITypeConverter{MyTrips.Domain.ValueObjects.PagedList{{TSource}},MyTrips.Domain.ValueObjects.PagedList{{TDestination}}}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: PagedListTypeConverter(Of TSource, TDestination)
+  fullName.vb: MyTrips.Application.Mappings.Converters.PagedListTypeConverter(Of TSource, TDestination)
+  name.vb: PagedListTypeConverter(Of TSource, TDestination)
+- uid: MyTrips.Application.Mappings.Converters.PagedListTypeConverter`2.Convert(MyTrips.Domain.ValueObjects.PagedList{`0},MyTrips.Domain.ValueObjects.PagedList{`1},AutoMapper.ResolutionContext)
+  commentId: M:MyTrips.Application.Mappings.Converters.PagedListTypeConverter`2.Convert(MyTrips.Domain.ValueObjects.PagedList{`0},MyTrips.Domain.ValueObjects.PagedList{`1},AutoMapper.ResolutionContext)
+  id: Convert(MyTrips.Domain.ValueObjects.PagedList{`0},MyTrips.Domain.ValueObjects.PagedList{`1},AutoMapper.ResolutionContext)
+  parent: MyTrips.Application.Mappings.Converters.PagedListTypeConverter`2
+  langs:
+  - csharp
+  - vb
+  name: Convert(PagedList<TSource>, PagedList<TDestination>, ResolutionContext)
+  nameWithType: PagedListTypeConverter<TSource, TDestination>.Convert(PagedList<TSource>, PagedList<TDestination>, ResolutionContext)
+  fullName: MyTrips.Application.Mappings.Converters.PagedListTypeConverter<TSource, TDestination>.Convert(MyTrips.Domain.ValueObjects.PagedList<TSource>, MyTrips.Domain.ValueObjects.PagedList<TDestination>, AutoMapper.ResolutionContext)
+  type: Method
+  source:
+    remote:
+      path: src/MyTrips.Application/Mappings/Converters/PagedListTypeConverter.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: Convert
+    path: ../../src/MyTrips.Application/Mappings/Converters/PagedListTypeConverter.cs
+    startLine: 8
+  assemblies:
+  - MyTrips.Application
+  namespace: MyTrips.Application.Mappings.Converters
+  summary: Performs conversion from source to destination type
+  example: []
+  syntax:
+    content: public PagedList<TDestination> Convert(PagedList<TSource> source, PagedList<TDestination> destination, ResolutionContext context)
+    parameters:
+    - id: source
+      type: MyTrips.Domain.ValueObjects.PagedList{{TSource}}
+      description: Source object
+    - id: destination
+      type: MyTrips.Domain.ValueObjects.PagedList{{TDestination}}
+      description: Destination object
+    - id: context
+      type: AutoMapper.ResolutionContext
+      description: Resolution context
+    return:
+      type: MyTrips.Domain.ValueObjects.PagedList{{TDestination}}
+      description: Destination object
+    content.vb: Public Function Convert(source As PagedList(Of TSource), destination As PagedList(Of TDestination), context As ResolutionContext) As PagedList(Of TDestination)
+  overload: MyTrips.Application.Mappings.Converters.PagedListTypeConverter`2.Convert*
+  implements:
+  - AutoMapper.ITypeConverter{MyTrips.Domain.ValueObjects.PagedList{{TSource}},MyTrips.Domain.ValueObjects.PagedList{{TDestination}}}.Convert(MyTrips.Domain.ValueObjects.PagedList{{TSource}},MyTrips.Domain.ValueObjects.PagedList{{TDestination}},AutoMapper.ResolutionContext)
+  nameWithType.vb: PagedListTypeConverter(Of TSource, TDestination).Convert(PagedList(Of TSource), PagedList(Of TDestination), ResolutionContext)
+  fullName.vb: MyTrips.Application.Mappings.Converters.PagedListTypeConverter(Of TSource, TDestination).Convert(MyTrips.Domain.ValueObjects.PagedList(Of TSource), MyTrips.Domain.ValueObjects.PagedList(Of TDestination), AutoMapper.ResolutionContext)
+  name.vb: Convert(PagedList(Of TSource), PagedList(Of TDestination), ResolutionContext)
+references:
+- uid: MyTrips.Application.Mappings.Converters
+  commentId: N:MyTrips.Application.Mappings.Converters
+  href: MyTrips.html
+  name: MyTrips.Application.Mappings.Converters
+  nameWithType: MyTrips.Application.Mappings.Converters
+  fullName: MyTrips.Application.Mappings.Converters
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Application
+    name: Application
+    href: MyTrips.Application.html
+  - name: .
+  - uid: MyTrips.Application.Mappings
+    name: Mappings
+    href: MyTrips.Application.Mappings.html
+  - name: .
+  - uid: MyTrips.Application.Mappings.Converters
+    name: Converters
+    href: MyTrips.Application.Mappings.Converters.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Application
+    name: Application
+    href: MyTrips.Application.html
+  - name: .
+  - uid: MyTrips.Application.Mappings
+    name: Mappings
+    href: MyTrips.Application.Mappings.html
+  - name: .
+  - uid: MyTrips.Application.Mappings.Converters
+    name: Converters
+    href: MyTrips.Application.Mappings.Converters.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: AutoMapper.ITypeConverter{MyTrips.Domain.ValueObjects.PagedList{{TSource}},MyTrips.Domain.ValueObjects.PagedList{{TDestination}}}
+  commentId: T:AutoMapper.ITypeConverter{MyTrips.Domain.ValueObjects.PagedList{`0},MyTrips.Domain.ValueObjects.PagedList{`1}}
+  parent: AutoMapper
+  definition: AutoMapper.ITypeConverter`2
+  name: ITypeConverter<PagedList<TSource>, PagedList<TDestination>>
+  nameWithType: ITypeConverter<PagedList<TSource>, PagedList<TDestination>>
+  fullName: AutoMapper.ITypeConverter<MyTrips.Domain.ValueObjects.PagedList<TSource>, MyTrips.Domain.ValueObjects.PagedList<TDestination>>
+  nameWithType.vb: ITypeConverter(Of PagedList(Of TSource), PagedList(Of TDestination))
+  fullName.vb: AutoMapper.ITypeConverter(Of MyTrips.Domain.ValueObjects.PagedList(Of TSource), MyTrips.Domain.ValueObjects.PagedList(Of TDestination))
+  name.vb: ITypeConverter(Of PagedList(Of TSource), PagedList(Of TDestination))
+  spec.csharp:
+  - uid: AutoMapper.ITypeConverter`2
+    name: ITypeConverter
+    isExternal: true
+  - name: <
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+  - name: <
+  - name: TSource
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+  - name: <
+  - name: TDestination
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: AutoMapper.ITypeConverter`2
+    name: ITypeConverter
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDestination
+  - name: )
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: AutoMapper.ITypeConverter`2
+  commentId: T:AutoMapper.ITypeConverter`2
+  isExternal: true
+  name: ITypeConverter<TSource, TDestination>
+  nameWithType: ITypeConverter<TSource, TDestination>
+  fullName: AutoMapper.ITypeConverter<TSource, TDestination>
+  nameWithType.vb: ITypeConverter(Of TSource, TDestination)
+  fullName.vb: AutoMapper.ITypeConverter(Of TSource, TDestination)
+  name.vb: ITypeConverter(Of TSource, TDestination)
+  spec.csharp:
+  - uid: AutoMapper.ITypeConverter`2
+    name: ITypeConverter
+    isExternal: true
+  - name: <
+  - name: TSource
+  - name: ','
+  - name: " "
+  - name: TDestination
+  - name: '>'
+  spec.vb:
+  - uid: AutoMapper.ITypeConverter`2
+    name: ITypeConverter
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: ','
+  - name: " "
+  - name: TDestination
+  - name: )
+- uid: AutoMapper
+  commentId: N:AutoMapper
+  isExternal: true
+  name: AutoMapper
+  nameWithType: AutoMapper
+  fullName: AutoMapper
+- uid: MyTrips.Application.Mappings.Converters.PagedListTypeConverter`2.Convert*
+  commentId: Overload:MyTrips.Application.Mappings.Converters.PagedListTypeConverter`2.Convert
+  href: MyTrips.Application.Mappings.Converters.PagedListTypeConverter-2.html#MyTrips_Application_Mappings_Converters_PagedListTypeConverter_2_Convert_MyTrips_Domain_ValueObjects_PagedList__0__MyTrips_Domain_ValueObjects_PagedList__1__AutoMapper_ResolutionContext_
+  name: Convert
+  nameWithType: PagedListTypeConverter<TSource, TDestination>.Convert
+  fullName: MyTrips.Application.Mappings.Converters.PagedListTypeConverter<TSource, TDestination>.Convert
+  nameWithType.vb: PagedListTypeConverter(Of TSource, TDestination).Convert
+  fullName.vb: MyTrips.Application.Mappings.Converters.PagedListTypeConverter(Of TSource, TDestination).Convert
+- uid: AutoMapper.ITypeConverter{MyTrips.Domain.ValueObjects.PagedList{{TSource}},MyTrips.Domain.ValueObjects.PagedList{{TDestination}}}.Convert(MyTrips.Domain.ValueObjects.PagedList{{TSource}},MyTrips.Domain.ValueObjects.PagedList{{TDestination}},AutoMapper.ResolutionContext)
+  commentId: M:AutoMapper.ITypeConverter{MyTrips.Domain.ValueObjects.PagedList{`0},MyTrips.Domain.ValueObjects.PagedList{`1}}.Convert(MyTrips.Domain.ValueObjects.PagedList{`0},MyTrips.Domain.ValueObjects.PagedList{`1},AutoMapper.ResolutionContext)
+  parent: AutoMapper.ITypeConverter{MyTrips.Domain.ValueObjects.PagedList{{TSource}},MyTrips.Domain.ValueObjects.PagedList{{TDestination}}}
+  definition: AutoMapper.ITypeConverter`2.Convert(`0,`1,AutoMapper.ResolutionContext)
+  name: Convert(PagedList<TSource>, PagedList<TDestination>, ResolutionContext)
+  nameWithType: ITypeConverter<PagedList<TSource>, PagedList<TDestination>>.Convert(PagedList<TSource>, PagedList<TDestination>, ResolutionContext)
+  fullName: AutoMapper.ITypeConverter<MyTrips.Domain.ValueObjects.PagedList<TSource>, MyTrips.Domain.ValueObjects.PagedList<TDestination>>.Convert(MyTrips.Domain.ValueObjects.PagedList<TSource>, MyTrips.Domain.ValueObjects.PagedList<TDestination>, AutoMapper.ResolutionContext)
+  nameWithType.vb: ITypeConverter(Of PagedList(Of TSource), PagedList(Of TDestination)).Convert(PagedList(Of TSource), PagedList(Of TDestination), ResolutionContext)
+  fullName.vb: AutoMapper.ITypeConverter(Of MyTrips.Domain.ValueObjects.PagedList(Of TSource), MyTrips.Domain.ValueObjects.PagedList(Of TDestination)).Convert(MyTrips.Domain.ValueObjects.PagedList(Of TSource), MyTrips.Domain.ValueObjects.PagedList(Of TDestination), AutoMapper.ResolutionContext)
+  name.vb: Convert(PagedList(Of TSource), PagedList(Of TDestination), ResolutionContext)
+  spec.csharp:
+  - uid: AutoMapper.ITypeConverter{MyTrips.Domain.ValueObjects.PagedList{`0},MyTrips.Domain.ValueObjects.PagedList{`1}}.Convert(MyTrips.Domain.ValueObjects.PagedList{`0},MyTrips.Domain.ValueObjects.PagedList{`1},AutoMapper.ResolutionContext)
+    name: Convert
+    isExternal: true
+  - name: (
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+  - name: <
+  - name: TSource
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+  - name: <
+  - name: TDestination
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: AutoMapper.ResolutionContext
+    name: ResolutionContext
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: AutoMapper.ITypeConverter{MyTrips.Domain.ValueObjects.PagedList{`0},MyTrips.Domain.ValueObjects.PagedList{`1}}.Convert(MyTrips.Domain.ValueObjects.PagedList{`0},MyTrips.Domain.ValueObjects.PagedList{`1},AutoMapper.ResolutionContext)
+    name: Convert
+    isExternal: true
+  - name: (
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDestination
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: AutoMapper.ResolutionContext
+    name: ResolutionContext
+    isExternal: true
+  - name: )
+- uid: MyTrips.Domain.ValueObjects.PagedList{{TSource}}
+  commentId: T:MyTrips.Domain.ValueObjects.PagedList{`0}
+  parent: MyTrips.Domain.ValueObjects
+  definition: MyTrips.Domain.ValueObjects.PagedList`1
+  name: PagedList<TSource>
+  nameWithType: PagedList<TSource>
+  fullName: MyTrips.Domain.ValueObjects.PagedList<TSource>
+  nameWithType.vb: PagedList(Of TSource)
+  fullName.vb: MyTrips.Domain.ValueObjects.PagedList(Of TSource)
+  name.vb: PagedList(Of TSource)
+  spec.csharp:
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+  - name: <
+  - name: TSource
+  - name: '>'
+  spec.vb:
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: )
+- uid: MyTrips.Domain.ValueObjects.PagedList{{TDestination}}
+  commentId: T:MyTrips.Domain.ValueObjects.PagedList{`1}
+  parent: MyTrips.Domain.ValueObjects
+  definition: MyTrips.Domain.ValueObjects.PagedList`1
+  name: PagedList<TDestination>
+  nameWithType: PagedList<TDestination>
+  fullName: MyTrips.Domain.ValueObjects.PagedList<TDestination>
+  nameWithType.vb: PagedList(Of TDestination)
+  fullName.vb: MyTrips.Domain.ValueObjects.PagedList(Of TDestination)
+  name.vb: PagedList(Of TDestination)
+  spec.csharp:
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+  - name: <
+  - name: TDestination
+  - name: '>'
+  spec.vb:
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDestination
+  - name: )
+- uid: AutoMapper.ResolutionContext
+  commentId: T:AutoMapper.ResolutionContext
+  parent: AutoMapper
+  isExternal: true
+  name: ResolutionContext
+  nameWithType: ResolutionContext
+  fullName: AutoMapper.ResolutionContext
+- uid: AutoMapper.ITypeConverter`2.Convert(`0,`1,AutoMapper.ResolutionContext)
+  commentId: M:AutoMapper.ITypeConverter`2.Convert(`0,`1,AutoMapper.ResolutionContext)
+  isExternal: true
+  name: Convert(TSource, TDestination, ResolutionContext)
+  nameWithType: ITypeConverter<TSource, TDestination>.Convert(TSource, TDestination, ResolutionContext)
+  fullName: AutoMapper.ITypeConverter<TSource, TDestination>.Convert(TSource, TDestination, AutoMapper.ResolutionContext)
+  nameWithType.vb: ITypeConverter(Of TSource, TDestination).Convert(TSource, TDestination, ResolutionContext)
+  fullName.vb: AutoMapper.ITypeConverter(Of TSource, TDestination).Convert(TSource, TDestination, AutoMapper.ResolutionContext)
+  spec.csharp:
+  - uid: AutoMapper.ITypeConverter`2.Convert(`0,`1,AutoMapper.ResolutionContext)
+    name: Convert
+    isExternal: true
+  - name: (
+  - name: TSource
+  - name: ','
+  - name: " "
+  - name: TDestination
+  - name: ','
+  - name: " "
+  - uid: AutoMapper.ResolutionContext
+    name: ResolutionContext
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: AutoMapper.ITypeConverter`2.Convert(`0,`1,AutoMapper.ResolutionContext)
+    name: Convert
+    isExternal: true
+  - name: (
+  - name: TSource
+  - name: ','
+  - name: " "
+  - name: TDestination
+  - name: ','
+  - name: " "
+  - uid: AutoMapper.ResolutionContext
+    name: ResolutionContext
+    isExternal: true
+  - name: )
+- uid: MyTrips.Domain.ValueObjects.PagedList`1
+  commentId: T:MyTrips.Domain.ValueObjects.PagedList`1
+  parent: MyTrips.Domain.ValueObjects
+  href: MyTrips.Domain.ValueObjects.PagedList-1.html
+  name: PagedList<T>
+  nameWithType: PagedList<T>
+  fullName: MyTrips.Domain.ValueObjects.PagedList<T>
+  nameWithType.vb: PagedList(Of T)
+  fullName.vb: MyTrips.Domain.ValueObjects.PagedList(Of T)
+  name.vb: PagedList(Of T)
+  spec.csharp:
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+    href: MyTrips.Domain.ValueObjects.PagedList-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+    href: MyTrips.Domain.ValueObjects.PagedList-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MyTrips.Domain.ValueObjects
+  commentId: N:MyTrips.Domain.ValueObjects
+  href: MyTrips.html
+  name: MyTrips.Domain.ValueObjects
+  nameWithType: MyTrips.Domain.ValueObjects
+  fullName: MyTrips.Domain.ValueObjects
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Domain
+    name: Domain
+    href: MyTrips.Domain.html
+  - name: .
+  - uid: MyTrips.Domain.ValueObjects
+    name: ValueObjects
+    href: MyTrips.Domain.ValueObjects.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Domain
+    name: Domain
+    href: MyTrips.Domain.html
+  - name: .
+  - uid: MyTrips.Domain.ValueObjects
+    name: ValueObjects
+    href: MyTrips.Domain.ValueObjects.html

@@ -1,0 +1,480 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Presentation.Errors.NotFoundErrorDetails
+  commentId: T:MyTrips.Presentation.Errors.NotFoundErrorDetails
+  id: NotFoundErrorDetails
+  parent: MyTrips.Presentation.Errors
+  children:
+  - MyTrips.Presentation.Errors.NotFoundErrorDetails.#ctor(Microsoft.AspNetCore.Http.HttpContext,FluentResults.Result,System.String)
+  langs:
+  - csharp
+  - vb
+  name: NotFoundErrorDetails
+  nameWithType: NotFoundErrorDetails
+  fullName: MyTrips.Presentation.Errors.NotFoundErrorDetails
+  type: Class
+  source:
+    remote:
+      path: src/MyTrips.Presentation/Errors/NotFoundErrorDetails.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: NotFoundErrorDetails
+    path: ../../src/MyTrips.Presentation/Errors/NotFoundErrorDetails.cs
+    startLine: 4
+  assemblies:
+  - MyTrips.Presentation
+  namespace: MyTrips.Presentation.Errors
+  syntax:
+    content: 'public class NotFoundErrorDetails : ErrorDetails'
+    content.vb: Public Class NotFoundErrorDetails Inherits ErrorDetails
+  inheritance:
+  - System.Object
+  - MyTrips.Presentation.Errors.ErrorDetails
+  inheritedMembers:
+  - MyTrips.Presentation.Errors.ErrorDetails.JsonSettings
+  - MyTrips.Presentation.Errors.ErrorDetails.Type
+  - MyTrips.Presentation.Errors.ErrorDetails.Title
+  - MyTrips.Presentation.Errors.ErrorDetails.Status
+  - MyTrips.Presentation.Errors.ErrorDetails.Detail
+  - MyTrips.Presentation.Errors.ErrorDetails.Errors
+  - MyTrips.Presentation.Errors.ErrorDetails.Instance
+  - MyTrips.Presentation.Errors.ErrorDetails.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: MyTrips.Presentation.Errors.NotFoundErrorDetails.#ctor(Microsoft.AspNetCore.Http.HttpContext,FluentResults.Result,System.String)
+  commentId: M:MyTrips.Presentation.Errors.NotFoundErrorDetails.#ctor(Microsoft.AspNetCore.Http.HttpContext,FluentResults.Result,System.String)
+  id: '#ctor(Microsoft.AspNetCore.Http.HttpContext,FluentResults.Result,System.String)'
+  parent: MyTrips.Presentation.Errors.NotFoundErrorDetails
+  langs:
+  - csharp
+  - vb
+  name: NotFoundErrorDetails(HttpContext, Result, string)
+  nameWithType: NotFoundErrorDetails.NotFoundErrorDetails(HttpContext, Result, string)
+  fullName: MyTrips.Presentation.Errors.NotFoundErrorDetails.NotFoundErrorDetails(Microsoft.AspNetCore.Http.HttpContext, FluentResults.Result, string)
+  type: Constructor
+  source:
+    remote:
+      path: src/MyTrips.Presentation/Errors/NotFoundErrorDetails.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: .ctor
+    path: ../../src/MyTrips.Presentation/Errors/NotFoundErrorDetails.cs
+    startLine: 6
+  assemblies:
+  - MyTrips.Presentation
+  namespace: MyTrips.Presentation.Errors
+  syntax:
+    content: public NotFoundErrorDetails(HttpContext context, Result validationResult, string detail = "The server cannot find the requested resource. This may be because the resource or any resources that it depends on does not exist, or the identifier was mistyped. Please check the sent data for errors.")
+    parameters:
+    - id: context
+      type: Microsoft.AspNetCore.Http.HttpContext
+    - id: validationResult
+      type: FluentResults.Result
+    - id: detail
+      type: System.String
+    content.vb: Public Sub New(context As HttpContext, validationResult As Result, detail As String = "The server cannot find the requested resource. This may be because the resource or any resources that it depends on does not exist, or the identifier was mistyped. Please check the sent data for errors.")
+  overload: MyTrips.Presentation.Errors.NotFoundErrorDetails.#ctor*
+  nameWithType.vb: NotFoundErrorDetails.New(HttpContext, Result, String)
+  fullName.vb: MyTrips.Presentation.Errors.NotFoundErrorDetails.New(Microsoft.AspNetCore.Http.HttpContext, FluentResults.Result, String)
+  name.vb: New(HttpContext, Result, String)
+references:
+- uid: MyTrips.Presentation.Errors
+  commentId: N:MyTrips.Presentation.Errors
+  href: MyTrips.html
+  name: MyTrips.Presentation.Errors
+  nameWithType: MyTrips.Presentation.Errors
+  fullName: MyTrips.Presentation.Errors
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Presentation
+    name: Presentation
+    href: MyTrips.Presentation.html
+  - name: .
+  - uid: MyTrips.Presentation.Errors
+    name: Errors
+    href: MyTrips.Presentation.Errors.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Presentation
+    name: Presentation
+    href: MyTrips.Presentation.html
+  - name: .
+  - uid: MyTrips.Presentation.Errors
+    name: Errors
+    href: MyTrips.Presentation.Errors.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MyTrips.Presentation.Errors.ErrorDetails
+  commentId: T:MyTrips.Presentation.Errors.ErrorDetails
+  parent: MyTrips.Presentation.Errors
+  href: MyTrips.Presentation.Errors.ErrorDetails.html
+  name: ErrorDetails
+  nameWithType: ErrorDetails
+  fullName: MyTrips.Presentation.Errors.ErrorDetails
+- uid: MyTrips.Presentation.Errors.ErrorDetails.JsonSettings
+  commentId: F:MyTrips.Presentation.Errors.ErrorDetails.JsonSettings
+  parent: MyTrips.Presentation.Errors.ErrorDetails
+  href: MyTrips.Presentation.Errors.ErrorDetails.html#MyTrips_Presentation_Errors_ErrorDetails_JsonSettings
+  name: JsonSettings
+  nameWithType: ErrorDetails.JsonSettings
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.JsonSettings
+- uid: MyTrips.Presentation.Errors.ErrorDetails.Type
+  commentId: P:MyTrips.Presentation.Errors.ErrorDetails.Type
+  parent: MyTrips.Presentation.Errors.ErrorDetails
+  href: MyTrips.Presentation.Errors.ErrorDetails.html#MyTrips_Presentation_Errors_ErrorDetails_Type
+  name: Type
+  nameWithType: ErrorDetails.Type
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.Type
+- uid: MyTrips.Presentation.Errors.ErrorDetails.Title
+  commentId: P:MyTrips.Presentation.Errors.ErrorDetails.Title
+  parent: MyTrips.Presentation.Errors.ErrorDetails
+  href: MyTrips.Presentation.Errors.ErrorDetails.html#MyTrips_Presentation_Errors_ErrorDetails_Title
+  name: Title
+  nameWithType: ErrorDetails.Title
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.Title
+- uid: MyTrips.Presentation.Errors.ErrorDetails.Status
+  commentId: P:MyTrips.Presentation.Errors.ErrorDetails.Status
+  parent: MyTrips.Presentation.Errors.ErrorDetails
+  href: MyTrips.Presentation.Errors.ErrorDetails.html#MyTrips_Presentation_Errors_ErrorDetails_Status
+  name: Status
+  nameWithType: ErrorDetails.Status
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.Status
+- uid: MyTrips.Presentation.Errors.ErrorDetails.Detail
+  commentId: P:MyTrips.Presentation.Errors.ErrorDetails.Detail
+  parent: MyTrips.Presentation.Errors.ErrorDetails
+  href: MyTrips.Presentation.Errors.ErrorDetails.html#MyTrips_Presentation_Errors_ErrorDetails_Detail
+  name: Detail
+  nameWithType: ErrorDetails.Detail
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.Detail
+- uid: MyTrips.Presentation.Errors.ErrorDetails.Errors
+  commentId: P:MyTrips.Presentation.Errors.ErrorDetails.Errors
+  parent: MyTrips.Presentation.Errors.ErrorDetails
+  href: MyTrips.Presentation.Errors.ErrorDetails.html#MyTrips_Presentation_Errors_ErrorDetails_Errors
+  name: Errors
+  nameWithType: ErrorDetails.Errors
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.Errors
+- uid: MyTrips.Presentation.Errors.ErrorDetails.Instance
+  commentId: P:MyTrips.Presentation.Errors.ErrorDetails.Instance
+  parent: MyTrips.Presentation.Errors.ErrorDetails
+  href: MyTrips.Presentation.Errors.ErrorDetails.html#MyTrips_Presentation_Errors_ErrorDetails_Instance
+  name: Instance
+  nameWithType: ErrorDetails.Instance
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.Instance
+- uid: MyTrips.Presentation.Errors.ErrorDetails.ToString
+  commentId: M:MyTrips.Presentation.Errors.ErrorDetails.ToString
+  parent: MyTrips.Presentation.Errors.ErrorDetails
+  href: MyTrips.Presentation.Errors.ErrorDetails.html#MyTrips_Presentation_Errors_ErrorDetails_ToString
+  name: ToString()
+  nameWithType: ErrorDetails.ToString()
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.ToString()
+  spec.csharp:
+  - uid: MyTrips.Presentation.Errors.ErrorDetails.ToString
+    name: ToString
+    href: MyTrips.Presentation.Errors.ErrorDetails.html#MyTrips_Presentation_Errors_ErrorDetails_ToString
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MyTrips.Presentation.Errors.ErrorDetails.ToString
+    name: ToString
+    href: MyTrips.Presentation.Errors.ErrorDetails.html#MyTrips_Presentation_Errors_ErrorDetails_ToString
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MyTrips.Presentation.Errors.NotFoundErrorDetails.#ctor*
+  commentId: Overload:MyTrips.Presentation.Errors.NotFoundErrorDetails.#ctor
+  href: MyTrips.Presentation.Errors.NotFoundErrorDetails.html#MyTrips_Presentation_Errors_NotFoundErrorDetails__ctor_Microsoft_AspNetCore_Http_HttpContext_FluentResults_Result_System_String_
+  name: NotFoundErrorDetails
+  nameWithType: NotFoundErrorDetails.NotFoundErrorDetails
+  fullName: MyTrips.Presentation.Errors.NotFoundErrorDetails.NotFoundErrorDetails
+  nameWithType.vb: NotFoundErrorDetails.New
+  fullName.vb: MyTrips.Presentation.Errors.NotFoundErrorDetails.New
+  name.vb: New
+- uid: Microsoft.AspNetCore.Http.HttpContext
+  commentId: T:Microsoft.AspNetCore.Http.HttpContext
+  parent: Microsoft.AspNetCore.Http
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.http.httpcontext
+  name: HttpContext
+  nameWithType: HttpContext
+  fullName: Microsoft.AspNetCore.Http.HttpContext
+- uid: FluentResults.Result
+  commentId: T:FluentResults.Result
+  parent: FluentResults
+  isExternal: true
+  name: Result
+  nameWithType: Result
+  fullName: FluentResults.Result
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Microsoft.AspNetCore.Http
+  commentId: N:Microsoft.AspNetCore.Http
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.AspNetCore.Http
+  nameWithType: Microsoft.AspNetCore.Http
+  fullName: Microsoft.AspNetCore.Http
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.Http
+    name: Http
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.http
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.Http
+    name: Http
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.http
+- uid: FluentResults
+  commentId: N:FluentResults
+  isExternal: true
+  name: FluentResults
+  nameWithType: FluentResults
+  fullName: FluentResults

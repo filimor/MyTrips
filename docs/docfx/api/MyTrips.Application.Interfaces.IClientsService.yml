@@ -1,0 +1,640 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Application.Interfaces.IClientsService
+  commentId: T:MyTrips.Application.Interfaces.IClientsService
+  id: IClientsService
+  parent: MyTrips.Application.Interfaces
+  children:
+  - MyTrips.Application.Interfaces.IClientsService.AddNewClientAsync(MyTrips.Application.Dtos.CreateClientDto)
+  - MyTrips.Application.Interfaces.IClientsService.GetClientByIdAsync(System.Int32)
+  - MyTrips.Application.Interfaces.IClientsService.GetClientsAsync
+  - MyTrips.Application.Interfaces.IClientsService.GetClientsAsync(MyTrips.Domain.ValueObjects.ClientParameters)
+  - MyTrips.Application.Interfaces.IClientsService.RemoveClientAsync(System.Int32)
+  - MyTrips.Application.Interfaces.IClientsService.UpdateClientAsync(MyTrips.Application.Dtos.UpdateClientDto)
+  langs:
+  - csharp
+  - vb
+  name: IClientsService
+  nameWithType: IClientsService
+  fullName: MyTrips.Application.Interfaces.IClientsService
+  type: Interface
+  source:
+    remote:
+      path: src/MyTrips.Application/Interfaces/IClientsService.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: IClientsService
+    path: ../../src/MyTrips.Application/Interfaces/IClientsService.cs
+    startLine: 6
+  assemblies:
+  - MyTrips.Application
+  namespace: MyTrips.Application.Interfaces
+  syntax:
+    content: public interface IClientsService
+    content.vb: Public Interface IClientsService
+- uid: MyTrips.Application.Interfaces.IClientsService.GetClientsAsync
+  commentId: M:MyTrips.Application.Interfaces.IClientsService.GetClientsAsync
+  id: GetClientsAsync
+  parent: MyTrips.Application.Interfaces.IClientsService
+  langs:
+  - csharp
+  - vb
+  name: GetClientsAsync()
+  nameWithType: IClientsService.GetClientsAsync()
+  fullName: MyTrips.Application.Interfaces.IClientsService.GetClientsAsync()
+  type: Method
+  source:
+    remote:
+      path: src/MyTrips.Application/Interfaces/IClientsService.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: GetClientsAsync
+    path: ../../src/MyTrips.Application/Interfaces/IClientsService.cs
+    startLine: 8
+  assemblies:
+  - MyTrips.Application
+  namespace: MyTrips.Application.Interfaces
+  syntax:
+    content: Task<Result<IEnumerable<ResponseClientDto>>> GetClientsAsync()
+    return:
+      type: System.Threading.Tasks.Task{FluentResults.Result{System.Collections.Generic.IEnumerable{MyTrips.Application.Dtos.ResponseClientDto}}}
+    content.vb: Function GetClientsAsync() As Task(Of Result(Of IEnumerable(Of ResponseClientDto)))
+  overload: MyTrips.Application.Interfaces.IClientsService.GetClientsAsync*
+- uid: MyTrips.Application.Interfaces.IClientsService.GetClientsAsync(MyTrips.Domain.ValueObjects.ClientParameters)
+  commentId: M:MyTrips.Application.Interfaces.IClientsService.GetClientsAsync(MyTrips.Domain.ValueObjects.ClientParameters)
+  id: GetClientsAsync(MyTrips.Domain.ValueObjects.ClientParameters)
+  parent: MyTrips.Application.Interfaces.IClientsService
+  langs:
+  - csharp
+  - vb
+  name: GetClientsAsync(ClientParameters)
+  nameWithType: IClientsService.GetClientsAsync(ClientParameters)
+  fullName: MyTrips.Application.Interfaces.IClientsService.GetClientsAsync(MyTrips.Domain.ValueObjects.ClientParameters)
+  type: Method
+  source:
+    remote:
+      path: src/MyTrips.Application/Interfaces/IClientsService.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: GetClientsAsync
+    path: ../../src/MyTrips.Application/Interfaces/IClientsService.cs
+    startLine: 9
+  assemblies:
+  - MyTrips.Application
+  namespace: MyTrips.Application.Interfaces
+  syntax:
+    content: Task<Result<PagedList<ResponseClientDto>>> GetClientsAsync(ClientParameters parameters)
+    parameters:
+    - id: parameters
+      type: MyTrips.Domain.ValueObjects.ClientParameters
+    return:
+      type: System.Threading.Tasks.Task{FluentResults.Result{MyTrips.Domain.ValueObjects.PagedList{MyTrips.Application.Dtos.ResponseClientDto}}}
+    content.vb: Function GetClientsAsync(parameters As ClientParameters) As Task(Of Result(Of PagedList(Of ResponseClientDto)))
+  overload: MyTrips.Application.Interfaces.IClientsService.GetClientsAsync*
+- uid: MyTrips.Application.Interfaces.IClientsService.GetClientByIdAsync(System.Int32)
+  commentId: M:MyTrips.Application.Interfaces.IClientsService.GetClientByIdAsync(System.Int32)
+  id: GetClientByIdAsync(System.Int32)
+  parent: MyTrips.Application.Interfaces.IClientsService
+  langs:
+  - csharp
+  - vb
+  name: GetClientByIdAsync(int)
+  nameWithType: IClientsService.GetClientByIdAsync(int)
+  fullName: MyTrips.Application.Interfaces.IClientsService.GetClientByIdAsync(int)
+  type: Method
+  source:
+    remote:
+      path: src/MyTrips.Application/Interfaces/IClientsService.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: GetClientByIdAsync
+    path: ../../src/MyTrips.Application/Interfaces/IClientsService.cs
+    startLine: 10
+  assemblies:
+  - MyTrips.Application
+  namespace: MyTrips.Application.Interfaces
+  syntax:
+    content: Task<Result<ResponseClientDto>> GetClientByIdAsync(int id)
+    parameters:
+    - id: id
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task{FluentResults.Result{MyTrips.Application.Dtos.ResponseClientDto}}
+    content.vb: Function GetClientByIdAsync(id As Integer) As Task(Of Result(Of ResponseClientDto))
+  overload: MyTrips.Application.Interfaces.IClientsService.GetClientByIdAsync*
+  nameWithType.vb: IClientsService.GetClientByIdAsync(Integer)
+  fullName.vb: MyTrips.Application.Interfaces.IClientsService.GetClientByIdAsync(Integer)
+  name.vb: GetClientByIdAsync(Integer)
+- uid: MyTrips.Application.Interfaces.IClientsService.AddNewClientAsync(MyTrips.Application.Dtos.CreateClientDto)
+  commentId: M:MyTrips.Application.Interfaces.IClientsService.AddNewClientAsync(MyTrips.Application.Dtos.CreateClientDto)
+  id: AddNewClientAsync(MyTrips.Application.Dtos.CreateClientDto)
+  parent: MyTrips.Application.Interfaces.IClientsService
+  langs:
+  - csharp
+  - vb
+  name: AddNewClientAsync(CreateClientDto)
+  nameWithType: IClientsService.AddNewClientAsync(CreateClientDto)
+  fullName: MyTrips.Application.Interfaces.IClientsService.AddNewClientAsync(MyTrips.Application.Dtos.CreateClientDto)
+  type: Method
+  source:
+    remote:
+      path: src/MyTrips.Application/Interfaces/IClientsService.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: AddNewClientAsync
+    path: ../../src/MyTrips.Application/Interfaces/IClientsService.cs
+    startLine: 11
+  assemblies:
+  - MyTrips.Application
+  namespace: MyTrips.Application.Interfaces
+  syntax:
+    content: Task<Result<ResponseClientDto>> AddNewClientAsync(CreateClientDto createClientDto)
+    parameters:
+    - id: createClientDto
+      type: MyTrips.Application.Dtos.CreateClientDto
+    return:
+      type: System.Threading.Tasks.Task{FluentResults.Result{MyTrips.Application.Dtos.ResponseClientDto}}
+    content.vb: Function AddNewClientAsync(createClientDto As CreateClientDto) As Task(Of Result(Of ResponseClientDto))
+  overload: MyTrips.Application.Interfaces.IClientsService.AddNewClientAsync*
+- uid: MyTrips.Application.Interfaces.IClientsService.UpdateClientAsync(MyTrips.Application.Dtos.UpdateClientDto)
+  commentId: M:MyTrips.Application.Interfaces.IClientsService.UpdateClientAsync(MyTrips.Application.Dtos.UpdateClientDto)
+  id: UpdateClientAsync(MyTrips.Application.Dtos.UpdateClientDto)
+  parent: MyTrips.Application.Interfaces.IClientsService
+  langs:
+  - csharp
+  - vb
+  name: UpdateClientAsync(UpdateClientDto)
+  nameWithType: IClientsService.UpdateClientAsync(UpdateClientDto)
+  fullName: MyTrips.Application.Interfaces.IClientsService.UpdateClientAsync(MyTrips.Application.Dtos.UpdateClientDto)
+  type: Method
+  source:
+    remote:
+      path: src/MyTrips.Application/Interfaces/IClientsService.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: UpdateClientAsync
+    path: ../../src/MyTrips.Application/Interfaces/IClientsService.cs
+    startLine: 12
+  assemblies:
+  - MyTrips.Application
+  namespace: MyTrips.Application.Interfaces
+  syntax:
+    content: Task<Result<ResponseClientDto>> UpdateClientAsync(UpdateClientDto updateClientDto)
+    parameters:
+    - id: updateClientDto
+      type: MyTrips.Application.Dtos.UpdateClientDto
+    return:
+      type: System.Threading.Tasks.Task{FluentResults.Result{MyTrips.Application.Dtos.ResponseClientDto}}
+    content.vb: Function UpdateClientAsync(updateClientDto As UpdateClientDto) As Task(Of Result(Of ResponseClientDto))
+  overload: MyTrips.Application.Interfaces.IClientsService.UpdateClientAsync*
+- uid: MyTrips.Application.Interfaces.IClientsService.RemoveClientAsync(System.Int32)
+  commentId: M:MyTrips.Application.Interfaces.IClientsService.RemoveClientAsync(System.Int32)
+  id: RemoveClientAsync(System.Int32)
+  parent: MyTrips.Application.Interfaces.IClientsService
+  langs:
+  - csharp
+  - vb
+  name: RemoveClientAsync(int)
+  nameWithType: IClientsService.RemoveClientAsync(int)
+  fullName: MyTrips.Application.Interfaces.IClientsService.RemoveClientAsync(int)
+  type: Method
+  source:
+    remote:
+      path: src/MyTrips.Application/Interfaces/IClientsService.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: RemoveClientAsync
+    path: ../../src/MyTrips.Application/Interfaces/IClientsService.cs
+    startLine: 13
+  assemblies:
+  - MyTrips.Application
+  namespace: MyTrips.Application.Interfaces
+  syntax:
+    content: Task<Result> RemoveClientAsync(int id)
+    parameters:
+    - id: id
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task{FluentResults.Result}
+    content.vb: Function RemoveClientAsync(id As Integer) As Task(Of Result)
+  overload: MyTrips.Application.Interfaces.IClientsService.RemoveClientAsync*
+  nameWithType.vb: IClientsService.RemoveClientAsync(Integer)
+  fullName.vb: MyTrips.Application.Interfaces.IClientsService.RemoveClientAsync(Integer)
+  name.vb: RemoveClientAsync(Integer)
+references:
+- uid: MyTrips.Application.Interfaces
+  commentId: N:MyTrips.Application.Interfaces
+  href: MyTrips.html
+  name: MyTrips.Application.Interfaces
+  nameWithType: MyTrips.Application.Interfaces
+  fullName: MyTrips.Application.Interfaces
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Application
+    name: Application
+    href: MyTrips.Application.html
+  - name: .
+  - uid: MyTrips.Application.Interfaces
+    name: Interfaces
+    href: MyTrips.Application.Interfaces.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Application
+    name: Application
+    href: MyTrips.Application.html
+  - name: .
+  - uid: MyTrips.Application.Interfaces
+    name: Interfaces
+    href: MyTrips.Application.Interfaces.html
+- uid: MyTrips.Application.Interfaces.IClientsService.GetClientsAsync*
+  commentId: Overload:MyTrips.Application.Interfaces.IClientsService.GetClientsAsync
+  href: MyTrips.Application.Interfaces.IClientsService.html#MyTrips_Application_Interfaces_IClientsService_GetClientsAsync
+  name: GetClientsAsync
+  nameWithType: IClientsService.GetClientsAsync
+  fullName: MyTrips.Application.Interfaces.IClientsService.GetClientsAsync
+- uid: System.Threading.Tasks.Task{FluentResults.Result{System.Collections.Generic.IEnumerable{MyTrips.Application.Dtos.ResponseClientDto}}}
+  commentId: T:System.Threading.Tasks.Task{FluentResults.Result{System.Collections.Generic.IEnumerable{MyTrips.Application.Dtos.ResponseClientDto}}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Result<IEnumerable<ResponseClientDto>>>
+  nameWithType: Task<Result<IEnumerable<ResponseClientDto>>>
+  fullName: System.Threading.Tasks.Task<FluentResults.Result<System.Collections.Generic.IEnumerable<MyTrips.Application.Dtos.ResponseClientDto>>>
+  nameWithType.vb: Task(Of Result(Of IEnumerable(Of ResponseClientDto)))
+  fullName.vb: System.Threading.Tasks.Task(Of FluentResults.Result(Of System.Collections.Generic.IEnumerable(Of MyTrips.Application.Dtos.ResponseClientDto)))
+  name.vb: Task(Of Result(Of IEnumerable(Of ResponseClientDto)))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: FluentResults.Result`1
+    name: Result
+    isExternal: true
+  - name: <
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: MyTrips.Application.Dtos.ResponseClientDto
+    name: ResponseClientDto
+    href: MyTrips.Application.Dtos.ResponseClientDto.html
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FluentResults.Result`1
+    name: Result
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MyTrips.Application.Dtos.ResponseClientDto
+    name: ResponseClientDto
+    href: MyTrips.Application.Dtos.ResponseClientDto.html
+  - name: )
+  - name: )
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MyTrips.Domain.ValueObjects.ClientParameters
+  commentId: T:MyTrips.Domain.ValueObjects.ClientParameters
+  parent: MyTrips.Domain.ValueObjects
+  href: MyTrips.Domain.ValueObjects.ClientParameters.html
+  name: ClientParameters
+  nameWithType: ClientParameters
+  fullName: MyTrips.Domain.ValueObjects.ClientParameters
+- uid: System.Threading.Tasks.Task{FluentResults.Result{MyTrips.Domain.ValueObjects.PagedList{MyTrips.Application.Dtos.ResponseClientDto}}}
+  commentId: T:System.Threading.Tasks.Task{FluentResults.Result{MyTrips.Domain.ValueObjects.PagedList{MyTrips.Application.Dtos.ResponseClientDto}}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Result<PagedList<ResponseClientDto>>>
+  nameWithType: Task<Result<PagedList<ResponseClientDto>>>
+  fullName: System.Threading.Tasks.Task<FluentResults.Result<MyTrips.Domain.ValueObjects.PagedList<MyTrips.Application.Dtos.ResponseClientDto>>>
+  nameWithType.vb: Task(Of Result(Of PagedList(Of ResponseClientDto)))
+  fullName.vb: System.Threading.Tasks.Task(Of FluentResults.Result(Of MyTrips.Domain.ValueObjects.PagedList(Of MyTrips.Application.Dtos.ResponseClientDto)))
+  name.vb: Task(Of Result(Of PagedList(Of ResponseClientDto)))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: FluentResults.Result`1
+    name: Result
+    isExternal: true
+  - name: <
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+  - name: <
+  - uid: MyTrips.Application.Dtos.ResponseClientDto
+    name: ResponseClientDto
+    href: MyTrips.Application.Dtos.ResponseClientDto.html
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FluentResults.Result`1
+    name: Result
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MyTrips.Application.Dtos.ResponseClientDto
+    name: ResponseClientDto
+    href: MyTrips.Application.Dtos.ResponseClientDto.html
+  - name: )
+  - name: )
+  - name: )
+- uid: MyTrips.Domain.ValueObjects
+  commentId: N:MyTrips.Domain.ValueObjects
+  href: MyTrips.html
+  name: MyTrips.Domain.ValueObjects
+  nameWithType: MyTrips.Domain.ValueObjects
+  fullName: MyTrips.Domain.ValueObjects
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Domain
+    name: Domain
+    href: MyTrips.Domain.html
+  - name: .
+  - uid: MyTrips.Domain.ValueObjects
+    name: ValueObjects
+    href: MyTrips.Domain.ValueObjects.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Domain
+    name: Domain
+    href: MyTrips.Domain.html
+  - name: .
+  - uid: MyTrips.Domain.ValueObjects
+    name: ValueObjects
+    href: MyTrips.Domain.ValueObjects.html
+- uid: MyTrips.Application.Interfaces.IClientsService.GetClientByIdAsync*
+  commentId: Overload:MyTrips.Application.Interfaces.IClientsService.GetClientByIdAsync
+  href: MyTrips.Application.Interfaces.IClientsService.html#MyTrips_Application_Interfaces_IClientsService_GetClientByIdAsync_System_Int32_
+  name: GetClientByIdAsync
+  nameWithType: IClientsService.GetClientByIdAsync
+  fullName: MyTrips.Application.Interfaces.IClientsService.GetClientByIdAsync
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Threading.Tasks.Task{FluentResults.Result{MyTrips.Application.Dtos.ResponseClientDto}}
+  commentId: T:System.Threading.Tasks.Task{FluentResults.Result{MyTrips.Application.Dtos.ResponseClientDto}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Result<ResponseClientDto>>
+  nameWithType: Task<Result<ResponseClientDto>>
+  fullName: System.Threading.Tasks.Task<FluentResults.Result<MyTrips.Application.Dtos.ResponseClientDto>>
+  nameWithType.vb: Task(Of Result(Of ResponseClientDto))
+  fullName.vb: System.Threading.Tasks.Task(Of FluentResults.Result(Of MyTrips.Application.Dtos.ResponseClientDto))
+  name.vb: Task(Of Result(Of ResponseClientDto))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: FluentResults.Result`1
+    name: Result
+    isExternal: true
+  - name: <
+  - uid: MyTrips.Application.Dtos.ResponseClientDto
+    name: ResponseClientDto
+    href: MyTrips.Application.Dtos.ResponseClientDto.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FluentResults.Result`1
+    name: Result
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MyTrips.Application.Dtos.ResponseClientDto
+    name: ResponseClientDto
+    href: MyTrips.Application.Dtos.ResponseClientDto.html
+  - name: )
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MyTrips.Application.Interfaces.IClientsService.AddNewClientAsync*
+  commentId: Overload:MyTrips.Application.Interfaces.IClientsService.AddNewClientAsync
+  href: MyTrips.Application.Interfaces.IClientsService.html#MyTrips_Application_Interfaces_IClientsService_AddNewClientAsync_MyTrips_Application_Dtos_CreateClientDto_
+  name: AddNewClientAsync
+  nameWithType: IClientsService.AddNewClientAsync
+  fullName: MyTrips.Application.Interfaces.IClientsService.AddNewClientAsync
+- uid: MyTrips.Application.Dtos.CreateClientDto
+  commentId: T:MyTrips.Application.Dtos.CreateClientDto
+  parent: MyTrips.Application.Dtos
+  href: MyTrips.Application.Dtos.CreateClientDto.html
+  name: CreateClientDto
+  nameWithType: CreateClientDto
+  fullName: MyTrips.Application.Dtos.CreateClientDto
+- uid: MyTrips.Application.Dtos
+  commentId: N:MyTrips.Application.Dtos
+  href: MyTrips.html
+  name: MyTrips.Application.Dtos
+  nameWithType: MyTrips.Application.Dtos
+  fullName: MyTrips.Application.Dtos
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Application
+    name: Application
+    href: MyTrips.Application.html
+  - name: .
+  - uid: MyTrips.Application.Dtos
+    name: Dtos
+    href: MyTrips.Application.Dtos.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Application
+    name: Application
+    href: MyTrips.Application.html
+  - name: .
+  - uid: MyTrips.Application.Dtos
+    name: Dtos
+    href: MyTrips.Application.Dtos.html
+- uid: MyTrips.Application.Interfaces.IClientsService.UpdateClientAsync*
+  commentId: Overload:MyTrips.Application.Interfaces.IClientsService.UpdateClientAsync
+  href: MyTrips.Application.Interfaces.IClientsService.html#MyTrips_Application_Interfaces_IClientsService_UpdateClientAsync_MyTrips_Application_Dtos_UpdateClientDto_
+  name: UpdateClientAsync
+  nameWithType: IClientsService.UpdateClientAsync
+  fullName: MyTrips.Application.Interfaces.IClientsService.UpdateClientAsync
+- uid: MyTrips.Application.Dtos.UpdateClientDto
+  commentId: T:MyTrips.Application.Dtos.UpdateClientDto
+  parent: MyTrips.Application.Dtos
+  href: MyTrips.Application.Dtos.UpdateClientDto.html
+  name: UpdateClientDto
+  nameWithType: UpdateClientDto
+  fullName: MyTrips.Application.Dtos.UpdateClientDto
+- uid: MyTrips.Application.Interfaces.IClientsService.RemoveClientAsync*
+  commentId: Overload:MyTrips.Application.Interfaces.IClientsService.RemoveClientAsync
+  href: MyTrips.Application.Interfaces.IClientsService.html#MyTrips_Application_Interfaces_IClientsService_RemoveClientAsync_System_Int32_
+  name: RemoveClientAsync
+  nameWithType: IClientsService.RemoveClientAsync
+  fullName: MyTrips.Application.Interfaces.IClientsService.RemoveClientAsync
+- uid: System.Threading.Tasks.Task{FluentResults.Result}
+  commentId: T:System.Threading.Tasks.Task{FluentResults.Result}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Result>
+  nameWithType: Task<Result>
+  fullName: System.Threading.Tasks.Task<FluentResults.Result>
+  nameWithType.vb: Task(Of Result)
+  fullName.vb: System.Threading.Tasks.Task(Of FluentResults.Result)
+  name.vb: Task(Of Result)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: FluentResults.Result
+    name: Result
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FluentResults.Result
+    name: Result
+    isExternal: true
+  - name: )

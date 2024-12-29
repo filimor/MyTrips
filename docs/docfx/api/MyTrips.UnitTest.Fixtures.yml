@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.UnitTest.Fixtures
+  commentId: N:MyTrips.UnitTest.Fixtures
+  id: MyTrips.UnitTest.Fixtures
+  children:
+  - MyTrips.UnitTest.Fixtures.ClientsManagementFixture
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.UnitTest.Fixtures
+  nameWithType: MyTrips.UnitTest.Fixtures
+  fullName: MyTrips.UnitTest.Fixtures
+  type: Namespace
+  assemblies:
+  - MyTrips.UnitTest
+references:
+- uid: MyTrips.UnitTest.Fixtures.ClientsManagementFixture
+  commentId: T:MyTrips.UnitTest.Fixtures.ClientsManagementFixture
+  href: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.html
+  name: ClientsManagementFixture
+  nameWithType: ClientsManagementFixture
+  fullName: MyTrips.UnitTest.Fixtures.ClientsManagementFixture

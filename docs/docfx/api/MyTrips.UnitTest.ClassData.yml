@@ -1,0 +1,62 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.UnitTest.ClassData
+  commentId: N:MyTrips.UnitTest.ClassData
+  id: MyTrips.UnitTest.ClassData
+  children:
+  - MyTrips.UnitTest.ClassData.InvalidEmailClassData
+  - MyTrips.UnitTest.ClassData.InvalidStringClassData
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.UnitTest.ClassData
+  nameWithType: MyTrips.UnitTest.ClassData
+  fullName: MyTrips.UnitTest.ClassData
+  type: Namespace
+  assemblies:
+  - MyTrips.UnitTest
+references:
+- uid: MyTrips.UnitTest.ClassData.InvalidEmailClassData
+  commentId: T:MyTrips.UnitTest.ClassData.InvalidEmailClassData
+  parent: MyTrips.UnitTest.ClassData
+  href: MyTrips.UnitTest.ClassData.InvalidEmailClassData.html
+  name: InvalidEmailClassData
+  nameWithType: InvalidEmailClassData
+  fullName: MyTrips.UnitTest.ClassData.InvalidEmailClassData
+- uid: MyTrips.UnitTest.ClassData.InvalidStringClassData
+  commentId: T:MyTrips.UnitTest.ClassData.InvalidStringClassData
+  parent: MyTrips.UnitTest.ClassData
+  href: MyTrips.UnitTest.ClassData.InvalidStringClassData.html
+  name: InvalidStringClassData
+  nameWithType: InvalidStringClassData
+  fullName: MyTrips.UnitTest.ClassData.InvalidStringClassData
+- uid: MyTrips.UnitTest.ClassData
+  commentId: N:MyTrips.UnitTest.ClassData
+  href: MyTrips.html
+  name: MyTrips.UnitTest.ClassData
+  nameWithType: MyTrips.UnitTest.ClassData
+  fullName: MyTrips.UnitTest.ClassData
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.UnitTest
+    name: UnitTest
+    href: MyTrips.UnitTest.html
+  - name: .
+  - uid: MyTrips.UnitTest.ClassData
+    name: ClassData
+    href: MyTrips.UnitTest.ClassData.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.UnitTest
+    name: UnitTest
+    href: MyTrips.UnitTest.html
+  - name: .
+  - uid: MyTrips.UnitTest.ClassData
+    name: ClassData
+    href: MyTrips.UnitTest.ClassData.html

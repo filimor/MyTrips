@@ -1,0 +1,96 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Presentation.Errors
+  commentId: N:MyTrips.Presentation.Errors
+  id: MyTrips.Presentation.Errors
+  children:
+  - MyTrips.Presentation.Errors.BadRequestErrorDetails
+  - MyTrips.Presentation.Errors.ConflictErrorDetails
+  - MyTrips.Presentation.Errors.CustomError
+  - MyTrips.Presentation.Errors.ErrorDetails
+  - MyTrips.Presentation.Errors.InternalServerErrorDetails
+  - MyTrips.Presentation.Errors.NotFoundErrorDetails
+  - MyTrips.Presentation.Errors.UnauthorizedErrorDetails
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.Presentation.Errors
+  nameWithType: MyTrips.Presentation.Errors
+  fullName: MyTrips.Presentation.Errors
+  type: Namespace
+  assemblies:
+  - MyTrips.Presentation
+references:
+- uid: MyTrips.Presentation.Errors.BadRequestErrorDetails
+  commentId: T:MyTrips.Presentation.Errors.BadRequestErrorDetails
+  href: MyTrips.Presentation.Errors.BadRequestErrorDetails.html
+  name: BadRequestErrorDetails
+  nameWithType: BadRequestErrorDetails
+  fullName: MyTrips.Presentation.Errors.BadRequestErrorDetails
+- uid: MyTrips.Presentation.Errors.ConflictErrorDetails
+  commentId: T:MyTrips.Presentation.Errors.ConflictErrorDetails
+  href: MyTrips.Presentation.Errors.ConflictErrorDetails.html
+  name: ConflictErrorDetails
+  nameWithType: ConflictErrorDetails
+  fullName: MyTrips.Presentation.Errors.ConflictErrorDetails
+- uid: MyTrips.Presentation.Errors.CustomError
+  commentId: T:MyTrips.Presentation.Errors.CustomError
+  href: MyTrips.Presentation.Errors.CustomError.html
+  name: CustomError
+  nameWithType: CustomError
+  fullName: MyTrips.Presentation.Errors.CustomError
+- uid: MyTrips.Presentation.Errors.ErrorDetails
+  commentId: T:MyTrips.Presentation.Errors.ErrorDetails
+  parent: MyTrips.Presentation.Errors
+  href: MyTrips.Presentation.Errors.ErrorDetails.html
+  name: ErrorDetails
+  nameWithType: ErrorDetails
+  fullName: MyTrips.Presentation.Errors.ErrorDetails
+- uid: MyTrips.Presentation.Errors.InternalServerErrorDetails
+  commentId: T:MyTrips.Presentation.Errors.InternalServerErrorDetails
+  href: MyTrips.Presentation.Errors.InternalServerErrorDetails.html
+  name: InternalServerErrorDetails
+  nameWithType: InternalServerErrorDetails
+  fullName: MyTrips.Presentation.Errors.InternalServerErrorDetails
+- uid: MyTrips.Presentation.Errors.NotFoundErrorDetails
+  commentId: T:MyTrips.Presentation.Errors.NotFoundErrorDetails
+  href: MyTrips.Presentation.Errors.NotFoundErrorDetails.html
+  name: NotFoundErrorDetails
+  nameWithType: NotFoundErrorDetails
+  fullName: MyTrips.Presentation.Errors.NotFoundErrorDetails
+- uid: MyTrips.Presentation.Errors.UnauthorizedErrorDetails
+  commentId: T:MyTrips.Presentation.Errors.UnauthorizedErrorDetails
+  href: MyTrips.Presentation.Errors.UnauthorizedErrorDetails.html
+  name: UnauthorizedErrorDetails
+  nameWithType: UnauthorizedErrorDetails
+  fullName: MyTrips.Presentation.Errors.UnauthorizedErrorDetails
+- uid: MyTrips.Presentation.Errors
+  commentId: N:MyTrips.Presentation.Errors
+  href: MyTrips.html
+  name: MyTrips.Presentation.Errors
+  nameWithType: MyTrips.Presentation.Errors
+  fullName: MyTrips.Presentation.Errors
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Presentation
+    name: Presentation
+    href: MyTrips.Presentation.html
+  - name: .
+  - uid: MyTrips.Presentation.Errors
+    name: Errors
+    href: MyTrips.Presentation.Errors.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Presentation
+    name: Presentation
+    href: MyTrips.Presentation.html
+  - name: .
+  - uid: MyTrips.Presentation.Errors
+    name: Errors
+    href: MyTrips.Presentation.Errors.html

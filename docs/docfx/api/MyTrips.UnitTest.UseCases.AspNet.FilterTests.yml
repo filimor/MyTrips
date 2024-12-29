@@ -1,0 +1,465 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.UnitTest.UseCases.AspNet.FilterTests
+  commentId: T:MyTrips.UnitTest.UseCases.AspNet.FilterTests
+  id: FilterTests
+  parent: MyTrips.UnitTest.UseCases.AspNet
+  children:
+  - MyTrips.UnitTest.UseCases.AspNet.FilterTests.GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader(System.Int32)
+  - MyTrips.UnitTest.UseCases.AspNet.FilterTests.GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader(System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: FilterTests
+  nameWithType: FilterTests
+  fullName: MyTrips.UnitTest.UseCases.AspNet.FilterTests
+  type: Class
+  source:
+    remote:
+      path: tests/MyTrips.UnitTest/UseCases/AspNet/FilterTests.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: FilterTests
+    path: ../../tests/MyTrips.UnitTest/UseCases/AspNet/FilterTests.cs
+    startLine: 11
+  assemblies:
+  - MyTrips.UnitTest
+  namespace: MyTrips.UnitTest.UseCases.AspNet
+  syntax:
+    content: public class FilterTests
+    content.vb: Public Class FilterTests
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MyTrips.UnitTest.UseCases.AspNet.FilterTests.GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader(System.Int32)
+  commentId: M:MyTrips.UnitTest.UseCases.AspNet.FilterTests.GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader(System.Int32)
+  id: GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader(System.Int32)
+  parent: MyTrips.UnitTest.UseCases.AspNet.FilterTests
+  langs:
+  - csharp
+  - vb
+  name: GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader(int)
+  nameWithType: FilterTests.GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader(int)
+  fullName: MyTrips.UnitTest.UseCases.AspNet.FilterTests.GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader(int)
+  type: Method
+  source:
+    remote:
+      path: tests/MyTrips.UnitTest/UseCases/AspNet/FilterTests.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader
+    path: ../../tests/MyTrips.UnitTest/UseCases/AspNet/FilterTests.cs
+    startLine: 13
+  assemblies:
+  - MyTrips.UnitTest
+  namespace: MyTrips.UnitTest.UseCases.AspNet
+  syntax:
+    content: >-
+      [Theory]
+
+      [InlineData(new object[] { 400 })]
+
+      [InlineData(new object[] { 500 })]
+
+      [Trait("Category", "Unit")]
+
+      public void GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader(int statusCode)
+    parameters:
+    - id: statusCode
+      type: System.Int32
+    content.vb: >-
+      <Theory>
+
+      <InlineData(New Object() { 400 })>
+
+      <InlineData(New Object() { 500 })>
+
+      <Trait("Category", "Unit")>
+
+      Public Sub GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader(statusCode As Integer)
+  overload: MyTrips.UnitTest.UseCases.AspNet.FilterTests.GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader*
+  attributes:
+  - type: Xunit.TheoryAttribute
+    ctor: Xunit.TheoryAttribute.#ctor
+    arguments: []
+  - type: Xunit.TraitAttribute
+    ctor: Xunit.TraitAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: Category
+    - type: System.String
+      value: Unit
+  nameWithType.vb: FilterTests.GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader(Integer)
+  fullName.vb: MyTrips.UnitTest.UseCases.AspNet.FilterTests.GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader(Integer)
+  name.vb: GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader(Integer)
+- uid: MyTrips.UnitTest.UseCases.AspNet.FilterTests.GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader(System.Int32)
+  commentId: M:MyTrips.UnitTest.UseCases.AspNet.FilterTests.GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader(System.Int32)
+  id: GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader(System.Int32)
+  parent: MyTrips.UnitTest.UseCases.AspNet.FilterTests
+  langs:
+  - csharp
+  - vb
+  name: GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader(int)
+  nameWithType: FilterTests.GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader(int)
+  fullName: MyTrips.UnitTest.UseCases.AspNet.FilterTests.GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader(int)
+  type: Method
+  source:
+    remote:
+      path: tests/MyTrips.UnitTest/UseCases/AspNet/FilterTests.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader
+    path: ../../tests/MyTrips.UnitTest/UseCases/AspNet/FilterTests.cs
+    startLine: 45
+  assemblies:
+  - MyTrips.UnitTest
+  namespace: MyTrips.UnitTest.UseCases.AspNet
+  syntax:
+    content: >-
+      [Theory]
+
+      [InlineData(new object[] { 100 })]
+
+      [InlineData(new object[] { 200 })]
+
+      [InlineData(new object[] { 300 })]
+
+      [Trait("Category", "Unit")]
+
+      public void GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader(int statusCode)
+    parameters:
+    - id: statusCode
+      type: System.Int32
+    content.vb: >-
+      <Theory>
+
+      <InlineData(New Object() { 100 })>
+
+      <InlineData(New Object() { 200 })>
+
+      <InlineData(New Object() { 300 })>
+
+      <Trait("Category", "Unit")>
+
+      Public Sub GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader(statusCode As Integer)
+  overload: MyTrips.UnitTest.UseCases.AspNet.FilterTests.GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader*
+  attributes:
+  - type: Xunit.TheoryAttribute
+    ctor: Xunit.TheoryAttribute.#ctor
+    arguments: []
+  - type: Xunit.TraitAttribute
+    ctor: Xunit.TraitAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: Category
+    - type: System.String
+      value: Unit
+  nameWithType.vb: FilterTests.GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader(Integer)
+  fullName.vb: MyTrips.UnitTest.UseCases.AspNet.FilterTests.GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader(Integer)
+  name.vb: GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader(Integer)
+references:
+- uid: MyTrips.UnitTest.UseCases.AspNet
+  commentId: N:MyTrips.UnitTest.UseCases.AspNet
+  href: MyTrips.html
+  name: MyTrips.UnitTest.UseCases.AspNet
+  nameWithType: MyTrips.UnitTest.UseCases.AspNet
+  fullName: MyTrips.UnitTest.UseCases.AspNet
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.UnitTest
+    name: UnitTest
+    href: MyTrips.UnitTest.html
+  - name: .
+  - uid: MyTrips.UnitTest.UseCases
+    name: UseCases
+    href: MyTrips.UnitTest.UseCases.html
+  - name: .
+  - uid: MyTrips.UnitTest.UseCases.AspNet
+    name: AspNet
+    href: MyTrips.UnitTest.UseCases.AspNet.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.UnitTest
+    name: UnitTest
+    href: MyTrips.UnitTest.html
+  - name: .
+  - uid: MyTrips.UnitTest.UseCases
+    name: UseCases
+    href: MyTrips.UnitTest.UseCases.html
+  - name: .
+  - uid: MyTrips.UnitTest.UseCases.AspNet
+    name: AspNet
+    href: MyTrips.UnitTest.UseCases.AspNet.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MyTrips.UnitTest.UseCases.AspNet.FilterTests.GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader*
+  commentId: Overload:MyTrips.UnitTest.UseCases.AspNet.FilterTests.GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader
+  href: MyTrips.UnitTest.UseCases.AspNet.FilterTests.html#MyTrips_UnitTest_UseCases_AspNet_FilterTests_GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader_System_Int32_
+  name: GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader
+  nameWithType: FilterTests.GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader
+  fullName: MyTrips.UnitTest.UseCases.AspNet.FilterTests.GivenErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldAddProblemContentTypeHeader
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MyTrips.UnitTest.UseCases.AspNet.FilterTests.GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader*
+  commentId: Overload:MyTrips.UnitTest.UseCases.AspNet.FilterTests.GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader
+  href: MyTrips.UnitTest.UseCases.AspNet.FilterTests.html#MyTrips_UnitTest_UseCases_AspNet_FilterTests_GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader_System_Int32_
+  name: GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader
+  nameWithType: FilterTests.GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader
+  fullName: MyTrips.UnitTest.UseCases.AspNet.FilterTests.GivenNonErrorStatusCode_WhenExecuteProblemHeaderFilter_ThenItShouldNotAddErrorContentTypeHeader

@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Infrastructure.Repositories
+  commentId: N:MyTrips.Infrastructure.Repositories
+  id: MyTrips.Infrastructure.Repositories
+  children:
+  - MyTrips.Infrastructure.Repositories.ClientsRepository
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.Infrastructure.Repositories
+  nameWithType: MyTrips.Infrastructure.Repositories
+  fullName: MyTrips.Infrastructure.Repositories
+  type: Namespace
+  assemblies:
+  - MyTrips.Infrastructure
+references:
+- uid: MyTrips.Infrastructure.Repositories.ClientsRepository
+  commentId: T:MyTrips.Infrastructure.Repositories.ClientsRepository
+  href: MyTrips.Infrastructure.Repositories.ClientsRepository.html
+  name: ClientsRepository
+  nameWithType: ClientsRepository
+  fullName: MyTrips.Infrastructure.Repositories.ClientsRepository

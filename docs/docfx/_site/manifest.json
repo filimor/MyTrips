@@ -1,0 +1,865 @@
+{
+  "source_base_path": "G:/repos/api-ploomes/docs/docfx",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Application.Dtos.CreateClientDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Application.Dtos.CreateClientDto.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Application.Dtos.ResponseClientDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Application.Dtos.ResponseClientDto.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Application.Dtos.UpdateClientDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Application.Dtos.UpdateClientDto.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Application.Dtos.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Application.Dtos.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Application.Errors.ConflictError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Application.Errors.ConflictError.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Application.Errors.NotFoundError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Application.Errors.NotFoundError.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Application.Errors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Application.Errors.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Application.Interfaces.IAuthService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Application.Interfaces.IAuthService.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Application.Interfaces.IClientsService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Application.Interfaces.IClientsService.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Application.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Application.Interfaces.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Application.Mappings.Converters.PagedListTypeConverter-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Application.Mappings.Converters.PagedListTypeConverter-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Application.Mappings.Converters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Application.Mappings.Converters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Application.Mappings.DtoToDomainMappingProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Application.Mappings.DtoToDomainMappingProfile.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Application.Mappings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Application.Mappings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Application.Services.AuthService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Application.Services.AuthService.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Application.Services.ClientsService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Application.Services.ClientsService.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Application.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Application.Services.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Application.Validators.ClientValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Application.Validators.ClientValidator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Application.Validators.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Application.Validators.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.CrossCutting.IoC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.CrossCutting.IoC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.CrossCutting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.CrossCutting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Domain.Entities.Client.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Domain.Entities.Client.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Domain.Entities.LoginInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Domain.Entities.LoginInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Domain.Entities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Domain.Entities.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Domain.Interfaces.IClientsRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Domain.Interfaces.IClientsRepository.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Domain.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Domain.Interfaces.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Domain.ValueObjects.ClientParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Domain.ValueObjects.ClientParameters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Domain.ValueObjects.PagedList-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Domain.ValueObjects.PagedList-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Domain.ValueObjects.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Domain.ValueObjects.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Infrastructure.Repositories.ClientsRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Infrastructure.Repositories.ClientsRepository.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Infrastructure.Repositories.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Infrastructure.Repositories.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.IntegrationTests.Collections.ClientsManagementCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.IntegrationTests.Collections.ClientsManagementCollection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.IntegrationTests.Collections.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.IntegrationTests.Collections.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.IntegrationTests.Extensions.HttpExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.IntegrationTests.Extensions.HttpExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.IntegrationTests.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.IntegrationTests.Extensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.IntegrationTests.Fixtures.ClientsManagementFixture.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.IntegrationTests.Fixtures.ClientsManagementFixture.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.IntegrationTests.Fixtures.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.IntegrationTests.Fixtures.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.IntegrationTests.Handlers.LoggingHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.IntegrationTests.Handlers.LoggingHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.IntegrationTests.Handlers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.IntegrationTests.Handlers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.IntegrationTests.UseCases.ClientsManagement.DeleteClientIntegrationTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.IntegrationTests.UseCases.ClientsManagement.DeleteClientIntegrationTests.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.IntegrationTests.UseCases.ClientsManagement.GetClientIntegrationTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.IntegrationTests.UseCases.ClientsManagement.GetClientIntegrationTests.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.IntegrationTests.UseCases.ClientsManagement.UpdateClientIntegrationTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.IntegrationTests.UseCases.ClientsManagement.UpdateClientIntegrationTests.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.IntegrationTests.UseCases.ClientsManagement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.IntegrationTests.UseCases.ClientsManagement.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Presentation.Controllers.AuthController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Presentation.Controllers.AuthController.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Presentation.Controllers.ClientsController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Presentation.Controllers.ClientsController.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Presentation.Controllers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Presentation.Controllers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Presentation.Errors.BadRequestErrorDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Presentation.Errors.BadRequestErrorDetails.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Presentation.Errors.ConflictErrorDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Presentation.Errors.ConflictErrorDetails.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Presentation.Errors.CustomError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Presentation.Errors.CustomError.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Presentation.Errors.ErrorDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Presentation.Errors.ErrorDetails.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Presentation.Errors.InternalServerErrorDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Presentation.Errors.InternalServerErrorDetails.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Presentation.Errors.NotFoundErrorDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Presentation.Errors.NotFoundErrorDetails.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Presentation.Errors.UnauthorizedErrorDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Presentation.Errors.UnauthorizedErrorDetails.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Presentation.Errors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Presentation.Errors.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Presentation.Filters.MediaTypeOperationFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Presentation.Filters.MediaTypeOperationFilter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Presentation.Filters.ProblemHeaderFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Presentation.Filters.ProblemHeaderFilter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Presentation.Filters.SwaggerSchemaFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Presentation.Filters.SwaggerSchemaFilter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Presentation.Filters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Presentation.Filters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Presentation.Middlewares.ExceptionHandlingMiddleware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Presentation.Middlewares.ExceptionHandlingMiddleware.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Presentation.Middlewares.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Presentation.Middlewares.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Presentation.Validators.InputValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Presentation.Validators.InputValidator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.Presentation.Validators.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.Presentation.Validators.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.UnitTest.ClassData.InvalidEmailClassData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.UnitTest.ClassData.InvalidEmailClassData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.UnitTest.ClassData.InvalidStringClassData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.UnitTest.ClassData.InvalidStringClassData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.UnitTest.ClassData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.UnitTest.ClassData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.UnitTest.Collections.ClientsManagementCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.UnitTest.Collections.ClientsManagementCollection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.UnitTest.Collections.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.UnitTest.Collections.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.UnitTest.Fixtures.ClientsManagementFixture.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.UnitTest.Fixtures.ClientsManagementFixture.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.UnitTest.Fixtures.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.UnitTest.Fixtures.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.UnitTest.UseCases.AspNet.FilterTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.UnitTest.UseCases.AspNet.FilterTests.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.UnitTest.UseCases.AspNet.MiddlewareTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.UnitTest.UseCases.AspNet.MiddlewareTests.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.UnitTest.UseCases.AspNet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.UnitTest.UseCases.AspNet.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.UnitTest.UseCases.ClientTests.CreateClientUnitTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.UnitTest.UseCases.ClientTests.CreateClientUnitTests.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.UnitTest.UseCases.ClientTests.DeleteClientUnitTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.UnitTest.UseCases.ClientTests.DeleteClientUnitTests.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.UnitTest.UseCases.ClientTests.GetClientUnitTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.UnitTest.UseCases.ClientTests.GetClientUnitTests.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.UnitTest.UseCases.ClientTests.UpdateClientUnitTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.UnitTest.UseCases.ClientTests.UpdateClientUnitTests.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyTrips.UnitTest.UseCases.ClientTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyTrips.UnitTest.UseCases.ClientTests.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

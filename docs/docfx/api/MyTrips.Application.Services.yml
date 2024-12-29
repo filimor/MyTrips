@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Application.Services
+  commentId: N:MyTrips.Application.Services
+  id: MyTrips.Application.Services
+  children:
+  - MyTrips.Application.Services.AuthService
+  - MyTrips.Application.Services.ClientsService
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.Application.Services
+  nameWithType: MyTrips.Application.Services
+  fullName: MyTrips.Application.Services
+  type: Namespace
+  assemblies:
+  - MyTrips.Application
+references:
+- uid: MyTrips.Application.Services.AuthService
+  commentId: T:MyTrips.Application.Services.AuthService
+  href: MyTrips.Application.Services.AuthService.html
+  name: AuthService
+  nameWithType: AuthService
+  fullName: MyTrips.Application.Services.AuthService
+- uid: MyTrips.Application.Services.ClientsService
+  commentId: T:MyTrips.Application.Services.ClientsService
+  href: MyTrips.Application.Services.ClientsService.html
+  name: ClientsService
+  nameWithType: ClientsService
+  fullName: MyTrips.Application.Services.ClientsService

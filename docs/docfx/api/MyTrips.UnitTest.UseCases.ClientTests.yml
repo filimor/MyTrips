@@ -1,0 +1,44 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.UnitTest.UseCases.ClientTests
+  commentId: N:MyTrips.UnitTest.UseCases.ClientTests
+  id: MyTrips.UnitTest.UseCases.ClientTests
+  children:
+  - MyTrips.UnitTest.UseCases.ClientTests.CreateClientUnitTests
+  - MyTrips.UnitTest.UseCases.ClientTests.DeleteClientUnitTests
+  - MyTrips.UnitTest.UseCases.ClientTests.GetClientUnitTests
+  - MyTrips.UnitTest.UseCases.ClientTests.UpdateClientUnitTests
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.UnitTest.UseCases.ClientTests
+  nameWithType: MyTrips.UnitTest.UseCases.ClientTests
+  fullName: MyTrips.UnitTest.UseCases.ClientTests
+  type: Namespace
+  assemblies:
+  - MyTrips.UnitTest
+references:
+- uid: MyTrips.UnitTest.UseCases.ClientTests.CreateClientUnitTests
+  commentId: T:MyTrips.UnitTest.UseCases.ClientTests.CreateClientUnitTests
+  href: MyTrips.UnitTest.UseCases.ClientTests.CreateClientUnitTests.html
+  name: CreateClientUnitTests
+  nameWithType: CreateClientUnitTests
+  fullName: MyTrips.UnitTest.UseCases.ClientTests.CreateClientUnitTests
+- uid: MyTrips.UnitTest.UseCases.ClientTests.DeleteClientUnitTests
+  commentId: T:MyTrips.UnitTest.UseCases.ClientTests.DeleteClientUnitTests
+  href: MyTrips.UnitTest.UseCases.ClientTests.DeleteClientUnitTests.html
+  name: DeleteClientUnitTests
+  nameWithType: DeleteClientUnitTests
+  fullName: MyTrips.UnitTest.UseCases.ClientTests.DeleteClientUnitTests
+- uid: MyTrips.UnitTest.UseCases.ClientTests.GetClientUnitTests
+  commentId: T:MyTrips.UnitTest.UseCases.ClientTests.GetClientUnitTests
+  href: MyTrips.UnitTest.UseCases.ClientTests.GetClientUnitTests.html
+  name: GetClientUnitTests
+  nameWithType: GetClientUnitTests
+  fullName: MyTrips.UnitTest.UseCases.ClientTests.GetClientUnitTests
+- uid: MyTrips.UnitTest.UseCases.ClientTests.UpdateClientUnitTests
+  commentId: T:MyTrips.UnitTest.UseCases.ClientTests.UpdateClientUnitTests
+  href: MyTrips.UnitTest.UseCases.ClientTests.UpdateClientUnitTests.html
+  name: UpdateClientUnitTests
+  nameWithType: UpdateClientUnitTests
+  fullName: MyTrips.UnitTest.UseCases.ClientTests.UpdateClientUnitTests

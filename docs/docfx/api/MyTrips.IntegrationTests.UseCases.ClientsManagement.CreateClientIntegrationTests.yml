@@ -1,0 +1,913 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests
+  commentId: T:MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests
+  id: CreateClientIntegrationTests
+  parent: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  children:
+  - MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.#ctor(MyTrips.IntegrationTests.Fixtures.ClientsManagementFixture)
+  - MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain
+  - MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent
+  - MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt(System.String)
+  - MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(System.String)
+  - MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt(System.String)
+  - MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(System.String)
+  - MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent
+  langs:
+  - csharp
+  - vb
+  name: CreateClientIntegrationTests
+  nameWithType: CreateClientIntegrationTests
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests
+  type: Class
+  source:
+    remote:
+      path: tests/MyTrips.IntegrationTests/UseCases/ClientsManagement/CreateClientIntegrationTests.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: CreateClientIntegrationTests
+    path: ../../tests/MyTrips.IntegrationTests/UseCases/ClientsManagement/CreateClientIntegrationTests.cs
+    startLine: 13
+  assemblies:
+  - MyTrips.IntegrationTests
+  namespace: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  syntax:
+    content: >-
+      [Collection("ClientsManagementIntegration")]
+
+      public class CreateClientIntegrationTests
+    content.vb: >-
+      <Collection("ClientsManagementIntegration")>
+
+      Public Class CreateClientIntegrationTests
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: Xunit.CollectionAttribute
+    ctor: Xunit.CollectionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: ClientsManagementIntegration
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.#ctor(MyTrips.IntegrationTests.Fixtures.ClientsManagementFixture)
+  commentId: M:MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.#ctor(MyTrips.IntegrationTests.Fixtures.ClientsManagementFixture)
+  id: '#ctor(MyTrips.IntegrationTests.Fixtures.ClientsManagementFixture)'
+  parent: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests
+  langs:
+  - csharp
+  - vb
+  name: CreateClientIntegrationTests(ClientsManagementFixture)
+  nameWithType: CreateClientIntegrationTests.CreateClientIntegrationTests(ClientsManagementFixture)
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.CreateClientIntegrationTests(MyTrips.IntegrationTests.Fixtures.ClientsManagementFixture)
+  type: Constructor
+  source:
+    remote:
+      path: tests/MyTrips.IntegrationTests/UseCases/ClientsManagement/CreateClientIntegrationTests.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: .ctor
+    path: ../../tests/MyTrips.IntegrationTests/UseCases/ClientsManagement/CreateClientIntegrationTests.cs
+    startLine: 13
+  assemblies:
+  - MyTrips.IntegrationTests
+  namespace: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  syntax:
+    content: public CreateClientIntegrationTests(ClientsManagementFixture fixture)
+    parameters:
+    - id: fixture
+      type: MyTrips.IntegrationTests.Fixtures.ClientsManagementFixture
+    content.vb: Public Sub New(fixture As ClientsManagementFixture)
+  overload: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.#ctor*
+  nameWithType.vb: CreateClientIntegrationTests.New(ClientsManagementFixture)
+  fullName.vb: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.New(MyTrips.IntegrationTests.Fixtures.ClientsManagementFixture)
+  name.vb: New(ClientsManagementFixture)
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent
+  commentId: M:MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent
+  id: GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent
+  parent: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests
+  langs:
+  - csharp
+  - vb
+  name: GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent()
+  nameWithType: CreateClientIntegrationTests.GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent()
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent()
+  type: Method
+  source:
+    remote:
+      path: tests/MyTrips.IntegrationTests/UseCases/ClientsManagement/CreateClientIntegrationTests.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent
+    path: ../../tests/MyTrips.IntegrationTests/UseCases/ClientsManagement/CreateClientIntegrationTests.cs
+    startLine: 16
+  assemblies:
+  - MyTrips.IntegrationTests
+  namespace: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  syntax:
+    content: >-
+      [Fact]
+
+      [Trait("Category", "Integration")]
+
+      public Task GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: >-
+      <Fact>
+
+      <Trait("Category", "Integration")>
+
+      Public Function GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent() As Task
+  overload: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+  - type: Xunit.TraitAttribute
+    ctor: Xunit.TraitAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: Category
+    - type: System.String
+      value: Integration
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(System.String)
+  commentId: M:MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(System.String)
+  id: GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(System.String)
+  parent: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests
+  langs:
+  - csharp
+  - vb
+  name: GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(string)
+  nameWithType: CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(string)
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(string)
+  type: Method
+  source:
+    remote:
+      path: tests/MyTrips.IntegrationTests/UseCases/ClientsManagement/CreateClientIntegrationTests.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent
+    path: ../../tests/MyTrips.IntegrationTests/UseCases/ClientsManagement/CreateClientIntegrationTests.cs
+    startLine: 40
+  assemblies:
+  - MyTrips.IntegrationTests
+  namespace: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  syntax:
+    content: >-
+      [Theory]
+
+      [Trait("Category", "Integration")]
+
+      [ClassData(typeof(InvalidStringClassData))]
+
+      public Task GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(string name)
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: >-
+      <Theory>
+
+      <Trait("Category", "Integration")>
+
+      <ClassData(GetType(InvalidStringClassData))>
+
+      Public Function GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(name As String) As Task
+  overload: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent*
+  attributes:
+  - type: Xunit.TheoryAttribute
+    ctor: Xunit.TheoryAttribute.#ctor
+    arguments: []
+  - type: Xunit.TraitAttribute
+    ctor: Xunit.TraitAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: Category
+    - type: System.String
+      value: Integration
+  - type: Xunit.ClassDataAttribute
+    ctor: Xunit.ClassDataAttribute.#ctor(System.Type)
+    arguments:
+    - type: System.Type
+      value: MyTrips.UnitTest.ClassData.InvalidStringClassData
+  nameWithType.vb: CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(String)
+  fullName.vb: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(String)
+  name.vb: GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(String)
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(System.String)
+  commentId: M:MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(System.String)
+  id: GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(System.String)
+  parent: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests
+  langs:
+  - csharp
+  - vb
+  name: GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(string)
+  nameWithType: CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(string)
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(string)
+  type: Method
+  source:
+    remote:
+      path: tests/MyTrips.IntegrationTests/UseCases/ClientsManagement/CreateClientIntegrationTests.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent
+    path: ../../tests/MyTrips.IntegrationTests/UseCases/ClientsManagement/CreateClientIntegrationTests.cs
+    startLine: 67
+  assemblies:
+  - MyTrips.IntegrationTests
+  namespace: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  syntax:
+    content: >-
+      [Theory]
+
+      [Trait("Category", "Integration")]
+
+      [ClassData(typeof(InvalidEmailClassData))]
+
+      public Task GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(string email)
+    parameters:
+    - id: email
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: >-
+      <Theory>
+
+      <Trait("Category", "Integration")>
+
+      <ClassData(GetType(InvalidEmailClassData))>
+
+      Public Function GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(email As String) As Task
+  overload: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent*
+  attributes:
+  - type: Xunit.TheoryAttribute
+    ctor: Xunit.TheoryAttribute.#ctor
+    arguments: []
+  - type: Xunit.TraitAttribute
+    ctor: Xunit.TraitAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: Category
+    - type: System.String
+      value: Integration
+  - type: Xunit.ClassDataAttribute
+    ctor: Xunit.ClassDataAttribute.#ctor(System.Type)
+    arguments:
+    - type: System.Type
+      value: MyTrips.UnitTest.ClassData.InvalidEmailClassData
+  nameWithType.vb: CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(String)
+  fullName.vb: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(String)
+  name.vb: GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent(String)
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent
+  commentId: M:MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent
+  id: GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent
+  parent: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests
+  langs:
+  - csharp
+  - vb
+  name: GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent()
+  nameWithType: CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent()
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent()
+  type: Method
+  source:
+    remote:
+      path: tests/MyTrips.IntegrationTests/UseCases/ClientsManagement/CreateClientIntegrationTests.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent
+    path: ../../tests/MyTrips.IntegrationTests/UseCases/ClientsManagement/CreateClientIntegrationTests.cs
+    startLine: 94
+  assemblies:
+  - MyTrips.IntegrationTests
+  namespace: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  syntax:
+    content: >-
+      [Fact]
+
+      [Trait("Category", "Integration")]
+
+      public Task GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: >-
+      <Fact>
+
+      <Trait("Category", "Integration")>
+
+      Public Function GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent() As Task
+  overload: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+  - type: Xunit.TraitAttribute
+    ctor: Xunit.TraitAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: Category
+    - type: System.String
+      value: Integration
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt(System.String)
+  commentId: M:MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt(System.String)
+  id: GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt(System.String)
+  parent: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests
+  langs:
+  - csharp
+  - vb
+  name: GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt(string)
+  nameWithType: CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt(string)
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt(string)
+  type: Method
+  source:
+    remote:
+      path: tests/MyTrips.IntegrationTests/UseCases/ClientsManagement/CreateClientIntegrationTests.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt
+    path: ../../tests/MyTrips.IntegrationTests/UseCases/ClientsManagement/CreateClientIntegrationTests.cs
+    startLine: 125
+  assemblies:
+  - MyTrips.IntegrationTests
+  namespace: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  syntax:
+    content: >-
+      [Theory]
+
+      [Trait("Category", "Integration")]
+
+      [ClassData(typeof(InvalidStringClassData))]
+
+      public Task GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt(string name)
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: >-
+      <Theory>
+
+      <Trait("Category", "Integration")>
+
+      <ClassData(GetType(InvalidStringClassData))>
+
+      Public Function GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt(name As String) As Task
+  overload: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt*
+  attributes:
+  - type: Xunit.TheoryAttribute
+    ctor: Xunit.TheoryAttribute.#ctor
+    arguments: []
+  - type: Xunit.TraitAttribute
+    ctor: Xunit.TraitAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: Category
+    - type: System.String
+      value: Integration
+  - type: Xunit.ClassDataAttribute
+    ctor: Xunit.ClassDataAttribute.#ctor(System.Type)
+    arguments:
+    - type: System.Type
+      value: MyTrips.UnitTest.ClassData.InvalidStringClassData
+  nameWithType.vb: CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt(String)
+  fullName.vb: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt(String)
+  name.vb: GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt(String)
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt(System.String)
+  commentId: M:MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt(System.String)
+  id: GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt(System.String)
+  parent: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests
+  langs:
+  - csharp
+  - vb
+  name: GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt(string)
+  nameWithType: CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt(string)
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt(string)
+  type: Method
+  source:
+    remote:
+      path: tests/MyTrips.IntegrationTests/UseCases/ClientsManagement/CreateClientIntegrationTests.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt
+    path: ../../tests/MyTrips.IntegrationTests/UseCases/ClientsManagement/CreateClientIntegrationTests.cs
+    startLine: 151
+  assemblies:
+  - MyTrips.IntegrationTests
+  namespace: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  syntax:
+    content: >-
+      [Theory]
+
+      [Trait("Category", "Integration")]
+
+      [ClassData(typeof(InvalidEmailClassData))]
+
+      public Task GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt(string email)
+    parameters:
+    - id: email
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: >-
+      <Theory>
+
+      <Trait("Category", "Integration")>
+
+      <ClassData(GetType(InvalidEmailClassData))>
+
+      Public Function GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt(email As String) As Task
+  overload: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt*
+  attributes:
+  - type: Xunit.TheoryAttribute
+    ctor: Xunit.TheoryAttribute.#ctor
+    arguments: []
+  - type: Xunit.TraitAttribute
+    ctor: Xunit.TraitAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: Category
+    - type: System.String
+      value: Integration
+  - type: Xunit.ClassDataAttribute
+    ctor: Xunit.ClassDataAttribute.#ctor(System.Type)
+    arguments:
+    - type: System.Type
+      value: MyTrips.UnitTest.ClassData.InvalidEmailClassData
+  nameWithType.vb: CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt(String)
+  fullName.vb: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt(String)
+  name.vb: GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt(String)
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain
+  commentId: M:MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain
+  id: GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain
+  parent: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests
+  langs:
+  - csharp
+  - vb
+  name: GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain()
+  nameWithType: CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain()
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain()
+  type: Method
+  source:
+    remote:
+      path: tests/MyTrips.IntegrationTests/UseCases/ClientsManagement/CreateClientIntegrationTests.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain
+    path: ../../tests/MyTrips.IntegrationTests/UseCases/ClientsManagement/CreateClientIntegrationTests.cs
+    startLine: 177
+  assemblies:
+  - MyTrips.IntegrationTests
+  namespace: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  syntax:
+    content: >-
+      [Fact]
+
+      [Trait("Category", "Integration")]
+
+      public Task GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: >-
+      <Fact>
+
+      <Trait("Category", "Integration")>
+
+      Public Function GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain() As Task
+  overload: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+  - type: Xunit.TraitAttribute
+    ctor: Xunit.TraitAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: Category
+    - type: System.String
+      value: Integration
+references:
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  commentId: N:MyTrips.IntegrationTests.UseCases.ClientsManagement
+  href: MyTrips.html
+  name: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  nameWithType: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.IntegrationTests
+    name: IntegrationTests
+    href: MyTrips.IntegrationTests.html
+  - name: .
+  - uid: MyTrips.IntegrationTests.UseCases
+    name: UseCases
+    href: MyTrips.IntegrationTests.UseCases.html
+  - name: .
+  - uid: MyTrips.IntegrationTests.UseCases.ClientsManagement
+    name: ClientsManagement
+    href: MyTrips.IntegrationTests.UseCases.ClientsManagement.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.IntegrationTests
+    name: IntegrationTests
+    href: MyTrips.IntegrationTests.html
+  - name: .
+  - uid: MyTrips.IntegrationTests.UseCases
+    name: UseCases
+    href: MyTrips.IntegrationTests.UseCases.html
+  - name: .
+  - uid: MyTrips.IntegrationTests.UseCases.ClientsManagement
+    name: ClientsManagement
+    href: MyTrips.IntegrationTests.UseCases.ClientsManagement.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.#ctor*
+  commentId: Overload:MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.#ctor
+  href: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.html#MyTrips_IntegrationTests_UseCases_ClientsManagement_CreateClientIntegrationTests__ctor_MyTrips_IntegrationTests_Fixtures_ClientsManagementFixture_
+  name: CreateClientIntegrationTests
+  nameWithType: CreateClientIntegrationTests.CreateClientIntegrationTests
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.CreateClientIntegrationTests
+  nameWithType.vb: CreateClientIntegrationTests.New
+  fullName.vb: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.New
+  name.vb: New
+- uid: MyTrips.IntegrationTests.Fixtures.ClientsManagementFixture
+  commentId: T:MyTrips.IntegrationTests.Fixtures.ClientsManagementFixture
+  parent: MyTrips.IntegrationTests.Fixtures
+  href: MyTrips.IntegrationTests.Fixtures.ClientsManagementFixture.html
+  name: ClientsManagementFixture
+  nameWithType: ClientsManagementFixture
+  fullName: MyTrips.IntegrationTests.Fixtures.ClientsManagementFixture
+- uid: MyTrips.IntegrationTests.Fixtures
+  commentId: N:MyTrips.IntegrationTests.Fixtures
+  href: MyTrips.html
+  name: MyTrips.IntegrationTests.Fixtures
+  nameWithType: MyTrips.IntegrationTests.Fixtures
+  fullName: MyTrips.IntegrationTests.Fixtures
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.IntegrationTests
+    name: IntegrationTests
+    href: MyTrips.IntegrationTests.html
+  - name: .
+  - uid: MyTrips.IntegrationTests.Fixtures
+    name: Fixtures
+    href: MyTrips.IntegrationTests.Fixtures.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.IntegrationTests
+    name: IntegrationTests
+    href: MyTrips.IntegrationTests.html
+  - name: .
+  - uid: MyTrips.IntegrationTests.Fixtures
+    name: Fixtures
+    href: MyTrips.IntegrationTests.Fixtures.html
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent*
+  commentId: Overload:MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent
+  href: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.html#MyTrips_IntegrationTests_UseCases_ClientsManagement_CreateClientIntegrationTests_GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent
+  name: GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent
+  nameWithType: CreateClientIntegrationTests.GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent*
+  commentId: Overload:MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent
+  href: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.html#MyTrips_IntegrationTests_UseCases_ClientsManagement_CreateClientIntegrationTests_GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent_System_String_
+  name: GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent
+  nameWithType: CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent*
+  commentId: Overload:MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent
+  href: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.html#MyTrips_IntegrationTests_UseCases_ClientsManagement_CreateClientIntegrationTests_GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent_System_String_
+  name: GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent
+  nameWithType: CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldReturnBadRequestWithHeadersAndContent
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent*
+  commentId: Overload:MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent
+  href: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.html#MyTrips_IntegrationTests_UseCases_ClientsManagement_CreateClientIntegrationTests_GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent
+  name: GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent
+  nameWithType: CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt*
+  commentId: Overload:MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt
+  href: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.html#MyTrips_IntegrationTests_UseCases_ClientsManagement_CreateClientIntegrationTests_GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt_System_String_
+  name: GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt
+  nameWithType: CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt*
+  commentId: Overload:MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt
+  href: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.html#MyTrips_IntegrationTests_UseCases_ClientsManagement_CreateClientIntegrationTests_GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt_System_String_
+  name: GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt
+  nameWithType: CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithInvalidEmail_WhenRequestedPostClient_ThenItShouldNotPersistIt
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain*
+  commentId: Overload:MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain
+  href: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.html#MyTrips_IntegrationTests_UseCases_ClientsManagement_CreateClientIntegrationTests_GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain
+  name: GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain
+  nameWithType: CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain
+  fullName: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests.GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain

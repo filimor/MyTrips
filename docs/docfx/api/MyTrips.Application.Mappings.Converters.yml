@@ -1,0 +1,48 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Application.Mappings.Converters
+  commentId: N:MyTrips.Application.Mappings.Converters
+  id: MyTrips.Application.Mappings.Converters
+  children:
+  - MyTrips.Application.Mappings.Converters.PagedListTypeConverter`2
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.Application.Mappings.Converters
+  nameWithType: MyTrips.Application.Mappings.Converters
+  fullName: MyTrips.Application.Mappings.Converters
+  type: Namespace
+  assemblies:
+  - MyTrips.Application
+references:
+- uid: MyTrips.Application.Mappings.Converters.PagedListTypeConverter`2
+  commentId: T:MyTrips.Application.Mappings.Converters.PagedListTypeConverter`2
+  href: MyTrips.Application.Mappings.Converters.PagedListTypeConverter-2.html
+  name: PagedListTypeConverter<TSource, TDestination>
+  nameWithType: PagedListTypeConverter<TSource, TDestination>
+  fullName: MyTrips.Application.Mappings.Converters.PagedListTypeConverter<TSource, TDestination>
+  nameWithType.vb: PagedListTypeConverter(Of TSource, TDestination)
+  fullName.vb: MyTrips.Application.Mappings.Converters.PagedListTypeConverter(Of TSource, TDestination)
+  name.vb: PagedListTypeConverter(Of TSource, TDestination)
+  spec.csharp:
+  - uid: MyTrips.Application.Mappings.Converters.PagedListTypeConverter`2
+    name: PagedListTypeConverter
+    href: MyTrips.Application.Mappings.Converters.PagedListTypeConverter-2.html
+  - name: <
+  - name: TSource
+  - name: ','
+  - name: " "
+  - name: TDestination
+  - name: '>'
+  spec.vb:
+  - uid: MyTrips.Application.Mappings.Converters.PagedListTypeConverter`2
+    name: PagedListTypeConverter
+    href: MyTrips.Application.Mappings.Converters.PagedListTypeConverter-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TSource
+  - name: ','
+  - name: " "
+  - name: TDestination
+  - name: )

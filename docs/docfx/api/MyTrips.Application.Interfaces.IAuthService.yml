@@ -1,0 +1,152 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Application.Interfaces.IAuthService
+  commentId: T:MyTrips.Application.Interfaces.IAuthService
+  id: IAuthService
+  parent: MyTrips.Application.Interfaces
+  children:
+  - MyTrips.Application.Interfaces.IAuthService.GetToken(MyTrips.Domain.Entities.LoginInfo)
+  langs:
+  - csharp
+  - vb
+  name: IAuthService
+  nameWithType: IAuthService
+  fullName: MyTrips.Application.Interfaces.IAuthService
+  type: Interface
+  source:
+    remote:
+      path: src/MyTrips.Application/Interfaces/IAuthService.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: IAuthService
+    path: ../../src/MyTrips.Application/Interfaces/IAuthService.cs
+    startLine: 4
+  assemblies:
+  - MyTrips.Application
+  namespace: MyTrips.Application.Interfaces
+  syntax:
+    content: public interface IAuthService
+    content.vb: Public Interface IAuthService
+- uid: MyTrips.Application.Interfaces.IAuthService.GetToken(MyTrips.Domain.Entities.LoginInfo)
+  commentId: M:MyTrips.Application.Interfaces.IAuthService.GetToken(MyTrips.Domain.Entities.LoginInfo)
+  id: GetToken(MyTrips.Domain.Entities.LoginInfo)
+  parent: MyTrips.Application.Interfaces.IAuthService
+  langs:
+  - csharp
+  - vb
+  name: GetToken(LoginInfo)
+  nameWithType: IAuthService.GetToken(LoginInfo)
+  fullName: MyTrips.Application.Interfaces.IAuthService.GetToken(MyTrips.Domain.Entities.LoginInfo)
+  type: Method
+  source:
+    remote:
+      path: src/MyTrips.Application/Interfaces/IAuthService.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: GetToken
+    path: ../../src/MyTrips.Application/Interfaces/IAuthService.cs
+    startLine: 6
+  assemblies:
+  - MyTrips.Application
+  namespace: MyTrips.Application.Interfaces
+  syntax:
+    content: string GetToken(LoginInfo loginInfo)
+    parameters:
+    - id: loginInfo
+      type: MyTrips.Domain.Entities.LoginInfo
+    return:
+      type: System.String
+    content.vb: Function GetToken(loginInfo As LoginInfo) As String
+  overload: MyTrips.Application.Interfaces.IAuthService.GetToken*
+references:
+- uid: MyTrips.Application.Interfaces
+  commentId: N:MyTrips.Application.Interfaces
+  href: MyTrips.html
+  name: MyTrips.Application.Interfaces
+  nameWithType: MyTrips.Application.Interfaces
+  fullName: MyTrips.Application.Interfaces
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Application
+    name: Application
+    href: MyTrips.Application.html
+  - name: .
+  - uid: MyTrips.Application.Interfaces
+    name: Interfaces
+    href: MyTrips.Application.Interfaces.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Application
+    name: Application
+    href: MyTrips.Application.html
+  - name: .
+  - uid: MyTrips.Application.Interfaces
+    name: Interfaces
+    href: MyTrips.Application.Interfaces.html
+- uid: MyTrips.Application.Interfaces.IAuthService.GetToken*
+  commentId: Overload:MyTrips.Application.Interfaces.IAuthService.GetToken
+  href: MyTrips.Application.Interfaces.IAuthService.html#MyTrips_Application_Interfaces_IAuthService_GetToken_MyTrips_Domain_Entities_LoginInfo_
+  name: GetToken
+  nameWithType: IAuthService.GetToken
+  fullName: MyTrips.Application.Interfaces.IAuthService.GetToken
+- uid: MyTrips.Domain.Entities.LoginInfo
+  commentId: T:MyTrips.Domain.Entities.LoginInfo
+  parent: MyTrips.Domain.Entities
+  href: MyTrips.Domain.Entities.LoginInfo.html
+  name: LoginInfo
+  nameWithType: LoginInfo
+  fullName: MyTrips.Domain.Entities.LoginInfo
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MyTrips.Domain.Entities
+  commentId: N:MyTrips.Domain.Entities
+  href: MyTrips.html
+  name: MyTrips.Domain.Entities
+  nameWithType: MyTrips.Domain.Entities
+  fullName: MyTrips.Domain.Entities
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Domain
+    name: Domain
+    href: MyTrips.Domain.html
+  - name: .
+  - uid: MyTrips.Domain.Entities
+    name: Entities
+    href: MyTrips.Domain.Entities.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Domain
+    name: Domain
+    href: MyTrips.Domain.html
+  - name: .
+  - uid: MyTrips.Domain.Entities
+    name: Entities
+    href: MyTrips.Domain.Entities.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

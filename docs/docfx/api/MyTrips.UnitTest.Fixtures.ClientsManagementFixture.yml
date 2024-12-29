@@ -1,0 +1,789 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.UnitTest.Fixtures.ClientsManagementFixture
+  commentId: T:MyTrips.UnitTest.Fixtures.ClientsManagementFixture
+  id: ClientsManagementFixture
+  parent: MyTrips.UnitTest.Fixtures
+  children:
+  - MyTrips.UnitTest.Fixtures.ClientsManagementFixture.#ctor
+  - MyTrips.UnitTest.Fixtures.ClientsManagementFixture.ClientStub
+  - MyTrips.UnitTest.Fixtures.ClientsManagementFixture.ClientsCollectionStub
+  - MyTrips.UnitTest.Fixtures.ClientsManagementFixture.ClientsRepositoryMock
+  - MyTrips.UnitTest.Fixtures.ClientsManagementFixture.CreateClientDtoStub
+  - MyTrips.UnitTest.Fixtures.ClientsManagementFixture.MapperMock
+  - MyTrips.UnitTest.Fixtures.ClientsManagementFixture.ResponseClientDtoStub
+  - MyTrips.UnitTest.Fixtures.ClientsManagementFixture.UpdateClientDtoStub
+  langs:
+  - csharp
+  - vb
+  name: ClientsManagementFixture
+  nameWithType: ClientsManagementFixture
+  fullName: MyTrips.UnitTest.Fixtures.ClientsManagementFixture
+  type: Class
+  source:
+    remote:
+      path: tests/MyTrips.UnitTest/Fixtures/ClientsManagementFixture.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: ClientsManagementFixture
+    path: ../../tests/MyTrips.UnitTest/Fixtures/ClientsManagementFixture.cs
+    startLine: 10
+  assemblies:
+  - MyTrips.UnitTest
+  namespace: MyTrips.UnitTest.Fixtures
+  syntax:
+    content: public sealed class ClientsManagementFixture
+    content.vb: Public NotInheritable Class ClientsManagementFixture
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.ClientsRepositoryMock
+  commentId: F:MyTrips.UnitTest.Fixtures.ClientsManagementFixture.ClientsRepositoryMock
+  id: ClientsRepositoryMock
+  parent: MyTrips.UnitTest.Fixtures.ClientsManagementFixture
+  langs:
+  - csharp
+  - vb
+  name: ClientsRepositoryMock
+  nameWithType: ClientsManagementFixture.ClientsRepositoryMock
+  fullName: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.ClientsRepositoryMock
+  type: Field
+  source:
+    remote:
+      path: tests/MyTrips.UnitTest/Fixtures/ClientsManagementFixture.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: ClientsRepositoryMock
+    path: ../../tests/MyTrips.UnitTest/Fixtures/ClientsManagementFixture.cs
+    startLine: 12
+  assemblies:
+  - MyTrips.UnitTest
+  namespace: MyTrips.UnitTest.Fixtures
+  syntax:
+    content: public readonly Mock<IClientsRepository> ClientsRepositoryMock
+    return:
+      type: Moq.Mock{MyTrips.Domain.Interfaces.IClientsRepository}
+    content.vb: Public ReadOnly ClientsRepositoryMock As Mock(Of IClientsRepository)
+- uid: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.MapperMock
+  commentId: F:MyTrips.UnitTest.Fixtures.ClientsManagementFixture.MapperMock
+  id: MapperMock
+  parent: MyTrips.UnitTest.Fixtures.ClientsManagementFixture
+  langs:
+  - csharp
+  - vb
+  name: MapperMock
+  nameWithType: ClientsManagementFixture.MapperMock
+  fullName: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.MapperMock
+  type: Field
+  source:
+    remote:
+      path: tests/MyTrips.UnitTest/Fixtures/ClientsManagementFixture.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: MapperMock
+    path: ../../tests/MyTrips.UnitTest/Fixtures/ClientsManagementFixture.cs
+    startLine: 13
+  assemblies:
+  - MyTrips.UnitTest
+  namespace: MyTrips.UnitTest.Fixtures
+  syntax:
+    content: public readonly Mock<IMapper> MapperMock
+    return:
+      type: Moq.Mock{AutoMapper.IMapper}
+    content.vb: Public ReadOnly MapperMock As Mock(Of IMapper)
+- uid: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.ClientsCollectionStub
+  commentId: F:MyTrips.UnitTest.Fixtures.ClientsManagementFixture.ClientsCollectionStub
+  id: ClientsCollectionStub
+  parent: MyTrips.UnitTest.Fixtures.ClientsManagementFixture
+  langs:
+  - csharp
+  - vb
+  name: ClientsCollectionStub
+  nameWithType: ClientsManagementFixture.ClientsCollectionStub
+  fullName: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.ClientsCollectionStub
+  type: Field
+  source:
+    remote:
+      path: tests/MyTrips.UnitTest/Fixtures/ClientsManagementFixture.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: ClientsCollectionStub
+    path: ../../tests/MyTrips.UnitTest/Fixtures/ClientsManagementFixture.cs
+    startLine: 14
+  assemblies:
+  - MyTrips.UnitTest
+  namespace: MyTrips.UnitTest.Fixtures
+  syntax:
+    content: public IEnumerable<Client> ClientsCollectionStub
+    return:
+      type: System.Collections.Generic.IEnumerable{MyTrips.Domain.Entities.Client}
+    content.vb: Public ClientsCollectionStub As IEnumerable(Of Client)
+- uid: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.ClientStub
+  commentId: F:MyTrips.UnitTest.Fixtures.ClientsManagementFixture.ClientStub
+  id: ClientStub
+  parent: MyTrips.UnitTest.Fixtures.ClientsManagementFixture
+  langs:
+  - csharp
+  - vb
+  name: ClientStub
+  nameWithType: ClientsManagementFixture.ClientStub
+  fullName: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.ClientStub
+  type: Field
+  source:
+    remote:
+      path: tests/MyTrips.UnitTest/Fixtures/ClientsManagementFixture.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: ClientStub
+    path: ../../tests/MyTrips.UnitTest/Fixtures/ClientsManagementFixture.cs
+    startLine: 15
+  assemblies:
+  - MyTrips.UnitTest
+  namespace: MyTrips.UnitTest.Fixtures
+  syntax:
+    content: public Client ClientStub
+    return:
+      type: MyTrips.Domain.Entities.Client
+    content.vb: Public ClientStub As Client
+- uid: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.CreateClientDtoStub
+  commentId: F:MyTrips.UnitTest.Fixtures.ClientsManagementFixture.CreateClientDtoStub
+  id: CreateClientDtoStub
+  parent: MyTrips.UnitTest.Fixtures.ClientsManagementFixture
+  langs:
+  - csharp
+  - vb
+  name: CreateClientDtoStub
+  nameWithType: ClientsManagementFixture.CreateClientDtoStub
+  fullName: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.CreateClientDtoStub
+  type: Field
+  source:
+    remote:
+      path: tests/MyTrips.UnitTest/Fixtures/ClientsManagementFixture.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: CreateClientDtoStub
+    path: ../../tests/MyTrips.UnitTest/Fixtures/ClientsManagementFixture.cs
+    startLine: 16
+  assemblies:
+  - MyTrips.UnitTest
+  namespace: MyTrips.UnitTest.Fixtures
+  syntax:
+    content: public CreateClientDto CreateClientDtoStub
+    return:
+      type: MyTrips.Application.Dtos.CreateClientDto
+    content.vb: Public CreateClientDtoStub As CreateClientDto
+- uid: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.ResponseClientDtoStub
+  commentId: F:MyTrips.UnitTest.Fixtures.ClientsManagementFixture.ResponseClientDtoStub
+  id: ResponseClientDtoStub
+  parent: MyTrips.UnitTest.Fixtures.ClientsManagementFixture
+  langs:
+  - csharp
+  - vb
+  name: ResponseClientDtoStub
+  nameWithType: ClientsManagementFixture.ResponseClientDtoStub
+  fullName: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.ResponseClientDtoStub
+  type: Field
+  source:
+    remote:
+      path: tests/MyTrips.UnitTest/Fixtures/ClientsManagementFixture.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: ResponseClientDtoStub
+    path: ../../tests/MyTrips.UnitTest/Fixtures/ClientsManagementFixture.cs
+    startLine: 17
+  assemblies:
+  - MyTrips.UnitTest
+  namespace: MyTrips.UnitTest.Fixtures
+  syntax:
+    content: public ResponseClientDto ResponseClientDtoStub
+    return:
+      type: MyTrips.Application.Dtos.ResponseClientDto
+    content.vb: Public ResponseClientDtoStub As ResponseClientDto
+- uid: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.UpdateClientDtoStub
+  commentId: F:MyTrips.UnitTest.Fixtures.ClientsManagementFixture.UpdateClientDtoStub
+  id: UpdateClientDtoStub
+  parent: MyTrips.UnitTest.Fixtures.ClientsManagementFixture
+  langs:
+  - csharp
+  - vb
+  name: UpdateClientDtoStub
+  nameWithType: ClientsManagementFixture.UpdateClientDtoStub
+  fullName: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.UpdateClientDtoStub
+  type: Field
+  source:
+    remote:
+      path: tests/MyTrips.UnitTest/Fixtures/ClientsManagementFixture.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: UpdateClientDtoStub
+    path: ../../tests/MyTrips.UnitTest/Fixtures/ClientsManagementFixture.cs
+    startLine: 18
+  assemblies:
+  - MyTrips.UnitTest
+  namespace: MyTrips.UnitTest.Fixtures
+  syntax:
+    content: public UpdateClientDto UpdateClientDtoStub
+    return:
+      type: MyTrips.Application.Dtos.UpdateClientDto
+    content.vb: Public UpdateClientDtoStub As UpdateClientDto
+- uid: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.#ctor
+  commentId: M:MyTrips.UnitTest.Fixtures.ClientsManagementFixture.#ctor
+  id: '#ctor'
+  parent: MyTrips.UnitTest.Fixtures.ClientsManagementFixture
+  langs:
+  - csharp
+  - vb
+  name: ClientsManagementFixture()
+  nameWithType: ClientsManagementFixture.ClientsManagementFixture()
+  fullName: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.ClientsManagementFixture()
+  type: Constructor
+  source:
+    remote:
+      path: tests/MyTrips.UnitTest/Fixtures/ClientsManagementFixture.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: .ctor
+    path: ../../tests/MyTrips.UnitTest/Fixtures/ClientsManagementFixture.cs
+    startLine: 20
+  assemblies:
+  - MyTrips.UnitTest
+  namespace: MyTrips.UnitTest.Fixtures
+  syntax:
+    content: public ClientsManagementFixture()
+    content.vb: Public Sub New()
+  overload: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.#ctor*
+  nameWithType.vb: ClientsManagementFixture.New()
+  fullName.vb: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.New()
+  name.vb: New()
+references:
+- uid: MyTrips.UnitTest.Fixtures
+  commentId: N:MyTrips.UnitTest.Fixtures
+  href: MyTrips.html
+  name: MyTrips.UnitTest.Fixtures
+  nameWithType: MyTrips.UnitTest.Fixtures
+  fullName: MyTrips.UnitTest.Fixtures
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.UnitTest
+    name: UnitTest
+    href: MyTrips.UnitTest.html
+  - name: .
+  - uid: MyTrips.UnitTest.Fixtures
+    name: Fixtures
+    href: MyTrips.UnitTest.Fixtures.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.UnitTest
+    name: UnitTest
+    href: MyTrips.UnitTest.html
+  - name: .
+  - uid: MyTrips.UnitTest.Fixtures
+    name: Fixtures
+    href: MyTrips.UnitTest.Fixtures.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Moq.Mock{MyTrips.Domain.Interfaces.IClientsRepository}
+  commentId: T:Moq.Mock{MyTrips.Domain.Interfaces.IClientsRepository}
+  parent: Moq
+  definition: Moq.Mock`1
+  name: Mock<IClientsRepository>
+  nameWithType: Mock<IClientsRepository>
+  fullName: Moq.Mock<MyTrips.Domain.Interfaces.IClientsRepository>
+  nameWithType.vb: Mock(Of IClientsRepository)
+  fullName.vb: Moq.Mock(Of MyTrips.Domain.Interfaces.IClientsRepository)
+  name.vb: Mock(Of IClientsRepository)
+  spec.csharp:
+  - uid: Moq.Mock`1
+    name: Mock
+    isExternal: true
+  - name: <
+  - uid: MyTrips.Domain.Interfaces.IClientsRepository
+    name: IClientsRepository
+  - name: '>'
+  spec.vb:
+  - uid: Moq.Mock`1
+    name: Mock
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MyTrips.Domain.Interfaces.IClientsRepository
+    name: IClientsRepository
+  - name: )
+- uid: Moq.Mock`1
+  commentId: T:Moq.Mock`1
+  isExternal: true
+  name: Mock<T>
+  nameWithType: Mock<T>
+  fullName: Moq.Mock<T>
+  nameWithType.vb: Mock(Of T)
+  fullName.vb: Moq.Mock(Of T)
+  name.vb: Mock(Of T)
+  spec.csharp:
+  - uid: Moq.Mock`1
+    name: Mock
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Moq.Mock`1
+    name: Mock
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Moq
+  commentId: N:Moq
+  isExternal: true
+  name: Moq
+  nameWithType: Moq
+  fullName: Moq
+- uid: Moq.Mock{AutoMapper.IMapper}
+  commentId: T:Moq.Mock{AutoMapper.IMapper}
+  parent: Moq
+  definition: Moq.Mock`1
+  name: Mock<IMapper>
+  nameWithType: Mock<IMapper>
+  fullName: Moq.Mock<AutoMapper.IMapper>
+  nameWithType.vb: Mock(Of IMapper)
+  fullName.vb: Moq.Mock(Of AutoMapper.IMapper)
+  name.vb: Mock(Of IMapper)
+  spec.csharp:
+  - uid: Moq.Mock`1
+    name: Mock
+    isExternal: true
+  - name: <
+  - uid: AutoMapper.IMapper
+    name: IMapper
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Moq.Mock`1
+    name: Mock
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: AutoMapper.IMapper
+    name: IMapper
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{MyTrips.Domain.Entities.Client}
+  commentId: T:System.Collections.Generic.IEnumerable{MyTrips.Domain.Entities.Client}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<Client>
+  nameWithType: IEnumerable<Client>
+  fullName: System.Collections.Generic.IEnumerable<MyTrips.Domain.Entities.Client>
+  nameWithType.vb: IEnumerable(Of Client)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of MyTrips.Domain.Entities.Client)
+  name.vb: IEnumerable(Of Client)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: MyTrips.Domain.Entities.Client
+    name: Client
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MyTrips.Domain.Entities.Client
+    name: Client
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: MyTrips.Domain.Entities.Client
+  commentId: T:MyTrips.Domain.Entities.Client
+  parent: MyTrips.Domain.Entities
+  href: MyTrips.Domain.Entities.Client.html
+  name: Client
+  nameWithType: Client
+  fullName: MyTrips.Domain.Entities.Client
+- uid: MyTrips.Domain.Entities
+  commentId: N:MyTrips.Domain.Entities
+  href: MyTrips.html
+  name: MyTrips.Domain.Entities
+  nameWithType: MyTrips.Domain.Entities
+  fullName: MyTrips.Domain.Entities
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Domain
+    name: Domain
+    href: MyTrips.Domain.html
+  - name: .
+  - uid: MyTrips.Domain.Entities
+    name: Entities
+    href: MyTrips.Domain.Entities.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Domain
+    name: Domain
+    href: MyTrips.Domain.html
+  - name: .
+  - uid: MyTrips.Domain.Entities
+    name: Entities
+    href: MyTrips.Domain.Entities.html
+- uid: MyTrips.Application.Dtos.CreateClientDto
+  commentId: T:MyTrips.Application.Dtos.CreateClientDto
+  parent: MyTrips.Application.Dtos
+  href: MyTrips.Application.Dtos.CreateClientDto.html
+  name: CreateClientDto
+  nameWithType: CreateClientDto
+  fullName: MyTrips.Application.Dtos.CreateClientDto
+- uid: MyTrips.Application.Dtos
+  commentId: N:MyTrips.Application.Dtos
+  href: MyTrips.html
+  name: MyTrips.Application.Dtos
+  nameWithType: MyTrips.Application.Dtos
+  fullName: MyTrips.Application.Dtos
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Application
+    name: Application
+    href: MyTrips.Application.html
+  - name: .
+  - uid: MyTrips.Application.Dtos
+    name: Dtos
+    href: MyTrips.Application.Dtos.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Application
+    name: Application
+    href: MyTrips.Application.html
+  - name: .
+  - uid: MyTrips.Application.Dtos
+    name: Dtos
+    href: MyTrips.Application.Dtos.html
+- uid: MyTrips.Application.Dtos.ResponseClientDto
+  commentId: T:MyTrips.Application.Dtos.ResponseClientDto
+  parent: MyTrips.Application.Dtos
+  href: MyTrips.Application.Dtos.ResponseClientDto.html
+  name: ResponseClientDto
+  nameWithType: ResponseClientDto
+  fullName: MyTrips.Application.Dtos.ResponseClientDto
+- uid: MyTrips.Application.Dtos.UpdateClientDto
+  commentId: T:MyTrips.Application.Dtos.UpdateClientDto
+  parent: MyTrips.Application.Dtos
+  href: MyTrips.Application.Dtos.UpdateClientDto.html
+  name: UpdateClientDto
+  nameWithType: UpdateClientDto
+  fullName: MyTrips.Application.Dtos.UpdateClientDto
+- uid: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.#ctor*
+  commentId: Overload:MyTrips.UnitTest.Fixtures.ClientsManagementFixture.#ctor
+  href: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.html#MyTrips_UnitTest_Fixtures_ClientsManagementFixture__ctor
+  name: ClientsManagementFixture
+  nameWithType: ClientsManagementFixture.ClientsManagementFixture
+  fullName: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.ClientsManagementFixture
+  nameWithType.vb: ClientsManagementFixture.New
+  fullName.vb: MyTrips.UnitTest.Fixtures.ClientsManagementFixture.New
+  name.vb: New

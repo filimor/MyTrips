@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Application.Mappings
+  commentId: N:MyTrips.Application.Mappings
+  id: MyTrips.Application.Mappings
+  children:
+  - MyTrips.Application.Mappings.DtoToDomainMappingProfile
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.Application.Mappings
+  nameWithType: MyTrips.Application.Mappings
+  fullName: MyTrips.Application.Mappings
+  type: Namespace
+  assemblies:
+  - MyTrips.Application
+references:
+- uid: MyTrips.Application.Mappings.DtoToDomainMappingProfile
+  commentId: T:MyTrips.Application.Mappings.DtoToDomainMappingProfile
+  href: MyTrips.Application.Mappings.DtoToDomainMappingProfile.html
+  name: DtoToDomainMappingProfile
+  nameWithType: DtoToDomainMappingProfile
+  fullName: MyTrips.Application.Mappings.DtoToDomainMappingProfile

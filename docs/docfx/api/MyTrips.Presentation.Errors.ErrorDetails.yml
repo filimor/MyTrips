@@ -1,0 +1,668 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Presentation.Errors.ErrorDetails
+  commentId: T:MyTrips.Presentation.Errors.ErrorDetails
+  id: ErrorDetails
+  parent: MyTrips.Presentation.Errors
+  children:
+  - MyTrips.Presentation.Errors.ErrorDetails.Detail
+  - MyTrips.Presentation.Errors.ErrorDetails.Errors
+  - MyTrips.Presentation.Errors.ErrorDetails.Instance
+  - MyTrips.Presentation.Errors.ErrorDetails.JsonSettings
+  - MyTrips.Presentation.Errors.ErrorDetails.Status
+  - MyTrips.Presentation.Errors.ErrorDetails.Title
+  - MyTrips.Presentation.Errors.ErrorDetails.ToString
+  - MyTrips.Presentation.Errors.ErrorDetails.Type
+  langs:
+  - csharp
+  - vb
+  name: ErrorDetails
+  nameWithType: ErrorDetails
+  fullName: MyTrips.Presentation.Errors.ErrorDetails
+  type: Class
+  source:
+    remote:
+      path: src/MyTrips.Presentation/Errors/ErrorDetails.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: ErrorDetails
+    path: ../../src/MyTrips.Presentation/Errors/ErrorDetails.cs
+    startLine: 6
+  assemblies:
+  - MyTrips.Presentation
+  namespace: MyTrips.Presentation.Errors
+  syntax:
+    content: public class ErrorDetails
+    content.vb: Public Class ErrorDetails
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - MyTrips.Presentation.Errors.BadRequestErrorDetails
+  - MyTrips.Presentation.Errors.ConflictErrorDetails
+  - MyTrips.Presentation.Errors.InternalServerErrorDetails
+  - MyTrips.Presentation.Errors.NotFoundErrorDetails
+  - MyTrips.Presentation.Errors.UnauthorizedErrorDetails
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: MyTrips.Presentation.Errors.ErrorDetails.JsonSettings
+  commentId: F:MyTrips.Presentation.Errors.ErrorDetails.JsonSettings
+  id: JsonSettings
+  parent: MyTrips.Presentation.Errors.ErrorDetails
+  langs:
+  - csharp
+  - vb
+  name: JsonSettings
+  nameWithType: ErrorDetails.JsonSettings
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.JsonSettings
+  type: Field
+  source:
+    remote:
+      path: src/MyTrips.Presentation/Errors/ErrorDetails.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: JsonSettings
+    path: ../../src/MyTrips.Presentation/Errors/ErrorDetails.cs
+    startLine: 8
+  assemblies:
+  - MyTrips.Presentation
+  namespace: MyTrips.Presentation.Errors
+  syntax:
+    content: protected static readonly JsonSerializerSettings JsonSettings
+    return:
+      type: Newtonsoft.Json.JsonSerializerSettings
+    content.vb: Protected Shared ReadOnly JsonSettings As JsonSerializerSettings
+- uid: MyTrips.Presentation.Errors.ErrorDetails.Type
+  commentId: P:MyTrips.Presentation.Errors.ErrorDetails.Type
+  id: Type
+  parent: MyTrips.Presentation.Errors.ErrorDetails
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: ErrorDetails.Type
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.Type
+  type: Property
+  source:
+    remote:
+      path: src/MyTrips.Presentation/Errors/ErrorDetails.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: Type
+    path: ../../src/MyTrips.Presentation/Errors/ErrorDetails.cs
+    startLine: 15
+  assemblies:
+  - MyTrips.Presentation
+  namespace: MyTrips.Presentation.Errors
+  syntax:
+    content: public string? Type { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Type As String
+  overload: MyTrips.Presentation.Errors.ErrorDetails.Type*
+- uid: MyTrips.Presentation.Errors.ErrorDetails.Title
+  commentId: P:MyTrips.Presentation.Errors.ErrorDetails.Title
+  id: Title
+  parent: MyTrips.Presentation.Errors.ErrorDetails
+  langs:
+  - csharp
+  - vb
+  name: Title
+  nameWithType: ErrorDetails.Title
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.Title
+  type: Property
+  source:
+    remote:
+      path: src/MyTrips.Presentation/Errors/ErrorDetails.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: Title
+    path: ../../src/MyTrips.Presentation/Errors/ErrorDetails.cs
+    startLine: 16
+  assemblies:
+  - MyTrips.Presentation
+  namespace: MyTrips.Presentation.Errors
+  syntax:
+    content: public string? Title { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Title As String
+  overload: MyTrips.Presentation.Errors.ErrorDetails.Title*
+- uid: MyTrips.Presentation.Errors.ErrorDetails.Status
+  commentId: P:MyTrips.Presentation.Errors.ErrorDetails.Status
+  id: Status
+  parent: MyTrips.Presentation.Errors.ErrorDetails
+  langs:
+  - csharp
+  - vb
+  name: Status
+  nameWithType: ErrorDetails.Status
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.Status
+  type: Property
+  source:
+    remote:
+      path: src/MyTrips.Presentation/Errors/ErrorDetails.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: Status
+    path: ../../src/MyTrips.Presentation/Errors/ErrorDetails.cs
+    startLine: 17
+  assemblies:
+  - MyTrips.Presentation
+  namespace: MyTrips.Presentation.Errors
+  syntax:
+    content: public int Status { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Status As Integer
+  overload: MyTrips.Presentation.Errors.ErrorDetails.Status*
+- uid: MyTrips.Presentation.Errors.ErrorDetails.Detail
+  commentId: P:MyTrips.Presentation.Errors.ErrorDetails.Detail
+  id: Detail
+  parent: MyTrips.Presentation.Errors.ErrorDetails
+  langs:
+  - csharp
+  - vb
+  name: Detail
+  nameWithType: ErrorDetails.Detail
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.Detail
+  type: Property
+  source:
+    remote:
+      path: src/MyTrips.Presentation/Errors/ErrorDetails.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: Detail
+    path: ../../src/MyTrips.Presentation/Errors/ErrorDetails.cs
+    startLine: 18
+  assemblies:
+  - MyTrips.Presentation
+  namespace: MyTrips.Presentation.Errors
+  syntax:
+    content: public string? Detail { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Detail As String
+  overload: MyTrips.Presentation.Errors.ErrorDetails.Detail*
+- uid: MyTrips.Presentation.Errors.ErrorDetails.Errors
+  commentId: P:MyTrips.Presentation.Errors.ErrorDetails.Errors
+  id: Errors
+  parent: MyTrips.Presentation.Errors.ErrorDetails
+  langs:
+  - csharp
+  - vb
+  name: Errors
+  nameWithType: ErrorDetails.Errors
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.Errors
+  type: Property
+  source:
+    remote:
+      path: src/MyTrips.Presentation/Errors/ErrorDetails.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: Errors
+    path: ../../src/MyTrips.Presentation/Errors/ErrorDetails.cs
+    startLine: 19
+  assemblies:
+  - MyTrips.Presentation
+  namespace: MyTrips.Presentation.Errors
+  syntax:
+    content: public string[]? Errors { get; set; }
+    parameters: []
+    return:
+      type: System.String[]
+    content.vb: Public Property Errors As String()
+  overload: MyTrips.Presentation.Errors.ErrorDetails.Errors*
+- uid: MyTrips.Presentation.Errors.ErrorDetails.Instance
+  commentId: P:MyTrips.Presentation.Errors.ErrorDetails.Instance
+  id: Instance
+  parent: MyTrips.Presentation.Errors.ErrorDetails
+  langs:
+  - csharp
+  - vb
+  name: Instance
+  nameWithType: ErrorDetails.Instance
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.Instance
+  type: Property
+  source:
+    remote:
+      path: src/MyTrips.Presentation/Errors/ErrorDetails.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: Instance
+    path: ../../src/MyTrips.Presentation/Errors/ErrorDetails.cs
+    startLine: 21
+  assemblies:
+  - MyTrips.Presentation
+  namespace: MyTrips.Presentation.Errors
+  syntax:
+    content: public string Instance { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Instance As String
+  overload: MyTrips.Presentation.Errors.ErrorDetails.Instance*
+- uid: MyTrips.Presentation.Errors.ErrorDetails.ToString
+  commentId: M:MyTrips.Presentation.Errors.ErrorDetails.ToString
+  id: ToString
+  parent: MyTrips.Presentation.Errors.ErrorDetails
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: ErrorDetails.ToString()
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.ToString()
+  type: Method
+  source:
+    remote:
+      path: src/MyTrips.Presentation/Errors/ErrorDetails.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: ToString
+    path: ../../src/MyTrips.Presentation/Errors/ErrorDetails.cs
+    startLine: 23
+  assemblies:
+  - MyTrips.Presentation
+  namespace: MyTrips.Presentation.Errors
+  summary: Returns a string that represents the current object.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: A string that represents the current object.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: MyTrips.Presentation.Errors.ErrorDetails.ToString*
+references:
+- uid: MyTrips.Presentation.Errors
+  commentId: N:MyTrips.Presentation.Errors
+  href: MyTrips.html
+  name: MyTrips.Presentation.Errors
+  nameWithType: MyTrips.Presentation.Errors
+  fullName: MyTrips.Presentation.Errors
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Presentation
+    name: Presentation
+    href: MyTrips.Presentation.html
+  - name: .
+  - uid: MyTrips.Presentation.Errors
+    name: Errors
+    href: MyTrips.Presentation.Errors.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Presentation
+    name: Presentation
+    href: MyTrips.Presentation.html
+  - name: .
+  - uid: MyTrips.Presentation.Errors
+    name: Errors
+    href: MyTrips.Presentation.Errors.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Newtonsoft.Json.JsonSerializerSettings
+  commentId: T:Newtonsoft.Json.JsonSerializerSettings
+  parent: Newtonsoft.Json
+  isExternal: true
+  name: JsonSerializerSettings
+  nameWithType: JsonSerializerSettings
+  fullName: Newtonsoft.Json.JsonSerializerSettings
+- uid: Newtonsoft.Json
+  commentId: N:Newtonsoft.Json
+  isExternal: true
+  name: Newtonsoft.Json
+  nameWithType: Newtonsoft.Json
+  fullName: Newtonsoft.Json
+  spec.csharp:
+  - uid: Newtonsoft
+    name: Newtonsoft
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json
+    name: Json
+    isExternal: true
+  spec.vb:
+  - uid: Newtonsoft
+    name: Newtonsoft
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json
+    name: Json
+    isExternal: true
+- uid: MyTrips.Presentation.Errors.ErrorDetails.Type*
+  commentId: Overload:MyTrips.Presentation.Errors.ErrorDetails.Type
+  href: MyTrips.Presentation.Errors.ErrorDetails.html#MyTrips_Presentation_Errors_ErrorDetails_Type
+  name: Type
+  nameWithType: ErrorDetails.Type
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.Type
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MyTrips.Presentation.Errors.ErrorDetails.Title*
+  commentId: Overload:MyTrips.Presentation.Errors.ErrorDetails.Title
+  href: MyTrips.Presentation.Errors.ErrorDetails.html#MyTrips_Presentation_Errors_ErrorDetails_Title
+  name: Title
+  nameWithType: ErrorDetails.Title
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.Title
+- uid: MyTrips.Presentation.Errors.ErrorDetails.Status*
+  commentId: Overload:MyTrips.Presentation.Errors.ErrorDetails.Status
+  href: MyTrips.Presentation.Errors.ErrorDetails.html#MyTrips_Presentation_Errors_ErrorDetails_Status
+  name: Status
+  nameWithType: ErrorDetails.Status
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.Status
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MyTrips.Presentation.Errors.ErrorDetails.Detail*
+  commentId: Overload:MyTrips.Presentation.Errors.ErrorDetails.Detail
+  href: MyTrips.Presentation.Errors.ErrorDetails.html#MyTrips_Presentation_Errors_ErrorDetails_Detail
+  name: Detail
+  nameWithType: ErrorDetails.Detail
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.Detail
+- uid: MyTrips.Presentation.Errors.ErrorDetails.Errors*
+  commentId: Overload:MyTrips.Presentation.Errors.ErrorDetails.Errors
+  href: MyTrips.Presentation.Errors.ErrorDetails.html#MyTrips_Presentation_Errors_ErrorDetails_Errors
+  name: Errors
+  nameWithType: ErrorDetails.Errors
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.Errors
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: MyTrips.Presentation.Errors.ErrorDetails.Instance*
+  commentId: Overload:MyTrips.Presentation.Errors.ErrorDetails.Instance
+  href: MyTrips.Presentation.Errors.ErrorDetails.html#MyTrips_Presentation_Errors_ErrorDetails_Instance
+  name: Instance
+  nameWithType: ErrorDetails.Instance
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.Instance
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MyTrips.Presentation.Errors.ErrorDetails.ToString*
+  commentId: Overload:MyTrips.Presentation.Errors.ErrorDetails.ToString
+  href: MyTrips.Presentation.Errors.ErrorDetails.html#MyTrips_Presentation_Errors_ErrorDetails_ToString
+  name: ToString
+  nameWithType: ErrorDetails.ToString
+  fullName: MyTrips.Presentation.Errors.ErrorDetails.ToString

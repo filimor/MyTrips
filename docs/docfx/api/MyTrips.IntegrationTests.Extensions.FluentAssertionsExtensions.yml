@@ -1,0 +1,483 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions
+  commentId: T:MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions
+  id: FluentAssertionsExtensions
+  parent: MyTrips.IntegrationTests.Extensions
+  children:
+  - MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.HaveJsonContentType(FluentAssertions.Primitives.HttpResponseMessageAssertions)
+  - MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.HaveProblemContentType(FluentAssertions.Primitives.HttpResponseMessageAssertions)
+  langs:
+  - csharp
+  - vb
+  name: FluentAssertionsExtensions
+  nameWithType: FluentAssertionsExtensions
+  fullName: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions
+  type: Class
+  source:
+    remote:
+      path: tests/MyTrips.IntegrationTests/Extensions/FluentAssertionsExtensions.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: FluentAssertionsExtensions
+    path: ../../tests/MyTrips.IntegrationTests/Extensions/FluentAssertionsExtensions.cs
+    startLine: 5
+  assemblies:
+  - MyTrips.IntegrationTests
+  namespace: MyTrips.IntegrationTests.Extensions
+  syntax:
+    content: public static class FluentAssertionsExtensions
+    content.vb: Public Module FluentAssertionsExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.HaveJsonContentType(FluentAssertions.Primitives.HttpResponseMessageAssertions)
+  commentId: M:MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.HaveJsonContentType(FluentAssertions.Primitives.HttpResponseMessageAssertions)
+  id: HaveJsonContentType(FluentAssertions.Primitives.HttpResponseMessageAssertions)
+  isExtensionMethod: true
+  parent: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions
+  langs:
+  - csharp
+  - vb
+  name: HaveJsonContentType(HttpResponseMessageAssertions)
+  nameWithType: FluentAssertionsExtensions.HaveJsonContentType(HttpResponseMessageAssertions)
+  fullName: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.HaveJsonContentType(FluentAssertions.Primitives.HttpResponseMessageAssertions)
+  type: Method
+  source:
+    remote:
+      path: tests/MyTrips.IntegrationTests/Extensions/FluentAssertionsExtensions.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: HaveJsonContentType
+    path: ../../tests/MyTrips.IntegrationTests/Extensions/FluentAssertionsExtensions.cs
+    startLine: 7
+  assemblies:
+  - MyTrips.IntegrationTests
+  namespace: MyTrips.IntegrationTests.Extensions
+  syntax:
+    content: public static AndConstraint<HttpResponseMessageAssertions> HaveJsonContentType(this HttpResponseMessageAssertions assertions)
+    parameters:
+    - id: assertions
+      type: FluentAssertions.Primitives.HttpResponseMessageAssertions
+    return:
+      type: FluentAssertions.AndConstraint{FluentAssertions.Primitives.HttpResponseMessageAssertions}
+    content.vb: Public Shared Function HaveJsonContentType(assertions As HttpResponseMessageAssertions) As AndConstraint(Of HttpResponseMessageAssertions)
+  overload: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.HaveJsonContentType*
+- uid: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.HaveProblemContentType(FluentAssertions.Primitives.HttpResponseMessageAssertions)
+  commentId: M:MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.HaveProblemContentType(FluentAssertions.Primitives.HttpResponseMessageAssertions)
+  id: HaveProblemContentType(FluentAssertions.Primitives.HttpResponseMessageAssertions)
+  isExtensionMethod: true
+  parent: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions
+  langs:
+  - csharp
+  - vb
+  name: HaveProblemContentType(HttpResponseMessageAssertions)
+  nameWithType: FluentAssertionsExtensions.HaveProblemContentType(HttpResponseMessageAssertions)
+  fullName: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.HaveProblemContentType(FluentAssertions.Primitives.HttpResponseMessageAssertions)
+  type: Method
+  source:
+    remote:
+      path: tests/MyTrips.IntegrationTests/Extensions/FluentAssertionsExtensions.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: HaveProblemContentType
+    path: ../../tests/MyTrips.IntegrationTests/Extensions/FluentAssertionsExtensions.cs
+    startLine: 16
+  assemblies:
+  - MyTrips.IntegrationTests
+  namespace: MyTrips.IntegrationTests.Extensions
+  syntax:
+    content: public static AndConstraint<HttpResponseMessageAssertions> HaveProblemContentType(this HttpResponseMessageAssertions assertions)
+    parameters:
+    - id: assertions
+      type: FluentAssertions.Primitives.HttpResponseMessageAssertions
+    return:
+      type: FluentAssertions.AndConstraint{FluentAssertions.Primitives.HttpResponseMessageAssertions}
+    content.vb: Public Shared Function HaveProblemContentType(assertions As HttpResponseMessageAssertions) As AndConstraint(Of HttpResponseMessageAssertions)
+  overload: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.HaveProblemContentType*
+references:
+- uid: MyTrips.IntegrationTests.Extensions
+  commentId: N:MyTrips.IntegrationTests.Extensions
+  href: MyTrips.html
+  name: MyTrips.IntegrationTests.Extensions
+  nameWithType: MyTrips.IntegrationTests.Extensions
+  fullName: MyTrips.IntegrationTests.Extensions
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.IntegrationTests
+    name: IntegrationTests
+    href: MyTrips.IntegrationTests.html
+  - name: .
+  - uid: MyTrips.IntegrationTests.Extensions
+    name: Extensions
+    href: MyTrips.IntegrationTests.Extensions.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.IntegrationTests
+    name: IntegrationTests
+    href: MyTrips.IntegrationTests.html
+  - name: .
+  - uid: MyTrips.IntegrationTests.Extensions
+    name: Extensions
+    href: MyTrips.IntegrationTests.Extensions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.HaveJsonContentType*
+  commentId: Overload:MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.HaveJsonContentType
+  href: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.html#MyTrips_IntegrationTests_Extensions_FluentAssertionsExtensions_HaveJsonContentType_FluentAssertions_Primitives_HttpResponseMessageAssertions_
+  name: HaveJsonContentType
+  nameWithType: FluentAssertionsExtensions.HaveJsonContentType
+  fullName: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.HaveJsonContentType
+- uid: FluentAssertions.Primitives.HttpResponseMessageAssertions
+  commentId: T:FluentAssertions.Primitives.HttpResponseMessageAssertions
+  parent: FluentAssertions.Primitives
+  isExternal: true
+  href: https://github.com/fluentassertions/fluentassertions/blob/e0f45049d8acadae0c98f9710b650dd413480355/Src/FluentAssertions/Primitives/HttpResponseMessageAssertions.cs
+  name: HttpResponseMessageAssertions
+  nameWithType: HttpResponseMessageAssertions
+  fullName: FluentAssertions.Primitives.HttpResponseMessageAssertions
+- uid: FluentAssertions.AndConstraint{FluentAssertions.Primitives.HttpResponseMessageAssertions}
+  commentId: T:FluentAssertions.AndConstraint{FluentAssertions.Primitives.HttpResponseMessageAssertions}
+  parent: FluentAssertions
+  definition: FluentAssertions.AndConstraint`1
+  href: https://github.com/fluentassertions/fluentassertions/blob/e0f45049d8acadae0c98f9710b650dd413480355/Src/FluentAssertions/AndConstraint.cs
+  name: AndConstraint<HttpResponseMessageAssertions>
+  nameWithType: AndConstraint<HttpResponseMessageAssertions>
+  fullName: FluentAssertions.AndConstraint<FluentAssertions.Primitives.HttpResponseMessageAssertions>
+  nameWithType.vb: AndConstraint(Of HttpResponseMessageAssertions)
+  fullName.vb: FluentAssertions.AndConstraint(Of FluentAssertions.Primitives.HttpResponseMessageAssertions)
+  name.vb: AndConstraint(Of HttpResponseMessageAssertions)
+  spec.csharp:
+  - uid: FluentAssertions.AndConstraint`1
+    name: AndConstraint
+    isExternal: true
+    href: https://github.com/fluentassertions/fluentassertions/blob/e0f45049d8acadae0c98f9710b650dd413480355/Src/FluentAssertions/AndConstraint.cs
+  - name: <
+  - uid: FluentAssertions.Primitives.HttpResponseMessageAssertions
+    name: HttpResponseMessageAssertions
+    isExternal: true
+    href: https://github.com/fluentassertions/fluentassertions/blob/e0f45049d8acadae0c98f9710b650dd413480355/Src/FluentAssertions/Primitives/HttpResponseMessageAssertions.cs
+  - name: '>'
+  spec.vb:
+  - uid: FluentAssertions.AndConstraint`1
+    name: AndConstraint
+    isExternal: true
+    href: https://github.com/fluentassertions/fluentassertions/blob/e0f45049d8acadae0c98f9710b650dd413480355/Src/FluentAssertions/AndConstraint.cs
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FluentAssertions.Primitives.HttpResponseMessageAssertions
+    name: HttpResponseMessageAssertions
+    isExternal: true
+    href: https://github.com/fluentassertions/fluentassertions/blob/e0f45049d8acadae0c98f9710b650dd413480355/Src/FluentAssertions/Primitives/HttpResponseMessageAssertions.cs
+  - name: )
+- uid: FluentAssertions.Primitives
+  commentId: N:FluentAssertions.Primitives
+  isExternal: true
+  name: FluentAssertions.Primitives
+  nameWithType: FluentAssertions.Primitives
+  fullName: FluentAssertions.Primitives
+  spec.csharp:
+  - uid: FluentAssertions
+    name: FluentAssertions
+    isExternal: true
+  - name: .
+  - uid: FluentAssertions.Primitives
+    name: Primitives
+    isExternal: true
+  spec.vb:
+  - uid: FluentAssertions
+    name: FluentAssertions
+    isExternal: true
+  - name: .
+  - uid: FluentAssertions.Primitives
+    name: Primitives
+    isExternal: true
+- uid: FluentAssertions.AndConstraint`1
+  commentId: T:FluentAssertions.AndConstraint`1
+  isExternal: true
+  href: https://github.com/fluentassertions/fluentassertions/blob/e0f45049d8acadae0c98f9710b650dd413480355/Src/FluentAssertions/AndConstraint.cs
+  name: AndConstraint<T>
+  nameWithType: AndConstraint<T>
+  fullName: FluentAssertions.AndConstraint<T>
+  nameWithType.vb: AndConstraint(Of T)
+  fullName.vb: FluentAssertions.AndConstraint(Of T)
+  name.vb: AndConstraint(Of T)
+  spec.csharp:
+  - uid: FluentAssertions.AndConstraint`1
+    name: AndConstraint
+    isExternal: true
+    href: https://github.com/fluentassertions/fluentassertions/blob/e0f45049d8acadae0c98f9710b650dd413480355/Src/FluentAssertions/AndConstraint.cs
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: FluentAssertions.AndConstraint`1
+    name: AndConstraint
+    isExternal: true
+    href: https://github.com/fluentassertions/fluentassertions/blob/e0f45049d8acadae0c98f9710b650dd413480355/Src/FluentAssertions/AndConstraint.cs
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: FluentAssertions
+  commentId: N:FluentAssertions
+  isExternal: true
+  name: FluentAssertions
+  nameWithType: FluentAssertions
+  fullName: FluentAssertions
+- uid: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.HaveProblemContentType*
+  commentId: Overload:MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.HaveProblemContentType
+  href: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.html#MyTrips_IntegrationTests_Extensions_FluentAssertionsExtensions_HaveProblemContentType_FluentAssertions_Primitives_HttpResponseMessageAssertions_
+  name: HaveProblemContentType
+  nameWithType: FluentAssertionsExtensions.HaveProblemContentType
+  fullName: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.HaveProblemContentType

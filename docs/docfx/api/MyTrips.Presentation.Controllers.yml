@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Presentation.Controllers
+  commentId: N:MyTrips.Presentation.Controllers
+  id: MyTrips.Presentation.Controllers
+  children:
+  - MyTrips.Presentation.Controllers.AuthController
+  - MyTrips.Presentation.Controllers.ClientsController
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.Presentation.Controllers
+  nameWithType: MyTrips.Presentation.Controllers
+  fullName: MyTrips.Presentation.Controllers
+  type: Namespace
+  assemblies:
+  - MyTrips.Presentation
+references:
+- uid: MyTrips.Presentation.Controllers.AuthController
+  commentId: T:MyTrips.Presentation.Controllers.AuthController
+  href: MyTrips.Presentation.Controllers.AuthController.html
+  name: AuthController
+  nameWithType: AuthController
+  fullName: MyTrips.Presentation.Controllers.AuthController
+- uid: MyTrips.Presentation.Controllers.ClientsController
+  commentId: T:MyTrips.Presentation.Controllers.ClientsController
+  href: MyTrips.Presentation.Controllers.ClientsController.html
+  name: ClientsController
+  nameWithType: ClientsController
+  fullName: MyTrips.Presentation.Controllers.ClientsController

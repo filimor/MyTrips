@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.IntegrationTests.Extensions
+  commentId: N:MyTrips.IntegrationTests.Extensions
+  id: MyTrips.IntegrationTests.Extensions
+  children:
+  - MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions
+  - MyTrips.IntegrationTests.Extensions.HttpExtensions
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.IntegrationTests.Extensions
+  nameWithType: MyTrips.IntegrationTests.Extensions
+  fullName: MyTrips.IntegrationTests.Extensions
+  type: Namespace
+  assemblies:
+  - MyTrips.IntegrationTests
+references:
+- uid: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions
+  commentId: T:MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions
+  href: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions.html
+  name: FluentAssertionsExtensions
+  nameWithType: FluentAssertionsExtensions
+  fullName: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions
+- uid: MyTrips.IntegrationTests.Extensions.HttpExtensions
+  commentId: T:MyTrips.IntegrationTests.Extensions.HttpExtensions
+  href: MyTrips.IntegrationTests.Extensions.HttpExtensions.html
+  name: HttpExtensions
+  nameWithType: HttpExtensions
+  fullName: MyTrips.IntegrationTests.Extensions.HttpExtensions

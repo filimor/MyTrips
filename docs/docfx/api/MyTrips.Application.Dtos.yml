@@ -1,0 +1,70 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Application.Dtos
+  commentId: N:MyTrips.Application.Dtos
+  id: MyTrips.Application.Dtos
+  children:
+  - MyTrips.Application.Dtos.CreateClientDto
+  - MyTrips.Application.Dtos.ResponseClientDto
+  - MyTrips.Application.Dtos.UpdateClientDto
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.Application.Dtos
+  nameWithType: MyTrips.Application.Dtos
+  fullName: MyTrips.Application.Dtos
+  type: Namespace
+  assemblies:
+  - MyTrips.Application
+references:
+- uid: MyTrips.Application.Dtos.CreateClientDto
+  commentId: T:MyTrips.Application.Dtos.CreateClientDto
+  parent: MyTrips.Application.Dtos
+  href: MyTrips.Application.Dtos.CreateClientDto.html
+  name: CreateClientDto
+  nameWithType: CreateClientDto
+  fullName: MyTrips.Application.Dtos.CreateClientDto
+- uid: MyTrips.Application.Dtos.ResponseClientDto
+  commentId: T:MyTrips.Application.Dtos.ResponseClientDto
+  parent: MyTrips.Application.Dtos
+  href: MyTrips.Application.Dtos.ResponseClientDto.html
+  name: ResponseClientDto
+  nameWithType: ResponseClientDto
+  fullName: MyTrips.Application.Dtos.ResponseClientDto
+- uid: MyTrips.Application.Dtos.UpdateClientDto
+  commentId: T:MyTrips.Application.Dtos.UpdateClientDto
+  parent: MyTrips.Application.Dtos
+  href: MyTrips.Application.Dtos.UpdateClientDto.html
+  name: UpdateClientDto
+  nameWithType: UpdateClientDto
+  fullName: MyTrips.Application.Dtos.UpdateClientDto
+- uid: MyTrips.Application.Dtos
+  commentId: N:MyTrips.Application.Dtos
+  href: MyTrips.html
+  name: MyTrips.Application.Dtos
+  nameWithType: MyTrips.Application.Dtos
+  fullName: MyTrips.Application.Dtos
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Application
+    name: Application
+    href: MyTrips.Application.html
+  - name: .
+  - uid: MyTrips.Application.Dtos
+    name: Dtos
+    href: MyTrips.Application.Dtos.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Application
+    name: Application
+    href: MyTrips.Application.html
+  - name: .
+  - uid: MyTrips.Application.Dtos
+    name: Dtos
+    href: MyTrips.Application.Dtos.html

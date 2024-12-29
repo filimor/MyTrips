@@ -1,0 +1,54 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Domain.Interfaces
+  commentId: N:MyTrips.Domain.Interfaces
+  id: MyTrips.Domain.Interfaces
+  children:
+  - MyTrips.Domain.Interfaces.IClientsRepository
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.Domain.Interfaces
+  nameWithType: MyTrips.Domain.Interfaces
+  fullName: MyTrips.Domain.Interfaces
+  type: Namespace
+  assemblies:
+  - MyTrips.Domain
+references:
+- uid: MyTrips.Domain.Interfaces.IClientsRepository
+  commentId: T:MyTrips.Domain.Interfaces.IClientsRepository
+  parent: MyTrips.Domain.Interfaces
+  href: MyTrips.Domain.Interfaces.IClientsRepository.html
+  name: IClientsRepository
+  nameWithType: IClientsRepository
+  fullName: MyTrips.Domain.Interfaces.IClientsRepository
+- uid: MyTrips.Domain.Interfaces
+  commentId: N:MyTrips.Domain.Interfaces
+  href: MyTrips.html
+  name: MyTrips.Domain.Interfaces
+  nameWithType: MyTrips.Domain.Interfaces
+  fullName: MyTrips.Domain.Interfaces
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Domain
+    name: Domain
+    href: MyTrips.Domain.html
+  - name: .
+  - uid: MyTrips.Domain.Interfaces
+    name: Interfaces
+    href: MyTrips.Domain.Interfaces.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Domain
+    name: Domain
+    href: MyTrips.Domain.html
+  - name: .
+  - uid: MyTrips.Domain.Interfaces
+    name: Interfaces
+    href: MyTrips.Domain.Interfaces.html

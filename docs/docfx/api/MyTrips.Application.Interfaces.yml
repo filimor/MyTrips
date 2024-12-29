@@ -1,0 +1,62 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Application.Interfaces
+  commentId: N:MyTrips.Application.Interfaces
+  id: MyTrips.Application.Interfaces
+  children:
+  - MyTrips.Application.Interfaces.IAuthService
+  - MyTrips.Application.Interfaces.IClientsService
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.Application.Interfaces
+  nameWithType: MyTrips.Application.Interfaces
+  fullName: MyTrips.Application.Interfaces
+  type: Namespace
+  assemblies:
+  - MyTrips.Application
+references:
+- uid: MyTrips.Application.Interfaces.IAuthService
+  commentId: T:MyTrips.Application.Interfaces.IAuthService
+  parent: MyTrips.Application.Interfaces
+  href: MyTrips.Application.Interfaces.IAuthService.html
+  name: IAuthService
+  nameWithType: IAuthService
+  fullName: MyTrips.Application.Interfaces.IAuthService
+- uid: MyTrips.Application.Interfaces.IClientsService
+  commentId: T:MyTrips.Application.Interfaces.IClientsService
+  parent: MyTrips.Application.Interfaces
+  href: MyTrips.Application.Interfaces.IClientsService.html
+  name: IClientsService
+  nameWithType: IClientsService
+  fullName: MyTrips.Application.Interfaces.IClientsService
+- uid: MyTrips.Application.Interfaces
+  commentId: N:MyTrips.Application.Interfaces
+  href: MyTrips.html
+  name: MyTrips.Application.Interfaces
+  nameWithType: MyTrips.Application.Interfaces
+  fullName: MyTrips.Application.Interfaces
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Application
+    name: Application
+    href: MyTrips.Application.html
+  - name: .
+  - uid: MyTrips.Application.Interfaces
+    name: Interfaces
+    href: MyTrips.Application.Interfaces.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Application
+    name: Application
+    href: MyTrips.Application.html
+  - name: .
+  - uid: MyTrips.Application.Interfaces
+    name: Interfaces
+    href: MyTrips.Application.Interfaces.html

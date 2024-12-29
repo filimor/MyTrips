@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Application.Errors
+  commentId: N:MyTrips.Application.Errors
+  id: MyTrips.Application.Errors
+  children:
+  - MyTrips.Application.Errors.ConflictError
+  - MyTrips.Application.Errors.NotFoundError
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.Application.Errors
+  nameWithType: MyTrips.Application.Errors
+  fullName: MyTrips.Application.Errors
+  type: Namespace
+  assemblies:
+  - MyTrips.Application
+references:
+- uid: MyTrips.Application.Errors.ConflictError
+  commentId: T:MyTrips.Application.Errors.ConflictError
+  href: MyTrips.Application.Errors.ConflictError.html
+  name: ConflictError
+  nameWithType: ConflictError
+  fullName: MyTrips.Application.Errors.ConflictError
+- uid: MyTrips.Application.Errors.NotFoundError
+  commentId: T:MyTrips.Application.Errors.NotFoundError
+  href: MyTrips.Application.Errors.NotFoundError.html
+  name: NotFoundError
+  nameWithType: NotFoundError
+  fullName: MyTrips.Application.Errors.NotFoundError

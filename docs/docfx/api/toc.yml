@@ -1,0 +1,267 @@
+### YamlMime:TableOfContent
+items:
+- uid: MyTrips.Application.Dtos
+  name: MyTrips.Application.Dtos
+  type: Namespace
+  items:
+  - uid: MyTrips.Application.Dtos.CreateClientDto
+    name: CreateClientDto
+    type: Class
+  - uid: MyTrips.Application.Dtos.ResponseClientDto
+    name: ResponseClientDto
+    type: Class
+  - uid: MyTrips.Application.Dtos.UpdateClientDto
+    name: UpdateClientDto
+    type: Class
+- uid: MyTrips.Application.Errors
+  name: MyTrips.Application.Errors
+  type: Namespace
+  items:
+  - uid: MyTrips.Application.Errors.ConflictError
+    name: ConflictError
+    type: Class
+  - uid: MyTrips.Application.Errors.NotFoundError
+    name: NotFoundError
+    type: Class
+- uid: MyTrips.Application.Interfaces
+  name: MyTrips.Application.Interfaces
+  type: Namespace
+  items:
+  - uid: MyTrips.Application.Interfaces.IAuthService
+    name: IAuthService
+    type: Interface
+  - uid: MyTrips.Application.Interfaces.IClientsService
+    name: IClientsService
+    type: Interface
+- uid: MyTrips.Application.Mappings
+  name: MyTrips.Application.Mappings
+  type: Namespace
+  items:
+  - uid: MyTrips.Application.Mappings.DtoToDomainMappingProfile
+    name: DtoToDomainMappingProfile
+    type: Class
+- uid: MyTrips.Application.Mappings.Converters
+  name: MyTrips.Application.Mappings.Converters
+  type: Namespace
+  items:
+  - uid: MyTrips.Application.Mappings.Converters.PagedListTypeConverter`2
+    name: PagedListTypeConverter<TSource, TDestination>
+    type: Class
+- uid: MyTrips.Application.Services
+  name: MyTrips.Application.Services
+  type: Namespace
+  items:
+  - uid: MyTrips.Application.Services.AuthService
+    name: AuthService
+    type: Class
+  - uid: MyTrips.Application.Services.ClientsService
+    name: ClientsService
+    type: Class
+- uid: MyTrips.Application.Validators
+  name: MyTrips.Application.Validators
+  type: Namespace
+  items:
+  - uid: MyTrips.Application.Validators.ClientValidator
+    name: ClientValidator
+    type: Class
+- uid: MyTrips.CrossCutting
+  name: MyTrips.CrossCutting
+  type: Namespace
+  items:
+  - uid: MyTrips.CrossCutting.IoC
+    name: IoC
+    type: Class
+- uid: MyTrips.Domain.Entities
+  name: MyTrips.Domain.Entities
+  type: Namespace
+  items:
+  - uid: MyTrips.Domain.Entities.Client
+    name: Client
+    type: Class
+  - uid: MyTrips.Domain.Entities.LoginInfo
+    name: LoginInfo
+    type: Class
+- uid: MyTrips.Domain.Interfaces
+  name: MyTrips.Domain.Interfaces
+  type: Namespace
+  items:
+  - uid: MyTrips.Domain.Interfaces.IClientsRepository
+    name: IClientsRepository
+    type: Interface
+- uid: MyTrips.Domain.ValueObjects
+  name: MyTrips.Domain.ValueObjects
+  type: Namespace
+  items:
+  - uid: MyTrips.Domain.ValueObjects.ClientParameters
+    name: ClientParameters
+    type: Class
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList<T>
+    type: Class
+- uid: MyTrips.Infrastructure.Repositories
+  name: MyTrips.Infrastructure.Repositories
+  type: Namespace
+  items:
+  - uid: MyTrips.Infrastructure.Repositories.ClientsRepository
+    name: ClientsRepository
+    type: Class
+- uid: MyTrips.IntegrationTests.Collections
+  name: MyTrips.IntegrationTests.Collections
+  type: Namespace
+  items:
+  - uid: MyTrips.IntegrationTests.Collections.ClientsManagementCollection
+    name: ClientsManagementCollection
+    type: Class
+- uid: MyTrips.IntegrationTests.Extensions
+  name: MyTrips.IntegrationTests.Extensions
+  type: Namespace
+  items:
+  - uid: MyTrips.IntegrationTests.Extensions.FluentAssertionsExtensions
+    name: FluentAssertionsExtensions
+    type: Class
+  - uid: MyTrips.IntegrationTests.Extensions.HttpExtensions
+    name: HttpExtensions
+    type: Class
+- uid: MyTrips.IntegrationTests.Fixtures
+  name: MyTrips.IntegrationTests.Fixtures
+  type: Namespace
+  items:
+  - uid: MyTrips.IntegrationTests.Fixtures.ClientsManagementFixture
+    name: ClientsManagementFixture
+    type: Class
+- uid: MyTrips.IntegrationTests.Handlers
+  name: MyTrips.IntegrationTests.Handlers
+  type: Namespace
+  items:
+  - uid: MyTrips.IntegrationTests.Handlers.LoggingHandler
+    name: LoggingHandler
+    type: Class
+- uid: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  name: MyTrips.IntegrationTests.UseCases.ClientsManagement
+  type: Namespace
+  items:
+  - uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.CreateClientIntegrationTests
+    name: CreateClientIntegrationTests
+    type: Class
+  - uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.DeleteClientIntegrationTests
+    name: DeleteClientIntegrationTests
+    type: Class
+  - uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.GetClientIntegrationTests
+    name: GetClientIntegrationTests
+    type: Class
+  - uid: MyTrips.IntegrationTests.UseCases.ClientsManagement.UpdateClientIntegrationTests
+    name: UpdateClientIntegrationTests
+    type: Class
+- uid: MyTrips.Presentation.Controllers
+  name: MyTrips.Presentation.Controllers
+  type: Namespace
+  items:
+  - uid: MyTrips.Presentation.Controllers.AuthController
+    name: AuthController
+    type: Class
+  - uid: MyTrips.Presentation.Controllers.ClientsController
+    name: ClientsController
+    type: Class
+- uid: MyTrips.Presentation.Errors
+  name: MyTrips.Presentation.Errors
+  type: Namespace
+  items:
+  - uid: MyTrips.Presentation.Errors.BadRequestErrorDetails
+    name: BadRequestErrorDetails
+    type: Class
+  - uid: MyTrips.Presentation.Errors.ConflictErrorDetails
+    name: ConflictErrorDetails
+    type: Class
+  - uid: MyTrips.Presentation.Errors.CustomError
+    name: CustomError
+    type: Class
+  - uid: MyTrips.Presentation.Errors.ErrorDetails
+    name: ErrorDetails
+    type: Class
+  - uid: MyTrips.Presentation.Errors.InternalServerErrorDetails
+    name: InternalServerErrorDetails
+    type: Class
+  - uid: MyTrips.Presentation.Errors.NotFoundErrorDetails
+    name: NotFoundErrorDetails
+    type: Class
+  - uid: MyTrips.Presentation.Errors.UnauthorizedErrorDetails
+    name: UnauthorizedErrorDetails
+    type: Class
+- uid: MyTrips.Presentation.Filters
+  name: MyTrips.Presentation.Filters
+  type: Namespace
+  items:
+  - uid: MyTrips.Presentation.Filters.MediaTypeOperationFilter
+    name: MediaTypeOperationFilter
+    type: Class
+  - uid: MyTrips.Presentation.Filters.ProblemHeaderFilter
+    name: ProblemHeaderFilter
+    type: Class
+  - uid: MyTrips.Presentation.Filters.SwaggerSchemaFilter
+    name: SwaggerSchemaFilter
+    type: Class
+- uid: MyTrips.Presentation.Middlewares
+  name: MyTrips.Presentation.Middlewares
+  type: Namespace
+  items:
+  - uid: MyTrips.Presentation.Middlewares.ExceptionHandlingMiddleware
+    name: ExceptionHandlingMiddleware
+    type: Class
+- uid: MyTrips.Presentation.Validators
+  name: MyTrips.Presentation.Validators
+  type: Namespace
+  items:
+  - uid: MyTrips.Presentation.Validators.InputValidator
+    name: InputValidator
+    type: Class
+- uid: MyTrips.UnitTest.ClassData
+  name: MyTrips.UnitTest.ClassData
+  type: Namespace
+  items:
+  - uid: MyTrips.UnitTest.ClassData.InvalidEmailClassData
+    name: InvalidEmailClassData
+    type: Class
+  - uid: MyTrips.UnitTest.ClassData.InvalidStringClassData
+    name: InvalidStringClassData
+    type: Class
+- uid: MyTrips.UnitTest.Collections
+  name: MyTrips.UnitTest.Collections
+  type: Namespace
+  items:
+  - uid: MyTrips.UnitTest.Collections.ClientsManagementCollection
+    name: ClientsManagementCollection
+    type: Class
+- uid: MyTrips.UnitTest.Fixtures
+  name: MyTrips.UnitTest.Fixtures
+  type: Namespace
+  items:
+  - uid: MyTrips.UnitTest.Fixtures.ClientsManagementFixture
+    name: ClientsManagementFixture
+    type: Class
+- uid: MyTrips.UnitTest.UseCases.AspNet
+  name: MyTrips.UnitTest.UseCases.AspNet
+  type: Namespace
+  items:
+  - uid: MyTrips.UnitTest.UseCases.AspNet.FilterTests
+    name: FilterTests
+    type: Class
+  - uid: MyTrips.UnitTest.UseCases.AspNet.MiddlewareTests
+    name: MiddlewareTests
+    type: Class
+- uid: MyTrips.UnitTest.UseCases.ClientTests
+  name: MyTrips.UnitTest.UseCases.ClientTests
+  type: Namespace
+  items:
+  - uid: MyTrips.UnitTest.UseCases.ClientTests.CreateClientUnitTests
+    name: CreateClientUnitTests
+    type: Class
+  - uid: MyTrips.UnitTest.UseCases.ClientTests.DeleteClientUnitTests
+    name: DeleteClientUnitTests
+    type: Class
+  - uid: MyTrips.UnitTest.UseCases.ClientTests.GetClientUnitTests
+    name: GetClientUnitTests
+    type: Class
+  - uid: MyTrips.UnitTest.UseCases.ClientTests.UpdateClientUnitTests
+    name: UpdateClientUnitTests
+    type: Class
+memberLayout: SamePage

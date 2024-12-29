@@ -1,0 +1,81 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Domain.ValueObjects
+  commentId: N:MyTrips.Domain.ValueObjects
+  id: MyTrips.Domain.ValueObjects
+  children:
+  - MyTrips.Domain.ValueObjects.ClientParameters
+  - MyTrips.Domain.ValueObjects.PagedList`1
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.Domain.ValueObjects
+  nameWithType: MyTrips.Domain.ValueObjects
+  fullName: MyTrips.Domain.ValueObjects
+  type: Namespace
+  assemblies:
+  - MyTrips.Domain
+references:
+- uid: MyTrips.Domain.ValueObjects.ClientParameters
+  commentId: T:MyTrips.Domain.ValueObjects.ClientParameters
+  parent: MyTrips.Domain.ValueObjects
+  href: MyTrips.Domain.ValueObjects.ClientParameters.html
+  name: ClientParameters
+  nameWithType: ClientParameters
+  fullName: MyTrips.Domain.ValueObjects.ClientParameters
+- uid: MyTrips.Domain.ValueObjects.PagedList`1
+  commentId: T:MyTrips.Domain.ValueObjects.PagedList`1
+  parent: MyTrips.Domain.ValueObjects
+  href: MyTrips.Domain.ValueObjects.PagedList-1.html
+  name: PagedList<T>
+  nameWithType: PagedList<T>
+  fullName: MyTrips.Domain.ValueObjects.PagedList<T>
+  nameWithType.vb: PagedList(Of T)
+  fullName.vb: MyTrips.Domain.ValueObjects.PagedList(Of T)
+  name.vb: PagedList(Of T)
+  spec.csharp:
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+    href: MyTrips.Domain.ValueObjects.PagedList-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+    href: MyTrips.Domain.ValueObjects.PagedList-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: MyTrips.Domain.ValueObjects
+  commentId: N:MyTrips.Domain.ValueObjects
+  href: MyTrips.html
+  name: MyTrips.Domain.ValueObjects
+  nameWithType: MyTrips.Domain.ValueObjects
+  fullName: MyTrips.Domain.ValueObjects
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Domain
+    name: Domain
+    href: MyTrips.Domain.html
+  - name: .
+  - uid: MyTrips.Domain.ValueObjects
+    name: ValueObjects
+    href: MyTrips.Domain.ValueObjects.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Domain
+    name: Domain
+    href: MyTrips.Domain.html
+  - name: .
+  - uid: MyTrips.Domain.ValueObjects
+    name: ValueObjects
+    href: MyTrips.Domain.ValueObjects.html

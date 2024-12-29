@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.UnitTest.Collections
+  commentId: N:MyTrips.UnitTest.Collections
+  id: MyTrips.UnitTest.Collections
+  children:
+  - MyTrips.UnitTest.Collections.ClientsManagementCollection
+  langs:
+  - csharp
+  - vb
+  name: MyTrips.UnitTest.Collections
+  nameWithType: MyTrips.UnitTest.Collections
+  fullName: MyTrips.UnitTest.Collections
+  type: Namespace
+  assemblies:
+  - MyTrips.UnitTest
+references:
+- uid: MyTrips.UnitTest.Collections.ClientsManagementCollection
+  commentId: T:MyTrips.UnitTest.Collections.ClientsManagementCollection
+  href: MyTrips.UnitTest.Collections.ClientsManagementCollection.html
+  name: ClientsManagementCollection
+  nameWithType: ClientsManagementCollection
+  fullName: MyTrips.UnitTest.Collections.ClientsManagementCollection

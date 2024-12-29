@@ -1,0 +1,1382 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyTrips.Infrastructure.Repositories.ClientsRepository
+  commentId: T:MyTrips.Infrastructure.Repositories.ClientsRepository
+  id: ClientsRepository
+  parent: MyTrips.Infrastructure.Repositories
+  children:
+  - MyTrips.Infrastructure.Repositories.ClientsRepository.#ctor(Microsoft.Extensions.Configuration.IConfiguration)
+  - MyTrips.Infrastructure.Repositories.ClientsRepository.AddAsync(MyTrips.Domain.Entities.Client)
+  - MyTrips.Infrastructure.Repositories.ClientsRepository.ConnectionString
+  - MyTrips.Infrastructure.Repositories.ClientsRepository.DeleteAsync(System.Int32)
+  - MyTrips.Infrastructure.Repositories.ClientsRepository.FindAsync(System.Linq.Expressions.Expression{System.Func{MyTrips.Domain.Entities.Client,System.Boolean}})
+  - MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync
+  - MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync(System.Int32)
+  - MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync(System.Int32,System.Int32)
+  - MyTrips.Infrastructure.Repositories.ClientsRepository.UpdateAsync(MyTrips.Domain.Entities.Client)
+  langs:
+  - csharp
+  - vb
+  name: ClientsRepository
+  nameWithType: ClientsRepository
+  fullName: MyTrips.Infrastructure.Repositories.ClientsRepository
+  type: Class
+  source:
+    remote:
+      path: src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: ClientsRepository
+    path: ../../src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+    startLine: 11
+  assemblies:
+  - MyTrips.Infrastructure
+  namespace: MyTrips.Infrastructure.Repositories
+  syntax:
+    content: 'public class ClientsRepository : IClientsRepository'
+    content.vb: Public Class ClientsRepository Implements IClientsRepository
+  inheritance:
+  - System.Object
+  implements:
+  - MyTrips.Domain.Interfaces.IClientsRepository
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MyTrips.Infrastructure.Repositories.ClientsRepository.#ctor(Microsoft.Extensions.Configuration.IConfiguration)
+  commentId: M:MyTrips.Infrastructure.Repositories.ClientsRepository.#ctor(Microsoft.Extensions.Configuration.IConfiguration)
+  id: '#ctor(Microsoft.Extensions.Configuration.IConfiguration)'
+  parent: MyTrips.Infrastructure.Repositories.ClientsRepository
+  langs:
+  - csharp
+  - vb
+  name: ClientsRepository(IConfiguration)
+  nameWithType: ClientsRepository.ClientsRepository(IConfiguration)
+  fullName: MyTrips.Infrastructure.Repositories.ClientsRepository.ClientsRepository(Microsoft.Extensions.Configuration.IConfiguration)
+  type: Constructor
+  source:
+    remote:
+      path: src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: .ctor
+    path: ../../src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+    startLine: 11
+  assemblies:
+  - MyTrips.Infrastructure
+  namespace: MyTrips.Infrastructure.Repositories
+  syntax:
+    content: public ClientsRepository(IConfiguration configuration)
+    parameters:
+    - id: configuration
+      type: Microsoft.Extensions.Configuration.IConfiguration
+    content.vb: Public Sub New(configuration As IConfiguration)
+  overload: MyTrips.Infrastructure.Repositories.ClientsRepository.#ctor*
+  nameWithType.vb: ClientsRepository.New(IConfiguration)
+  fullName.vb: MyTrips.Infrastructure.Repositories.ClientsRepository.New(Microsoft.Extensions.Configuration.IConfiguration)
+  name.vb: New(IConfiguration)
+- uid: MyTrips.Infrastructure.Repositories.ClientsRepository.ConnectionString
+  commentId: P:MyTrips.Infrastructure.Repositories.ClientsRepository.ConnectionString
+  id: ConnectionString
+  parent: MyTrips.Infrastructure.Repositories.ClientsRepository
+  langs:
+  - csharp
+  - vb
+  name: ConnectionString
+  nameWithType: ClientsRepository.ConnectionString
+  fullName: MyTrips.Infrastructure.Repositories.ClientsRepository.ConnectionString
+  type: Property
+  source:
+    remote:
+      path: src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: ConnectionString
+    path: ../../src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+    startLine: 13
+  assemblies:
+  - MyTrips.Infrastructure
+  namespace: MyTrips.Infrastructure.Repositories
+  syntax:
+    content: public string ConnectionString { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property ConnectionString As String
+  overload: MyTrips.Infrastructure.Repositories.ClientsRepository.ConnectionString*
+- uid: MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync
+  commentId: M:MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync
+  id: GetAsync
+  parent: MyTrips.Infrastructure.Repositories.ClientsRepository
+  langs:
+  - csharp
+  - vb
+  name: GetAsync()
+  nameWithType: ClientsRepository.GetAsync()
+  fullName: MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync()
+  type: Method
+  source:
+    remote:
+      path: src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: GetAsync
+    path: ../../src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+    startLine: 16
+  assemblies:
+  - MyTrips.Infrastructure
+  namespace: MyTrips.Infrastructure.Repositories
+  example: []
+  syntax:
+    content: public Task<IEnumerable<Client>> GetAsync()
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{MyTrips.Domain.Entities.Client}}
+    content.vb: Public Function GetAsync() As Task(Of IEnumerable(Of Client))
+  overload: MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync*
+  implements:
+  - MyTrips.Domain.Interfaces.IClientsRepository.GetAsync
+- uid: MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync(System.Int32,System.Int32)
+  commentId: M:MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync(System.Int32,System.Int32)
+  id: GetAsync(System.Int32,System.Int32)
+  parent: MyTrips.Infrastructure.Repositories.ClientsRepository
+  langs:
+  - csharp
+  - vb
+  name: GetAsync(int, int)
+  nameWithType: ClientsRepository.GetAsync(int, int)
+  fullName: MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync(int, int)
+  type: Method
+  source:
+    remote:
+      path: src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: GetAsync
+    path: ../../src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+    startLine: 23
+  assemblies:
+  - MyTrips.Infrastructure
+  namespace: MyTrips.Infrastructure.Repositories
+  example: []
+  syntax:
+    content: public Task<PagedList<Client>> GetAsync(int pageIndex, int rowsPerBatch)
+    parameters:
+    - id: pageIndex
+      type: System.Int32
+    - id: rowsPerBatch
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task{MyTrips.Domain.ValueObjects.PagedList{MyTrips.Domain.Entities.Client}}
+    content.vb: Public Function GetAsync(pageIndex As Integer, rowsPerBatch As Integer) As Task(Of PagedList(Of Client))
+  overload: MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync*
+  implements:
+  - MyTrips.Domain.Interfaces.IClientsRepository.GetAsync(System.Int32,System.Int32)
+  nameWithType.vb: ClientsRepository.GetAsync(Integer, Integer)
+  fullName.vb: MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync(Integer, Integer)
+  name.vb: GetAsync(Integer, Integer)
+- uid: MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync(System.Int32)
+  commentId: M:MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync(System.Int32)
+  id: GetAsync(System.Int32)
+  parent: MyTrips.Infrastructure.Repositories.ClientsRepository
+  langs:
+  - csharp
+  - vb
+  name: GetAsync(int)
+  nameWithType: ClientsRepository.GetAsync(int)
+  fullName: MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync(int)
+  type: Method
+  source:
+    remote:
+      path: src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: GetAsync
+    path: ../../src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+    startLine: 41
+  assemblies:
+  - MyTrips.Infrastructure
+  namespace: MyTrips.Infrastructure.Repositories
+  example: []
+  syntax:
+    content: public Task<Client?> GetAsync(int id)
+    parameters:
+    - id: id
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task{MyTrips.Domain.Entities.Client}
+    content.vb: Public Function GetAsync(id As Integer) As Task(Of Client)
+  overload: MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync*
+  implements:
+  - MyTrips.Domain.Interfaces.IClientsRepository.GetAsync(System.Int32)
+  nameWithType.vb: ClientsRepository.GetAsync(Integer)
+  fullName.vb: MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync(Integer)
+  name.vb: GetAsync(Integer)
+- uid: MyTrips.Infrastructure.Repositories.ClientsRepository.AddAsync(MyTrips.Domain.Entities.Client)
+  commentId: M:MyTrips.Infrastructure.Repositories.ClientsRepository.AddAsync(MyTrips.Domain.Entities.Client)
+  id: AddAsync(MyTrips.Domain.Entities.Client)
+  parent: MyTrips.Infrastructure.Repositories.ClientsRepository
+  langs:
+  - csharp
+  - vb
+  name: AddAsync(Client)
+  nameWithType: ClientsRepository.AddAsync(Client)
+  fullName: MyTrips.Infrastructure.Repositories.ClientsRepository.AddAsync(MyTrips.Domain.Entities.Client)
+  type: Method
+  source:
+    remote:
+      path: src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: AddAsync
+    path: ../../src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+    startLine: 50
+  assemblies:
+  - MyTrips.Infrastructure
+  namespace: MyTrips.Infrastructure.Repositories
+  example: []
+  syntax:
+    content: public Task<int> AddAsync(Client client)
+    parameters:
+    - id: client
+      type: MyTrips.Domain.Entities.Client
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+    content.vb: Public Function AddAsync(client As Client) As Task(Of Integer)
+  overload: MyTrips.Infrastructure.Repositories.ClientsRepository.AddAsync*
+  implements:
+  - MyTrips.Domain.Interfaces.IClientsRepository.AddAsync(MyTrips.Domain.Entities.Client)
+- uid: MyTrips.Infrastructure.Repositories.ClientsRepository.UpdateAsync(MyTrips.Domain.Entities.Client)
+  commentId: M:MyTrips.Infrastructure.Repositories.ClientsRepository.UpdateAsync(MyTrips.Domain.Entities.Client)
+  id: UpdateAsync(MyTrips.Domain.Entities.Client)
+  parent: MyTrips.Infrastructure.Repositories.ClientsRepository
+  langs:
+  - csharp
+  - vb
+  name: UpdateAsync(Client)
+  nameWithType: ClientsRepository.UpdateAsync(Client)
+  fullName: MyTrips.Infrastructure.Repositories.ClientsRepository.UpdateAsync(MyTrips.Domain.Entities.Client)
+  type: Method
+  source:
+    remote:
+      path: src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: UpdateAsync
+    path: ../../src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+    startLine: 59
+  assemblies:
+  - MyTrips.Infrastructure
+  namespace: MyTrips.Infrastructure.Repositories
+  example: []
+  syntax:
+    content: public Task<Client?> UpdateAsync(Client client)
+    parameters:
+    - id: client
+      type: MyTrips.Domain.Entities.Client
+    return:
+      type: System.Threading.Tasks.Task{MyTrips.Domain.Entities.Client}
+    content.vb: Public Function UpdateAsync(client As Client) As Task(Of Client)
+  overload: MyTrips.Infrastructure.Repositories.ClientsRepository.UpdateAsync*
+  implements:
+  - MyTrips.Domain.Interfaces.IClientsRepository.UpdateAsync(MyTrips.Domain.Entities.Client)
+- uid: MyTrips.Infrastructure.Repositories.ClientsRepository.FindAsync(System.Linq.Expressions.Expression{System.Func{MyTrips.Domain.Entities.Client,System.Boolean}})
+  commentId: M:MyTrips.Infrastructure.Repositories.ClientsRepository.FindAsync(System.Linq.Expressions.Expression{System.Func{MyTrips.Domain.Entities.Client,System.Boolean}})
+  id: FindAsync(System.Linq.Expressions.Expression{System.Func{MyTrips.Domain.Entities.Client,System.Boolean}})
+  parent: MyTrips.Infrastructure.Repositories.ClientsRepository
+  langs:
+  - csharp
+  - vb
+  name: FindAsync(Expression<Func<Client, bool>>)
+  nameWithType: ClientsRepository.FindAsync(Expression<Func<Client, bool>>)
+  fullName: MyTrips.Infrastructure.Repositories.ClientsRepository.FindAsync(System.Linq.Expressions.Expression<System.Func<MyTrips.Domain.Entities.Client, bool>>)
+  type: Method
+  source:
+    remote:
+      path: src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: FindAsync
+    path: ../../src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+    startLine: 68
+  assemblies:
+  - MyTrips.Infrastructure
+  namespace: MyTrips.Infrastructure.Repositories
+  example: []
+  syntax:
+    content: public Task<IEnumerable<Client>> FindAsync(Expression<Func<Client, bool>> predicate)
+    parameters:
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{MyTrips.Domain.Entities.Client,System.Boolean}}
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{MyTrips.Domain.Entities.Client}}
+    content.vb: Public Function FindAsync(predicate As Expression(Of Func(Of Client, Boolean))) As Task(Of IEnumerable(Of Client))
+  overload: MyTrips.Infrastructure.Repositories.ClientsRepository.FindAsync*
+  implements:
+  - MyTrips.Domain.Interfaces.IClientsRepository.FindAsync(System.Linq.Expressions.Expression{System.Func{MyTrips.Domain.Entities.Client,System.Boolean}})
+  nameWithType.vb: ClientsRepository.FindAsync(Expression(Of Func(Of Client, Boolean)))
+  fullName.vb: MyTrips.Infrastructure.Repositories.ClientsRepository.FindAsync(System.Linq.Expressions.Expression(Of System.Func(Of MyTrips.Domain.Entities.Client, Boolean)))
+  name.vb: FindAsync(Expression(Of Func(Of Client, Boolean)))
+- uid: MyTrips.Infrastructure.Repositories.ClientsRepository.DeleteAsync(System.Int32)
+  commentId: M:MyTrips.Infrastructure.Repositories.ClientsRepository.DeleteAsync(System.Int32)
+  id: DeleteAsync(System.Int32)
+  parent: MyTrips.Infrastructure.Repositories.ClientsRepository
+  langs:
+  - csharp
+  - vb
+  name: DeleteAsync(int)
+  nameWithType: ClientsRepository.DeleteAsync(int)
+  fullName: MyTrips.Infrastructure.Repositories.ClientsRepository.DeleteAsync(int)
+  type: Method
+  source:
+    remote:
+      path: src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+      branch: main
+      repo: https://github.com/filimor/api-ploomes.git
+    id: DeleteAsync
+    path: ../../src/MyTrips.Infrastructure/Repositories/ClientsRepository.cs
+    startLine: 75
+  assemblies:
+  - MyTrips.Infrastructure
+  namespace: MyTrips.Infrastructure.Repositories
+  example: []
+  syntax:
+    content: public Task<int> DeleteAsync(int id)
+    parameters:
+    - id: id
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+    content.vb: Public Function DeleteAsync(id As Integer) As Task(Of Integer)
+  overload: MyTrips.Infrastructure.Repositories.ClientsRepository.DeleteAsync*
+  implements:
+  - MyTrips.Domain.Interfaces.IClientsRepository.DeleteAsync(System.Int32)
+  nameWithType.vb: ClientsRepository.DeleteAsync(Integer)
+  fullName.vb: MyTrips.Infrastructure.Repositories.ClientsRepository.DeleteAsync(Integer)
+  name.vb: DeleteAsync(Integer)
+references:
+- uid: MyTrips.Infrastructure.Repositories
+  commentId: N:MyTrips.Infrastructure.Repositories
+  href: MyTrips.html
+  name: MyTrips.Infrastructure.Repositories
+  nameWithType: MyTrips.Infrastructure.Repositories
+  fullName: MyTrips.Infrastructure.Repositories
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Infrastructure
+    name: Infrastructure
+    href: MyTrips.Infrastructure.html
+  - name: .
+  - uid: MyTrips.Infrastructure.Repositories
+    name: Repositories
+    href: MyTrips.Infrastructure.Repositories.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Infrastructure
+    name: Infrastructure
+    href: MyTrips.Infrastructure.html
+  - name: .
+  - uid: MyTrips.Infrastructure.Repositories
+    name: Repositories
+    href: MyTrips.Infrastructure.Repositories.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: MyTrips.Domain.Interfaces.IClientsRepository
+  commentId: T:MyTrips.Domain.Interfaces.IClientsRepository
+  parent: MyTrips.Domain.Interfaces
+  href: MyTrips.Domain.Interfaces.IClientsRepository.html
+  name: IClientsRepository
+  nameWithType: IClientsRepository
+  fullName: MyTrips.Domain.Interfaces.IClientsRepository
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MyTrips.Domain.Interfaces
+  commentId: N:MyTrips.Domain.Interfaces
+  href: MyTrips.html
+  name: MyTrips.Domain.Interfaces
+  nameWithType: MyTrips.Domain.Interfaces
+  fullName: MyTrips.Domain.Interfaces
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Domain
+    name: Domain
+    href: MyTrips.Domain.html
+  - name: .
+  - uid: MyTrips.Domain.Interfaces
+    name: Interfaces
+    href: MyTrips.Domain.Interfaces.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Domain
+    name: Domain
+    href: MyTrips.Domain.html
+  - name: .
+  - uid: MyTrips.Domain.Interfaces
+    name: Interfaces
+    href: MyTrips.Domain.Interfaces.html
+- uid: MyTrips.Infrastructure.Repositories.ClientsRepository.#ctor*
+  commentId: Overload:MyTrips.Infrastructure.Repositories.ClientsRepository.#ctor
+  href: MyTrips.Infrastructure.Repositories.ClientsRepository.html#MyTrips_Infrastructure_Repositories_ClientsRepository__ctor_Microsoft_Extensions_Configuration_IConfiguration_
+  name: ClientsRepository
+  nameWithType: ClientsRepository.ClientsRepository
+  fullName: MyTrips.Infrastructure.Repositories.ClientsRepository.ClientsRepository
+  nameWithType.vb: ClientsRepository.New
+  fullName.vb: MyTrips.Infrastructure.Repositories.ClientsRepository.New
+  name.vb: New
+- uid: Microsoft.Extensions.Configuration.IConfiguration
+  commentId: T:Microsoft.Extensions.Configuration.IConfiguration
+  parent: Microsoft.Extensions.Configuration
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration.iconfiguration
+  name: IConfiguration
+  nameWithType: IConfiguration
+  fullName: Microsoft.Extensions.Configuration.IConfiguration
+- uid: Microsoft.Extensions.Configuration
+  commentId: N:Microsoft.Extensions.Configuration
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Configuration
+  nameWithType: Microsoft.Extensions.Configuration
+  fullName: Microsoft.Extensions.Configuration
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Configuration
+    name: Configuration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Configuration
+    name: Configuration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration
+- uid: MyTrips.Infrastructure.Repositories.ClientsRepository.ConnectionString*
+  commentId: Overload:MyTrips.Infrastructure.Repositories.ClientsRepository.ConnectionString
+  href: MyTrips.Infrastructure.Repositories.ClientsRepository.html#MyTrips_Infrastructure_Repositories_ClientsRepository_ConnectionString
+  name: ConnectionString
+  nameWithType: ClientsRepository.ConnectionString
+  fullName: MyTrips.Infrastructure.Repositories.ClientsRepository.ConnectionString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync*
+  commentId: Overload:MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync
+  href: MyTrips.Infrastructure.Repositories.ClientsRepository.html#MyTrips_Infrastructure_Repositories_ClientsRepository_GetAsync
+  name: GetAsync
+  nameWithType: ClientsRepository.GetAsync
+  fullName: MyTrips.Infrastructure.Repositories.ClientsRepository.GetAsync
+- uid: MyTrips.Domain.Interfaces.IClientsRepository.GetAsync
+  commentId: M:MyTrips.Domain.Interfaces.IClientsRepository.GetAsync
+  parent: MyTrips.Domain.Interfaces.IClientsRepository
+  name: GetAsync()
+  nameWithType: IClientsRepository.GetAsync()
+  fullName: MyTrips.Domain.Interfaces.IClientsRepository.GetAsync()
+  spec.csharp:
+  - uid: MyTrips.Domain.Interfaces.IClientsRepository.GetAsync
+    name: GetAsync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: MyTrips.Domain.Interfaces.IClientsRepository.GetAsync
+    name: GetAsync
+  - name: (
+  - name: )
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{MyTrips.Domain.Entities.Client}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{MyTrips.Domain.Entities.Client}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IEnumerable<Client>>
+  nameWithType: Task<IEnumerable<Client>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<MyTrips.Domain.Entities.Client>>
+  nameWithType.vb: Task(Of IEnumerable(Of Client))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IEnumerable(Of MyTrips.Domain.Entities.Client))
+  name.vb: Task(Of IEnumerable(Of Client))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: MyTrips.Domain.Entities.Client
+    name: Client
+    href: MyTrips.Domain.Entities.Client.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MyTrips.Domain.Entities.Client
+    name: Client
+    href: MyTrips.Domain.Entities.Client.html
+  - name: )
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: MyTrips.Domain.Interfaces.IClientsRepository.GetAsync(System.Int32,System.Int32)
+  commentId: M:MyTrips.Domain.Interfaces.IClientsRepository.GetAsync(System.Int32,System.Int32)
+  parent: MyTrips.Domain.Interfaces.IClientsRepository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: GetAsync(int, int)
+  nameWithType: IClientsRepository.GetAsync(int, int)
+  fullName: MyTrips.Domain.Interfaces.IClientsRepository.GetAsync(int, int)
+  nameWithType.vb: IClientsRepository.GetAsync(Integer, Integer)
+  fullName.vb: MyTrips.Domain.Interfaces.IClientsRepository.GetAsync(Integer, Integer)
+  name.vb: GetAsync(Integer, Integer)
+  spec.csharp:
+  - uid: MyTrips.Domain.Interfaces.IClientsRepository.GetAsync(System.Int32,System.Int32)
+    name: GetAsync
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: MyTrips.Domain.Interfaces.IClientsRepository.GetAsync(System.Int32,System.Int32)
+    name: GetAsync
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Threading.Tasks.Task{MyTrips.Domain.ValueObjects.PagedList{MyTrips.Domain.Entities.Client}}
+  commentId: T:System.Threading.Tasks.Task{MyTrips.Domain.ValueObjects.PagedList{MyTrips.Domain.Entities.Client}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<PagedList<Client>>
+  nameWithType: Task<PagedList<Client>>
+  fullName: System.Threading.Tasks.Task<MyTrips.Domain.ValueObjects.PagedList<MyTrips.Domain.Entities.Client>>
+  nameWithType.vb: Task(Of PagedList(Of Client))
+  fullName.vb: System.Threading.Tasks.Task(Of MyTrips.Domain.ValueObjects.PagedList(Of MyTrips.Domain.Entities.Client))
+  name.vb: Task(Of PagedList(Of Client))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+    href: MyTrips.Domain.ValueObjects.PagedList-1.html
+  - name: <
+  - uid: MyTrips.Domain.Entities.Client
+    name: Client
+    href: MyTrips.Domain.Entities.Client.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MyTrips.Domain.ValueObjects.PagedList`1
+    name: PagedList
+    href: MyTrips.Domain.ValueObjects.PagedList-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MyTrips.Domain.Entities.Client
+    name: Client
+    href: MyTrips.Domain.Entities.Client.html
+  - name: )
+  - name: )
+- uid: MyTrips.Domain.Interfaces.IClientsRepository.GetAsync(System.Int32)
+  commentId: M:MyTrips.Domain.Interfaces.IClientsRepository.GetAsync(System.Int32)
+  parent: MyTrips.Domain.Interfaces.IClientsRepository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: GetAsync(int)
+  nameWithType: IClientsRepository.GetAsync(int)
+  fullName: MyTrips.Domain.Interfaces.IClientsRepository.GetAsync(int)
+  nameWithType.vb: IClientsRepository.GetAsync(Integer)
+  fullName.vb: MyTrips.Domain.Interfaces.IClientsRepository.GetAsync(Integer)
+  name.vb: GetAsync(Integer)
+  spec.csharp:
+  - uid: MyTrips.Domain.Interfaces.IClientsRepository.GetAsync(System.Int32)
+    name: GetAsync
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: MyTrips.Domain.Interfaces.IClientsRepository.GetAsync(System.Int32)
+    name: GetAsync
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Threading.Tasks.Task{MyTrips.Domain.Entities.Client}
+  commentId: T:System.Threading.Tasks.Task{MyTrips.Domain.Entities.Client}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Client>
+  nameWithType: Task<Client>
+  fullName: System.Threading.Tasks.Task<MyTrips.Domain.Entities.Client>
+  nameWithType.vb: Task(Of Client)
+  fullName.vb: System.Threading.Tasks.Task(Of MyTrips.Domain.Entities.Client)
+  name.vb: Task(Of Client)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: MyTrips.Domain.Entities.Client
+    name: Client
+    href: MyTrips.Domain.Entities.Client.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MyTrips.Domain.Entities.Client
+    name: Client
+    href: MyTrips.Domain.Entities.Client.html
+  - name: )
+- uid: MyTrips.Infrastructure.Repositories.ClientsRepository.AddAsync*
+  commentId: Overload:MyTrips.Infrastructure.Repositories.ClientsRepository.AddAsync
+  href: MyTrips.Infrastructure.Repositories.ClientsRepository.html#MyTrips_Infrastructure_Repositories_ClientsRepository_AddAsync_MyTrips_Domain_Entities_Client_
+  name: AddAsync
+  nameWithType: ClientsRepository.AddAsync
+  fullName: MyTrips.Infrastructure.Repositories.ClientsRepository.AddAsync
+- uid: MyTrips.Domain.Interfaces.IClientsRepository.AddAsync(MyTrips.Domain.Entities.Client)
+  commentId: M:MyTrips.Domain.Interfaces.IClientsRepository.AddAsync(MyTrips.Domain.Entities.Client)
+  parent: MyTrips.Domain.Interfaces.IClientsRepository
+  name: AddAsync(Client)
+  nameWithType: IClientsRepository.AddAsync(Client)
+  fullName: MyTrips.Domain.Interfaces.IClientsRepository.AddAsync(MyTrips.Domain.Entities.Client)
+  spec.csharp:
+  - uid: MyTrips.Domain.Interfaces.IClientsRepository.AddAsync(MyTrips.Domain.Entities.Client)
+    name: AddAsync
+  - name: (
+  - uid: MyTrips.Domain.Entities.Client
+    name: Client
+  - name: )
+  spec.vb:
+  - uid: MyTrips.Domain.Interfaces.IClientsRepository.AddAsync(MyTrips.Domain.Entities.Client)
+    name: AddAsync
+  - name: (
+  - uid: MyTrips.Domain.Entities.Client
+    name: Client
+  - name: )
+- uid: MyTrips.Domain.Entities.Client
+  commentId: T:MyTrips.Domain.Entities.Client
+  parent: MyTrips.Domain.Entities
+  href: MyTrips.Domain.Entities.Client.html
+  name: Client
+  nameWithType: Client
+  fullName: MyTrips.Domain.Entities.Client
+- uid: System.Threading.Tasks.Task{System.Int32}
+  commentId: T:System.Threading.Tasks.Task{System.Int32}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<int>
+  nameWithType: Task<int>
+  fullName: System.Threading.Tasks.Task<int>
+  nameWithType.vb: Task(Of Integer)
+  fullName.vb: System.Threading.Tasks.Task(Of Integer)
+  name.vb: Task(Of Integer)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: MyTrips.Domain.Entities
+  commentId: N:MyTrips.Domain.Entities
+  href: MyTrips.html
+  name: MyTrips.Domain.Entities
+  nameWithType: MyTrips.Domain.Entities
+  fullName: MyTrips.Domain.Entities
+  spec.csharp:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Domain
+    name: Domain
+    href: MyTrips.Domain.html
+  - name: .
+  - uid: MyTrips.Domain.Entities
+    name: Entities
+    href: MyTrips.Domain.Entities.html
+  spec.vb:
+  - uid: MyTrips
+    name: MyTrips
+    href: MyTrips.html
+  - name: .
+  - uid: MyTrips.Domain
+    name: Domain
+    href: MyTrips.Domain.html
+  - name: .
+  - uid: MyTrips.Domain.Entities
+    name: Entities
+    href: MyTrips.Domain.Entities.html
+- uid: MyTrips.Infrastructure.Repositories.ClientsRepository.UpdateAsync*
+  commentId: Overload:MyTrips.Infrastructure.Repositories.ClientsRepository.UpdateAsync
+  href: MyTrips.Infrastructure.Repositories.ClientsRepository.html#MyTrips_Infrastructure_Repositories_ClientsRepository_UpdateAsync_MyTrips_Domain_Entities_Client_
+  name: UpdateAsync
+  nameWithType: ClientsRepository.UpdateAsync
+  fullName: MyTrips.Infrastructure.Repositories.ClientsRepository.UpdateAsync
+- uid: MyTrips.Domain.Interfaces.IClientsRepository.UpdateAsync(MyTrips.Domain.Entities.Client)
+  commentId: M:MyTrips.Domain.Interfaces.IClientsRepository.UpdateAsync(MyTrips.Domain.Entities.Client)
+  parent: MyTrips.Domain.Interfaces.IClientsRepository
+  name: UpdateAsync(Client)
+  nameWithType: IClientsRepository.UpdateAsync(Client)
+  fullName: MyTrips.Domain.Interfaces.IClientsRepository.UpdateAsync(MyTrips.Domain.Entities.Client)
+  spec.csharp:
+  - uid: MyTrips.Domain.Interfaces.IClientsRepository.UpdateAsync(MyTrips.Domain.Entities.Client)
+    name: UpdateAsync
+  - name: (
+  - uid: MyTrips.Domain.Entities.Client
+    name: Client
+  - name: )
+  spec.vb:
+  - uid: MyTrips.Domain.Interfaces.IClientsRepository.UpdateAsync(MyTrips.Domain.Entities.Client)
+    name: UpdateAsync
+  - name: (
+  - uid: MyTrips.Domain.Entities.Client
+    name: Client
+  - name: )
+- uid: MyTrips.Infrastructure.Repositories.ClientsRepository.FindAsync*
+  commentId: Overload:MyTrips.Infrastructure.Repositories.ClientsRepository.FindAsync
+  href: MyTrips.Infrastructure.Repositories.ClientsRepository.html#MyTrips_Infrastructure_Repositories_ClientsRepository_FindAsync_System_Linq_Expressions_Expression_System_Func_MyTrips_Domain_Entities_Client_System_Boolean___
+  name: FindAsync
+  nameWithType: ClientsRepository.FindAsync
+  fullName: MyTrips.Infrastructure.Repositories.ClientsRepository.FindAsync
+- uid: MyTrips.Domain.Interfaces.IClientsRepository.FindAsync(System.Linq.Expressions.Expression{System.Func{MyTrips.Domain.Entities.Client,System.Boolean}})
+  commentId: M:MyTrips.Domain.Interfaces.IClientsRepository.FindAsync(System.Linq.Expressions.Expression{System.Func{MyTrips.Domain.Entities.Client,System.Boolean}})
+  parent: MyTrips.Domain.Interfaces.IClientsRepository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: FindAsync(Expression<Func<Client, bool>>)
+  nameWithType: IClientsRepository.FindAsync(Expression<Func<Client, bool>>)
+  fullName: MyTrips.Domain.Interfaces.IClientsRepository.FindAsync(System.Linq.Expressions.Expression<System.Func<MyTrips.Domain.Entities.Client, bool>>)
+  nameWithType.vb: IClientsRepository.FindAsync(Expression(Of Func(Of Client, Boolean)))
+  fullName.vb: MyTrips.Domain.Interfaces.IClientsRepository.FindAsync(System.Linq.Expressions.Expression(Of System.Func(Of MyTrips.Domain.Entities.Client, Boolean)))
+  name.vb: FindAsync(Expression(Of Func(Of Client, Boolean)))
+  spec.csharp:
+  - uid: MyTrips.Domain.Interfaces.IClientsRepository.FindAsync(System.Linq.Expressions.Expression{System.Func{MyTrips.Domain.Entities.Client,System.Boolean}})
+    name: FindAsync
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: MyTrips.Domain.Entities.Client
+    name: Client
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: MyTrips.Domain.Interfaces.IClientsRepository.FindAsync(System.Linq.Expressions.Expression{System.Func{MyTrips.Domain.Entities.Client,System.Boolean}})
+    name: FindAsync
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MyTrips.Domain.Entities.Client
+    name: Client
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+  - name: )
+- uid: System.Linq.Expressions.Expression{System.Func{MyTrips.Domain.Entities.Client,System.Boolean}}
+  commentId: T:System.Linq.Expressions.Expression{System.Func{MyTrips.Domain.Entities.Client,System.Boolean}}
+  parent: System.Linq.Expressions
+  definition: System.Linq.Expressions.Expression`1
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<Func<Client, bool>>
+  nameWithType: Expression<Func<Client, bool>>
+  fullName: System.Linq.Expressions.Expression<System.Func<MyTrips.Domain.Entities.Client, bool>>
+  nameWithType.vb: Expression(Of Func(Of Client, Boolean))
+  fullName.vb: System.Linq.Expressions.Expression(Of System.Func(Of MyTrips.Domain.Entities.Client, Boolean))
+  name.vb: Expression(Of Func(Of Client, Boolean))
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: MyTrips.Domain.Entities.Client
+    name: Client
+    href: MyTrips.Domain.Entities.Client.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MyTrips.Domain.Entities.Client
+    name: Client
+    href: MyTrips.Domain.Entities.Client.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+- uid: System.Linq.Expressions.Expression`1
+  commentId: T:System.Linq.Expressions.Expression`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<TDelegate>
+  nameWithType: Expression<TDelegate>
+  fullName: System.Linq.Expressions.Expression<TDelegate>
+  nameWithType.vb: Expression(Of TDelegate)
+  fullName.vb: System.Linq.Expressions.Expression(Of TDelegate)
+  name.vb: Expression(Of TDelegate)
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - name: TDelegate
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDelegate
+  - name: )
+- uid: System.Linq.Expressions
+  commentId: N:System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Linq.Expressions
+  nameWithType: System.Linq.Expressions
+  fullName: System.Linq.Expressions
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions
+- uid: MyTrips.Infrastructure.Repositories.ClientsRepository.DeleteAsync*
+  commentId: Overload:MyTrips.Infrastructure.Repositories.ClientsRepository.DeleteAsync
+  href: MyTrips.Infrastructure.Repositories.ClientsRepository.html#MyTrips_Infrastructure_Repositories_ClientsRepository_DeleteAsync_System_Int32_
+  name: DeleteAsync
+  nameWithType: ClientsRepository.DeleteAsync
+  fullName: MyTrips.Infrastructure.Repositories.ClientsRepository.DeleteAsync
+- uid: MyTrips.Domain.Interfaces.IClientsRepository.DeleteAsync(System.Int32)
+  commentId: M:MyTrips.Domain.Interfaces.IClientsRepository.DeleteAsync(System.Int32)
+  parent: MyTrips.Domain.Interfaces.IClientsRepository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: DeleteAsync(int)
+  nameWithType: IClientsRepository.DeleteAsync(int)
+  fullName: MyTrips.Domain.Interfaces.IClientsRepository.DeleteAsync(int)
+  nameWithType.vb: IClientsRepository.DeleteAsync(Integer)
+  fullName.vb: MyTrips.Domain.Interfaces.IClientsRepository.DeleteAsync(Integer)
+  name.vb: DeleteAsync(Integer)
+  spec.csharp:
+  - uid: MyTrips.Domain.Interfaces.IClientsRepository.DeleteAsync(System.Int32)
+    name: DeleteAsync
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: MyTrips.Domain.Interfaces.IClientsRepository.DeleteAsync(System.Int32)
+    name: DeleteAsync
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
