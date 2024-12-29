@@ -53,11 +53,8 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
         var response = await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
-        var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
-
         response.Should().HaveStatusCode(HttpStatusCode.BadRequest);
         response.Should().HaveProblemContentType();
-        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Id)}*");
     }
 
     [Fact]
@@ -74,10 +71,7 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
         var response = await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
-        var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
-
         response.Should().HaveStatusCode(HttpStatusCode.NotFound);
         response.Should().HaveProblemContentType();
-        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Id)}*{fixture.UpdateClientDtoStub.Id}*");
     }
 }

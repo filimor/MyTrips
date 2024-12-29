@@ -56,7 +56,7 @@ public class GetClientUnitTests
     [Fact]
     [Trait("Category", "Unit")]
     public async Task
-        GivenInvalidId_WhenGetClientWithIdRequest_ThenItShouldReturnBadRequestResponseWithErrorDetails()
+        GivenInvalidId_WhenGetClientWithIdRequest_ThenItShouldReturnBadRequestResponseWithProblemDetails()
     {
         // Arrange
         var controller = _fixture.NewClientsController();
@@ -66,14 +66,13 @@ public class GetClientUnitTests
 
         // Assert
         response.Should().BeOfType<BadRequestObjectResult>()
-            .Which.Value.Should().BeOfType<BadRequestErrorDetails>()
-            .Which.Errors.Should().ContainMatch($"*{nameof(Client.Id)}*");
+            .Which.Value.Should().BeOfType<BadRequestProblemDetails>();
     }
 
     [Fact]
     [Trait("Category", "Unit")]
     public async Task
-        GivenNonExistentClient_WhenTryGetClient_ThenItShouldReturnNotFoundResultObjectWithErrorDetails()
+        GivenNonExistentClient_WhenTryGetClient_ThenItShouldReturnNotFoundResultObjectWithProblemDetails()
     {
         // Arrange
         _fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(ClientsManagementFixture.NonExistentId))

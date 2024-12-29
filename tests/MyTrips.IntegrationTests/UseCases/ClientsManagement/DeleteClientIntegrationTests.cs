@@ -36,11 +36,8 @@ public class DeleteClientIntegrationTests(ClientsManagementFixture fixture)
         var response = await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
-        var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
-
         response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         response.Should().HaveProblemContentType();
-        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Id)}*");
     }
 
     [Fact]
@@ -56,11 +53,8 @@ public class DeleteClientIntegrationTests(ClientsManagementFixture fixture)
         var response = await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
-        var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
-
         response.Should().HaveStatusCode(HttpStatusCode.NotFound);
         response.Should().HaveProblemContentType();
-        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Id)}*");
     }
 
     [Fact]

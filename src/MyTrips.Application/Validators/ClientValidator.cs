@@ -12,6 +12,7 @@ public class ClientValidator : AbstractValidator<Client>
             .NotEmpty()
             .MaximumLength(100);
         RuleFor(x => x.Email)
+            .Cascade(CascadeMode.Stop)
             .NotEmpty()
             .MaximumLength(100)
             .Must(BeAValidEmail);

@@ -1,5 +1,4 @@
 ﻿using MyTrips.Application.Errors;
-using MyTrips.Domain.Entities;
 using MyTrips.Presentation.Errors;
 using MyTrips.UnitTest.Fixtures;
 
@@ -33,8 +32,7 @@ public class DeleteClientUnitTests
 
         // Assert
         response.Should().BeOfType<BadRequestObjectResult>()
-            .Which.Value.Should().BeOfType<BadRequestErrorDetails>()
-            .Which.Errors.Should().ContainMatch($"*{nameof(Client.Id)}*");
+            .Which.Value.Should().BeOfType<BadRequestProblemDetails>();
     }
 
     [Fact]

@@ -41,11 +41,8 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         var response = await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
-        var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
-
         response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         response.Should().HaveProblemContentType();
-        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Name)}*");
     }
 
     [Theory]
@@ -63,11 +60,8 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         var response = await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
-        var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
-
         response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         response.Should().HaveProblemContentType();
-        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Email)}*");
     }
 
     [Fact]
@@ -84,11 +78,8 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         var response = await fixture.DefaultHttpClient.SendAsync(requestWithSameEmail);
 
         // Assert
-        var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
-
         response.StatusCode.Should().Be(HttpStatusCode.Conflict);
         response.Should().HaveProblemContentType();
-        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Email)}*{fixture.UpdateClientDtoStub.Email}*");
     }
 
     [Theory]

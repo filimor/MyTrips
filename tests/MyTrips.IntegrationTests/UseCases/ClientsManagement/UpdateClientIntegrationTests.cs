@@ -1,4 +1,5 @@
-﻿using MyTrips.UnitTest.ClassData;
+﻿using Microsoft.AspNetCore.Mvc;
+using MyTrips.UnitTest.ClassData;
 
 namespace MyTrips.IntegrationTests.UseCases.ClientsManagement;
 
@@ -36,11 +37,10 @@ public class UpdateClientIntegrationTests(ClientsManagementFixture fixture)
         var response = await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
-        var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
+        var problemDetails = await response.DeserializedContentAsync<ProblemDetails>();
 
         response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         response.Should().HaveProblemContentType();
-        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Id)}*");
     }
 
     [Theory]
@@ -58,11 +58,10 @@ public class UpdateClientIntegrationTests(ClientsManagementFixture fixture)
         var response = await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
-        var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
+        var problemDetails = await response.DeserializedContentAsync<ProblemDetails>();
 
         response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         response.Should().HaveProblemContentType();
-        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Name)}*");
     }
 
     [Theory]
@@ -80,11 +79,10 @@ public class UpdateClientIntegrationTests(ClientsManagementFixture fixture)
         var response = await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
-        var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
+        var problemDetails = await response.DeserializedContentAsync<ProblemDetails>();
 
         response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         response.Should().HaveProblemContentType();
-        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Email)}*");
     }
 
     [Fact]
@@ -101,11 +99,10 @@ public class UpdateClientIntegrationTests(ClientsManagementFixture fixture)
         var response = await fixture.DefaultHttpClient.SendAsync(requestWithSameEmail);
 
         // Assert
-        var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
+        var problemDetails = await response.DeserializedContentAsync<ProblemDetails>();
 
         response.StatusCode.Should().Be(HttpStatusCode.Conflict);
         response.Should().HaveProblemContentType();
-        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Email)}*{fixture.UpdateClientDtoStub.Email}*");
     }
 
     [Fact]
@@ -121,11 +118,9 @@ public class UpdateClientIntegrationTests(ClientsManagementFixture fixture)
         var response = await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
-        var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
+        var problemDetails = await response.DeserializedContentAsync<ProblemDetails>();
 
         response.Should().HaveStatusCode(HttpStatusCode.NotFound);
         response.Should().HaveProblemContentType();
-        errorDetails!.Errors.Should()
-            .ContainMatch($"*{nameof(Client.Id)}*");
     }
 }

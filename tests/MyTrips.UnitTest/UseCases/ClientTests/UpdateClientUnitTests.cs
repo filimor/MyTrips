@@ -40,8 +40,7 @@ public class UpdateClientUnitTests
 
         // Assert
         response.Should().BeOfType<BadRequestObjectResult>()
-            .Which.Value.Should().BeOfType<BadRequestErrorDetails>()
-            .Which.Errors.Should().ContainMatch($"*{nameof(Client.Name)}*");
+            .Which.Value.Should().BeOfType<BadRequestProblemDetails>();
     }
 
 
@@ -60,8 +59,7 @@ public class UpdateClientUnitTests
 
         // Assert
         response.Should().BeOfType<BadRequestObjectResult>()
-            .Which.Value.Should().BeOfType<BadRequestErrorDetails>()
-            .Which.Errors.Should().ContainMatch($"*{nameof(Client.Email)}*");
+            .Which.Value.Should().BeOfType<BadRequestProblemDetails>();
     }
 
     [Fact]

@@ -16,7 +16,7 @@ public static class IoC
         IConfiguration configuration)
     {
         InjectRepositories(services, configuration);
-        InjectServices(services);
+        InjectDomainServices(services);
         AddMapping(services);
         UseRepoDb();
 
@@ -39,7 +39,7 @@ public static class IoC
         services.AddScoped<IClientsRepository>(_ => new ClientsRepository(configuration));
     }
 
-    private static void InjectServices(IServiceCollection services)
+    private static void InjectDomainServices(IServiceCollection services)
     {
         services.AddScoped<IClientsService, ClientsService>();
         services.AddScoped<IAuthService, AuthService>();

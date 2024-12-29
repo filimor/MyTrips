@@ -1,8 +1,10 @@
-﻿namespace MyTrips.Presentation.Errors;
+﻿using Microsoft.AspNetCore.Mvc;
 
-public class UnauthorizedErrorDetails : ErrorDetails
+namespace MyTrips.Presentation.Errors;
+
+public class UnauthorizedProblemDetails : ProblemDetails
 {
-    public UnauthorizedErrorDetails(HttpContext context,
+    public UnauthorizedProblemDetails(HttpContext context,
         string detail =
             "The credentials provided are invalid or missing. Please check your username and password and try again.")
     {
@@ -10,6 +12,6 @@ public class UnauthorizedErrorDetails : ErrorDetails
         Title = "Unauthorized";
         Instance = context.Request.Path;
         Detail = detail;
-        Errors = [];
+        Type = $"https://httpstatuses.com/{Status}";
     }
 }

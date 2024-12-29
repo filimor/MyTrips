@@ -21,6 +21,7 @@ public class AuthService(IConfiguration configuration) : IAuthService
 
         var tokenHandler = new JwtSecurityTokenHandler();
         var key = Encoding.ASCII.GetBytes(configuration["Authentication:JwtSecret"]!);
+
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity([
@@ -30,8 +31,10 @@ public class AuthService(IConfiguration configuration) : IAuthService
             SigningCredentials =
                 new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
+
         var token = tokenHandler.CreateToken(tokenDescriptor);
         var userToken = tokenHandler.WriteToken(token);
+
         return userToken;
     }
 }

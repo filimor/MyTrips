@@ -24,7 +24,7 @@ try
         .CreateLogger();
 
     var builder = WebApplication.CreateBuilder(args);
-
+    builder.Services.AddProblemDetails();
     builder.Services.AddControllers(options => { options.Filters.Add(new ProblemHeaderFilter()); });
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen(opt =>

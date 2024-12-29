@@ -34,7 +34,7 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     /// <response code="500">If an error occurs while processing the request</response>
     [HttpGet]
     [ProducesResponseType<PagedList<ResponseClientDto>>(StatusCodes.Status200OK)]
-    [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult> Get([FromQuery] ClientParameters clientParameters)
     {
         var result = await clientsService.GetClientsAsync(clientParameters);
@@ -71,19 +71,19 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     /// <response code="500">If an error occurs while processing the request</response>
     [HttpGet("{id:int}")]
     [ProducesResponseType<ResponseClientDto>(StatusCodes.Status200OK)]
-    [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType<ErrorDetails>(StatusCodes.Status404NotFound)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status429TooManyRequests)]
-    [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult> Get([FromRoute] int id)
     {
         var validationResult = ValidateInputId(id);
 
         if (validationResult.IsFailed)
         {
-            var errorDetails = new BadRequestErrorDetails(HttpContext, validationResult);
-            return new BadRequestObjectResult(errorDetails);
+            var problemDetails = new BadRequestProblemDetails(HttpContext, validationResult);
+            return new BadRequestObjectResult(problemDetails);
         }
 
         var requestResult = await clientsService.GetClientByIdAsync(id);
@@ -92,8 +92,8 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
         {
             if (requestResult.Errors.Any(e => e is NotFoundError))
             {
-                var errorDetails = new NotFoundErrorDetails(HttpContext, requestResult.ToResult());
-                return new NotFoundObjectResult(errorDetails);
+                var problemDetails = new NotFoundProblemDetails(HttpContext, requestResult.ToResult());
+                return new NotFoundObjectResult(problemDetails);
             }
 
             return StatusCode(StatusCodes.Status500InternalServerError);
@@ -126,11 +126,11 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     /// <response code="500">If an error occurs while processing the request</response>
     [HttpPost]
     [ProducesResponseType<ResponseClientDto>(StatusCodes.Status201Created)]
-    [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType<ErrorDetails>(StatusCodes.Status409Conflict)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status409Conflict)]
     [ProducesResponseType(StatusCodes.Status429TooManyRequests)]
-    [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status500InternalServerError)]
     [Consumes("application/json")]
     public async Task<ActionResult> Post([FromBody] CreateClientDto createClientDto)
     {
@@ -140,23 +140,20 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
 
         if (!validationResult.IsValid)
         {
-            var errors = validationResult.Errors.Select(e => new Error(e.ErrorMessage));
-            var resultObject = Result.Fail(errors);
-            var errorDetails = new BadRequestErrorDetails(HttpContext, resultObject);
-            return new BadRequestObjectResult(errorDetails);
+            var problemDetails = new BadRequestProblemDetails(HttpContext, validationResult);
+            return new BadRequestObjectResult(problemDetails);
         }
 
         var requestResult = await clientsService.AddNewClientAsync(createClientDto);
 
         if (requestResult.IsFailed)
         {
-            if (requestResult.Errors.Any(e => e is ConflictError))
-            {
-                var errorDetails = new ConflictErrorDetails(HttpContext, requestResult.ToResult());
-                return new ConflictObjectResult(errorDetails);
-            }
+            if (!requestResult.Errors.Any(e => e is ConflictError))
+                return StatusCode(StatusCodes.Status500InternalServerError);
 
-            return StatusCode(StatusCodes.Status500InternalServerError);
+            var problemDetails = new ConflictProblemDetails(HttpContext, requestResult.ToResult());
+
+            return new ConflictObjectResult(problemDetails);
         }
 
         return CreatedAtAction(nameof(Get), new { id = requestResult.Value.Id }, requestResult.Value);
@@ -186,12 +183,12 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     /// <response code="500">If an error occurs while processing the request</response>
     [HttpPut]
     [ProducesResponseType<ResponseClientDto>(StatusCodes.Status200OK)]
-    [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType<ErrorDetails>(StatusCodes.Status404NotFound)]
-    [ProducesResponseType<ErrorDetails>(StatusCodes.Status409Conflict)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status409Conflict)]
     [ProducesResponseType(StatusCodes.Status429TooManyRequests)]
-    [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status500InternalServerError)]
     [Consumes("application/json")]
     public async Task<ActionResult> Put([FromBody] UpdateClientDto updateClientDto)
     {
@@ -199,8 +196,8 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
 
         if (idValidationResult.IsFailed)
         {
-            var errorDetails = new BadRequestErrorDetails(HttpContext, idValidationResult);
-            return new BadRequestObjectResult(errorDetails);
+            var problemDetails = new BadRequestProblemDetails(HttpContext, idValidationResult);
+            return new BadRequestObjectResult(problemDetails);
         }
 
         var client = new Client(updateClientDto.Id, updateClientDto.Name, updateClientDto.Email);
@@ -211,8 +208,8 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
         {
             var errors = validationResult.Errors.Select(e => new Error(e.ErrorMessage));
             var resultObject = Result.Fail(errors);
-            var errorDetails = new BadRequestErrorDetails(HttpContext, resultObject);
-            return new BadRequestObjectResult(errorDetails);
+            var problemDetails = new BadRequestProblemDetails(HttpContext, resultObject);
+            return new BadRequestObjectResult(problemDetails);
         }
 
         var requestResult = await clientsService.UpdateClientAsync(updateClientDto);
@@ -221,14 +218,14 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
         {
             if (requestResult.Errors.Any(e => e is NotFoundError))
             {
-                var errorDetails = new NotFoundErrorDetails(HttpContext, requestResult.ToResult());
-                return new NotFoundObjectResult(errorDetails);
+                var problemDetails = new NotFoundProblemDetails(HttpContext, requestResult.ToResult());
+                return new NotFoundObjectResult(problemDetails);
             }
 
             if (requestResult.Errors.Any(e => e is ConflictError))
             {
-                var errorDetails = new ConflictErrorDetails(HttpContext, requestResult.ToResult());
-                return new ConflictObjectResult(errorDetails);
+                var problemDetails = new ConflictProblemDetails(HttpContext, requestResult.ToResult());
+                return new ConflictObjectResult(problemDetails);
             }
 
             return StatusCode(StatusCodes.Status500InternalServerError);
@@ -256,19 +253,19 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     /// <response code="500">If an error occurs while processing the request</response>
     [HttpDelete("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ProducesResponseType<ErrorDetails>(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType<ErrorDetails>(StatusCodes.Status404NotFound)]
-    [ProducesResponseType<ErrorDetails>(StatusCodes.Status409Conflict)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status409Conflict)]
     [ProducesResponseType(StatusCodes.Status429TooManyRequests)]
-    [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult> Delete([FromRoute] int id)
     {
         var validationResult = ValidateInputId(id);
         if (validationResult.IsFailed)
         {
-            var errorDetails = new BadRequestErrorDetails(HttpContext, validationResult);
-            return new BadRequestObjectResult(errorDetails);
+            var problemDetails = new BadRequestProblemDetails(HttpContext, validationResult);
+            return new BadRequestObjectResult(problemDetails);
         }
 
         var requestResult = await clientsService.RemoveClientAsync(id);
@@ -277,14 +274,14 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
         {
             if (requestResult.Errors.Any(e => e is NotFoundError))
             {
-                var errorDetails = new NotFoundErrorDetails(HttpContext, requestResult);
-                return new NotFoundObjectResult(errorDetails);
+                var problemDetails = new NotFoundProblemDetails(HttpContext, requestResult);
+                return new NotFoundObjectResult(problemDetails);
             }
 
             if (requestResult.Errors.Any(e => e is ConflictError))
             {
-                var errorDetails = new ConflictErrorDetails(HttpContext, requestResult);
-                return new ConflictObjectResult(errorDetails);
+                var problemDetails = new ConflictProblemDetails(HttpContext, requestResult);
+                return new ConflictObjectResult(problemDetails);
             }
 
             return StatusCode(StatusCodes.Status500InternalServerError);

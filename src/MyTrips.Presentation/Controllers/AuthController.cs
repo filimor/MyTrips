@@ -39,13 +39,14 @@ public class AuthController(IAuthService authService) : ControllerBase
     [HttpPost("Login")]
     [AllowAnonymous]
     [ProducesResponseType<IEnumerable<ResponseClientDto>>(StatusCodes.Status200OK)]
-    [ProducesResponseType<ErrorDetails>(StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status500InternalServerError)]
     public IActionResult Login(LoginInfo loginInfo)
     {
         var token = authService.GetToken(loginInfo);
 
-        if (string.IsNullOrEmpty(token)) return new UnauthorizedObjectResult(new UnauthorizedErrorDetails(HttpContext));
+        if (string.IsNullOrEmpty(token))
+            return new UnauthorizedObjectResult(new UnauthorizedProblemDetails(HttpContext));
 
         return Ok(new
         {
