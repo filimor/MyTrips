@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Text;
 using FluentAssertions;
+using Microsoft.Data.SqlClient;
 using MyTrips.Application.Dtos;
 using MyTrips.Domain.Entities;
 using MyTrips.IntegrationTests.Extensions;
@@ -8,6 +9,7 @@ using MyTrips.IntegrationTests.Fixtures;
 using MyTrips.Presentation.Errors;
 using MyTrips.UnitTest.ClassData;
 using Newtonsoft.Json;
+using RepoDb;
 
 namespace MyTrips.IntegrationTests.UseCases.ClientsManagement;
 
@@ -104,13 +106,14 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         {
             Content = data
         };
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
         await fixture.DefaultHttpClient.SendAsync(request);
 
         var requestWithSameEmail = new HttpRequestMessage(HttpMethod.Post, fixture.Endpoint)
         {
             Content = data
         };
-        request.Headers.Authorization = fixture.GetAuthorizationHeader();
+        requestWithSameEmail.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(requestWithSameEmail);
@@ -143,9 +146,8 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
-        var getRequest = new HttpRequestMessage(HttpMethod.Get, fixture.Endpoint);
-        var responseAllClients = await fixture.DefaultHttpClient.SendAsync(getRequest);
-        var clients = await responseAllClients.DeserializedContentAsync<IEnumerable<ResponseClientDto>>();
+        await using var connection = new SqlConnection(fixture.ConnectionString);
+        var clients = await connection.QueryAllAsync<Client>();
         clients.Should().NotContain(c => c.Name == fixture.CreateClientDtoStub.Name);
     }
 
@@ -169,9 +171,8 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
-        var getRequest = new HttpRequestMessage(HttpMethod.Get, fixture.Endpoint);
-        var responseAllClients = await fixture.DefaultHttpClient.SendAsync(getRequest);
-        var clients = await responseAllClients.DeserializedContentAsync<IEnumerable<ResponseClientDto>>();
+        await using var connection = new SqlConnection(fixture.ConnectionString);
+        var clients = await connection.QueryAllAsync<Client>();
         clients.Should().NotContain(c => c.Email == fixture.CreateClientDtoStub.Email);
     }
 
@@ -193,9 +194,8 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
-        var getRequest = new HttpRequestMessage(HttpMethod.Get, fixture.Endpoint);
-        var responseAllClients = await fixture.DefaultHttpClient.SendAsync(getRequest);
-        var clients = await responseAllClients.DeserializedContentAsync<IEnumerable<ResponseClientDto>>();
+        await using var connection = new SqlConnection(fixture.ConnectionString);
+        var clients = await connection.QueryAllAsync<Client>();
         clients.Should().ContainSingle(c => c.Email == fixture.CreateClientDtoStub.Email);
     }
 }

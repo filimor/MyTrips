@@ -1,12 +1,14 @@
 ﻿using System.Net;
 using System.Text;
 using FluentAssertions;
+using Microsoft.Data.SqlClient;
 using MyTrips.Application.Dtos;
 using MyTrips.Domain.Entities;
 using MyTrips.IntegrationTests.Extensions;
 using MyTrips.IntegrationTests.Fixtures;
 using MyTrips.Presentation.Errors;
 using Newtonsoft.Json;
+using RepoDb;
 
 namespace MyTrips.IntegrationTests.UseCases.ClientsManagement;
 
@@ -105,8 +107,8 @@ public class DeleteClientIntegrationTests(ClientsManagementFixture fixture)
         await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
-        var getRequest = new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{returnedClient!.Id}");
-        var getResponse = await fixture.DefaultHttpClient.SendAsync(getRequest);
-        getResponse.StatusCode.Should().Be(HttpStatusCode.NotFound);
+        await using var connection = new SqlConnection(fixture.ConnectionString);
+        var clients = await connection.QueryAsync<Client>(c => c.Id == returnedClient.Id);
+        clients.Should().BeEmpty();
     }
 }
