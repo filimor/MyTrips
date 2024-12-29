@@ -1,16 +1,6 @@
-using System.Linq.Expressions;
-using Bogus;
-using FluentAssertions;
-using FluentResults;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Moq;
 using MyTrips.Application.Errors;
-using MyTrips.Application.Interfaces;
 using MyTrips.Application.Services;
-using MyTrips.Application.Validators;
 using MyTrips.Domain.Entities;
-using MyTrips.Presentation.Controllers;
 using MyTrips.Presentation.Errors;
 using MyTrips.UnitTest.ClassData;
 using MyTrips.UnitTest.Fixtures;
@@ -45,17 +35,7 @@ public class UpdateClientUnitTests
     {
         // Arrange
         _fixture.UpdateClientDtoStub.Name = name;
-        var clientServiceMock = new Mock<IClientsService>();
-
-        var httpContext = new DefaultHttpContext();
-        var controllerContext = new ControllerContext
-        {
-            HttpContext = httpContext
-        };
-        var controller = new ClientsController(clientServiceMock.Object, new ClientValidator())
-        {
-            ControllerContext = controllerContext
-        };
+        var controller = _fixture.NewClientsController();
 
         // Act
         var response = await controller.Put(_fixture.UpdateClientDtoStub);
@@ -66,6 +46,7 @@ public class UpdateClientUnitTests
             .Which.Errors.Should().ContainMatch($"*{nameof(Client.Name)}*");
     }
 
+
     [Theory]
     [Trait("Category", "Unit")]
     [ClassData(typeof(InvalidEmailClassData))]
@@ -74,17 +55,7 @@ public class UpdateClientUnitTests
     {
         // Arrange
         _fixture.UpdateClientDtoStub.Email = email;
-        var clientServiceMock = new Mock<IClientsService>();
-
-        var httpContext = new DefaultHttpContext();
-        var controllerContext = new ControllerContext
-        {
-            HttpContext = httpContext
-        };
-        var controller = new ClientsController(clientServiceMock.Object, new ClientValidator())
-        {
-            ControllerContext = controllerContext
-        };
+        var controller = _fixture.NewClientsController();
 
         // Act
         var response = await controller.Put(_fixture.UpdateClientDtoStub);
@@ -101,19 +72,11 @@ public class UpdateClientUnitTests
         GivenAnExistingClient_WhenUpdateWithEmailOfOtherClient_ThenItShouldReturnFailResultObjectWithTheErrors()
     {
         // Arrange
-        var existingClient = new Faker<Client>()
-            .RuleFor(c => c.Id, f => f.Random.Int())
-            .RuleFor(c => c.Name, f => f.Name.FullName())
-            .RuleFor(c => c.Email, f => _fixture.ClientStub.Email)
-            .Generate();
-        var mockClientList = new List<Client> { existingClient };
-        _fixture.ClientsRepositoryMock.Setup(r => r.FindAsync(It.IsAny<Expression<Func<Client, bool>>>()))
-            .ReturnsAsync((Expression<Func<Client, bool>> predicate) =>
-                mockClientList.Where(predicate.Compile()));
+        _fixture.OtherClientStub.Email = _fixture.UpdateClientDtoStub.Email;
         var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
         var testResult =
             Result.Fail(new ConflictError(
-                $"{nameof(Client)} with the {nameof(Client.Email)} '{existingClient.Email}' already exists."));
+                $"{nameof(Client)} with the {nameof(Client.Email)} '{_fixture.ClientStub.Email}' already exists."));
 
         // Act
         var clientResult = await clientsService.UpdateClientAsync(_fixture.UpdateClientDtoStub);
@@ -126,8 +89,9 @@ public class UpdateClientUnitTests
     [Trait("Category", "Unit")]
     public async Task GivenNonExistingClient_WhenTryToUpdateIt_ThenItShouldReturnFailObjectResultWithErrors()
     {
-        const int nonExistentId = 100;
+        const int nonExistentId = int.MaxValue;
         _fixture.UpdateClientDtoStub.Id = nonExistentId;
+
         var result =
             Result.Fail(new NotFoundError($"{nameof(Client)} with {nameof(Client.Id)} '{nonExistentId}' not found."));
         _fixture.ClientsRepositoryMock.Setup(r => r.UpdateAsync(It.IsAny<Client>()))
@@ -176,19 +140,12 @@ public class UpdateClientUnitTests
     [Trait("Category", "Unit")]
     public async Task GivenAnExistingClient_WhenTryToUpdateItWithEmailOfOtherClient_ThenItShouldNotPersistIt()
     {
-        var existingClient = new Faker<Client>()
-            .RuleFor(c => c.Id, f => f.Random.Int())
-            .RuleFor(c => c.Name, f => f.Name.FullName())
-            .RuleFor(c => c.Email, f => _fixture.ClientStub.Email)
-            .Generate();
-        var mockClientList = new List<Client> { existingClient };
-        _fixture.ClientsRepositoryMock.Setup(r => r.FindAsync(It.IsAny<Expression<Func<Client, bool>>>()))
-            .ReturnsAsync((Expression<Func<Client, bool>> predicate) =>
-                mockClientList.Where(predicate.Compile()));
+        // Arrange
+        _fixture.OtherClientStub.Email = _fixture.UpdateClientDtoStub.Email;
         var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
         var testResult =
             Result.Fail(new ConflictError(
-                $"{nameof(Client)} with the {nameof(Client.Email)} '{existingClient.Email}' already exists."));
+                $"{nameof(Client)} with the {nameof(Client.Email)} '{_fixture.ClientStub.Email}' already exists."));
 
         // Act
         var clientResult = await clientsService.UpdateClientAsync(_fixture.UpdateClientDtoStub);

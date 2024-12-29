@@ -1,17 +1,8 @@
-// Arrange
-
-using FluentAssertions;
-using FluentResults;
 using FluentValidation;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Moq;
 using MyTrips.Application.Dtos;
 using MyTrips.Application.Errors;
-using MyTrips.Application.Interfaces;
 using MyTrips.Application.Services;
 using MyTrips.Domain.Entities;
-using MyTrips.Presentation.Controllers;
 using MyTrips.Presentation.Errors;
 using MyTrips.UnitTest.Fixtures;
 
@@ -63,7 +54,7 @@ public class GetClientUnitTests
         // Arrange
         var testClient = new Client(1, "John Doe", "john.doe@example.com");
         var testClientDto = new ResponseClientDto
-        { Id = testClient.Id, Name = testClient.Name, Email = testClient.Email };
+            { Id = testClient.Id, Name = testClient.Name, Email = testClient.Email };
         _fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(testClient.Id)).ReturnsAsync(testClient);
         var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
 
@@ -82,18 +73,8 @@ public class GetClientUnitTests
         // Arrange
         const int invalidId = -1;
         const int minId = 1;
-        var clientServiceMock = new Mock<IClientsService>();
         var validatorMock = new Mock<IValidator<Client>>();
-        var httpContext = new DefaultHttpContext();
-        var controllerContext = new ControllerContext
-        {
-            HttpContext = httpContext
-        };
-        var controller = new ClientsController(clientServiceMock.Object, validatorMock.Object)
-        {
-            ControllerContext = controllerContext
-        };
-
+        var controller = _fixture.NewClientsController(validatorMock.Object);
         // Act
         var response = await controller.Get(invalidId);
 

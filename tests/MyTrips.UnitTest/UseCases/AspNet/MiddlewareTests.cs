@@ -1,7 +1,4 @@
-﻿using FluentAssertions;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Hosting;
-using Moq;
+﻿using Microsoft.Extensions.Hosting;
 using MyTrips.Presentation.Middlewares;
 
 namespace MyTrips.UnitTest.UseCases.AspNet;
@@ -15,11 +12,6 @@ public class MiddlewareTests
     {
         _environmentMock = new Mock<IHostEnvironment>();
         _middleware = new ExceptionHandlingMiddleware(_environmentMock.Object);
-    }
-
-    private Task Next(HttpContext _)
-    {
-        throw new HttpRequestException();
     }
 
     [Fact]
@@ -36,5 +28,10 @@ public class MiddlewareTests
         // Assert
         context.Response.StatusCode.Should().Be(StatusCodes.Status500InternalServerError);
         context.Response.ContentType.Should().Be("application/problem+json; charset=utf-8");
+    }
+
+    private Task Next(HttpContext _)
+    {
+        throw new HttpRequestException();
     }
 }

@@ -1,14 +1,7 @@
-﻿using FluentAssertions;
-using FluentResults;
-using FluentValidation;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Moq;
+﻿using FluentValidation;
 using MyTrips.Application.Errors;
-using MyTrips.Application.Interfaces;
 using MyTrips.Application.Services;
 using MyTrips.Domain.Entities;
-using MyTrips.Presentation.Controllers;
 using MyTrips.Presentation.Errors;
 using MyTrips.UnitTest.Fixtures;
 
@@ -40,17 +33,8 @@ public class DeleteClientUnitTests
         // Arrange
         const int invalidId = -1;
         const int minId = 1;
-        var clientServiceMock = new Mock<IClientsService>();
         var validatorMock = new Mock<IValidator<Client>>();
-        var httpContext = new DefaultHttpContext();
-        var controllerContext = new ControllerContext
-        {
-            HttpContext = httpContext
-        };
-        var controller = new ClientsController(clientServiceMock.Object, validatorMock.Object)
-        {
-            ControllerContext = controllerContext
-        };
+        var controller = _fixture.NewClientsController(validatorMock.Object);
 
         // Act
         var response = await controller.Delete(invalidId);

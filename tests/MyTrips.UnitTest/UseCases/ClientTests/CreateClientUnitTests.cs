@@ -1,16 +1,6 @@
-﻿using System.Linq.Expressions;
-using Bogus;
-using FluentAssertions;
-using FluentResults;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Moq;
-using MyTrips.Application.Errors;
-using MyTrips.Application.Interfaces;
+﻿using MyTrips.Application.Errors;
 using MyTrips.Application.Services;
-using MyTrips.Application.Validators;
 using MyTrips.Domain.Entities;
-using MyTrips.Presentation.Controllers;
 using MyTrips.Presentation.Errors;
 using MyTrips.UnitTest.ClassData;
 using MyTrips.UnitTest.Fixtures;
@@ -59,17 +49,7 @@ public class CreateClientUnitTests
     {
         // Arrange
         _fixture.CreateClientDtoStub.Name = name;
-        var clientServiceMock = new Mock<IClientsService>();
-
-        var httpContext = new DefaultHttpContext();
-        var controllerContext = new ControllerContext
-        {
-            HttpContext = httpContext
-        };
-        var controller = new ClientsController(clientServiceMock.Object, new ClientValidator())
-        {
-            ControllerContext = controllerContext
-        };
+        var controller = _fixture.NewClientsController();
 
         // Act
         var response = await controller.Post(_fixture.CreateClientDtoStub);
@@ -88,17 +68,7 @@ public class CreateClientUnitTests
     {
         // Arrange
         _fixture.CreateClientDtoStub.Email = email;
-        var clientServiceMock = new Mock<IClientsService>();
-
-        var httpContext = new DefaultHttpContext();
-        var controllerContext = new ControllerContext
-        {
-            HttpContext = httpContext
-        };
-        var controller = new ClientsController(clientServiceMock.Object, new ClientValidator())
-        {
-            ControllerContext = controllerContext
-        };
+        var controller = _fixture.NewClientsController();
 
         // Act
         var response = await controller.Post(_fixture.CreateClientDtoStub);
@@ -114,19 +84,11 @@ public class CreateClientUnitTests
     public async Task GivenExistingEmail_WhenTryToCreateClient_ThenItShouldReturnFailResultObjectWithTheErrors()
     {
         // Arrange
-        var existingClient = new Faker<Client>()
-            .RuleFor(c => c.Id, f => f.Random.Int())
-            .RuleFor(c => c.Name, f => f.Name.FullName())
-            .RuleFor(c => c.Email, f => _fixture.ClientStub.Email)
-            .Generate();
-        var mockClientList = new List<Client> { existingClient };
-        _fixture.ClientsRepositoryMock.Setup(r => r.FindAsync(It.IsAny<Expression<Func<Client, bool>>>()))
-            .ReturnsAsync((Expression<Func<Client, bool>> predicate) =>
-                mockClientList.Where(predicate.Compile()));
+        _fixture.OtherClientStub.Email = _fixture.UpdateClientDtoStub.Email;
         var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
         var testResult =
             Result.Fail(new ConflictError(
-                $"{nameof(Client)} with the {nameof(Client.Email)} '{existingClient.Email}' already exists."));
+                $"{nameof(Client)} with the {nameof(Client.Email)} '{_fixture.ClientStub.Email}' already exists."));
 
         // Act
         var clientResult = await clientsService.AddNewClientAsync(_fixture.CreateClientDtoStub);
@@ -140,15 +102,7 @@ public class CreateClientUnitTests
     public async Task GivenExistingEmail_WhenTryToCreateClient_ThenItShouldReturnNotPersistIt()
     {
         // Arrange
-        var existingClient = new Faker<Client>()
-            .RuleFor(c => c.Id, f => f.Random.Int())
-            .RuleFor(c => c.Name, f => f.Name.FullName())
-            .RuleFor(c => c.Email, f => _fixture.ClientStub.Email)
-            .Generate();
-        var mockClientList = new List<Client> { existingClient };
-        _fixture.ClientsRepositoryMock.Setup(r => r.FindAsync(It.IsAny<Expression<Func<Client, bool>>>()))
-            .ReturnsAsync((Expression<Func<Client, bool>> predicate) =>
-                mockClientList.Where(predicate.Compile()));
+        _fixture.OtherClientStub.Email = _fixture.UpdateClientDtoStub.Email;
         var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
 
         // Act

@@ -1,10 +1,12 @@
 ﻿using System.Globalization;
 using AutoMapper;
-using Bogus;
-using Moq;
+using FluentValidation;
 using MyTrips.Application.Dtos;
+using MyTrips.Application.Interfaces;
+using MyTrips.Application.Validators;
 using MyTrips.Domain.Entities;
 using MyTrips.Domain.Interfaces;
+using MyTrips.Presentation.Controllers;
 
 namespace MyTrips.UnitTest.Fixtures;
 
@@ -12,11 +14,15 @@ public sealed class ClientsManagementFixture
 {
     public readonly Mock<IClientsRepository> ClientsRepositoryMock = new();
     public readonly Mock<IMapper> MapperMock = new();
+    public Mock<IClientsService> ClientServiceMock = new();
+
     public IEnumerable<Client> ClientsCollectionStub = null!;
     public Client ClientStub = null!;
+    public Client OtherClientStub = null!;
     public CreateClientDto CreateClientDtoStub = null!;
     public ResponseClientDto ResponseClientDtoStub = null!;
     public UpdateClientDto UpdateClientDtoStub = null!;
+    public List<Client> SearchClientResultStub = null!;
 
     public ClientsManagementFixture()
     {
@@ -24,6 +30,25 @@ public sealed class ClientsManagementFixture
         InstantiateStubs();
         SetupMocks();
     }
+
+    public ClientsController NewClientsController(IValidator<Client>? clientValidator = null)
+    {
+        clientValidator ??= new ClientValidator();
+        var httpContext = new DefaultHttpContext();
+
+        var controllerContext = new ControllerContext
+        {
+            HttpContext = httpContext
+        };
+
+        var controller = new ClientsController(ClientServiceMock.Object, clientValidator)
+        {
+            ControllerContext = controllerContext
+        };
+
+        return controller;
+    }
+
 
     private static void SetCulture()
     {
@@ -44,6 +69,13 @@ public sealed class ClientsManagementFixture
             .RuleFor(c => c.Name, f => f.Name.FullName())
             .RuleFor(c => c.Email, f => f.Internet.Email())
             .Generate(10);
+
+        OtherClientStub = faker
+            .RuleFor(c => c.Id, _ => 1)
+            .RuleFor(c => c.Name, f => f.Name.FullName())
+            .RuleFor(c => c.Email, f => f.Internet.Email());
+
+        SearchClientResultStub = [OtherClientStub];
 
         ResponseClientDtoStub = new ResponseClientDto
         {
@@ -106,5 +138,8 @@ public sealed class ClientsManagementFixture
         ClientsRepositoryMock.Setup(r => r.UpdateAsync(It.IsAny<Client>()))
             .ReturnsAsync((Client client) => client);
         ClientsRepositoryMock.Setup(r => r.DeleteAsync(ClientStub.Id)).ReturnsAsync(1);
+        ClientsRepositoryMock.Setup(r => r.FindAsync(It.IsAny<Expression<Func<Client, bool>>>()))
+            .ReturnsAsync((Expression<Func<Client, bool>> predicate) =>
+                SearchClientResultStub.Where(predicate.Compile()));
     }
 }
