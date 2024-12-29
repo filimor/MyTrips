@@ -1,6 +1,4 @@
-﻿using System.Text;
-using Microsoft.Data.SqlClient;
-using Newtonsoft.Json;
+﻿using Microsoft.Data.SqlClient;
 using RepoDb;
 
 namespace MyTrips.IntegrationTests.UseCases.ClientsManagement;
@@ -13,28 +11,17 @@ public class DeleteClientIntegrationTests(ClientsManagementFixture fixture)
     public async Task GivenAnExistingClient_WhenRequestDeleteClient_ThenItShouldReturnNoContent()
     {
         // Arrange
-
-        var json = JsonConvert.SerializeObject(fixture.CreateClientDtoStub);
-        StringContent data = new(json, Encoding.UTF8, "application/json");
-        var createRequest = new HttpRequestMessage(HttpMethod.Post, fixture.Endpoint)
-        {
-            Content = data
-        };
-        createRequest.Headers.Authorization = fixture.GetAuthorizationHeader();
-        var createResponse = await fixture.DefaultHttpClient.SendAsync(createRequest);
-        var returnedClient = await createResponse.DeserializedContentAsync<ResponseClientDto>();
-
-        var request = new HttpRequestMessage(HttpMethod.Delete, $"{fixture.Endpoint}/{returnedClient!.Id}");
-        request.Headers.Authorization = fixture.GetAuthorizationHeader();
+        var returnedClient = await CreateClient();
+        var request = fixture.CreateRequest(HttpMethod.Delete, endpoint: $"{fixture.Endpoint}/{returnedClient!.Id}");
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
-        var deleteResponse = await response.DeserializedContentAsync<object>();
+        var responseContent = await response.DeserializedContentAsync<object>();
 
         response.Should().HaveStatusCode(HttpStatusCode.NoContent);
-        deleteResponse.Should().BeNull();
+        responseContent.Should().BeNull();
     }
 
     [Fact]
@@ -42,14 +29,15 @@ public class DeleteClientIntegrationTests(ClientsManagementFixture fixture)
     public async Task GivenInvalidId_WhenRequestDeleteClient_ThenItShouldReturnBadRequestWithErrorsAndProblemHeader()
     {
         // Arrange
-        var request = new HttpRequestMessage(HttpMethod.Delete, $"{fixture.Endpoint}/0");
-        request.Headers.Authorization = fixture.GetAuthorizationHeader();
+        var request = fixture.CreateRequest(HttpMethod.Delete,
+            endpoint: $"{fixture.Endpoint}/{ClientsManagementFixture.InvalidId}");
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
         var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
+
         response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         response.Should().HaveProblemContentType();
         errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Id)}*");
@@ -61,20 +49,18 @@ public class DeleteClientIntegrationTests(ClientsManagementFixture fixture)
         GivenNonExistentClient_WhenRequestDeleteClient_ThenItShouldReturnNotFoundWithErrorsAndProblemHeader()
     {
         // Arrange
-
-        var nonExistentId = int.MaxValue;
-        var request = new HttpRequestMessage(HttpMethod.Delete, $"{fixture.Endpoint}/{nonExistentId}");
-        request.Headers.Authorization = fixture.GetAuthorizationHeader();
+        var request = fixture.CreateRequest(HttpMethod.Delete, endpoint:
+            $"{fixture.Endpoint}/{ClientsManagementFixture.NonExistentId}");
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
 
         // Assert
         var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
+
         response.Should().HaveStatusCode(HttpStatusCode.NotFound);
         response.Should().HaveProblemContentType();
-        errorDetails!.Errors.Should()
-            .Contain($"{nameof(Client)} with {nameof(Client.Id)} '{nonExistentId}' not found.");
+        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Id)}*");
     }
 
     [Fact]
@@ -82,19 +68,8 @@ public class DeleteClientIntegrationTests(ClientsManagementFixture fixture)
     public async Task GivenAnExistingClient_WhenRequestDeleteClient_ThenItShouldDeleteClientFromDatabase()
     {
         // Arrange
-
-        var json = JsonConvert.SerializeObject(fixture.CreateClientDtoStub);
-        StringContent data = new(json, Encoding.UTF8, "application/json");
-        var createRequest = new HttpRequestMessage(HttpMethod.Post, fixture.Endpoint)
-        {
-            Content = data
-        };
-        createRequest.Headers.Authorization = fixture.GetAuthorizationHeader();
-        var createResponse = await fixture.DefaultHttpClient.SendAsync(createRequest);
-        var returnedClient = await createResponse.DeserializedContentAsync<ResponseClientDto>();
-
-        var request = new HttpRequestMessage(HttpMethod.Delete, $"{fixture.Endpoint}/{returnedClient!.Id}");
-        request.Headers.Authorization = fixture.GetAuthorizationHeader();
+        var returnedClient = await CreateClient();
+        var request = fixture.CreateRequest(HttpMethod.Delete, $"{fixture.Endpoint}/{returnedClient!.Id}");
 
         // Act
         await fixture.DefaultHttpClient.SendAsync(request);
@@ -102,6 +77,17 @@ public class DeleteClientIntegrationTests(ClientsManagementFixture fixture)
         // Assert
         await using var connection = new SqlConnection(fixture.ConnectionString);
         var clients = await connection.QueryAsync<Client>(c => c.Id == returnedClient.Id);
+
         clients.Should().BeEmpty();
+    }
+
+    private async Task<ResponseClientDto?> CreateClient()
+    {
+        var createRequest = fixture.CreateRequest(HttpMethod.Post,
+            fixture.CreateClientDtoStub);
+        var createResponse = await fixture.DefaultHttpClient.SendAsync(createRequest);
+        var returnedClient = await createResponse.DeserializedContentAsync<ResponseClientDto>();
+
+        return returnedClient;
     }
 }

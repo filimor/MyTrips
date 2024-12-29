@@ -45,15 +45,12 @@ public sealed class ClientsManagementFixture : IDisposable
 
     public HttpRequestMessage CreateRequest(HttpMethod method, object? entity = null, string? endpoint = null)
     {
-        HttpRequestMessage request;
-
-        if (entity is not null)
-            request = new HttpRequestMessage(method, endpoint ?? Endpoint)
+        var request = entity is not null
+            ? new HttpRequestMessage(method, endpoint ?? Endpoint)
             {
                 Content = GetStringContent(entity)
-            };
-        else
-            request = new HttpRequestMessage(method, endpoint ?? Endpoint);
+            }
+            : new HttpRequestMessage(method, endpoint ?? Endpoint);
 
         request.Headers.Authorization = GetAuthorizationHeader();
 

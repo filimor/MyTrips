@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using FluentAssertions.Primitives;
+﻿using FluentAssertions.Primitives;
 
 namespace MyTrips.IntegrationTests.Extensions;
 
