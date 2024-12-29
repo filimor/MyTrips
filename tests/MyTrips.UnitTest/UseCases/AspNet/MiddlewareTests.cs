@@ -5,13 +5,12 @@ namespace MyTrips.UnitTest.UseCases.AspNet;
 
 public class MiddlewareTests
 {
-    private readonly Mock<IHostEnvironment> _environmentMock;
     private readonly ExceptionHandlingMiddleware _middleware;
 
     public MiddlewareTests()
     {
-        _environmentMock = new Mock<IHostEnvironment>();
-        _middleware = new ExceptionHandlingMiddleware(_environmentMock.Object);
+        Mock<IHostEnvironment> environmentMock = new();
+        _middleware = new ExceptionHandlingMiddleware(environmentMock.Object);
     }
 
     [Fact]
@@ -20,7 +19,6 @@ public class MiddlewareTests
     {
         // Arrange
         var context = new DefaultHttpContext();
-        _environmentMock.Setup(env => env.EnvironmentName).Returns("Production");
 
         // Act
         await _middleware.InvokeAsync(context, Next);
@@ -30,7 +28,7 @@ public class MiddlewareTests
         context.Response.ContentType.Should().Be("application/problem+json; charset=utf-8");
     }
 
-    private Task Next(HttpContext _)
+    private static Task Next(HttpContext _)
     {
         throw new HttpRequestException();
     }

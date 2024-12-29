@@ -11,16 +11,19 @@ namespace MyTrips.IntegrationTests.Fixtures;
 
 public sealed class ClientsManagementFixture : IDisposable
 {
-    public WebApplicationFactory<Program> Factory = new();
-
-    public string ConnectionString;
+    public const int MinId = 1;
+    public const int InvalidId = -1;
+    public const int NonExistentId = int.MaxValue;
+    public string ConnectionString = null!;
     public string Endpoint = "https://localhost:5068/api/clients";
 
-    public Client ClientStub;
-    public CreateClientDto CreateClientDtoStub;
-    public ResponseClientDto ResponseClientDtoStub;
-    public UpdateClientDto UpdateClientDtoStub;
-    private IAuthService _authService;
+    public WebApplicationFactory<Program> Factory = new();
+
+    public Client ClientStub = null!;
+    public CreateClientDto CreateClientDtoStub = null!;
+    public ResponseClientDto ResponseClientDtoStub = null!;
+    public UpdateClientDto UpdateClientDtoStub = null!;
+    private IAuthService _authService = null!;
 
     public ClientsManagementFixture()
     {
@@ -65,7 +68,7 @@ public sealed class ClientsManagementFixture : IDisposable
         var faker = new Faker<Client>();
 
         ClientStub = faker
-            .RuleFor(c => c.Id, f => 1)
+            .RuleFor(c => c.Id, _ => 1)
             .RuleFor(c => c.Name, f => f.Name.FullName())
             .RuleFor(c => c.Email, f => f.Internet.Email());
 

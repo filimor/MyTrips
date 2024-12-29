@@ -61,6 +61,7 @@ public class FilterTests
         {
             Result = new ObjectResult(null) { StatusCode = statusCode }
         };
+
         return context;
     }
 }

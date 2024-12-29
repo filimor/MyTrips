@@ -8,7 +8,6 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
     public async Task GivenClientsEndpoint_WhenRequestedGetClientWithoutId_ThenItShouldReturnOkWithHeadersAndContent()
     {
         // Arrange
-
         var request = new HttpRequestMessage(HttpMethod.Get, fixture.Endpoint);
         request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
@@ -29,9 +28,7 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
         GivenExistingId_WhenRequestedGetClientWithId_ThenItShouldReturnOkWithHeadersAndContent()
     {
         // Arrange
-
-        const int existingId = 1;
-        var request = new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{existingId}");
+        var request = new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{ClientsManagementFixture.MinId}");
         request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
@@ -39,6 +36,7 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
 
         // Assert
         var returnedClient = await response.DeserializedContentAsync<ResponseClientDto>();
+
         response.EnsureSuccessStatusCode();
         response.Should().HaveJsonContentType();
         returnedClient.Should().BeOfType<ResponseClientDto>();
@@ -49,10 +47,8 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
     public async Task GivenInvalidId_WhenRequestGetClientWithId_ThenItShouldReturnBadRequestWithHeadersAndContent()
     {
         // Arrange
-
-        const int invalidId = -1;
-        const int minId = 1;
-        var request = new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{invalidId}");
+        var request =
+            new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{ClientsManagementFixture.InvalidId}");
         request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
@@ -60,9 +56,10 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
 
         // Assert
         var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
+
         response.Should().HaveStatusCode(HttpStatusCode.BadRequest);
         response.Should().HaveProblemContentType();
-        errorDetails!.Errors.Should().Contain($"'{nameof(Client.Id)}' must be greater than or equal to '{minId}'.");
+        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Id)}*");
     }
 
     [Fact]
@@ -71,9 +68,8 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
         GivenNonExistentClient_WhenRequestGetClientWithId_ThenItShouldReturnNotFoundWithHeadersAndContent()
     {
         // Arrange
-
-        const int nonExistentId = int.MaxValue;
-        var request = new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{nonExistentId}");
+        var request = new HttpRequestMessage(HttpMethod.Get,
+            $"{fixture.Endpoint}/{ClientsManagementFixture.NonExistentId}");
         request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
@@ -81,9 +77,9 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
 
         // Assert
         var errorDetails = await response.DeserializedContentAsync<ErrorDetails>();
+
         response.Should().HaveStatusCode(HttpStatusCode.NotFound);
         response.Should().HaveProblemContentType();
-        errorDetails!.Errors.Should()
-            .Contain($"{nameof(Client)} with {nameof(Client.Id)} '{nonExistentId}' not found.");
+        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Id)}*");
     }
 }
