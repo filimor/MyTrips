@@ -1,12 +1,5 @@
-﻿using System.Net;
-using System.Text;
-using FluentAssertions;
+﻿using System.Text;
 using Microsoft.Data.SqlClient;
-using MyTrips.Application.Dtos;
-using MyTrips.Domain.Entities;
-using MyTrips.IntegrationTests.Extensions;
-using MyTrips.IntegrationTests.Fixtures;
-using MyTrips.Presentation.Errors;
 using MyTrips.UnitTest.ClassData;
 using Newtonsoft.Json;
 using RepoDb;

@@ -1,12 +1,4 @@
-﻿using System.Net;
-using FluentAssertions;
-using MyTrips.Application.Dtos;
-using MyTrips.Domain.Entities;
-using MyTrips.IntegrationTests.Extensions;
-using MyTrips.IntegrationTests.Fixtures;
-using MyTrips.Presentation.Errors;
-
-namespace MyTrips.IntegrationTests.UseCases.ClientsManagement;
+﻿namespace MyTrips.IntegrationTests.UseCases.ClientsManagement;
 
 [Collection("ClientsManagementIntegration")]
 public class GetClientIntegrationTests(ClientsManagementFixture fixture)
