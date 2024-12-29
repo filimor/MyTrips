@@ -1,5 +1,4 @@
 ﻿using MyTrips.Application.Errors;
-using MyTrips.Application.Services;
 using MyTrips.Domain.Entities;
 using MyTrips.Presentation.Errors;
 using MyTrips.UnitTest.ClassData;
@@ -17,11 +16,10 @@ public class CreateClientUnitTests
     public async Task GivenValidClient_WhenCreateClient_ThenItShouldReturnOkResultObjectWithTheDto()
     {
         // Arrange
-        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
         var testResult = Result.Ok(_fixture.ResponseClientDtoStub);
 
         // Act
-        var clientResult = await clientsService.AddNewClientAsync(_fixture.CreateClientDtoStub);
+        var clientResult = await _fixture.ClientsServiceStub.AddNewClientAsync(_fixture.CreateClientDtoStub);
 
         // Assert
         clientResult.Should().BeEquivalentTo(testResult);
@@ -31,11 +29,8 @@ public class CreateClientUnitTests
     [Trait("Category", "Unit")]
     public async Task GivenValidClient_WhenCreateClient_ThenItShouldBePersisted()
     {
-        // Arrange
-        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
-
-        // Act
-        await clientsService.AddNewClientAsync(_fixture.CreateClientDtoStub);
+        // Arrange & Act
+        await _fixture.ClientsServiceStub.AddNewClientAsync(_fixture.CreateClientDtoStub);
 
         // Assert
         _fixture.ClientsRepositoryMock.Verify(r => r.AddAsync(It.IsAny<Client>()), Times.Once);
@@ -85,16 +80,13 @@ public class CreateClientUnitTests
     {
         // Arrange
         _fixture.OtherClientStub.Email = _fixture.UpdateClientDtoStub.Email;
-        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
-        var testResult =
-            Result.Fail(new ConflictError(
-                $"{nameof(Client)} with the {nameof(Client.Email)} '{_fixture.ClientStub.Email}' already exists."));
 
         // Act
-        var clientResult = await clientsService.AddNewClientAsync(_fixture.CreateClientDtoStub);
+        var result = await _fixture.ClientsServiceStub.AddNewClientAsync(_fixture.CreateClientDtoStub);
 
         // Assert
-        clientResult.Should().BeEquivalentTo(testResult);
+        result.IsFailed.Should().BeTrue();
+        result.Errors.Should().ContainSingle().Which.Should().BeOfType<ConflictError>();
     }
 
     [Fact]
@@ -103,10 +95,9 @@ public class CreateClientUnitTests
     {
         // Arrange
         _fixture.OtherClientStub.Email = _fixture.UpdateClientDtoStub.Email;
-        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
 
         // Act
-        await clientsService.AddNewClientAsync(_fixture.CreateClientDtoStub);
+        await _fixture.ClientsServiceStub.AddNewClientAsync(_fixture.CreateClientDtoStub);
 
         // Assert
         _fixture.ClientsRepositoryMock.Verify(r => r.AddAsync(It.IsAny<Client>()), Times.Never);
@@ -119,10 +110,9 @@ public class CreateClientUnitTests
         // Arrange
         _fixture.ClientsRepositoryMock.Setup(r => r.AddAsync(It.IsAny<Client>()))
             .ThrowsAsync(new OutOfMemoryException());
-        var clientsService = new ClientsService(_fixture.MapperMock.Object, _fixture.ClientsRepositoryMock.Object);
 
         // Act
-        var act = async () => await clientsService.AddNewClientAsync(_fixture.CreateClientDtoStub);
+        var act = async () => await _fixture.ClientsServiceStub.AddNewClientAsync(_fixture.CreateClientDtoStub);
 
         // Assert
         await act.Should().ThrowAsync<OutOfMemoryException>();

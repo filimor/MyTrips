@@ -3,6 +3,7 @@ using AutoMapper;
 using FluentValidation;
 using MyTrips.Application.Dtos;
 using MyTrips.Application.Interfaces;
+using MyTrips.Application.Services;
 using MyTrips.Application.Validators;
 using MyTrips.Domain.Entities;
 using MyTrips.Domain.Interfaces;
@@ -10,8 +11,13 @@ using MyTrips.Presentation.Controllers;
 
 namespace MyTrips.UnitTest.Fixtures;
 
+// TODO: Remove some data from this fixture
 public sealed class ClientsManagementFixture
 {
+    public const int NonExistentId = int.MaxValue;
+    public const int InvalidId = -1;
+    public const int MinId = 1;
+
     public readonly Mock<IClientsRepository> ClientsRepositoryMock = new();
     public readonly Mock<IMapper> MapperMock = new();
     public Mock<IClientsService> ClientServiceMock = new();
@@ -23,6 +29,7 @@ public sealed class ClientsManagementFixture
     public ResponseClientDto ResponseClientDtoStub = null!;
     public UpdateClientDto UpdateClientDtoStub = null!;
     public List<Client> SearchClientResultStub = null!;
+    public ClientsService ClientsServiceStub = null!;
 
     public ClientsManagementFixture()
     {
@@ -96,6 +103,8 @@ public sealed class ClientsManagementFixture
             Name = ClientStub.Name,
             Email = ClientStub.Email
         };
+
+        ClientsServiceStub = new ClientsService(MapperMock.Object, ClientsRepositoryMock.Object);
     }
 
     private void SetupMocks()
