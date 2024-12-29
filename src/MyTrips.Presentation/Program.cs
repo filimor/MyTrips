@@ -16,7 +16,7 @@ using Serilog;
 try
 {
     CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
-
+    ValidatorOptions.Global.LanguageManager.Enabled = false;
     Log.Logger = new LoggerConfiguration()
         .MinimumLevel.Debug()
         .WriteTo.Console(formatProvider: CultureInfo.InvariantCulture)
@@ -35,10 +35,12 @@ try
                 Title = "MyTrips API",
                 Contact = new OpenApiContact
                 {
-                    Email = "filimor@posteo.net", Name = "Filipe Moreira",
+                    Email = "filimor@posteo.net",
+                    Name = "Filipe Moreira",
                     Url = new Uri("https://mytrips.azurewebsites.net/")
                 },
-                Description = "MyTrips is an web service to manage data about trips and clients.", Version = "v0.1",
+                Description = "MyTrips is an web service to manage data about trips and clients.",
+                Version = "v0.1",
                 License = new OpenApiLicense
                 {
                     Name = "MIT",

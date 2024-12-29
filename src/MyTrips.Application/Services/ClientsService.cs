@@ -11,7 +11,7 @@ namespace MyTrips.Application.Services;
 
 public class ClientsService(IMapper mapper, IClientsRepository clientsRepository) : IClientsService
 {
-    public async Task<Result<IEnumerable<ResponseClientDto>>> GetClientsAsync()
+    public async Task<Result<IEnumerable<ResponseClientDto>>> GetAllClientsAsync()
     {
         var clients = await clientsRepository.GetAsync();
         var clientsDto = mapper.Map<IEnumerable<ResponseClientDto>>(clients);

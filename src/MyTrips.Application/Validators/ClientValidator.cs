@@ -9,24 +9,19 @@ public class ClientValidator : AbstractValidator<Client>
     public ClientValidator()
     {
         RuleFor(x => x.Name)
-            .NotEmpty().WithMessage("Name is required.")
-            .MaximumLength(100).WithMessage("Name must not exceed 100 characters.");
+            .NotEmpty()
+            .MaximumLength(100);
         RuleFor(x => x.Email)
-            .NotEmpty().WithMessage("Email is required.")
-            .MaximumLength(100).WithMessage("Email must not exceed 100 characters.")
-            .Must(BeAValidEmail).WithMessage("Invalid Email address.");
+            .NotEmpty()
+            .MaximumLength(100)
+            .Must(BeAValidEmail);
     }
 
     private static bool BeAValidEmail(string email)
     {
-        try
-        {
-            var mailAddress = new MailAddress(email);
+        if (MailAddress.TryCreate(email, out var mailAddress))
             return mailAddress.Address == email;
-        }
-        catch
-        {
-            return false;
-        }
+
+        return false;
     }
 }

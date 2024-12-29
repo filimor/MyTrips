@@ -172,7 +172,8 @@ public class MediaTypeOperationFilter : IOperationFilter
                                     Type = "array",
                                     Items = new OpenApiSchema
                                     {
-                                        Type = "string", Example = new OpenApiString("An unexpected error occurred.")
+                                        Type = "string",
+                                        Example = new OpenApiString("An unexpected error occurred.")
                                     }
                                 },
                                 ["instance"] = new()

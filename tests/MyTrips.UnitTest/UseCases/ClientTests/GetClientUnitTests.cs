@@ -21,7 +21,7 @@ public class GetClientUnitTests
         var testResult = Result.Ok(fakeClientDtos);
 
         // Act
-        var clientsResult = await _fixture.ClientsServiceStub.GetClientsAsync();
+        var clientsResult = await _fixture.ClientsServiceStub.GetAllClientsAsync();
 
         // Assert
         clientsResult.Should().BeEquivalentTo(testResult);
@@ -35,7 +35,7 @@ public class GetClientUnitTests
         _fixture.ClientsRepositoryMock.Setup(r => r.GetAsync()).ThrowsAsync(new OutOfMemoryException());
 
         // Act
-        var act = async () => await _fixture.ClientsServiceStub.GetClientsAsync();
+        var act = async () => await _fixture.ClientsServiceStub.GetAllClientsAsync();
 
         // Assert
         await act.Should().ThrowAsync<OutOfMemoryException>();

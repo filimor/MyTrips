@@ -34,9 +34,8 @@ public class ClientsRepository(IConfiguration configuration) : IClientsRepositor
             e => e.Id > 0)).ToList();
 
         var count = await connection.CountAllAsync<Client>();
-        var totalPages = (int)Math.Ceiling(count / (double)rowsPerBatch);
 
-        return new PagedList<Client>(clients, pageIndex, totalPages, rowsPerBatch);
+        return new PagedList<Client>(clients, pageIndex, (int)count, rowsPerBatch);
     }
 
     public async Task<Client?> GetAsync(int id)
