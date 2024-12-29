@@ -30,8 +30,7 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     /// GET /api/clients/
     /// </pre>
     /// </remarks>
-    /// <param name="pageIndex">The index of the page to get</param>
-    /// <param name="pageSize">The size of the page to get</param>
+    /// <param name="clientParameters">The parameters for client query.</param>
     /// <returns>A list of all clients</returns>
     /// <response code="200">Returns a list of clients paginated</response>
     /// <response code="500">If an error occurs while processing the request</response>
