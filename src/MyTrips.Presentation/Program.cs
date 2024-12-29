@@ -1,10 +1,12 @@
 using System.Globalization;
 using System.Reflection;
+using System.Text;
 using System.Threading.RateLimiting;
 using FluentValidation;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MyTrips.Application.Validators;
 using MyTrips.CrossCutting;
@@ -78,7 +80,19 @@ try
     });
 
     builder.Services.AddAuthorization();
-    builder.Services.AddAuthentication("Bearer").AddJwtBearer();
+    builder.Services.AddAuthentication("Bearer").AddJwtBearer(
+        "JwtScheme", options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey =
+                    new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Authentication:JwtSecret"]!))
+            };
+        });
 
     builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
     builder.Services.AddTransient<ExceptionHandlingMiddleware>();

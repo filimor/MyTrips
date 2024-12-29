@@ -19,7 +19,7 @@ namespace MyTrips.Presentation.Controllers;
 [ApiController]
 [EnableCors]
 [EnableRateLimiting("default")]
-[Authorize]
+[Authorize(AuthenticationSchemes = "JwtScheme")]
 public class ClientsController(IClientsService clientsService, IValidator<Client> validator) : ControllerBase
 {
     /// <summary>Get all clients</summary>

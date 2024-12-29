@@ -20,13 +20,13 @@ public class AuthService(IConfiguration configuration) : IAuthService
         if (loginUser == null) return string.Empty;
 
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(configuration["Jwt:Key"]!);
+        var key = Encoding.ASCII.GetBytes(configuration["Authentication:JwtSecret"]!);
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity([
                 new Claim(ClaimTypes.Name, loginInfo.Username)
             ]),
-            Expires = DateTime.UtcNow.AddMinutes(30),
+            Expires = DateTime.UtcNow.AddMinutes(60),
             SigningCredentials =
                 new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
