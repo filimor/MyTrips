@@ -20,20 +20,7 @@ public class FilterTests
     {
         // Arrange
         var filter = new ProblemHeaderFilter();
-
-        var context = new ActionExecutedContext(
-            new ActionContext
-            {
-                HttpContext = new DefaultHttpContext(),
-                RouteData = new RouteData(),
-                ActionDescriptor = new ControllerActionDescriptor()
-            },
-            [],
-            new Mock<Controller>().Object
-        )
-        {
-            Result = new ObjectResult(null) { StatusCode = statusCode }
-        };
+        var context = CreateContext(statusCode);
 
         // Act
         filter.OnActionExecuted(context);
@@ -53,7 +40,18 @@ public class FilterTests
     {
         // Arrange
         var filter = new ProblemHeaderFilter();
+        var context = CreateContext(statusCode);
 
+        // Act
+        filter.OnActionExecuted(context);
+
+        // Assert
+        context.HttpContext.Response.Headers.ContentType.Should()
+            .NotBeEquivalentTo("application/problem+json; charset=utf-8");
+    }
+
+    private static ActionExecutedContext CreateContext(int statusCode)
+    {
         var context = new ActionExecutedContext(
             new ActionContext
             {
@@ -67,12 +65,6 @@ public class FilterTests
         {
             Result = new ObjectResult(null) { StatusCode = statusCode }
         };
-
-        // Act
-        filter.OnActionExecuted(context);
-
-        // Assert
-        context.HttpContext.Response.Headers.ContentType.Should()
-            .NotBeEquivalentTo("application/problem+json; charset=utf-8");
+        return context;
     }
 }

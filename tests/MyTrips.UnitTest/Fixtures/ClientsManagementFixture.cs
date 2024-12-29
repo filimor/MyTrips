@@ -25,7 +25,6 @@ public sealed class ClientsManagementFixture
         SetupMocks();
     }
 
-    // TODO: Check whether this method is still necessary
     private static void SetCulture()
     {
         CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
@@ -37,7 +36,7 @@ public sealed class ClientsManagementFixture
         var faker = new Faker<Client>();
 
         ClientStub = faker
-            .RuleFor(c => c.Id, f => 1)
+            .RuleFor(c => c.Id, _ => 1)
             .RuleFor(c => c.Name, f => f.Name.FullName())
             .RuleFor(c => c.Email, f => f.Internet.Email());
 
