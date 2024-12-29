@@ -25,10 +25,12 @@ public class DeleteClientIntegrationTests(ClientsManagementFixture fixture)
         {
             Content = data
         };
+        createRequest.Headers.Authorization = fixture.GetAuthorizationHeader();
         var createResponse = await fixture.DefaultHttpClient.SendAsync(createRequest);
         var returnedClient = await createResponse.DeserializedContentAsync<ResponseClientDto>();
 
         var request = new HttpRequestMessage(HttpMethod.Delete, $"{fixture.Endpoint}/{returnedClient!.Id}");
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -46,6 +48,7 @@ public class DeleteClientIntegrationTests(ClientsManagementFixture fixture)
     {
         // Arrange
         var request = new HttpRequestMessage(HttpMethod.Delete, $"{fixture.Endpoint}/0");
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -66,6 +69,7 @@ public class DeleteClientIntegrationTests(ClientsManagementFixture fixture)
 
         var nonExistentId = int.MaxValue;
         var request = new HttpRequestMessage(HttpMethod.Delete, $"{fixture.Endpoint}/{nonExistentId}");
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -90,10 +94,12 @@ public class DeleteClientIntegrationTests(ClientsManagementFixture fixture)
         {
             Content = data
         };
+        createRequest.Headers.Authorization = fixture.GetAuthorizationHeader();
         var createResponse = await fixture.DefaultHttpClient.SendAsync(createRequest);
         var returnedClient = await createResponse.DeserializedContentAsync<ResponseClientDto>();
 
         var request = new HttpRequestMessage(HttpMethod.Delete, $"{fixture.Endpoint}/{returnedClient!.Id}");
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         await fixture.DefaultHttpClient.SendAsync(request);

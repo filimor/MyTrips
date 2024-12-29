@@ -18,6 +18,7 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
         // Arrange
 
         var request = new HttpRequestMessage(HttpMethod.Get, fixture.Endpoint);
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -39,6 +40,7 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
 
         const int existingId = 1;
         var request = new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{existingId}");
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -59,6 +61,7 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
         const int invalidId = -1;
         const int minId = 1;
         var request = new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{invalidId}");
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -79,6 +82,7 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
 
         const int nonExistentId = int.MaxValue;
         var request = new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{nonExistentId}");
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);

@@ -29,7 +29,7 @@
             <response code="401">If the credentials are invalid</response>
             <response code="500">If there was an internal server error</response>
         </member>
-        <member name="M:MyTrips.Presentation.Controllers.ClientsController.Get">
+        <member name="M:MyTrips.Presentation.Controllers.ClientsController.Get(MyTrips.Domain.ValueObjects.ClientParameters)">
             <summary>Get all clients</summary>
             <remarks>
             <b>Sample request:</b>
@@ -38,8 +38,10 @@
             GET /api/clients/
             </pre>
             </remarks>
+            <param name="pageIndex">The index of the page to get</param>
+            <param name="pageSize">The size of the page to get</param>
             <returns>A list of all clients</returns>
-            <response code="200">Returns a list of all clients</response>
+            <response code="200">Returns a list of clients paginated</response>
             <response code="500">If an error occurs while processing the request</response>
         </member>
         <member name="M:MyTrips.Presentation.Controllers.ClientsController.Get(System.Int32)">

@@ -6,12 +6,12 @@ namespace MyTrips.Presentation.Filters;
 
 public class MediaTypeOperationFilter : IOperationFilter
 {
+    // TODO: Update it with the pagination schema
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
         foreach (var response in operation.Responses)
         {
             response.Value.Content.Clear();
-
             switch (response.Key)
             {
                 case "200":

@@ -1,4 +1,5 @@
-﻿using Bogus;
+﻿using System.Net.Http.Headers;
+using Bogus;
 using Microsoft.AspNetCore.Mvc.Testing;
 using MyTrips.Application.Dtos;
 using MyTrips.Domain.Entities;
@@ -53,5 +54,11 @@ public sealed class ClientsManagementFixture : IDisposable
     {
         DefaultHttpClient.Dispose();
         Factory.Dispose();
+    }
+
+    public AuthenticationHeaderValue GetAuthorizationHeader()
+    {
+        return new AuthenticationHeaderValue("Bearer",
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImZpbGltIiwic3ViIjoiZmlsaW0iLCJqdGkiOiI3OTE0ZjFhYyIsImF1ZCI6WyJodHRwOi8vbG9jYWxob3N0OjY0OTk1IiwiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNTIiLCJodHRwOi8vbG9jYWxob3N0OjUwMDgiLCJodHRwczovL2xvY2FsaG9zdDo3Mjg2Il0sIm5iZiI6MTczNTQ0NzQzNSwiZXhwIjoxNzQzMjIzNDM1LCJpYXQiOjE3MzU0NDc0MzgsImlzcyI6ImRvdG5ldC11c2VyLWp3dHMifQ.zzKaL-A3dITMTMovEjuuLXMUcU6FXm90dYKzAPxNCRg");
     }
 }

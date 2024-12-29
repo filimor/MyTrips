@@ -25,6 +25,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         {
             Content = data
         };
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -52,6 +53,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         {
             Content = data
         };
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -78,6 +80,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         {
             Content = data
         };
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -107,6 +110,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         {
             Content = data
         };
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(requestWithSameEmail);
@@ -133,6 +137,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         {
             Content = data
         };
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         await fixture.DefaultHttpClient.SendAsync(request);
@@ -158,6 +163,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         {
             Content = data
         };
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         await fixture.DefaultHttpClient.SendAsync(request);
@@ -181,6 +187,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         {
             Content = data
         };
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         await fixture.DefaultHttpClient.SendAsync(request);

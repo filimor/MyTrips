@@ -3,7 +3,9 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using MyTrips.Domain.Entities;
 using MyTrips.Domain.Interfaces;
+using MyTrips.Domain.ValueObjects;
 using RepoDb;
+using RepoDb.Enumerations;
 
 namespace MyTrips.Infrastructure.Repositories;
 
@@ -17,6 +19,24 @@ public class ClientsRepository(IConfiguration configuration) : IClientsRepositor
         await using SqlConnection connection = new(ConnectionString);
 
         return await connection.QueryAllAsync<Client>();
+    }
+
+    public async Task<PagedList<Client>> GetAsync(int pageIndex, int rowsPerBatch)
+    {
+        await using SqlConnection connection = new(ConnectionString);
+
+        var orderBy = OrderField.Parse(new { Id = Order.Ascending });
+        var page = pageIndex - 1;
+        var clients = (await connection.BatchQueryAsync<Client>(
+            page,
+            rowsPerBatch,
+            orderBy,
+            e => e.Id > 0)).ToList();
+
+        var count = await connection.CountAllAsync<Client>();
+        var totalPages = (int)Math.Ceiling(count / (double)rowsPerBatch);
+
+        return new PagedList<Client>(clients, pageIndex, totalPages, rowsPerBatch);
     }
 
     public async Task<Client?> GetAsync(int id)

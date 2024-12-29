@@ -26,6 +26,7 @@ public class UpdateClientIntegrationTests(ClientsManagementFixture fixture)
         {
             Content = data
         };
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -51,6 +52,7 @@ public class UpdateClientIntegrationTests(ClientsManagementFixture fixture)
         {
             Content = data
         };
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -78,6 +80,7 @@ public class UpdateClientIntegrationTests(ClientsManagementFixture fixture)
         {
             Content = data
         };
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -105,6 +108,7 @@ public class UpdateClientIntegrationTests(ClientsManagementFixture fixture)
         {
             Content = data
         };
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -129,12 +133,14 @@ public class UpdateClientIntegrationTests(ClientsManagementFixture fixture)
         {
             Content = data
         };
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
         await fixture.DefaultHttpClient.SendAsync(request);
 
         var requestWithSameEmail = new HttpRequestMessage(HttpMethod.Put, fixture.Endpoint)
         {
             Content = data
         };
+        requestWithSameEmail.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(requestWithSameEmail);
@@ -162,6 +168,7 @@ public class UpdateClientIntegrationTests(ClientsManagementFixture fixture)
         {
             Content = data
         };
+        request.Headers.Authorization = fixture.GetAuthorizationHeader();
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);

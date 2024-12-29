@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using MyTrips.Application.Dtos;
+using MyTrips.Application.Mappings.Converters;
 using MyTrips.Domain.Entities;
+using MyTrips.Domain.ValueObjects;
 
 namespace MyTrips.Application.Mappings;
 
@@ -12,5 +14,7 @@ public class DtoToDomainMappingProfile : Profile
             .ForMember(dest => dest.Id, opt => opt.Ignore());
         CreateMap<Client, ResponseClientDto>();
         CreateMap<UpdateClientDto, Client>();
+        CreateMap(typeof(PagedList<>), typeof(PagedList<>))
+            .ConvertUsing(typeof(PagedListTypeConverter<,>));
     }
 }

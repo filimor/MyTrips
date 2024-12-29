@@ -8,8 +8,10 @@ using MyTrips.Application.Dtos;
 using MyTrips.Application.Errors;
 using MyTrips.Application.Interfaces;
 using MyTrips.Domain.Entities;
+using MyTrips.Domain.ValueObjects;
 using MyTrips.Presentation.Errors;
 using MyTrips.Presentation.Validators;
+using Newtonsoft.Json;
 
 namespace MyTrips.Presentation.Controllers;
 
@@ -28,15 +30,28 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     /// GET /api/clients/
     /// </pre>
     /// </remarks>
+    /// <param name="pageIndex">The index of the page to get</param>
+    /// <param name="pageSize">The size of the page to get</param>
     /// <returns>A list of all clients</returns>
-    /// <response code="200">Returns a list of all clients</response>
+    /// <response code="200">Returns a list of clients paginated</response>
     /// <response code="500">If an error occurs while processing the request</response>
     [HttpGet]
-    [ProducesResponseType<IEnumerable<ResponseClientDto>>(StatusCodes.Status200OK)]
+    [ProducesResponseType<PagedList<ResponseClientDto>>(StatusCodes.Status200OK)]
     [ProducesResponseType<ErrorDetails>(StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult> Get()
+    public async Task<ActionResult> Get([FromQuery] ClientParameters clientParameters)
     {
-        var result = await clientsService.GetClientsAsync();
+        var result = await clientsService.GetClientsAsync(clientParameters);
+
+        var metadata = new
+        {
+            result.Value.TotalPages,
+            result.Value.PageSize,
+            result.Value.CurrentPage,
+            result.Value.HasNextPage,
+            result.Value.HasPreviousPage
+        };
+
+        Response.Headers.Append("X-Pagination", JsonConvert.SerializeObject(metadata));
 
         return Ok(result.Value);
     }

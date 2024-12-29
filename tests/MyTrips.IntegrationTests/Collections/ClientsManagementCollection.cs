@@ -2,7 +2,7 @@
 
 namespace MyTrips.IntegrationTests.Collections;
 
-[CollectionDefinition("ClientsManagementIntegration", DisableParallelization = true)]
+[CollectionDefinition("ClientsManagementIntegration")]
 public class ClientsManagementCollection : ICollectionFixture<ClientsManagementFixture>
 {
 }

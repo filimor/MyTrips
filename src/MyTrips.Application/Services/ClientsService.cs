@@ -5,6 +5,7 @@ using MyTrips.Application.Errors;
 using MyTrips.Application.Interfaces;
 using MyTrips.Domain.Entities;
 using MyTrips.Domain.Interfaces;
+using MyTrips.Domain.ValueObjects;
 
 namespace MyTrips.Application.Services;
 
@@ -16,6 +17,14 @@ public class ClientsService(IMapper mapper, IClientsRepository clientsRepository
         var clientsDto = mapper.Map<IEnumerable<ResponseClientDto>>(clients);
 
         return Result.Ok(clientsDto);
+    }
+
+    public async Task<Result<PagedList<ResponseClientDto>>> GetClientsAsync(ClientParameters parameters)
+    {
+        var clientsPaged = await clientsRepository.GetAsync(parameters.PageIndex, parameters.PageSize);
+        var dtosPaged = mapper.Map<PagedList<ResponseClientDto>>(clientsPaged);
+
+        return Result.Ok(dtosPaged);
     }
 
     public async Task<Result<ResponseClientDto>> GetClientByIdAsync(int id)
