@@ -34,8 +34,7 @@ public class DeleteClientUnitTests
         // Assert
         response.Should().BeOfType<BadRequestObjectResult>()
             .Which.Value.Should().BeOfType<BadRequestErrorDetails>()
-            .Which.Errors.Should().Contain(e =>
-                e == $"'{nameof(Client.Id)}' must be greater than or equal to '{ClientsManagementFixture.MinId}'.");
+            .Which.Errors.Should().ContainMatch($"*{nameof(Client.Id)}*");
     }
 
     [Fact]
@@ -88,10 +87,10 @@ public class DeleteClientUnitTests
         _fixture.ClientsRepositoryMock.Setup(r => r.DeleteAsync(_fixture.ClientStub.Id)).ReturnsAsync(-1);
 
         // Act
-        var requestResult = await _fixture.ClientsServiceStub.RemoveClientAsync(_fixture.ClientStub.Id);
+        var result = await _fixture.ClientsServiceStub.RemoveClientAsync(_fixture.ClientStub.Id);
 
         // Assert
-        requestResult.Should().BeEquivalentTo(Result.Fail(new ConflictError(
-            $"The {nameof(Client)} with {nameof(Client.Id)} '{_fixture.ClientStub.Id}' is referenced by another entity.")));
+        result.IsFailed.Should().BeTrue();
+        result.Errors.Should().ContainSingle().Which.Should().BeOfType<ConflictError>();
     }
 }

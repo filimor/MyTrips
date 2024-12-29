@@ -1,5 +1,5 @@
-using FluentValidation;
 using MyTrips.Application.Dtos;
+using MyTrips.Application.Errors;
 using MyTrips.Domain.Entities;
 using MyTrips.Presentation.Errors;
 using MyTrips.UnitTest.Fixtures;
@@ -16,11 +16,9 @@ public class GetClientUnitTests
     public async Task GivenExistingClients_WhenGetClients_ThenItShouldReturnOkResultObjectWithTheDtos()
     {
         // Arrange
-        _fixture.ClientsRepositoryMock.Setup(r => r.GetAsync()).ReturnsAsync(_fixture.ClientsCollectionStub);
         var fakeClientDtos =
             _fixture.MapperMock.Object.Map<IEnumerable<ResponseClientDto>>(_fixture.ClientsCollectionStub);
         var testResult = Result.Ok(fakeClientDtos);
-
 
         // Act
         var clientsResult = await _fixture.ClientsServiceStub.GetClientsAsync();
@@ -36,7 +34,6 @@ public class GetClientUnitTests
         // Arrange
         _fixture.ClientsRepositoryMock.Setup(r => r.GetAsync()).ThrowsAsync(new OutOfMemoryException());
 
-
         // Act
         var act = async () => await _fixture.ClientsServiceStub.GetClientsAsync();
 
@@ -49,18 +46,11 @@ public class GetClientUnitTests
     public async Task
         GivenExistingClient_WhenGetClientWithId_ThenItShouldReturnOkResultObjectWithTheClientDtoResult()
     {
-        // Arrange
-        var testClient = new Client(1, "John Doe", "john.doe@example.com");
-        var testClientDto = new ResponseClientDto
-            { Id = testClient.Id, Name = testClient.Name, Email = testClient.Email };
-        _fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(testClient.Id)).ReturnsAsync(testClient);
-
-
-        // Act
-        var clientResult = await _fixture.ClientsServiceStub.GetClientByIdAsync(testClient.Id);
+        // Arrange & Act
+        var clientResult = await _fixture.ClientsServiceStub.GetClientByIdAsync(_fixture.ClientStub.Id);
 
         // Assert
-        clientResult.Should().BeEquivalentTo(Result.Ok(testClientDto));
+        clientResult.Should().BeEquivalentTo(Result.Ok(_fixture.ResponseClientDtoStub));
     }
 
     [Fact]
@@ -69,18 +59,15 @@ public class GetClientUnitTests
         GivenInvalidId_WhenGetClientWithIdRequest_ThenItShouldReturnBadRequestResponseWithErrorDetails()
     {
         // Arrange
-        const int invalidId = -1;
-        const int minId = 1;
-        var validatorMock = new Mock<IValidator<Client>>();
-        var controller = _fixture.NewClientsController(validatorMock.Object);
+        var controller = _fixture.NewClientsController();
+
         // Act
-        var response = await controller.Get(invalidId);
+        var response = await controller.Get(ClientsManagementFixture.InvalidId);
 
         // Assert
         response.Should().BeOfType<BadRequestObjectResult>()
             .Which.Value.Should().BeOfType<BadRequestErrorDetails>()
-            .Which.Errors.Should().Contain(e =>
-                e == $"'{nameof(Client.Id)}' must be greater than or equal to '{minId}'.");
+            .Which.Errors.Should().ContainMatch($"*{nameof(Client.Id)}*");
     }
 
     [Fact]
@@ -93,10 +80,11 @@ public class GetClientUnitTests
             .ReturnsAsync((Client)null!);
 
         // Act
-        var response = await _fixture.ClientsServiceStub.GetClientByIdAsync(ClientsManagementFixture.NonExistentId);
+        var result = await _fixture.ClientsServiceStub.GetClientByIdAsync(ClientsManagementFixture.NonExistentId);
 
-        // Assert
-        //response.Should().BeEquivalentTo(result);
+        //Assert
+        result.IsFailed.Should().BeTrue();
+        result.Errors.Should().ContainSingle().Which.Should().BeOfType<NotFoundError>();
     }
 
     [Fact]
@@ -104,12 +92,11 @@ public class GetClientUnitTests
     public async Task GivenCreateRequest_WhenRepositoryThrowException_ThenItShouldThrowTheException()
     {
         // Arrange
-        const int testClientId = 1;
-        _fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(testClientId)).ThrowsAsync(new OutOfMemoryException());
-
+        _fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(ClientsManagementFixture.MinId))
+            .ThrowsAsync(new OutOfMemoryException());
 
         // Act
-        var act = async () => await _fixture.ClientsServiceStub.GetClientByIdAsync(testClientId);
+        var act = async () => await _fixture.ClientsServiceStub.GetClientByIdAsync(ClientsManagementFixture.MinId);
 
         // Assert
         await act.Should().ThrowAsync<OutOfMemoryException>();

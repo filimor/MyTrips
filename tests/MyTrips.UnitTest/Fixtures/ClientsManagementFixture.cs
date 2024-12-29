@@ -11,7 +11,6 @@ using MyTrips.Presentation.Controllers;
 
 namespace MyTrips.UnitTest.Fixtures;
 
-// TODO: Remove some data from this fixture
 public sealed class ClientsManagementFixture
 {
     public const int NonExistentId = int.MaxValue;
@@ -142,6 +141,7 @@ public sealed class ClientsManagementFixture
                 Email = client.Email
             });
 
+        ClientsRepositoryMock.Setup(r => r.GetAsync()).ReturnsAsync(ClientsCollectionStub);
         ClientsRepositoryMock.Setup(r => r.GetAsync(ClientStub.Id)).ReturnsAsync(ClientStub);
         ClientsRepositoryMock.Setup(r => r.AddAsync(It.IsAny<Client>())).ReturnsAsync(ClientStub.Id);
         ClientsRepositoryMock.Setup(r => r.UpdateAsync(It.IsAny<Client>()))
