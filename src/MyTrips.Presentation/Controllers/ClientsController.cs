@@ -3,7 +3,6 @@ using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.RateLimiting;
 using MyTrips.Application.Dtos;
 using MyTrips.Application.Errors;
 using MyTrips.Application.Interfaces;
@@ -18,7 +17,6 @@ namespace MyTrips.Presentation.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 [EnableCors]
-[EnableRateLimiting("default")]
 [Authorize(AuthenticationSchemes = "JwtScheme")]
 public class ClientsController(IClientsService clientsService, IValidator<Client> validator) : ControllerBase
 {

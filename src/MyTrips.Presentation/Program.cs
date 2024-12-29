@@ -5,7 +5,6 @@ using System.Threading.RateLimiting;
 using FluentValidation;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MyTrips.Application.Validators;
@@ -119,14 +118,20 @@ try
                 .AllowAnyOrigin();
         }));
 
+
     builder.Services.AddRateLimiter(options =>
     {
-        options.AddFixedWindowLimiter("default", limiterOptions =>
+        if (builder.Configuration.GetValue<bool>("DisableRateLimiter")) return;
+
+        options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
         {
-            limiterOptions.PermitLimit = 30;
-            limiterOptions.Window = TimeSpan.FromSeconds(30);
-            limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
-            limiterOptions.QueueLimit = 5;
+            return RateLimitPartition.GetFixedWindowLimiter("global", _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = 30,
+                QueueLimit = 10,
+                QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+                Window = TimeSpan.FromSeconds(30)
+            });
         });
         options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
     });
