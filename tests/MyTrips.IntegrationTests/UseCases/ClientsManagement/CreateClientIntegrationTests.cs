@@ -1,7 +1,5 @@
-﻿using System.Text;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using MyTrips.UnitTest.ClassData;
-using Newtonsoft.Json;
 using RepoDb;
 
 namespace MyTrips.IntegrationTests.UseCases.ClientsManagement;
@@ -14,7 +12,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
     public async Task GivenValidClientDto_WhenRequestedPostClient_ThenItShouldReturnCreatedWithHeadersAndContent()
     {
         // Arrange
-        var request = CreateRequest(HttpMethod.Post, fixture.CreateClientDtoStub);
+        var request = fixture.CreateRequest(HttpMethod.Post, fixture.CreateClientDtoStub);
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -37,7 +35,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
     {
         // Arrange
         fixture.CreateClientDtoStub.Name = name;
-        var request = CreateRequest(HttpMethod.Post, fixture.CreateClientDtoStub);
+        var request = fixture.CreateRequest(HttpMethod.Post, fixture.CreateClientDtoStub);
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -59,7 +57,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
     {
         // Arrange
         fixture.CreateClientDtoStub.Email = email;
-        var request = CreateRequest(HttpMethod.Post, fixture.CreateClientDtoStub);
+        var request = fixture.CreateRequest(HttpMethod.Post, fixture.CreateClientDtoStub);
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -78,9 +76,9 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldReturnConflictWithHeadersAndContent()
     {
         // Arrange
-        var request = CreateRequest(HttpMethod.Post, fixture.CreateClientDtoStub);
+        var request = fixture.CreateRequest(HttpMethod.Post, fixture.CreateClientDtoStub);
         await fixture.DefaultHttpClient.SendAsync(request);
-        var requestWithSameEmail = CreateRequest(HttpMethod.Post, fixture.CreateClientDtoStub);
+        var requestWithSameEmail = fixture.CreateRequest(HttpMethod.Post, fixture.CreateClientDtoStub);
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(requestWithSameEmail);
@@ -90,7 +88,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
 
         response.StatusCode.Should().Be(HttpStatusCode.Conflict);
         response.Should().HaveProblemContentType();
-        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Email)}*");
+        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Email)}*{fixture.UpdateClientDtoStub.Email}*");
     }
 
     [Theory]
@@ -100,7 +98,8 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         GivenClientDtoWithInvalidName_WhenRequestedPostClient_ThenItShouldNotPersistIt(string name)
     {
         // Arrange
-        var request = CreateRequest(HttpMethod.Post, fixture.CreateClientDtoStub);
+        fixture.CreateClientDtoStub.Name = name;
+        var request = fixture.CreateRequest(HttpMethod.Post, fixture.CreateClientDtoStub);
 
         // Act
         await fixture.DefaultHttpClient.SendAsync(request);
@@ -120,7 +119,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
     {
         // Arrange
         fixture.CreateClientDtoStub.Email = email;
-        var request = CreateRequest(HttpMethod.Post, fixture.CreateClientDtoStub);
+        var request = fixture.CreateRequest(HttpMethod.Post, fixture.CreateClientDtoStub);
 
         // Act
         await fixture.DefaultHttpClient.SendAsync(request);
@@ -138,7 +137,7 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         GivenClientDtoWithExistingEmail_WhenRequestedPostClient_ThenItShouldNotPersistItAgain()
     {
         // Arrange
-        var request = CreateRequest(HttpMethod.Post, fixture.CreateClientDtoStub);
+        var request = fixture.CreateRequest(HttpMethod.Post, fixture.CreateClientDtoStub);
 
         // Act
         await fixture.DefaultHttpClient.SendAsync(request);
@@ -148,23 +147,5 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
         var clients = await connection.QueryAllAsync<Client>();
 
         clients.Should().ContainSingle(c => c.Email == fixture.CreateClientDtoStub.Email);
-    }
-
-    private HttpRequestMessage CreateRequest(HttpMethod method, object entity)
-    {
-        var request = new HttpRequestMessage(method, fixture.Endpoint)
-        {
-            Content = GetStringContent(entity)
-        };
-
-        request.Headers.Authorization = fixture.GetAuthorizationHeader();
-
-        return request;
-    }
-
-    private static StringContent GetStringContent(object entity)
-    {
-        var json = JsonConvert.SerializeObject(entity);
-        return new StringContent(json, Encoding.UTF8, "application/json");
     }
 }

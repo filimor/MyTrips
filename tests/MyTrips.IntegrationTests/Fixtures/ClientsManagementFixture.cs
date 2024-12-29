@@ -1,4 +1,5 @@
 ﻿using System.Net.Http.Headers;
+using System.Text;
 using Bogus;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
@@ -6,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MyTrips.Application.Interfaces;
 using MyTrips.Application.Services;
 using MyTrips.IntegrationTests.Handlers;
+using Newtonsoft.Json;
 
 namespace MyTrips.IntegrationTests.Fixtures;
 
@@ -39,6 +41,29 @@ public sealed class ClientsManagementFixture : IDisposable
     {
         DefaultHttpClient.Dispose();
         Factory.Dispose();
+    }
+
+    public HttpRequestMessage CreateRequest(HttpMethod method, object? entity = null, string? endpoint = null)
+    {
+        HttpRequestMessage request;
+
+        if (entity is not null)
+            request = new HttpRequestMessage(method, endpoint ?? Endpoint)
+            {
+                Content = GetStringContent(entity)
+            };
+        else
+            request = new HttpRequestMessage(method, endpoint ?? Endpoint);
+
+        request.Headers.Authorization = GetAuthorizationHeader();
+
+        return request;
+    }
+
+    public static StringContent GetStringContent(object entity)
+    {
+        var json = JsonConvert.SerializeObject(entity);
+        return new StringContent(json, Encoding.UTF8, "application/json");
     }
 
     public AuthenticationHeaderValue GetAuthorizationHeader()

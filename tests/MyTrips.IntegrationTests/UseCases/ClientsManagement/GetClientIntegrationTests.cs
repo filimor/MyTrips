@@ -8,8 +8,7 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
     public async Task GivenClientsEndpoint_WhenRequestedGetClientWithoutId_ThenItShouldReturnOkWithHeadersAndContent()
     {
         // Arrange
-        var request = new HttpRequestMessage(HttpMethod.Get, fixture.Endpoint);
-        request.Headers.Authorization = fixture.GetAuthorizationHeader();
+        var request = fixture.CreateRequest(HttpMethod.Get, fixture.Endpoint);
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -28,8 +27,8 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
         GivenExistingId_WhenRequestedGetClientWithId_ThenItShouldReturnOkWithHeadersAndContent()
     {
         // Arrange
-        var request = new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{ClientsManagementFixture.MinId}");
-        request.Headers.Authorization = fixture.GetAuthorizationHeader();
+        var request = fixture.CreateRequest(HttpMethod.Get,
+            endpoint: $"{fixture.Endpoint}/{ClientsManagementFixture.MinId}");
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -47,9 +46,8 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
     public async Task GivenInvalidId_WhenRequestGetClientWithId_ThenItShouldReturnBadRequestWithHeadersAndContent()
     {
         // Arrange
-        var request =
-            new HttpRequestMessage(HttpMethod.Get, $"{fixture.Endpoint}/{ClientsManagementFixture.InvalidId}");
-        request.Headers.Authorization = fixture.GetAuthorizationHeader();
+        var request = fixture.CreateRequest(HttpMethod.Get,
+            endpoint: $"{fixture.Endpoint}/{ClientsManagementFixture.InvalidId}");
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -68,9 +66,9 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
         GivenNonExistentClient_WhenRequestGetClientWithId_ThenItShouldReturnNotFoundWithHeadersAndContent()
     {
         // Arrange
-        var request = new HttpRequestMessage(HttpMethod.Get,
-            $"{fixture.Endpoint}/{ClientsManagementFixture.NonExistentId}");
-        request.Headers.Authorization = fixture.GetAuthorizationHeader();
+        var request =
+            fixture.CreateRequest(HttpMethod.Get,
+                endpoint: $"{fixture.Endpoint}/{ClientsManagementFixture.NonExistentId}");
 
         // Act
         var response = await fixture.DefaultHttpClient.SendAsync(request);
@@ -80,6 +78,6 @@ public class GetClientIntegrationTests(ClientsManagementFixture fixture)
 
         response.Should().HaveStatusCode(HttpStatusCode.NotFound);
         response.Should().HaveProblemContentType();
-        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Id)}*");
+        errorDetails!.Errors.Should().ContainMatch($"*{nameof(Client.Id)}*{fixture.UpdateClientDtoStub.Id}*");
     }
 }
