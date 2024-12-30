@@ -1,4 +1,4 @@
-using FluentResults;
+﻿using FluentResults;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
@@ -18,28 +18,30 @@ namespace MyTrips.Presentation.Controllers;
 [ApiController]
 [EnableCors]
 [Authorize(AuthenticationSchemes = "JwtScheme")]
-public class ClientsController(IClientsService clientsService, IValidator<Client> validator) : ControllerBase
+public class TripsController(ITripsService tripsService, IValidator<Trip> validator) : ControllerBase
 {
-    /// <summary>Get all clients</summary>
+    /// <summary>
+    /// Get all trips
+    /// </summary>
     /// <remarks>
     /// <b>Sample request:</b>
     /// <br />
     /// <pre>
-    /// GET /api/clients/
+    /// GET /api/trips
     /// </pre>
     /// </remarks>
-    /// <param name="getParameters">The parameters for client query.</param>
-    /// <returns>A list of all clients</returns>
-    /// <response code="200">Returns a list of clients paginated</response>
+    /// <param name="getParameters"></param>
+    /// <response code="200">Returns all trips</response>
     /// <response code="401">If the user is not authenticated</response>
     /// <response code="429">If the user has sent too many requests in a short period</response>
     /// <response code="500">If an error occurs while processing the request</response>
+    /// <returns></returns>
     [HttpGet]
-    [ProducesResponseType<PagedList<ResponseClientDto>>(StatusCodes.Status200OK)]
+    [ProducesResponseType<PagedList<ResponseTripDto>>(StatusCodes.Status200OK)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult> Get([FromQuery] GetParameters getParameters)
     {
-        var result = await clientsService.GetClientsAsync(getParameters);
+        var result = await tripsService.GetTripsAsync(getParameters);
 
         var metadata = new
         {
@@ -55,24 +57,24 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
         return Ok(result.Value);
     }
 
-    /// <summary>Get a client by id</summary>
+    /// <summary>Get a trip by id</summary>
     /// <remarks>
     /// <b>Sample request:</b>
     /// <br />
     /// <pre>
-    /// GET /api/clients/1
+    /// GET /api/trips/1
     /// </pre>
     /// </remarks>
-    /// <param name="id"> The id of the client to get</param>
-    /// <returns>A client with the specified id</returns>
-    /// <response code="200">Returns the client with the specified id</response>
+    /// <param name="id"> The id of the trip to get</param>
+    /// <returns>A trip with the specified id</returns>
+    /// <response code="200">Returns the trip with the specified id</response>
     /// <response code="400">If the id is less than 1</response>
     /// <response code="401">If the user is not authenticated</response>
-    /// <response code="404">If the client with the specified id is not found</response>
+    /// <response code="404">If the trip with the specified id is not found</response>
     /// <response code="429">If the user has sent too many requests in a short period</response>
     /// <response code="500">If an error occurs while processing the request</response>
     [HttpGet("{id:int}")]
-    [ProducesResponseType<ResponseClientDto>(StatusCodes.Status200OK)]
+    [ProducesResponseType<ResponseTripDto>(StatusCodes.Status200OK)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -88,7 +90,7 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
             return new BadRequestObjectResult(problemDetails);
         }
 
-        var requestResult = await clientsService.GetClientByIdAsync(id);
+        var requestResult = await tripsService.GetTripByIdAsync(id);
 
         if (requestResult.IsFailed)
         {
@@ -104,87 +106,33 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
         return Ok(requestResult.Value);
     }
 
-    /// <summary>Create a new client</summary>
+    /// <summary>Book a trip</summary>
     /// <remarks>
     /// <b>Sample request:</b>
     /// <br />
     /// <pre>
-    /// <b>NOTE:</b> The e-mail must be unique.
-    /// <br />
-    /// POST /api/clients
+    /// POST /api/trips
     /// {
-    ///   "name": "John Doe",
-    ///   "email": "john.doe@example.com"
+    ///   "clientId": 1,
+    ///   "startDate": "2022-12-01",
+    ///   "endDate": "2022-12-10",
+    ///   "outboundFlightId": 1,
+    ///   "inboundFlightId": 2,
+    ///   "hotelId": 1
     /// }
     /// </pre>
     /// </remarks>
-    /// <param name="createClientDto">The data to create a new client</param>
-    /// <returns>The newly created client</returns>
-    /// <response code="201">Returns the newly created client</response>
+    /// <param name="createTripDto">The data to book a new trip</param>
+    /// <returns>The newly booked trip</returns>
+    /// <response code="201">Returns the newly booked trip</response>
     /// <response code="400">If any of the attributes are invalid</response>
     /// <response code="401">If the user is not authenticated</response>
-    /// <response code="409">If a client with the same email already exist</response>
+    /// <response code="404">If any of the resources are not found</response>
+    /// <response code="409">If a trip within that period is already scheduled</response>
     /// <response code="429">If the user has sent too many requests in a short period</response>
     /// <response code="500">If an error occurs while processing the request</response>
     [HttpPost]
-    [ProducesResponseType<ResponseClientDto>(StatusCodes.Status201Created)]
-    [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType<ProblemDetails>(StatusCodes.Status409Conflict)]
-    [ProducesResponseType(StatusCodes.Status429TooManyRequests)]
-    [ProducesResponseType<ProblemDetails>(StatusCodes.Status500InternalServerError)]
-    [Consumes("application/json")]
-    public async Task<ActionResult> Post([FromBody] CreateClientDto createClientDto)
-    {
-        var client = new Client(createClientDto.Name, createClientDto.Email);
-
-        var validationResult = await validator.ValidateAsync(client);
-
-        if (!validationResult.IsValid)
-        {
-            var problemDetails = new BadRequestProblemDetails(HttpContext, validationResult);
-            return new BadRequestObjectResult(problemDetails);
-        }
-
-        var requestResult = await clientsService.AddNewClientAsync(createClientDto);
-
-        if (requestResult.IsFailed)
-        {
-            if (!requestResult.Errors.Any(e => e is ConflictError))
-                return StatusCode(StatusCodes.Status500InternalServerError);
-
-            var problemDetails = new ConflictProblemDetails(HttpContext, requestResult.ToResult());
-
-            return new ConflictObjectResult(problemDetails);
-        }
-
-        return CreatedAtAction(nameof(Get), new { id = requestResult.Value.Id }, requestResult.Value);
-    }
-
-    /// <summary>Update a client</summary>
-    /// <remarks>
-    /// <b>Sample request:</b>
-    /// <br />
-    /// <pre>
-    /// PUT /api/clients
-    /// {
-    ///   "id": 1,
-    ///   "name": "Jane Doe",
-    ///   "email": "jane.doe@example.com"
-    /// }
-    /// </pre>
-    /// </remarks>
-    /// <param name="updateClientDto">The data to update a client</param>
-    /// <returns>The updated client</returns>
-    /// <response code="200">Returns the updated client</response>
-    /// <response code="400">If the id is less than 1 or any of the others attributes are invalid</response>
-    /// <response code="401">If the user is not authenticated</response>
-    /// <response code="404">If the client with the specified id is not found</response>
-    /// <response code="409">If a client with the same id already exist</response>
-    /// <response code="429">If the user has sent too many requests in a short period</response>
-    /// <response code="500">If an error occurs while processing the request</response>
-    [HttpPut]
-    [ProducesResponseType<ResponseClientDto>(StatusCodes.Status200OK)]
+    [ProducesResponseType<ResponseTripDto>(StatusCodes.Status201Created)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
@@ -192,65 +140,57 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     [ProducesResponseType(StatusCodes.Status429TooManyRequests)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status500InternalServerError)]
     [Consumes("application/json")]
-    public async Task<ActionResult> Put([FromBody] UpdateClientDto updateClientDto)
+    public async Task<ActionResult> Post([FromBody] CreateTripDto createTripDto)
     {
-        var idValidationResult = ValidateInputId(updateClientDto.Id);
+        var trip = new Trip(createTripDto.StartDate, createTripDto.EndDate, createTripDto.ClientId,
+            createTripDto.InboundFlightId, createTripDto.OutboundFlightId, createTripDto.HotelId);
 
-        if (idValidationResult.IsFailed)
-        {
-            var problemDetails = new BadRequestProblemDetails(HttpContext, idValidationResult);
-            return new BadRequestObjectResult(problemDetails);
-        }
-
-        var client = new Client(updateClientDto.Id, updateClientDto.Name, updateClientDto.Email);
-
-        var validationResult = await validator.ValidateAsync(client);
+        var validationResult = await validator.ValidateAsync(trip);
 
         if (!validationResult.IsValid)
         {
-            var errors = validationResult.Errors.Select(e => new Error(e.ErrorMessage));
-            var resultObject = Result.Fail(errors);
-            var problemDetails = new BadRequestProblemDetails(HttpContext, resultObject);
+            var problemDetails = new BadRequestProblemDetails(HttpContext, validationResult);
             return new BadRequestObjectResult(problemDetails);
         }
 
-        var requestResult = await clientsService.UpdateClientAsync(updateClientDto);
+        var requestResult = await tripsService.BookTripAsync(createTripDto);
 
         if (requestResult.IsFailed)
         {
-            if (requestResult.Errors.Any(e => e is NotFoundError))
-            {
-                var problemDetails = new NotFoundProblemDetails(HttpContext, requestResult.ToResult());
-                return new NotFoundObjectResult(problemDetails);
-            }
-
             if (requestResult.Errors.Any(e => e is ConflictError))
             {
                 var problemDetails = new ConflictProblemDetails(HttpContext, requestResult.ToResult());
+
                 return new ConflictObjectResult(problemDetails);
+            }
+
+            if (requestResult.Errors.Any(e => e is NotFoundError))
+            {
+                var problemDetails = new NotFoundProblemDetails(HttpContext, requestResult.ToResult());
+
+                return new NotFoundObjectResult(problemDetails);
             }
 
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
 
-        return Ok(requestResult.Value);
+        return CreatedAtAction(nameof(Get), new { id = requestResult.Value.Id }, requestResult.Value);
     }
 
-    /// <summary>Delete a client</summary>
+    /// <summary>Cancel a trip</summary>
     /// <remarks>
     /// <b>Sample request:</b>
     /// <br />
     /// <pre>
-    /// DELETE /api/clients/1
+    /// DELETE /api/trips/1
     /// </pre>
     /// </remarks>
-    /// <param name="id">The id of the client to delete</param>
+    /// <param name="id">The id of the trip to cancel</param>
     /// <returns>No content</returns>
-    /// <response code="204">If the client was successful deleted</response>
+    /// <response code="204">If the trip was successful cancelled</response>
     /// <response code="400">If the id is less than 1</response>
     /// <response code="401">If the user is not authenticated</response>
-    /// <response code="404">If the client with the specified id is not found</response>
-    /// <response code="409">If the client is referenced by another entity</response>
+    /// <response code="404">If the trip with the specified id is not found</response>
     /// <response code="429">If the user has sent too many requests in a short period</response>
     /// <response code="500">If an error occurs while processing the request</response>
     [HttpDelete("{id:int}")]
@@ -264,13 +204,14 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     public async Task<ActionResult> Delete([FromRoute] int id)
     {
         var validationResult = ValidateInputId(id);
+
         if (validationResult.IsFailed)
         {
             var problemDetails = new BadRequestProblemDetails(HttpContext, validationResult);
             return new BadRequestObjectResult(problemDetails);
         }
 
-        var requestResult = await clientsService.RemoveClientAsync(id);
+        var requestResult = await tripsService.CancelTripAsync(id);
 
         if (requestResult.IsFailed)
         {

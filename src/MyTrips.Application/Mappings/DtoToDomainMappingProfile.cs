@@ -18,5 +18,9 @@ public class DtoToDomainMappingProfile : Profile
 
         CreateMap(typeof(PagedList<>), typeof(PagedList<>))
             .ConvertUsing(typeof(PagedListTypeConverter<,>));
+
+        CreateMap<CreateTripDto, Trip>();
+        CreateMap<Trip, ResponseTripDto>();
+        CreateMap<Trip, ShortResponseTripDto>();
     }
 }

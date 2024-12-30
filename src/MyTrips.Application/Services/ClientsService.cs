@@ -9,7 +9,7 @@ using MyTrips.Domain.ValueObjects;
 
 namespace MyTrips.Application.Services;
 
-public class ClientsService(IMapper mapper, IRepositoryBase clientsRepository) : IClientsService
+public class ClientsService(IMapper mapper, IClientsRepository clientsRepository) : IClientsService
 {
     public async Task<Result<IEnumerable<ResponseClientDto>>> GetAllClientsAsync()
     {
@@ -19,7 +19,7 @@ public class ClientsService(IMapper mapper, IRepositoryBase clientsRepository) :
         return Result.Ok(clientsDto);
     }
 
-    public async Task<Result<PagedList<ResponseClientDto>>> GetClientsAsync(ClientParameters parameters)
+    public async Task<Result<PagedList<ResponseClientDto>>> GetClientsAsync(GetParameters parameters)
     {
         var clientsPaged = await clientsRepository.GetAsync<Client>(parameters.PageIndex, parameters.PageSize);
         var dtosPaged = mapper.Map<PagedList<ResponseClientDto>>(clientsPaged);

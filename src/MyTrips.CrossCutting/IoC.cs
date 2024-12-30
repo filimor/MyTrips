@@ -1,7 +1,7 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyTrips.Application.Mappings;
+using MyTrips.CrossCutting.Handlers;
 using MyTrips.Domain.Entities;
 using MyTrips.Domain.Interfaces;
 using MyTrips.Infrastructure.Repositories;
@@ -24,7 +24,15 @@ public static class IoC
     private static void UseRepoDb()
     {
         GlobalConfiguration.Setup().UseSqlServer();
+
         FluentMapper.Entity<Client>().Table("Clients");
+        FluentMapper.Entity<Trip>().Table("Trips");
+        FluentMapper.Entity<Flight>().Table("Flights");
+        FluentMapper.Entity<Hotel>().Table("Hotels");
+        FluentMapper.Entity<Destination>().Table("Destinations");
+
+        PropertyHandlerMapper.Add<DateOnly, DateOnlyPropertyHandler>();
+        PropertyHandlerMapper.Add<DateOnly?, NullableDateOnlyPropertyHandler>();
     }
 
     private static void AddMapping(IServiceCollection services)
@@ -34,7 +42,7 @@ public static class IoC
 
     private static void InjectRepositories(IServiceCollection services, IConfiguration configuration)
     {
-        //services.AddScoped<IClientsRepository>(_ => new ClientsRepository(configuration));
-        services.AddScoped<IRepositoryBase, RepositoryBase<SqlConnection>>();
+        services.AddScoped<IClientsRepository, ClientsRepository>();
+        services.AddScoped<ITripsRepository, TripsRepository>();
     }
 }

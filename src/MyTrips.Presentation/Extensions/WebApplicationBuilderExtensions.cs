@@ -134,6 +134,7 @@ public static class WebApplicationBuilderExtensions
     public static IServiceCollection AddDomainServices(this IServiceCollection services)
     {
         services.AddScoped<IClientsService, ClientsService>();
+        services.AddScoped<ITripsService, TripsService>();
 
         return services;
     }

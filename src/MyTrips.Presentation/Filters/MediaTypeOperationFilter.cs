@@ -7,6 +7,7 @@ namespace MyTrips.Presentation.Filters;
 public class MediaTypeOperationFilter : IOperationFilter
 {
     // TODO: Update it with the pagination schema
+    // TODO: FIXIT: It will broke on next update!
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
         foreach (var response in operation.Responses)
@@ -41,13 +42,13 @@ public class MediaTypeOperationFilter : IOperationFilter
 
                     break;
                 default:
-                    {
-                        if (response.Key.StartsWith('4') || (response.Key.StartsWith('5') && response.Key != "500"))
-                            response.Value.Content.Add("application/problem+json", new OpenApiMediaType());
-                        else
-                            response.Value.Content.Add("application/json", new OpenApiMediaType());
-                        break;
-                    }
+                {
+                    if (response.Key.StartsWith('4') || (response.Key.StartsWith('5') && response.Key != "500"))
+                        response.Value.Content.Add("application/problem+json", new OpenApiMediaType());
+                    else
+                        response.Value.Content.Add("application/json", new OpenApiMediaType());
+                    break;
+                }
             }
         }
     }
@@ -63,7 +64,7 @@ public class MediaTypeOperationFilter : IOperationFilter
                 {
                     ["type"] = new() { Type = "string", Example = new OpenApiString("about:blank") },
                     ["title"] = new()
-                    { Type = "string", Example = new OpenApiString("Internal Server Error") },
+                        { Type = "string", Example = new OpenApiString("Internal Server Error") },
                     ["status"] = new() { Type = "integer", Example = new OpenApiInteger(500) },
                     ["detail"] = new()
                     {
@@ -80,7 +81,7 @@ public class MediaTypeOperationFilter : IOperationFilter
                         }
                     },
                     ["instance"] = new()
-                    { Type = "string", Example = new OpenApiString("/api/clients/12345") }
+                        { Type = "string", Example = new OpenApiString("/api/clients/12345") }
                 }
             }
         });
@@ -114,7 +115,7 @@ public class MediaTypeOperationFilter : IOperationFilter
                         }
                     },
                     ["instance"] = new()
-                    { Type = "string", Example = new OpenApiString("/api/clients/12345") }
+                        { Type = "string", Example = new OpenApiString("/api/clients/12345") }
                 }
             }
         });
@@ -146,10 +147,10 @@ public class MediaTypeOperationFilter : IOperationFilter
                     {
                         Type = "array",
                         Items = new OpenApiSchema
-                        { Type = "string", Example = new OpenApiString("No such client found") }
+                            { Type = "string", Example = new OpenApiString("No such client found") }
                     },
                     ["instance"] = new()
-                    { Type = "string", Example = new OpenApiString("/api/clients/12345") }
+                        { Type = "string", Example = new OpenApiString("/api/clients/12345") }
                 }
             }
         });
@@ -180,7 +181,7 @@ public class MediaTypeOperationFilter : IOperationFilter
                     {
                         Type = "array",
                         Items = new OpenApiSchema
-                        { Type = "string", Example = new OpenApiString("Invalid client data") }
+                            { Type = "string", Example = new OpenApiString("Invalid client data") }
                     },
                     ["instance"] = new() { Type = "string", Example = new OpenApiString("/clients/12345") }
                 }
@@ -200,7 +201,7 @@ public class MediaTypeOperationFilter : IOperationFilter
                     ["id"] = new() { Type = "integer", Example = new OpenApiInteger(123) },
                     ["name"] = new() { Type = "string", Example = new OpenApiString("John Doe") },
                     ["email"] = new()
-                    { Type = "string", Example = new OpenApiString("john.doe@example.com") }
+                        { Type = "string", Example = new OpenApiString("john.doe@example.com") }
                 }
             }
         });
@@ -218,7 +219,7 @@ public class MediaTypeOperationFilter : IOperationFilter
                     ["id"] = new() { Type = "integer", Example = new OpenApiInteger(123) },
                     ["name"] = new() { Type = "string", Example = new OpenApiString("John Doe") },
                     ["email"] = new()
-                    { Type = "string", Example = new OpenApiString("john.doe@example.com") }
+                        { Type = "string", Example = new OpenApiString("john.doe@example.com") }
                 }
             }
         });

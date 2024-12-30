@@ -29,7 +29,7 @@
             <response code="401">If the credentials are invalid</response>
             <response code="500">If there was an internal server error</response>
         </member>
-        <member name="M:MyTrips.Presentation.Controllers.ClientsController.Get(MyTrips.Domain.ValueObjects.ClientParameters)">
+        <member name="M:MyTrips.Presentation.Controllers.ClientsController.Get(MyTrips.Domain.ValueObjects.GetParameters)">
             <summary>Get all clients</summary>
             <remarks>
             <b>Sample request:</b>
@@ -38,9 +38,11 @@
             GET /api/clients/
             </pre>
             </remarks>
-            <param name="clientParameters">The parameters for client query.</param>
+            <param name="getParameters">The parameters for client query.</param>
             <returns>A list of all clients</returns>
             <response code="200">Returns a list of clients paginated</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="429">If the user has sent too many requests in a short period</response>
             <response code="500">If an error occurs while processing the request</response>
         </member>
         <member name="M:MyTrips.Presentation.Controllers.ClientsController.Get(System.Int32)">
@@ -125,6 +127,87 @@
             <response code="401">If the user is not authenticated</response>
             <response code="404">If the client with the specified id is not found</response>
             <response code="409">If the client is referenced by another entity</response>
+            <response code="429">If the user has sent too many requests in a short period</response>
+            <response code="500">If an error occurs while processing the request</response>
+        </member>
+        <member name="M:MyTrips.Presentation.Controllers.TripsController.Get(MyTrips.Domain.ValueObjects.GetParameters)">
+            <summary>
+            Get all trips
+            </summary>
+            <remarks>
+            <b>Sample request:</b>
+            <br />
+            <pre>
+            GET /api/trips
+            </pre>
+            </remarks>
+            <param name="getParameters"></param>
+            <response code="200">Returns all trips</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="429">If the user has sent too many requests in a short period</response>
+            <response code="500">If an error occurs while processing the request</response>
+            <returns></returns>
+        </member>
+        <member name="M:MyTrips.Presentation.Controllers.TripsController.Get(System.Int32)">
+            <summary>Get a trip by id</summary>
+            <remarks>
+            <b>Sample request:</b>
+            <br />
+            <pre>
+            GET /api/trips/1
+            </pre>
+            </remarks>
+            <param name="id"> The id of the trip to get</param>
+            <returns>A trip with the specified id</returns>
+            <response code="200">Returns the trip with the specified id</response>
+            <response code="400">If the id is less than 1</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="404">If the trip with the specified id is not found</response>
+            <response code="429">If the user has sent too many requests in a short period</response>
+            <response code="500">If an error occurs while processing the request</response>
+        </member>
+        <member name="M:MyTrips.Presentation.Controllers.TripsController.Post(MyTrips.Application.Dtos.CreateTripDto)">
+            <summary>Book a trip</summary>
+            <remarks>
+            <b>Sample request:</b>
+            <br />
+            <pre>
+            POST /api/trips
+            {
+              "clientId": 1,
+              "startDate": "2022-12-01",
+              "endDate": "2022-12-10",
+              "outboundFlightId": 1,
+              "inboundFlightId": 2,
+              "hotelId": 1
+            }
+            </pre>
+            </remarks>
+            <param name="createTripDto">The data to book a new trip</param>
+            <returns>The newly booked trip</returns>
+            <response code="201">Returns the newly booked trip</response>
+            <response code="400">If any of the attributes are invalid</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="404">If any of the resources are not found</response>
+            <response code="409">If a trip within that period is already scheduled</response>
+            <response code="429">If the user has sent too many requests in a short period</response>
+            <response code="500">If an error occurs while processing the request</response>
+        </member>
+        <member name="M:MyTrips.Presentation.Controllers.TripsController.Delete(System.Int32)">
+            <summary>Cancel a trip</summary>
+            <remarks>
+            <b>Sample request:</b>
+            <br />
+            <pre>
+            DELETE /api/trips/1
+            </pre>
+            </remarks>
+            <param name="id">The id of the trip to cancel</param>
+            <returns>No content</returns>
+            <response code="204">If the trip was successful cancelled</response>
+            <response code="400">If the id is less than 1</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="404">If the trip with the specified id is not found</response>
             <response code="429">If the user has sent too many requests in a short period</response>
             <response code="500">If an error occurs while processing the request</response>
         </member>

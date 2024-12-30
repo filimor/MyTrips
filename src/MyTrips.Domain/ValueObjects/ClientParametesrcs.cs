@@ -1,6 +1,6 @@
 ﻿namespace MyTrips.Domain.ValueObjects;
 
-public class ClientParameters
+public class GetParameters
 {
     private const int MaxPageSize = 100;
     private int _pageSize = 20;
