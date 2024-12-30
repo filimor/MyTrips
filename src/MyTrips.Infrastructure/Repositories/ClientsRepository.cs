@@ -6,7 +6,10 @@ using MyTrips.Infrastructure.Models;
 
 namespace MyTrips.Infrastructure.Repositories;
 
-public class ClientsRepository(IOptions<AppSetting> settings, IMyTripsTrace trace)
-    : RepositoryBase<SqlConnection>(settings, trace), IClientsRepository
+public class ClientsRepository(
+    IOptions<AppSetting> settings,
+    IMyTripsTrace trace,
+    IUnitOfWork<SqlConnection> unitOfWork)
+    : RepositoryBase<SqlConnection>(settings, trace, unitOfWork), IClientsRepository
 {
 }

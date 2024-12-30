@@ -1,12 +1,16 @@
 ﻿using System.Globalization;
 using AutoMapper;
 using FluentValidation;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Options;
 using MyTrips.Application.Dtos;
 using MyTrips.Application.Interfaces;
 using MyTrips.Application.Services;
 using MyTrips.Application.Validators;
 using MyTrips.Domain.Entities;
 using MyTrips.Domain.Interfaces;
+using MyTrips.Infrastructure.Interfaces;
+using MyTrips.Infrastructure.Models;
 using MyTrips.Presentation.Controllers;
 
 namespace MyTrips.UnitTest.Fixtures;
@@ -20,6 +24,8 @@ public sealed class ClientsManagementFixture
     public readonly Mock<IClientsRepository> ClientsRepositoryMock = new();
     public readonly Mock<IMapper> MapperMock = new();
     public Mock<IClientsService> ClientServiceMock = new();
+    public Mock<IUnitOfWork<SqlConnection>> UnitOfWorkMock = new();
+    public Mock<IOptions<AppSetting>> OptionsMock = new();
 
     public IEnumerable<Client> ClientsCollectionStub = null!;
     public Client ClientStub = null!;
@@ -103,7 +109,8 @@ public sealed class ClientsManagementFixture
             Email = ClientStub.Email
         };
 
-        ClientsServiceStub = new ClientsService(MapperMock.Object, ClientsRepositoryMock.Object);
+        ClientsServiceStub = new ClientsService(MapperMock.Object, ClientsRepositoryMock.Object,
+            UnitOfWorkMock.Object);
     }
 
     private void SetupMocks()
@@ -150,5 +157,9 @@ public sealed class ClientsManagementFixture
         ClientsRepositoryMock.Setup(r => r.FindAsync(It.IsAny<Expression<Func<Client, bool>>>()))
             .ReturnsAsync((Expression<Func<Client, bool>> predicate) =>
                 SearchClientResultStub.Where(predicate.Compile()));
+
+        UnitOfWorkMock.Setup(u => u.Begin());
+        UnitOfWorkMock.Setup(u => u.Commit());
+        UnitOfWorkMock.Setup(u => u.Rollback());
     }
 }

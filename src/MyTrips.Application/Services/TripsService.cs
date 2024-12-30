@@ -41,10 +41,6 @@ public class TripsService(IMapper mapper, ITripsRepository tripsRepository) : IT
 
     public async Task<Result<ResponseTripDto>> BookTripAsync(CreateTripDto createTripDto)
     {
-        //if (await IsConflictingTrip(createTripDto))
-        //    return Result.Fail(new ConflictError(
-        //        "There's already a trip scheduled within that interval."));
-
         var trip = mapper.Map<Trip>(createTripDto);
 
         var client = await tripsRepository.GetAsync<Client>(trip.ClientId);

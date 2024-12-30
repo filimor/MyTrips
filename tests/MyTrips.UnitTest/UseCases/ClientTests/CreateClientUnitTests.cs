@@ -1,4 +1,5 @@
-﻿using MyTrips.Application.Errors;
+﻿using System.Transactions;
+using MyTrips.Application.Errors;
 using MyTrips.Domain.Entities;
 using MyTrips.Presentation.Errors;
 using MyTrips.UnitTest.ClassData;
@@ -107,12 +108,12 @@ public class CreateClientUnitTests
     {
         // Arrange
         _fixture.ClientsRepositoryMock.Setup(r => r.AddAsync(It.IsAny<Client>()))
-            .ThrowsAsync(new OutOfMemoryException());
+            .ThrowsAsync(new TransactionAbortedException());
 
         // Act
         var act = async () => await _fixture.ClientsServiceStub.AddNewClientAsync(_fixture.CreateClientDtoStub);
 
         // Assert
-        await act.Should().ThrowAsync<OutOfMemoryException>();
+        await act.Should().ThrowAsync<TransactionAbortedException>();
     }
 }

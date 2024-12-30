@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyTrips.Application.Mappings;
 using MyTrips.CrossCutting.Handlers;
@@ -44,8 +45,10 @@ public static class IoC
 
     private static void InjectRepositories(IServiceCollection services, IConfiguration configuration)
     {
-        services.AddScoped<IClientsRepository, ClientsRepository>();
-        services.AddScoped<ITripsRepository, TripsRepository>();
+        services.AddSingleton<IClientsRepository, ClientsRepository>();
+        services.AddSingleton<ITripsRepository, TripsRepository>();
+
+        services.AddTransient<IUnitOfWork<SqlConnection>, MyTripsUnitOfWork>();
 
         services.AddSingleton<IMyTripsTrace, MyTripsTrace>();
     }

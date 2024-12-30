@@ -15,8 +15,8 @@ namespace MyTrips.Infrastructure.Repositories;
 public class RepositoryBase<TDbConnection>(
     IOptions<AppSetting> settings,
     //ICache cache,
-    IMyTripsTrace trace
-)
+    IMyTripsTrace trace,
+    IUnitOfWork<TDbConnection> unitOfWork)
     : IRepositoryBase
     where TDbConnection : DbConnection
 {
@@ -32,7 +32,8 @@ public class RepositoryBase<TDbConnection>(
             commandTimeout: settings.Value.CommandTimeout,
             //cache: Cache,
             //cacheItemExpiration: settings.Value.CacheItemExpiration,
-            trace: Trace
+            trace: Trace,
+            transaction: unitOfWork.Transaction
         );
     }
 
@@ -41,7 +42,8 @@ public class RepositoryBase<TDbConnection>(
         await using var connection = GetConnection();
 
         IEnumerable<TEntity?> entities =
-            await connection.QueryAsync<TEntity>(id, commandTimeout: settings.Value.CommandTimeout, trace: Trace);
+            await connection.QueryAsync<TEntity>(id, commandTimeout: settings.Value.CommandTimeout, trace: Trace,
+                transaction: unitOfWork.Transaction);
 
         return entities.FirstOrDefault();
     }
@@ -51,14 +53,14 @@ public class RepositoryBase<TDbConnection>(
         await using var connection = GetConnection();
 
         return await connection.InsertAsync<TEntity, int>(entity, commandTimeout: settings.Value.CommandTimeout,
-            trace: Trace);
+            trace: Trace, transaction: unitOfWork.Transaction);
     }
 
     public async Task<int> UpdateAsync<TEntity>(TEntity entity) where TEntity : BaseEntity
     {
         await using var connection = GetConnection();
 
-        return await connection.UpdateAsync(entity, trace: Trace);
+        return await connection.UpdateAsync(entity, trace: Trace, transaction: unitOfWork.Transaction);
     }
 
     public async Task<int> DeleteAsync<TEntity>(int id) where TEntity : BaseEntity
@@ -69,11 +71,8 @@ public class RepositoryBase<TDbConnection>(
 
         try
         {
-            deletedRows = await connection.DeleteAsync<TEntity>(id
-                ,
-                commandTimeout: settings.Value.CommandTimeout,
-                trace: Trace
-            );
+            deletedRows = await connection.DeleteAsync<TEntity>(id, commandTimeout: settings.Value.CommandTimeout,
+                trace: Trace, transaction: unitOfWork.Transaction);
         }
         catch (SqlException e) when (e.Number == 547)
         {
@@ -87,7 +86,8 @@ public class RepositoryBase<TDbConnection>(
     {
         await using var connection = GetConnection();
 
-        return await connection.MergeAsync(entity, commandTimeout: settings.Value.CommandTimeout, trace: Trace);
+        return await connection.MergeAsync(entity, commandTimeout: settings.Value.CommandTimeout, trace: Trace,
+            transaction: unitOfWork.Transaction);
     }
 
     public async Task<IEnumerable<TEntity>> FindAsync<TEntity>(Expression<Func<TEntity, bool>> predicate)
@@ -95,7 +95,8 @@ public class RepositoryBase<TDbConnection>(
     {
         await using var connection = GetConnection();
 
-        return await connection.QueryAsync(predicate);
+        return await connection.QueryAsync(predicate, commandTimeout: settings.Value.CommandTimeout, trace: Trace,
+            transaction: unitOfWork.Transaction);
     }
 
     public async Task<PagedList<TEntity>> GetAsync<TEntity>(int pageIndex, int rowsPerBatch) where TEntity : BaseEntity
@@ -109,7 +110,10 @@ public class RepositoryBase<TDbConnection>(
             page,
             rowsPerBatch,
             orderBy,
-            e => e.Id > 0)).ToList();
+            e => e.Id > 0,
+            commandTimeout: settings.Value.CommandTimeout,
+            trace: Trace,
+            transaction: unitOfWork.Transaction)).ToList();
 
         var count = await connection.CountAllAsync<TEntity>();
 

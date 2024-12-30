@@ -1,15 +1,19 @@
+using System.Transactions;
 using AutoMapper;
 using FluentResults;
+using Microsoft.Data.SqlClient;
 using MyTrips.Application.Dtos;
 using MyTrips.Application.Errors;
 using MyTrips.Application.Interfaces;
 using MyTrips.Domain.Entities;
 using MyTrips.Domain.Interfaces;
 using MyTrips.Domain.ValueObjects;
+using MyTrips.Infrastructure.Interfaces;
 
 namespace MyTrips.Application.Services;
 
-public class ClientsService(IMapper mapper, IClientsRepository clientsRepository) : IClientsService
+public class ClientsService(IMapper mapper, IClientsRepository clientsRepository, IUnitOfWork<SqlConnection> unitOfWork)
+    : IClientsService
 {
     public async Task<Result<IEnumerable<ResponseClientDto>>> GetAllClientsAsync()
     {
@@ -41,21 +45,32 @@ public class ClientsService(IMapper mapper, IClientsRepository clientsRepository
 
     public async Task<Result<ResponseClientDto>> AddNewClientAsync(CreateClientDto createClientDto)
     {
-        var existingClients = await clientsRepository.FindAsync<Client>(c => c.Email == createClientDto.Email);
+        unitOfWork.Begin();
 
-        if (existingClients.Any())
-            return Result.Fail(new ConflictError(
-                $"{nameof(Client)} with the {nameof(Client.Email)} '{createClientDto.Email}' already exists."));
+        try
+        {
+            var existingClients = await clientsRepository.FindAsync<Client>(c => c.Email == createClientDto.Email);
 
-        var client = mapper.Map<Client>(createClientDto);
+            if (existingClients.Any())
+                return Result.Fail(new ConflictError(
+                    $"{nameof(Client)} with the {nameof(Client.Email)} '{createClientDto.Email}' already exists."));
 
-        var clientId = await clientsRepository.AddAsync(client);
+            var client = mapper.Map<Client>(createClientDto);
 
-        client.Id = clientId;
+            client.Id = await clientsRepository.AddAsync(client);
 
-        var clientDto = mapper.Map<ResponseClientDto>(client);
+            unitOfWork.Commit();
 
-        return Result.Ok(clientDto);
+            var clientDto = mapper.Map<ResponseClientDto>(client);
+
+            return Result.Ok(clientDto);
+        }
+        catch
+        {
+            unitOfWork.Rollback();
+        }
+
+        throw new TransactionAbortedException();
     }
 
     public async Task<Result<ResponseClientDto>> UpdateClientAsync(UpdateClientDto updateClientDto)

@@ -8,8 +8,8 @@ using RepoDb;
 
 namespace MyTrips.Infrastructure.Repositories;
 
-public class TripsRepository(IOptions<AppSetting> settings, IMyTripsTrace trace)
-    : RepositoryBase<SqlConnection>(settings, trace), ITripsRepository
+public class TripsRepository(IOptions<AppSetting> settings, IMyTripsTrace trace, IUnitOfWork<SqlConnection> unitOfWork)
+    : RepositoryBase<SqlConnection>(settings, trace, unitOfWork), ITripsRepository
 {
     private readonly IOptions<AppSetting> _settings = settings;
 
