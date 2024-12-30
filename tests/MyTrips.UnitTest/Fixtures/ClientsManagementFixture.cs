@@ -17,7 +17,7 @@ public sealed class ClientsManagementFixture
     public const int InvalidId = -1;
     public const int MinId = 1;
 
-    public readonly Mock<IRepositoryBase> ClientsRepositoryMock = new();
+    public readonly Mock<IClientsRepository> ClientsRepositoryMock = new();
     public readonly Mock<IMapper> MapperMock = new();
     public Mock<IClientsService> ClientServiceMock = new();
 
