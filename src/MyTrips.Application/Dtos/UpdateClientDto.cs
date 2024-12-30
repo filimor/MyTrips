@@ -1,8 +1,12 @@
-﻿namespace MyTrips.Application.Dtos;
+﻿using System.Text.Json.Serialization;
+
+namespace MyTrips.Application.Dtos;
 
 public class UpdateClientDto
 {
-    public int Id { get; set; }
-    public string Name { get; set; } = null!;
-    public string Email { get; set; } = null!;
+    [JsonPropertyOrder(1)] public int Id { get; set; }
+
+    [JsonPropertyOrder(2)] public string Name { get; set; } = null!;
+
+    [JsonPropertyOrder(3)] public string Email { get; set; } = null!;
 }

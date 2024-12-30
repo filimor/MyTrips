@@ -1,19 +1,26 @@
-﻿using MyTrips.Domain.Entities;
+﻿using System.Text.Json.Serialization;
 
 namespace MyTrips.Application.Dtos;
 
 public class ResponseTripDto
 {
-    public int Id { get; set; }
-    public DateOnly StartDate { get; set; }
-    public DateOnly EndDate { get; set; }
-    public int ClientId { get; set; }
-    public int InboundFlightId { get; set; }
-    public int OutboundFlightId { get; set; }
-    public int HotelId { get; set; }
+    [JsonPropertyOrder(1)] public int Id { get; set; }
 
-    public required Client Client { get; set; }
-    public required Flight InboundFlight { get; set; }
-    public required Flight OutboundFlight { get; set; }
-    public required Hotel Hotel { get; set; }
+    [JsonPropertyOrder(2)] public DateOnly StartDate { get; set; }
+
+    [JsonPropertyOrder(3)] public DateOnly EndDate { get; set; }
+
+    [JsonIgnore] public int ClientId { get; set; }
+
+    [JsonIgnore] public int InboundFlightId { get; set; }
+    [JsonIgnore] public int OutboundFlightId { get; set; }
+    [JsonIgnore] public int HotelId { get; set; }
+
+    [JsonPropertyOrder(4)] public required ResponseClientDto Client { get; set; }
+
+    [JsonPropertyOrder(5)] public required ResponseFlightDto OutboundFlight { get; set; }
+
+    [JsonPropertyOrder(6)] public required ResponseFlightDto InboundFlight { get; set; }
+
+    [JsonPropertyOrder(7)] public required ResponseHotelDto Hotel { get; set; }
 }
