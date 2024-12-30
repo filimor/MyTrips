@@ -16,11 +16,15 @@ public class DtoToDomainMappingProfile : Profile
         CreateMap<UpdateClientDto, Client>();
         CreateMap<UpdateClientDto, ResponseClientDto>();
 
-        CreateMap(typeof(PagedList<>), typeof(PagedList<>))
-            .ConvertUsing(typeof(PagedListTypeConverter<,>));
-
         CreateMap<CreateTripDto, Trip>();
         CreateMap<Trip, ResponseTripDto>();
         CreateMap<Trip, ShortResponseTripDto>();
+
+        CreateMap<Flight, ResponseFlightDto>();
+        CreateMap<Hotel, ResponseHotelDto>();
+        CreateMap<Destination, ResponseDestinationDto>();
+
+        CreateMap(typeof(PagedList<>), typeof(PagedList<>))
+            .ConvertUsing(typeof(PagedListTypeConverter<,>));
     }
 }

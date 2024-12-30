@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using MyTrips.Domain.Entities;
 using MyTrips.Domain.Interfaces;
 using MyTrips.Domain.ValueObjects;
+using MyTrips.Infrastructure.Interfaces;
 using MyTrips.Infrastructure.Models;
 using RepoDb;
 using RepoDb.Enumerations;
@@ -12,14 +13,14 @@ using RepoDb.Enumerations;
 namespace MyTrips.Infrastructure.Repositories;
 
 public class RepositoryBase<TDbConnection>(
-    IOptions<AppSetting> settings
+    IOptions<AppSetting> settings,
     //ICache cache,
-    //ITrace trace
+    IMyTripsTrace trace
 )
     : IRepositoryBase
     where TDbConnection : DbConnection
 {
-    //public ITrace Trace { get; } = trace;
+    public IMyTripsTrace Trace { get; } = trace;
     //public ICache Cache { get; } = cache;
 
     public async Task<IEnumerable<TEntity>> GetAllAsync<TEntity>(string? cacheKey = null) where TEntity : BaseEntity
@@ -28,10 +29,10 @@ public class RepositoryBase<TDbConnection>(
 
         return await connection.QueryAllAsync<TEntity>(
             //cacheKey: cacheKey,
-            //commandTimeout: settings.Value.CommandTimeout,
+            commandTimeout: settings.Value.CommandTimeout,
             //cache: Cache,
             //cacheItemExpiration: settings.Value.CacheItemExpiration,
-            //trace: Trace
+            trace: Trace
         );
     }
 
@@ -39,11 +40,8 @@ public class RepositoryBase<TDbConnection>(
     {
         await using var connection = GetConnection();
 
-        IEnumerable<TEntity?> entities = await connection.QueryAsync<TEntity>(id
-            //,
-            //commandTimeout: settings.Value.CommandTimeout,
-            //trace: Trace
-        );
+        IEnumerable<TEntity?> entities =
+            await connection.QueryAsync<TEntity>(id, commandTimeout: settings.Value.CommandTimeout, trace: Trace);
 
         return entities.FirstOrDefault();
     }
@@ -52,21 +50,15 @@ public class RepositoryBase<TDbConnection>(
     {
         await using var connection = GetConnection();
 
-        return await connection.InsertAsync<TEntity, int>(entity
-            //,
-            //commandTimeout: settings.Value.CommandTimeout,
-            //trace: Trace
-        );
+        return await connection.InsertAsync<TEntity, int>(entity, commandTimeout: settings.Value.CommandTimeout,
+            trace: Trace);
     }
 
     public async Task<int> UpdateAsync<TEntity>(TEntity entity) where TEntity : BaseEntity
     {
         await using var connection = GetConnection();
 
-        return await connection.UpdateAsync(entity
-            //,
-            //trace: Trace
-        );
+        return await connection.UpdateAsync(entity, trace: Trace);
     }
 
     public async Task<int> DeleteAsync<TEntity>(int id) where TEntity : BaseEntity
@@ -78,9 +70,9 @@ public class RepositoryBase<TDbConnection>(
         try
         {
             deletedRows = await connection.DeleteAsync<TEntity>(id
-                //,
-                //commandTimeout: settings.Value.CommandTimeout,
-                //trace: Trace
+                ,
+                commandTimeout: settings.Value.CommandTimeout,
+                trace: Trace
             );
         }
         catch (SqlException e) when (e.Number == 547)
@@ -95,13 +87,8 @@ public class RepositoryBase<TDbConnection>(
     {
         await using var connection = GetConnection();
 
-        return await connection.MergeAsync(entity
-            //,
-            //commandTimeout: settings.Value.CommandTimeout,
-            //trace: Trace
-        );
+        return await connection.MergeAsync(entity, commandTimeout: settings.Value.CommandTimeout, trace: Trace);
     }
-
 
     public async Task<IEnumerable<TEntity>> FindAsync<TEntity>(Expression<Func<TEntity, bool>> predicate)
         where TEntity : BaseEntity

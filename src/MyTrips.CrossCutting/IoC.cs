@@ -4,6 +4,8 @@ using MyTrips.Application.Mappings;
 using MyTrips.CrossCutting.Handlers;
 using MyTrips.Domain.Entities;
 using MyTrips.Domain.Interfaces;
+using MyTrips.Infrastructure.Interfaces;
+using MyTrips.Infrastructure.Logging;
 using MyTrips.Infrastructure.Repositories;
 using RepoDb;
 
@@ -44,5 +46,7 @@ public static class IoC
     {
         services.AddScoped<IClientsRepository, ClientsRepository>();
         services.AddScoped<ITripsRepository, TripsRepository>();
+
+        services.AddSingleton<IMyTripsTrace, MyTripsTrace>();
     }
 }
