@@ -2,9 +2,9 @@
 
 namespace MyTrips.Presentation.Errors;
 
-public class InternalServerProblemDetails : ProblemDetails
+public class InternalServerErrorProblemDetails : ProblemDetails
 {
-    public InternalServerProblemDetails(HttpContext context,
+    public InternalServerErrorProblemDetails(HttpContext context,
         string detail =
             "The server encountered an unexpected condition that prevented it from fulfilling the request. This is typically a temporary issue, and our team is working to resolve it as quickly as possible. Please try again later. If the problem persists, contact support for further assistance.")
     {

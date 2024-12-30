@@ -3,14 +3,16 @@ using System.Reflection;
 using System.Text;
 using System.Threading.RateLimiting;
 using FluentValidation;
+using Hellang.Middleware.ProblemDetails;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MyTrips.Application.Validators;
 using MyTrips.CrossCutting;
+using MyTrips.Presentation.Errors;
 using MyTrips.Presentation.Filters;
-using MyTrips.Presentation.Middlewares;
 using Serilog;
 
 try
@@ -24,7 +26,16 @@ try
         .CreateLogger();
 
     var builder = WebApplication.CreateBuilder(args);
-    builder.Services.AddProblemDetails();
+    builder.Services.AddProblemDetails(options =>
+    {
+        options.IncludeExceptionDetails = (context, _) =>
+            context.RequestServices.GetRequiredService<IHostEnvironment>().IsDevelopment() ||
+            context.RequestServices.GetRequiredService<IHostEnvironment>().IsStaging();
+    });
+    //builder.Services.AddExceptionHandler(options =>
+    //{
+    //    options.ExceptionHandler = 
+    //});
     builder.Services.AddControllers(options => { options.Filters.Add(new ProblemHeaderFilter()); });
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen(opt =>
@@ -96,7 +107,6 @@ try
         });
 
     builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
-    builder.Services.AddTransient<ExceptionHandlingMiddleware>();
     builder.Services.AddInfrastructure(builder.Configuration);
 
     builder.Services.AddValidatorsFromAssemblyContaining<ClientValidator>();
@@ -141,8 +151,20 @@ try
     var app = builder.Build();
 
     app.UseSerilogRequestLogging();
+    app.UseProblemDetails();
+    app.UseExceptionHandler(options =>
+    {
+        options.Run(async context =>
+        {
+            var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
 
-    app.UseMiddleware<ExceptionHandlingMiddleware>();
+            if (contextFeature != null) Log.Fatal(contextFeature.Error, "Unexpected error.");
+
+            context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+            context.Response.ContentType = "application/problem+json; charset=utf-8";
+            await context.Response.WriteAsJsonAsync(new InternalServerErrorProblemDetails(context));
+        });
+    });
 
     if (app.Environment.IsDevelopment())
     {
