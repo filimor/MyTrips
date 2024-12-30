@@ -34,11 +34,13 @@ public class AuthController(IAuthService authService) : ControllerBase
     /// The token
     /// </returns>
     /// <response code="200">Returns the token</response>
+    /// <response code="400">If If either the username or the password are invalid</response>
     /// <response code="401">If the credentials are invalid</response>
     /// <response code="500">If there was an internal server error</response>
     [HttpPost("Login")]
     [AllowAnonymous]
     [ProducesResponseType<IEnumerable<ResponseClientDto>>(StatusCodes.Status200OK)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status500InternalServerError)]
     public IActionResult Login(LoginInfo loginInfo)

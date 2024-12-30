@@ -3,7 +3,7 @@ using Hellang.Middleware.ProblemDetails;
 using Microsoft.AspNetCore.Localization;
 using MyTrips.CrossCutting;
 using MyTrips.Presentation.Extensions;
-using MyTrips.Presentation.Filters;
+using MyTrips.Presentation.Middlewares;
 using Serilog;
 
 try
@@ -18,7 +18,7 @@ try
     builder.Services.AddConfigurations(builder.Configuration);
     builder.Services.AddValidation();
     builder.Services.AddProblemDetailsOptions();
-    builder.Services.AddControllers(options => { options.Filters.Add(new ProblemHeaderFilter()); });
+    builder.Services.AddControllers();
     builder.Services.AddSwagger();
     builder.Services.AddDomainServices();
     builder.Services.AddAuthServices(builder.Configuration);
@@ -26,6 +26,7 @@ try
     builder.Services.AddApiSecurity(builder.Configuration);
 
     var app = builder.Build();
+
 
     app.UseSerilogRequestLogging();
     app.UseProblemDetails();
@@ -38,12 +39,14 @@ try
         app.UseDeveloperExceptionPage();
     }
 
+
     app.UseRequestLocalization(SetupLocalization());
     app.UseHttpsRedirection();
     app.UseCors();
     app.UseRateLimiter();
     app.UseAuthorization();
     app.MapControllers();
+    app.UseMiddleware<ContentTypeMiddleware>();
 
     app.Run();
 }

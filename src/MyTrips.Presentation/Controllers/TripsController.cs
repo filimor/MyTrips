@@ -38,7 +38,10 @@ public class TripsController(ITripsService tripsService, IValidator<Trip> valida
     /// <returns></returns>
     [HttpGet]
     [ProducesResponseType<PagedList<ResponseTripDto>>(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status429TooManyRequests)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status500InternalServerError)]
+    [Produces("application/json")]
     public async Task<ActionResult> Get([FromQuery] GetParameters getParameters)
     {
         var result = await tripsService.GetTripsAsync(getParameters);
@@ -80,6 +83,7 @@ public class TripsController(ITripsService tripsService, IValidator<Trip> valida
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status429TooManyRequests)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status500InternalServerError)]
+    [Produces("application/json")]
     public async Task<ActionResult> Get([FromRoute] int id)
     {
         var validationResult = ValidateInputId(id);
@@ -128,7 +132,6 @@ public class TripsController(ITripsService tripsService, IValidator<Trip> valida
     /// <response code="400">If any of the attributes are invalid</response>
     /// <response code="401">If the user is not authenticated</response>
     /// <response code="404">If any of the resources are not found</response>
-    /// <response code="409">If a trip within that period is already scheduled</response>
     /// <response code="429">If the user has sent too many requests in a short period</response>
     /// <response code="500">If an error occurs while processing the request</response>
     [HttpPost]
@@ -136,10 +139,10 @@ public class TripsController(ITripsService tripsService, IValidator<Trip> valida
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
-    [ProducesResponseType<ProblemDetails>(StatusCodes.Status409Conflict)]
     [ProducesResponseType(StatusCodes.Status429TooManyRequests)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status500InternalServerError)]
     [Consumes("application/json")]
+    [Produces("application/json")]
     public async Task<ActionResult> Post([FromBody] CreateTripDto createTripDto)
     {
         var trip = new Trip(createTripDto.StartDate, createTripDto.EndDate, createTripDto.ClientId,
@@ -157,13 +160,6 @@ public class TripsController(ITripsService tripsService, IValidator<Trip> valida
 
         if (requestResult.IsFailed)
         {
-            if (requestResult.Errors.Any(e => e is ConflictError))
-            {
-                var problemDetails = new ConflictProblemDetails(HttpContext, requestResult.ToResult());
-
-                return new ConflictObjectResult(problemDetails);
-            }
-
             if (requestResult.Errors.Any(e => e is NotFoundError))
             {
                 var problemDetails = new NotFoundProblemDetails(HttpContext, requestResult.ToResult());
@@ -198,9 +194,9 @@ public class TripsController(ITripsService tripsService, IValidator<Trip> valida
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
-    [ProducesResponseType<ProblemDetails>(StatusCodes.Status409Conflict)]
     [ProducesResponseType(StatusCodes.Status429TooManyRequests)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status500InternalServerError)]
+    [Produces("application/json")]
     public async Task<ActionResult> Delete([FromRoute] int id)
     {
         var validationResult = ValidateInputId(id);
@@ -219,12 +215,6 @@ public class TripsController(ITripsService tripsService, IValidator<Trip> valida
             {
                 var problemDetails = new NotFoundProblemDetails(HttpContext, requestResult);
                 return new NotFoundObjectResult(problemDetails);
-            }
-
-            if (requestResult.Errors.Any(e => e is ConflictError))
-            {
-                var problemDetails = new ConflictProblemDetails(HttpContext, requestResult);
-                return new ConflictObjectResult(problemDetails);
             }
 
             return StatusCode(StatusCodes.Status500InternalServerError);
