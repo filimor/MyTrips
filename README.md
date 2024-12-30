@@ -184,7 +184,7 @@ Create a file named `appsettings.json` (and `appsettings.Development.json`, opti
 }
 ```
 
-The connection strings are (the 3 strings above are the same):
+The connection strings for the 3 strings above are the same.
 
 - **Local**
 
@@ -193,7 +193,6 @@ Data Source=localhost;Initial Catalog=MyTrips;User ID=mytrips_admin;Password=adm
 ```
 
 - **Azure**
--
 
 ```plaintext
 Data Source=mytrips.database.windows.net;Initial Catalog=MyTripsDb;User ID=XXXXXXX;Password=XXXXXXX;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False
