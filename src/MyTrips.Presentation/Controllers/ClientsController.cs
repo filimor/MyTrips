@@ -36,7 +36,10 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     /// <response code="500">If an error occurs while processing the request</response>
     [HttpGet]
     [ProducesResponseType<PagedList<ResponseClientDto>>(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status429TooManyRequests)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status500InternalServerError)]
+    [Produces("application/json")]
     public async Task<ActionResult> Get([FromQuery] GetParameters getParameters)
     {
         var result = await clientsService.GetClientsAsync(getParameters);
@@ -78,6 +81,7 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status429TooManyRequests)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status500InternalServerError)]
+    [Produces("application/json")]
     public async Task<ActionResult> Get([FromRoute] int id)
     {
         var validationResult = ValidateInputId(id);
@@ -134,6 +138,7 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     [ProducesResponseType(StatusCodes.Status429TooManyRequests)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status500InternalServerError)]
     [Consumes("application/json")]
+    [Produces("application/json")]
     public async Task<ActionResult> Post([FromBody] CreateClientDto createClientDto)
     {
         var client = new Client(createClientDto.Name, createClientDto.Email);
@@ -192,6 +197,7 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     [ProducesResponseType(StatusCodes.Status429TooManyRequests)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status500InternalServerError)]
     [Consumes("application/json")]
+    [Produces("application/json")]
     public async Task<ActionResult> Put([FromBody] UpdateClientDto updateClientDto)
     {
         var idValidationResult = ValidateInputId(updateClientDto.Id);
@@ -261,6 +267,7 @@ public class ClientsController(IClientsService clientsService, IValidator<Client
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status409Conflict)]
     [ProducesResponseType(StatusCodes.Status429TooManyRequests)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status500InternalServerError)]
+    [Produces("application/json")]
     public async Task<ActionResult> Delete([FromRoute] int id)
     {
         var validationResult = ValidateInputId(id);

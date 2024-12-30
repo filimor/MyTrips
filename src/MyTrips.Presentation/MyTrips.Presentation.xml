@@ -26,6 +26,7 @@
             The token
             </returns>
             <response code="200">Returns the token</response>
+            <response code="400">If If either the username or the password are invalid</response>
             <response code="401">If the credentials are invalid</response>
             <response code="500">If there was an internal server error</response>
         </member>
@@ -189,7 +190,6 @@
             <response code="400">If any of the attributes are invalid</response>
             <response code="401">If the user is not authenticated</response>
             <response code="404">If any of the resources are not found</response>
-            <response code="409">If a trip within that period is already scheduled</response>
             <response code="429">If the user has sent too many requests in a short period</response>
             <response code="500">If an error occurs while processing the request</response>
         </member>

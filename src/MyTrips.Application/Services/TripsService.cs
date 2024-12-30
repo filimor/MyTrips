@@ -83,40 +83,7 @@ public class TripsService(IMapper mapper, ITripsRepository tripsRepository) : IT
         return result switch
         {
             0 => Result.Fail(new NotFoundError($"{nameof(Trip)} with {nameof(Trip.Id)} '{id}' not found.")),
-            -1 => Result.Fail(new ConflictError(
-                $"The {nameof(Trip)} with {nameof(Trip.Id)} '{id}' is referenced by another entity.")),
             _ => Result.Ok()
         };
     }
-
-    //private async Task<bool> IsConflictingTrip(CreateTripDto createTripDto)
-    //{
-    //    var tripsFromTheClientOnThatPeriod = await tripsRepository.FindAsync<Trip>(t =>
-    //        t.ClientId == createTripDto.ClientId && (
-    //            StartDateIsWithinPlannedTripPeriod(createTripDto, t) ||
-    //            EndDateIsWithinPlannedTripPeriod(createTripDto, t) ||
-    //            TripCoversExistingTripPeriod(createTripDto, t)
-    //        )
-    //    );
-
-    //    return tripsFromTheClientOnThatPeriod.Any();
-    //}
-
-    //private static bool EndDateIsWithinPlannedTripPeriod(CreateTripDto createTripDto, Trip t)
-    //{
-    //    return createTripDto.EndDate >= t.StartDate &&
-    //           createTripDto.EndDate <= t.EndDate;
-    //}
-
-    //private static bool StartDateIsWithinPlannedTripPeriod(CreateTripDto createTripDto, Trip t)
-    //{
-    //    return createTripDto.StartDate >= t.StartDate &&
-    //           createTripDto.StartDate <= t.EndDate;
-    //}
-
-    //private static bool TripCoversExistingTripPeriod(CreateTripDto createTripDto, Trip t)
-    //{
-    //    return createTripDto.StartDate <= t.StartDate &&
-    //           createTripDto.EndDate >= t.EndDate;
-    //}
 }
