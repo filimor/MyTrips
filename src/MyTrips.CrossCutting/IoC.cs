@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MyTrips.Application.Interfaces;
 using MyTrips.Application.Mappings;
-using MyTrips.Application.Services;
 using MyTrips.Domain.Entities;
 using MyTrips.Domain.Interfaces;
 using MyTrips.Infrastructure.Repositories;
@@ -16,7 +14,6 @@ public static class IoC
         IConfiguration configuration)
     {
         InjectRepositories(services, configuration);
-        InjectDomainServices(services);
         AddMapping(services);
         UseRepoDb();
 
@@ -37,11 +34,5 @@ public static class IoC
     private static void InjectRepositories(IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<IClientsRepository>(_ => new ClientsRepository(configuration));
-    }
-
-    private static void InjectDomainServices(IServiceCollection services)
-    {
-        services.AddScoped<IClientsService, ClientsService>();
-        services.AddScoped<IAuthService, AuthService>();
     }
 }
