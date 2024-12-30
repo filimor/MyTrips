@@ -34,7 +34,7 @@ public static class WebApplicationBuilderExtensions
                         Url = new Uri("https://mytrips.azurewebsites.net/")
                     },
                     Description = "MyTrips is an web service to manage data about trips and clients.",
-                    Version = "v0.1",
+                    Version = "v1.0",
                     License = new OpenApiLicense
                     {
                         Name = "MIT",

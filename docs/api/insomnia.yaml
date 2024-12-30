@@ -1,11 +1,11 @@
 _type: export
 __export_format: 4
-__export_date: 2024-12-29T21:18:02.798Z
+__export_date: 2024-12-30T06:29:29.178Z
 __export_source: insomnia.desktop.app:v10.3.0
 resources:
   - _id: req_0686688458b846cda31dac1f9502f183
     parentId: fld_fd2ee61967b64449ae393a3ca7ae1715
-    modified: 1735423239777
+    modified: 1735515208973
     created: 1735423036053
     url: "{{ _.base_url }}/auth/login"
     name: Get Token
@@ -24,7 +24,8 @@ resources:
         value: application/json
       - name: User-Agent
         value: insomnia/10.3.0
-    authentication: {}
+    authentication:
+      type: none
     metaSortKey: -1735423036053
     isPrivate: false
     pathParameters: []
@@ -36,27 +37,41 @@ resources:
     settingFollowRedirects: global
     _type: request
   - _id: fld_fd2ee61967b64449ae393a3ca7ae1715
-    parentId: wrk_5406fa35dcfa4caea3e220ead1d09f16
-    modified: 1735423032547
+    parentId: fld_1c6b698c84624c8690d62f891d890d1f
+    modified: 1735534758509
     created: 1735423032547
     name: Auth
     description: ""
     environment: {}
     environmentPropertyOrder: null
-    metaSortKey: -1735423032547
+    metaSortKey: -1735515187943
+    environmentType: kv
+    _type: request_group
+  - _id: fld_1c6b698c84624c8690d62f891d890d1f
+    parentId: wrk_5406fa35dcfa4caea3e220ead1d09f16
+    modified: 1735534774037
+    created: 1735515176238
+    name: Clients
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1735515176438
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkFkbWluIiwibmJmIjoxNzM1NTM0NjIwLCJleHAiOjE3MzU1MzgyMjAsImlhdCI6MTczNTUzNDYyMH0.65cxMJDpXRsiKHSUO27249FpolTiYDRHDYY2tmPcTIc
     environmentType: kv
     _type: request_group
   - _id: wrk_5406fa35dcfa4caea3e220ead1d09f16
     parentId: null
-    modified: 1735097838985
+    modified: 1735515184581
     created: 1735097838985
-    name: Clients Management
+    name: MyTrips
     description: ""
     scope: collection
     _type: workspace
   - _id: req_06b140960c094d6ea0e1d165f043b9a4
     parentId: fld_5df85d0371cf4206a99de5cef7735429
-    modified: 1735311991067
+    modified: 1735534668933
     created: 1735097846561
     url: "{{ _.base_url }}/clients"
     name: Get all Clients
@@ -79,14 +94,14 @@ resources:
     settingFollowRedirects: global
     _type: request
   - _id: fld_5df85d0371cf4206a99de5cef7735429
-    parentId: wrk_5406fa35dcfa4caea3e220ead1d09f16
-    modified: 1735408697685
+    parentId: fld_1c6b698c84624c8690d62f891d890d1f
+    modified: 1735515190768
     created: 1735311845938
     name: Get Client
     description: ""
     environment: {}
     environmentPropertyOrder: null
-    metaSortKey: -1735408684336
+    metaSortKey: -1735515187643
     environmentType: kv
     _type: request_group
   - _id: req_7ca5eaec377240988e17dcc8fcd0cbd7
@@ -194,14 +209,14 @@ resources:
     settingFollowRedirects: global
     _type: request
   - _id: fld_96bf60e36d0546f693f409da9dd9ef1f
-    parentId: wrk_5406fa35dcfa4caea3e220ead1d09f16
-    modified: 1735408695235
+    parentId: fld_1c6b698c84624c8690d62f891d890d1f
+    modified: 1735515193658
     created: 1735311872537
     name: Create Client
     description: ""
     environment: {}
     environmentPropertyOrder: null
-    metaSortKey: -1735408684236
+    metaSortKey: -1735515187593
     environmentType: kv
     _type: request_group
   - _id: req_123623771df34045a3508632b643a4ca
@@ -334,14 +349,14 @@ resources:
     settingFollowRedirects: global
     _type: request
   - _id: fld_4467fa492854441498d6b72da43c3cc3
-    parentId: wrk_5406fa35dcfa4caea3e220ead1d09f16
-    modified: 1735408693571
+    parentId: fld_1c6b698c84624c8690d62f891d890d1f
+    modified: 1735515197624
     created: 1735408430373
     name: Update Client
     description: ""
     environment: {}
     environmentPropertyOrder: null
-    metaSortKey: -1735408684136
+    metaSortKey: -1735515187568
     environmentType: kv
     _type: request_group
   - _id: req_1d3f30e1c9874a7fb78c8c46554ac9e3
@@ -501,14 +516,14 @@ resources:
     settingFollowRedirects: global
     _type: request
   - _id: fld_bb628228a73e41f1bf5ecfe20b90bedb
-    parentId: wrk_5406fa35dcfa4caea3e220ead1d09f16
-    modified: 1735408683836
+    parentId: fld_1c6b698c84624c8690d62f891d890d1f
+    modified: 1735515199956
     created: 1735408683836
     name: Delete Client
     description: ""
     environment: {}
     environmentPropertyOrder: null
-    metaSortKey: -1735408683836
+    metaSortKey: -1735515187555.5
     environmentType: kv
     _type: request_group
   - _id: req_dbcf11aa679241a8973de7f408b0ee87
@@ -537,10 +552,10 @@ resources:
     _type: request
   - _id: req_2d28f7d68a8a4b3d86591a60e8053497
     parentId: fld_bb628228a73e41f1bf5ecfe20b90bedb
-    modified: 1735408817634
+    modified: 1735533278296
     created: 1735408817634
     url: "{{ _.base_url }}/clients/20"
-    name: Delete an inexisting Client
+    name: Try to delete an inexisting Client
     description: ""
     method: DELETE
     body: {}
@@ -561,10 +576,10 @@ resources:
     _type: request
   - _id: req_a98c2e12b242493b872de945b2019e18
     parentId: fld_bb628228a73e41f1bf5ecfe20b90bedb
-    modified: 1735411640277
+    modified: 1735533286033
     created: 1735411636384
     url: "{{ _.base_url }}/clients/1"
-    name: Try do Delete a Client referenced by FK
+    name: Try do delete a Client referenced by FK
     description: ""
     method: DELETE
     body: {}
@@ -574,6 +589,598 @@ resources:
         value: insomnia/10.3.0
     authentication: {}
     metaSortKey: -1735408506770
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_6ff901bd267143eca359fd5610703df3
+    parentId: fld_2baa972245454829823b503db82e43b9
+    modified: 1735532661843
+    created: 1735532661843
+    url: "{{ _.base_url }}/auth/login"
+    name: Get Token
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username": "Admin",
+        	"password": "Password"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.3.0
+    authentication:
+      type: none
+    metaSortKey: -1735423036053
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_2baa972245454829823b503db82e43b9
+    parentId: fld_09e6b1d206a742cb9b29a40367900106
+    modified: 1735532661843
+    created: 1735532661843
+    name: Auth
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1735515187743
+    environmentType: kv
+    _type: request_group
+  - _id: fld_09e6b1d206a742cb9b29a40367900106
+    parentId: wrk_5406fa35dcfa4caea3e220ead1d09f16
+    modified: 1735538683792
+    created: 1735532661815
+    name: Trips
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1735515176338
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkFkbWluIiwibmJmIjoxNzM1NTM4Njc2LCJleHAiOjE3MzU1NDIyNzYsImlhdCI6MTczNTUzODY3Nn0.hra2Cu8s8NC6d2m3hAxOkepbG8ZL8BVFgu5qFL4bDzw
+    environmentType: kv
+    _type: request_group
+  - _id: req_3de2005d26d24fc7b00090c1ec99be9d
+    parentId: fld_44b7d963c5244062918a97ee950cd79a
+    modified: 1735532729247
+    created: 1735532661819
+    url: "{{ _.base_url }}/trips"
+    name: Get all Trips
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/10.3.0
+    authentication: {}
+    metaSortKey: -1735311851931
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_44b7d963c5244062918a97ee950cd79a
+    parentId: fld_09e6b1d206a742cb9b29a40367900106
+    modified: 1735533248903
+    created: 1735532661817
+    name: Get Trip
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1735515187643
+    environmentType: kv
+    _type: request_group
+  - _id: req_ff5f5af3d11748438d5716f8a00bcad4
+    parentId: fld_44b7d963c5244062918a97ee950cd79a
+    modified: 1735540116859
+    created: 1735532661821
+    url: "{{ _.base_url }}/trips/1"
+    name: Get an existing Trip
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/10.3.0
+    authentication: {}
+    metaSortKey: -1735311851881
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9a6f2f503dd04b9a82ddfdddf19d1089
+    parentId: fld_44b7d963c5244062918a97ee950cd79a
+    modified: 1735532744033
+    created: 1735532661823
+    url: "{{ _.base_url }}/trips/2147483647"
+    name: Try to get an inexistent Trip
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/10.3.0
+    authentication: {}
+    metaSortKey: -1735311851831
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_697eae257ca34c52af9849214c3fbc0d
+    parentId: fld_44b7d963c5244062918a97ee950cd79a
+    modified: 1735532753221
+    created: 1735532661822
+    url: "{{ _.base_url }}/trips/-1"
+    name: Try to get a Trip with invalid id
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/10.3.0
+    authentication: {}
+    metaSortKey: -1735311851731
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_4fe515652534464cbfe7a01672638f2d
+    parentId: fld_02aab4a3c8054b90b441a010832682fc
+    modified: 1735538104299
+    created: 1735532661825
+    url: "{{ _.base_url }}/trips"
+    name: Book a Trip
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"ClientId": 5,
+        	"OutboundFlightId": 1,
+        	"InboundFlightId": 1,
+        	"OutboundFlightId": 1,
+        	"HotelId": 1,
+        	"StartDate": "2030-04-10",
+        	"EndDate": "2030-05-16"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.3.0
+    authentication: {}
+    metaSortKey: -1735311876958
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_02aab4a3c8054b90b441a010832682fc
+    parentId: fld_09e6b1d206a742cb9b29a40367900106
+    modified: 1735533254513
+    created: 1735532661824
+    name: Create Trip
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1735515187593
+    environmentType: kv
+    _type: request_group
+  - _id: req_bbaab99bc15c4622871e80790532eab5
+    parentId: fld_02aab4a3c8054b90b441a010832682fc
+    modified: 1735537730090
+    created: 1735532661827
+    url: "{{ _.base_url }}/trips"
+    name: Try to book a Trip with invalid clientId
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"ClientId": -1,
+        	"OutboundFlightId": 1,
+        	"InboundFlightId": 1,
+        	"OutboundFlightId": 1,
+        	"HotelId": 1,
+        	"StartDate": "2025-05-03",
+        	"EndDate": "2025-06-08"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.3.0
+    authentication: {}
+    metaSortKey: -1735311864444.5
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d398c775fd2b432ab602d47c100e98cb
+    parentId: fld_02aab4a3c8054b90b441a010832682fc
+    modified: 1735537742319
+    created: 1735533085563
+    url: "{{ _.base_url }}/trips"
+    name: Try to book a Trip for an inexistent client
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"ClientId": 2147483647,
+        	"OutboundFlightId": 1,
+        	"InboundFlightId": 1,
+        	"OutboundFlightId": 1,
+        	"HotelId": 1,
+        	"StartDate": "2026-01-02",
+        	"EndDate": "2026-03-05"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.3.0
+    authentication: {}
+    metaSortKey: -1735311861316.125
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_cf129c79841f4c58bc29bbb2d4c81c7c
+    parentId: fld_02aab4a3c8054b90b441a010832682fc
+    modified: 1735537764742
+    created: 1735532661828
+    url: "{{ _.base_url }}/trips"
+    name: Try to book a Trip with invalid outbound flight it
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"ClientId": 1,
+        	"OutboundFlightId": 1,
+        	"InboundFlightId": 1,
+        	"OutboundFlightId": -1,
+        	"HotelId": 1,
+        	"StartDate": "2025-02-20",
+        	"EndDate": "2025-08-15"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.3.0
+    authentication: {}
+    metaSortKey: -1735311858187.75
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a49507c371bd495f8a85dc8a07a39896
+    parentId: fld_02aab4a3c8054b90b441a010832682fc
+    modified: 1735537782617
+    created: 1735533116273
+    url: "{{ _.base_url }}/trips"
+    name: Try to book a Trip with inexistent outbound flight
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"ClientId": 1,
+        	"OutboundFlightId": 1,
+        	"InboundFlightId": 1,
+        	"OutboundFlightId": 2147483647,
+        	"HotelId": 1,
+        	"StartDate": "2025-04-17",
+        	"EndDate": "2025-04-23"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.3.0
+    authentication: {}
+    metaSortKey: -1735311856623.5625
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_72927ea28c104d10a8925db546b4461d
+    parentId: fld_02aab4a3c8054b90b441a010832682fc
+    modified: 1735537798110
+    created: 1735532661829
+    url: "{{ _.base_url }}/trips"
+    name: Try to book a Trip with invalid hotel id
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"ClientId": 1,
+        	"OutboundFlightId": 1,
+        	"InboundFlightId": 1,
+        	"OutboundFlightId": 1,
+        	"HotelId": -1,
+        	"StartDate": "2025-02-02",
+        	"EndDate": "2025-03-04"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.3.0
+    authentication: {}
+    metaSortKey: -1735311855059.375
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_23b72967d87c4b9c8001f71bf5a7117e
+    parentId: fld_02aab4a3c8054b90b441a010832682fc
+    modified: 1735537810610
+    created: 1735533137540
+    url: "{{ _.base_url }}/trips"
+    name: Try to book a Trip with inexistent hotel
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"ClientId": 1,
+        	"OutboundFlightId": 1,
+        	"InboundFlightId": 1,
+        	"OutboundFlightId": 1,
+        	"HotelId": 2147483647,
+        	"StartDate": "2025-06-07",
+        	"EndDate": "2025-08-09"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.3.0
+    authentication: {}
+    metaSortKey: -1735311854277.2812
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_ca8aea97a8d846fe8a3b98c197b33240
+    parentId: fld_02aab4a3c8054b90b441a010832682fc
+    modified: 1735540091783
+    created: 1735532865461
+    url: "{{ _.base_url }}/trips"
+    name: Try to book a Trip with invalid start date
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"ClientId": 1,
+        	"OutboundFlightId": 1,
+        	"InboundFlightId": 1,
+        	"OutboundFlightId": 1,
+        	"HotelId": 1,
+        	"StartDate": "2022-09-08",
+        	"EndDate": "2025-10-09"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.3.0
+    authentication: {}
+    metaSortKey: -1735311853495.1875
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d083cf8395e44f0dbba41c1320edb524
+    parentId: fld_02aab4a3c8054b90b441a010832682fc
+    modified: 1735537843950
+    created: 1735537704483
+    url: "{{ _.base_url }}/trips"
+    name: Try to book a invalid Trip for a Client
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"ClientId": 1,
+        	"OutboundFlightId": 1,
+        	"InboundFlightId": 1,
+        	"OutboundFlightId": 1,
+        	"HotelId": 1,
+        	"StartDate": "2023-01-01",
+        	"EndDate": "2025-06-06"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.3.0
+    authentication: {}
+    metaSortKey: -1735311852713.0938
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_6ea16c8f741946c0930885e43b291f9e
+    parentId: fld_ff916f0591d34182a44140c2fc646d16
+    modified: 1735537495292
+    created: 1735532661839
+    url: "{{ _.base_url }}/trips/7"
+    name: Cancel an scheduled Trip
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/10.3.0
+    authentication: {}
+    metaSortKey: -1735408713794
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_ff916f0591d34182a44140c2fc646d16
+    parentId: fld_09e6b1d206a742cb9b29a40367900106
+    modified: 1735533261249
+    created: 1735532661838
+    name: Delete Trip
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1735515187555.5
+    environmentType: kv
+    _type: request_group
+  - _id: req_86fc8dc0a2514cd18c781ed336c98ffd
+    parentId: fld_ff916f0591d34182a44140c2fc646d16
+    modified: 1735537498444
+    created: 1735532661841
+    url: "{{ _.base_url }}/trips/-1"
+    name: Try to cancel a Trip with invalid id
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/10.3.0
+    authentication: {}
+    metaSortKey: -1735408644786
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d005a7d39a7b4077bfe8a7ff60bdc064
+    parentId: fld_ff916f0591d34182a44140c2fc646d16
+    modified: 1735540141564
+    created: 1735532661840
+    url: "{{ _.base_url }}/trips/2147483647"
+    name: Try to cancel a non scheduled Trip
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/10.3.0
+    authentication: {}
+    metaSortKey: -1735408575778
     isPrivate: false
     pathParameters: []
     settingStoreCookies: true
