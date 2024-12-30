@@ -4,7 +4,7 @@
         <name>MyTrips.Presentation</name>
     </assembly>
     <members>
-        <member name="M:MyTrips.Presentation.Controllers.AuthController.Login(MyTrips.Domain.Entities.LoginInfo)">
+        <member name="M:MyTrips.Presentation.Controllers.AuthController.Login(MyTrips.Domain.ValueObjects.LoginInfo)">
             <summary>
             Login
             </summary>

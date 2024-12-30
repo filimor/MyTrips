@@ -1,4 +1,4 @@
-﻿namespace MyTrips.Domain.Entities;
+﻿namespace MyTrips.Domain.ValueObjects;
 
 public class LoginInfo
 {

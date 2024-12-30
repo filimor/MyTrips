@@ -9,11 +9,11 @@ using MyTrips.Domain.ValueObjects;
 
 namespace MyTrips.Application.Services;
 
-public class ClientsService(IMapper mapper, IClientsRepository clientsRepository) : IClientsService
+public class ClientsService(IMapper mapper, IRepositoryBase clientsRepository) : IClientsService
 {
     public async Task<Result<IEnumerable<ResponseClientDto>>> GetAllClientsAsync()
     {
-        var clients = await clientsRepository.GetAsync();
+        var clients = await clientsRepository.GetAllAsync<Client>();
         var clientsDto = mapper.Map<IEnumerable<ResponseClientDto>>(clients);
 
         return Result.Ok(clientsDto);
@@ -21,7 +21,7 @@ public class ClientsService(IMapper mapper, IClientsRepository clientsRepository
 
     public async Task<Result<PagedList<ResponseClientDto>>> GetClientsAsync(ClientParameters parameters)
     {
-        var clientsPaged = await clientsRepository.GetAsync(parameters.PageIndex, parameters.PageSize);
+        var clientsPaged = await clientsRepository.GetAsync<Client>(parameters.PageIndex, parameters.PageSize);
         var dtosPaged = mapper.Map<PagedList<ResponseClientDto>>(clientsPaged);
 
         return Result.Ok(dtosPaged);
@@ -29,7 +29,7 @@ public class ClientsService(IMapper mapper, IClientsRepository clientsRepository
 
     public async Task<Result<ResponseClientDto>> GetClientByIdAsync(int id)
     {
-        var client = await clientsRepository.GetAsync(id);
+        var client = await clientsRepository.GetAsync<Client>(id);
 
         if (client is null)
             return Result.Fail(new NotFoundError($"{nameof(Client)} with {nameof(Client.Id)} '{id}' not found."));
@@ -41,7 +41,7 @@ public class ClientsService(IMapper mapper, IClientsRepository clientsRepository
 
     public async Task<Result<ResponseClientDto>> AddNewClientAsync(CreateClientDto createClientDto)
     {
-        var existingClients = await clientsRepository.FindAsync(c => c.Email == createClientDto.Email);
+        var existingClients = await clientsRepository.FindAsync<Client>(c => c.Email == createClientDto.Email);
 
         if (existingClients.Any())
             return Result.Fail(new ConflictError(
@@ -60,7 +60,7 @@ public class ClientsService(IMapper mapper, IClientsRepository clientsRepository
 
     public async Task<Result<ResponseClientDto>> UpdateClientAsync(UpdateClientDto updateClientDto)
     {
-        var existingClients = await clientsRepository.FindAsync(c => c.Email == updateClientDto.Email);
+        var existingClients = await clientsRepository.FindAsync<Client>(c => c.Email == updateClientDto.Email);
 
         if (existingClients.Any())
             return Result.Fail(
@@ -69,20 +69,20 @@ public class ClientsService(IMapper mapper, IClientsRepository clientsRepository
 
         var requestClient = mapper.Map<Client>(updateClientDto);
 
-        var responseClient = await clientsRepository.UpdateAsync(requestClient);
+        var rowsUpdated = await clientsRepository.UpdateAsync(requestClient);
 
-        if (responseClient is null)
+        if (rowsUpdated == 0)
             return Result.Fail(
                 new NotFoundError($"{nameof(Client)} with {nameof(Client.Id)} '{updateClientDto.Id}' not found."));
 
-        var responseClientDto = mapper.Map<ResponseClientDto>(responseClient);
+        var responseClientDto = mapper.Map<ResponseClientDto>(updateClientDto);
 
         return Result.Ok(responseClientDto);
     }
 
     public async Task<Result> RemoveClientAsync(int id)
     {
-        var result = await clientsRepository.DeleteAsync(id);
+        var result = await clientsRepository.DeleteAsync<Client>(id);
 
         return result switch
         {

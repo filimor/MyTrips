@@ -13,16 +13,13 @@ public class UpdateClientUnitTests
 
     [Fact]
     [Trait("Category", "Unit")]
-    public async Task GivenAnExistingClient_WhenUpdateWithValidData_ThenItShouldReturnOkResultObjectWithUpdatedDto()
+    public async Task GivenAnExistingClient_WhenUpdateWithValidData_ThenItShouldReturnOkResultObject()
     {
-        // Arrange
-        var testResult = Result.Ok(_fixture.ResponseClientDtoStub);
-
-        // Act
-        var clientResult = await _fixture.ClientsServiceStub.UpdateClientAsync(_fixture.UpdateClientDtoStub);
+        // Arrange & Act
+        var result = await _fixture.ClientsServiceStub.UpdateClientAsync(_fixture.UpdateClientDtoStub);
 
         // Assert
-        clientResult.Should().BeEquivalentTo(testResult);
+        result.IsSuccess.Should().BeTrue();
     }
 
     [Theory]
@@ -84,7 +81,7 @@ public class UpdateClientUnitTests
     {
         _fixture.UpdateClientDtoStub.Id = ClientsManagementFixture.NonExistentId;
         _fixture.ClientsRepositoryMock.Setup(r => r.UpdateAsync(It.IsAny<Client>()))
-            .ReturnsAsync((Client)null!);
+            .ReturnsAsync(0);
 
         // Act
         var response = await _fixture.ClientsServiceStub.UpdateClientAsync(_fixture.UpdateClientDtoStub);

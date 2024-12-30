@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using MyTrips.Application.Dtos;
 using MyTrips.Application.Interfaces;
-using MyTrips.Domain.Entities;
+using MyTrips.Domain.ValueObjects;
 using MyTrips.Presentation.Errors;
 
 namespace MyTrips.Presentation.Controllers;

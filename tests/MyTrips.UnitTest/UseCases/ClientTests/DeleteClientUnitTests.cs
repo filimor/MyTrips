@@ -1,4 +1,5 @@
 ﻿using MyTrips.Application.Errors;
+using MyTrips.Domain.Entities;
 using MyTrips.Presentation.Errors;
 using MyTrips.UnitTest.Fixtures;
 
@@ -40,7 +41,7 @@ public class DeleteClientUnitTests
     public async Task GivenNonExistingClient_WhenDeleteClient_ThenItShouldReturnFailResultWithNotFoundError()
     {
         // Arrange
-        _fixture.ClientsRepositoryMock.Setup(r => r.DeleteAsync(_fixture.ClientStub.Id)).ReturnsAsync(0);
+        _fixture.ClientsRepositoryMock.Setup(r => r.DeleteAsync<Client>(_fixture.ClientStub.Id)).ReturnsAsync(0);
 
         // Act
         var result = await _fixture.ClientsServiceStub.RemoveClientAsync(_fixture.ClientStub.Id);
@@ -58,7 +59,7 @@ public class DeleteClientUnitTests
         await _fixture.ClientsServiceStub.RemoveClientAsync(_fixture.ClientStub.Id);
 
         // Assert
-        _fixture.ClientsRepositoryMock.Verify(r => r.DeleteAsync(_fixture.ClientStub.Id), Times.Once);
+        _fixture.ClientsRepositoryMock.Verify(r => r.DeleteAsync<Client>(_fixture.ClientStub.Id), Times.Once);
     }
 
     [Fact]
@@ -66,7 +67,7 @@ public class DeleteClientUnitTests
     public async Task GivenDeleteRequest_WhenRepositoryThrowException_ThenItShouldThrowTheException()
     {
         // Arrange
-        _fixture.ClientsRepositoryMock.Setup(r => r.DeleteAsync(ClientsManagementFixture.MinId))
+        _fixture.ClientsRepositoryMock.Setup(r => r.DeleteAsync<Client>(ClientsManagementFixture.MinId))
             .ThrowsAsync(new OutOfMemoryException());
 
         // Act
@@ -82,7 +83,7 @@ public class DeleteClientUnitTests
         GivenClientWithIdReferencedByForeignKey_WhenDeleteClient_ThenItShouldReturnFailResultWithConflictError()
     {
         // Arrange
-        _fixture.ClientsRepositoryMock.Setup(r => r.DeleteAsync(_fixture.ClientStub.Id)).ReturnsAsync(-1);
+        _fixture.ClientsRepositoryMock.Setup(r => r.DeleteAsync<Client>(_fixture.ClientStub.Id)).ReturnsAsync(-1);
 
         // Act
         var result = await _fixture.ClientsServiceStub.RemoveClientAsync(_fixture.ClientStub.Id);

@@ -14,6 +14,7 @@ public class DtoToDomainMappingProfile : Profile
             .ForMember(dest => dest.Id, opt => opt.Ignore());
         CreateMap<Client, ResponseClientDto>();
         CreateMap<UpdateClientDto, Client>();
+        CreateMap<UpdateClientDto, ResponseClientDto>();
 
         CreateMap(typeof(PagedList<>), typeof(PagedList<>))
             .ConvertUsing(typeof(PagedListTypeConverter<,>));

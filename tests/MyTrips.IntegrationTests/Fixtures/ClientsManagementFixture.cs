@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyTrips.Application.Interfaces;
 using MyTrips.Application.Services;
+using MyTrips.Domain.ValueObjects;
 using MyTrips.IntegrationTests.Handlers;
 using Newtonsoft.Json;
 

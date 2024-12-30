@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyTrips.Application.Mappings;
 using MyTrips.Domain.Entities;
@@ -33,6 +34,7 @@ public static class IoC
 
     private static void InjectRepositories(IServiceCollection services, IConfiguration configuration)
     {
-        services.AddScoped<IClientsRepository>(_ => new ClientsRepository(configuration));
+        //services.AddScoped<IClientsRepository>(_ => new ClientsRepository(configuration));
+        services.AddScoped<IRepositoryBase, RepositoryBase<SqlConnection>>();
     }
 }

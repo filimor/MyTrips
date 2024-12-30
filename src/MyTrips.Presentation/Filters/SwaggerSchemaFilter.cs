@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 using MyTrips.Application.Dtos;
-using MyTrips.Domain.Entities;
+using MyTrips.Domain.ValueObjects;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace MyTrips.Presentation.Filters;

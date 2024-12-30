@@ -32,7 +32,7 @@ public class GetClientUnitTests
     public async Task GivenGetRequest_WhenRepositoryThrowException_ThenItShouldThrowTheException()
     {
         // Arrange
-        _fixture.ClientsRepositoryMock.Setup(r => r.GetAsync()).ThrowsAsync(new OutOfMemoryException());
+        _fixture.ClientsRepositoryMock.Setup(r => r.GetAllAsync<Client>(null)).ThrowsAsync(new OutOfMemoryException());
 
         // Act
         var act = async () => await _fixture.ClientsServiceStub.GetAllClientsAsync();
@@ -75,7 +75,7 @@ public class GetClientUnitTests
         GivenNonExistentClient_WhenTryGetClient_ThenItShouldReturnNotFoundResultObjectWithProblemDetails()
     {
         // Arrange
-        _fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(ClientsManagementFixture.NonExistentId))
+        _fixture.ClientsRepositoryMock.Setup(r => r.GetAsync<Client>(ClientsManagementFixture.NonExistentId))
             .ReturnsAsync((Client)null!);
 
         // Act
@@ -91,7 +91,7 @@ public class GetClientUnitTests
     public async Task GivenCreateRequest_WhenRepositoryThrowException_ThenItShouldThrowTheException()
     {
         // Arrange
-        _fixture.ClientsRepositoryMock.Setup(r => r.GetAsync(ClientsManagementFixture.MinId))
+        _fixture.ClientsRepositoryMock.Setup(r => r.GetAsync<Client>(ClientsManagementFixture.MinId))
             .ThrowsAsync(new OutOfMemoryException());
 
         // Act

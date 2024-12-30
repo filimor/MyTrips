@@ -9,6 +9,7 @@ using Microsoft.OpenApi.Models;
 using MyTrips.Application.Interfaces;
 using MyTrips.Application.Services;
 using MyTrips.Application.Validators;
+using MyTrips.Infrastructure.Models;
 using MyTrips.Presentation.Filters;
 using Serilog;
 
@@ -163,6 +164,15 @@ public static class WebApplicationBuilderExtensions
                 context.RequestServices.GetRequiredService<IHostEnvironment>().IsDevelopment() ||
                 context.RequestServices.GetRequiredService<IHostEnvironment>().IsStaging();
         });
+
+        return services;
+    }
+
+    public static IServiceCollection AddConfigurations(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddSingleton(configuration);
+
+        services.Configure<AppSetting>(configuration.GetSection(nameof(AppSetting)));
 
         return services;
     }

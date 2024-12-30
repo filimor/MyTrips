@@ -9,7 +9,7 @@ using RepoDb.Enumerations;
 
 namespace MyTrips.Infrastructure.Repositories;
 
-public class ClientsRepository(IConfiguration configuration) : IClientsRepository
+public class ClientsRepositoryT(IConfiguration configuration) : IClientsRepository
 {
     public string ConnectionString { get; } = configuration.GetConnectionString("MyTripsDb") ??
                                               throw new ArgumentNullException(nameof(ConnectionString));

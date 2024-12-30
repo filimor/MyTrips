@@ -1,4 +1,4 @@
-﻿using MyTrips.Domain.Entities;
+﻿using MyTrips.Domain.ValueObjects;
 
 namespace MyTrips.Application.Interfaces;
 

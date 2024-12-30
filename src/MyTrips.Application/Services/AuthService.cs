@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using MyTrips.Application.Interfaces;
-using MyTrips.Domain.Entities;
+using MyTrips.Domain.ValueObjects;
 
 namespace MyTrips.Application.Services;
 

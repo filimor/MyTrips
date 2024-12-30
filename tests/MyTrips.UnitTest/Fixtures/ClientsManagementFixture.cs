@@ -17,7 +17,7 @@ public sealed class ClientsManagementFixture
     public const int InvalidId = -1;
     public const int MinId = 1;
 
-    public readonly Mock<IClientsRepository> ClientsRepositoryMock = new();
+    public readonly Mock<IRepositoryBase> ClientsRepositoryMock = new();
     public readonly Mock<IMapper> MapperMock = new();
     public Mock<IClientsService> ClientServiceMock = new();
 
@@ -141,12 +141,12 @@ public sealed class ClientsManagementFixture
                 Email = client.Email
             });
 
-        ClientsRepositoryMock.Setup(r => r.GetAsync()).ReturnsAsync(ClientsCollectionStub);
-        ClientsRepositoryMock.Setup(r => r.GetAsync(ClientStub.Id)).ReturnsAsync(ClientStub);
+        ClientsRepositoryMock.Setup(r => r.GetAllAsync<Client>(null)).ReturnsAsync(ClientsCollectionStub);
+        ClientsRepositoryMock.Setup(r => r.GetAsync<Client>(ClientStub.Id)).ReturnsAsync(ClientStub);
         ClientsRepositoryMock.Setup(r => r.AddAsync(It.IsAny<Client>())).ReturnsAsync(ClientStub.Id);
         ClientsRepositoryMock.Setup(r => r.UpdateAsync(It.IsAny<Client>()))
-            .ReturnsAsync((Client client) => client);
-        ClientsRepositoryMock.Setup(r => r.DeleteAsync(ClientStub.Id)).ReturnsAsync(1);
+            .ReturnsAsync(1);
+        ClientsRepositoryMock.Setup(r => r.DeleteAsync<Client>(ClientStub.Id)).ReturnsAsync(1);
         ClientsRepositoryMock.Setup(r => r.FindAsync(It.IsAny<Expression<Func<Client, bool>>>()))
             .ReturnsAsync((Expression<Func<Client, bool>> predicate) =>
                 SearchClientResultStub.Where(predicate.Compile()));

@@ -129,9 +129,11 @@ public class CreateClientIntegrationTests(ClientsManagementFixture fixture)
     {
         // Arrange
         var request = fixture.CreateRequest(HttpMethod.Post, fixture.CreateClientDtoStub);
+        await fixture.DefaultHttpClient.SendAsync(request);
+        var requestWithSameEmail = fixture.CreateRequest(HttpMethod.Post, fixture.CreateClientDtoStub);
 
         // Act
-        await fixture.DefaultHttpClient.SendAsync(request);
+        await fixture.DefaultHttpClient.SendAsync(requestWithSameEmail);
 
         // Assert
         await using var connection = new SqlConnection(fixture.ConnectionString);

@@ -9,13 +9,13 @@ using Serilog;
 try
 {
     CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
-
     SetupSerilog();
 
     var builder = WebApplication.CreateBuilder(args);
 
     builder.Services.AddLoggingServices();
-    builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
+    builder.Services.AddSingleton(builder.Configuration);
+    builder.Services.AddConfigurations(builder.Configuration);
     builder.Services.AddValidation();
     builder.Services.AddProblemDetailsOptions();
     builder.Services.AddControllers(options => { options.Filters.Add(new ProblemHeaderFilter()); });
@@ -44,6 +44,7 @@ try
     app.UseRateLimiter();
     app.UseAuthorization();
     app.MapControllers();
+
     app.Run();
 }
 catch (Exception ex)
